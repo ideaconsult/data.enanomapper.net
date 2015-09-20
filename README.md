@@ -1,2 +1,2 @@
 # data.enanomapper.net
-Empty repository, used to be able to file bug reports.
+This is not a source code repository. But you can file issues here you find on data.enanomapper.net.
