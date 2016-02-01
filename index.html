@@ -66,12 +66,17 @@
 -->
 <script src="widgets/AutocompleteWidget.js"></script>
 
+    <!-- menus
+	================================================== -->
+    <script src="jquery/jquery.smartmenus.min.js" type="text/javascript" language="JavaScript"></script>
+    <link rel="stylesheet" href="style/sm-core-css.css" type="text/css">
+    <link rel="stylesheet" href="style/sm-mint.css" type="text/css">
 
 
 <script type='text/javascript'>
 	$(document).ready(function() {
 		
-		
+		$( "#smartmenu" ).smartmenus();    
 		//var purl = $.url();
 		$("#search").find('input').autocomplete();
 		//$("#search").find('input').attr('value',purl.param('search')===undefined?'':purl.param('search'));
@@ -104,10 +109,73 @@
 		<div class="row half-bottom" id="header" style="padding-top: 5px">
 			<div class="two columns">
 				<a href="#"><img class='scale-with-grid' border='0'
-					src='images/logo.png' title='Home' alt='eNanoMapper'></a>
+					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
 			</div>
 			<div class="fourteen columns remove-bottom">
-				<h2>eNanoMapper Search Demonstration</h2>
+			<ul id='smartmenu' class="sm sm-mint">
+			<li>
+				<a href="#" title="Search nanomaterials by chemical structure of components">Search</a>
+				<ul>
+					<li><a href="#" title="Free text search (experimental)">Free text search</a></li>
+					<li ><a href="https://apps.ideaconsult.net/enanomapper/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for nanomaterials by identifiers or reference">Search nanomaterials by name</a></li>
+					<li ><a href="https://apps.ideaconsult.net/enanomapper/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for nanomaterials by identifiers">Search nanomaterials by identifier</a></li>
+					<li ><a href="https://apps.ideaconsult.net/enanomapper/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for nanomaterials by paper reference">Search nanomaterials by citation</a></li>
+					<li><a href="https://apps.ideaconsult.net/enanomapper/query/study" title="Search substances by physico-chemical parameters or biological effects">Search nanomaterials by physchem parameters or biological effects</a></li>
+					<li><a href="https://apps.ideaconsult.net/enanomapper/_search?search=SiO2" title="Search nanomaterials by chemical structure of components">Search nanomaterials by composition</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="https://apps.ideaconsult.net/enanomapper/substance?page=0&amp;pagesize=100">Nanomaterials</a>
+				<ul>
+			<li ><a href="https://apps.ideaconsult.net/enanomapper/substance?page=0&pagesize=10" title="Nanomaterials">Nanomaterials</a></li>
+			
+				<li><a href="https://apps.ideaconsult.net/enanomapper/bundle" title="Browse/Edit">Nanomaterial Bundles</a></li>
+				
+				<li ><a href="https://apps.ideaconsult.net/enanomapper/substanceowner">Nanomaterial contributors</a></li>
+					
+				<li ><a href="#">Data management</a>
+					<ul>
+						<li ><a href="https://apps.ideaconsult.net/enanomapper/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
+						<li ><a href="https://apps.ideaconsult.net/enanomapper/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
+						<li ><a href="https://apps.ideaconsult.net/enanomapper/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>
+						<li>
+						<a href="https://apps.ideaconsult.net/enanomapper/bundle">Datasets of nanomaterials and studies</a>
+						</li>			
+					</ul>
+				</li>					
+				</ul>			
+			</li>
+			<li>
+				<a href="#">Help</a>
+						<ul>
+							<li> <a href="#">User guide</a>
+								<ul>
+								<li><a href='http://ambit.sourceforge.net/enanomapper_usage.html' target='guide'>Search by composition</a></li>
+								<li><a href='http://ambit.sourceforge.net/enanomapper_usage_substance.html' target='guide'>Search by phys chem or biological effects</a></li>
+								<li><a href='http://ambit.sourceforge.net/enanomapper.html' target='guide'>Downloads and Installation</a></li>
+								
+								</ul>
+							</li>
+							<li><a href='https://github.com/enanomapper/data.enanomapper.net/issues' target='report' title='Found an error? Report here'>Submit an issue <img src='images/logo.png'></a></li>	
+							<li><a href="#">OpenTox API</a>
+							<ul>
+								<li><a href='https://apps.ideaconsult.net/enanomapper/api-docs' target=_blank title="API documentation in Swagger JSON format">API Documentation</a></li>
+								<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
+							</ul>
+							</li>
+							<li><a href="#">About</a>
+								<ul>
+								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
+								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								</ul>
+							</li>
+						
+						</ul>				
+			</li>				
+			</ul>
+
+
+				
 			</div>
 
 		</div>
