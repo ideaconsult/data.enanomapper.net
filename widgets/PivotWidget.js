@@ -80,7 +80,7 @@
 					 * b.facet ? -1 : 1; });
 					 */
 
-					// $(this.target).empty();
+					$(this.target).empty();
 					for (var i = 0, l = objectedItems.length; i < l; i++) {
 						var facet = objectedItems[i].facet;
 						var view = lookup[facet];
