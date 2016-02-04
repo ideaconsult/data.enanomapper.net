@@ -89,7 +89,13 @@ var Manager;
 		}));
 
 		Manager.init();
-		Manager.store.addByValue('q', '*:*');
+			
+		var purl = $.url();
+		var searchValue = purl.param('search');
+		if (searchValue!=undefined) {
+			Manager.store.addByValue('q', searchValue);
+		}	else
+			Manager.store.addByValue('q', '*:*');
 
 		var params = {
 			facet : true,

@@ -19,6 +19,7 @@
 	================================================== -->
 <script src="jquery/jquery-1.10.2.js"></script>
 <script src="jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="jquery/purl.js"></script>
 <script src="widgets/ont.js"></script>
 
 <link rel="stylesheet" href="style/query.css">
@@ -77,11 +78,9 @@
 	$(document).ready(function() {
 		
 		$( "#smartmenu" ).smartmenus();    
-		//var purl = $.url();
-		$("#search").find('input').autocomplete();
-		//$("#search").find('input').attr('value',purl.param('search')===undefined?'':purl.param('search'));
+			$("#search").find('input').autocomplete();
 
-				
+		
 		 $( ".portlet" )
 	      .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
 	      .find( ".portlet-header" )
