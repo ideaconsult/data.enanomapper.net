@@ -27,11 +27,11 @@ var Manager;
 
 		var fields = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'guidance',
-				'interpretation_result', '_childDocuments_.params.Species',
+				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
 				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS'];
 		var divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'protocol',
-				'interpretation_result', 'species', 'instruments']; 
+				'interpretation_result', 'species', 'cell_line','instruments']; 
 		for (var i = 0, l = fields.length; i < l; i++) {
 			if ("xxx" == divs[i])
 				Manager.addWidget(new AjaxSolr.TagcloudWidget({
@@ -84,7 +84,7 @@ var Manager;
 			target : '#search',
 			fields : [ 'substanceType', 'effectendpoint', 'endpointcategory',
 					'name', 'guidance', 'interpretation_result',
-					'_childDocuments_.params.Species', 'reference',
+					'_childDocuments_.params.Species', '_childDocuments_.params.Cell_line', 'reference',
 					'_text_' ]
 		}));
 
@@ -102,6 +102,7 @@ var Manager;
 			'facet.field' : [ 'endpointcategory', 'substanceType',
 					'effectendpoint', 'reference',
 					'_childDocuments_.params.Species',
+					'_childDocuments_.params.Cell_line',
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
 					'interpretation_result', 'owner_name' ,'unit'],
