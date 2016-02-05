@@ -28,10 +28,10 @@ var Manager;
 		var fields = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'guidance',
 				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
-				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS'];
+				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'];
 		var divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'protocol',
-				'interpretation_result', 'species', 'cell_line','instruments']; 
+				'interpretation_result', 'species', 'cell','instruments','reference_year']; 
 		for (var i = 0, l = fields.length; i < l; i++) {
 			if ("xxx" == divs[i])
 				Manager.addWidget(new AjaxSolr.TagcloudWidget({
@@ -84,7 +84,7 @@ var Manager;
 			target : '#search',
 			fields : [ 'substanceType', 'effectendpoint', 'endpointcategory',
 					'name', 'guidance', 'interpretation_result',
-					'_childDocuments_.params.Species', '_childDocuments_.params.Cell_line', 'reference',
+					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
 					'_text_' ]
 		}));
 
@@ -105,16 +105,18 @@ var Manager;
 					'_childDocuments_.params.Cell_line',
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
-					'interpretation_result', 'owner_name' ,'unit'],
+					'interpretation_result', 'owner_name' ,'unit'
+					//,'reference_year'
+					],
 			'facet.limit' : -1,
-			'facet.mincount' : 1,
+			'facet.mincount' : 5,
+			'f._childDocuments_.params.Cell_line.facet.mincount' : 2,
 			// 'f.topcategory.facet.limit': 50,
 			// 'f.countryCodes.facet.limit': -1,
 			// 'facet.date': 'date',
 			// 'facet.date.start': '1987-02-26T00:00:00.000Z/DAY',
 			// 'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
 			// 'facet.date.gap': '+1DAY',
-			'f.reference.facet.mincount' : 2,
 			'f.endpointcategory.facet.limit' : -1,
 			'f.substanceType.facet.limit' : -1,
 			'f.s_uuid.facet.limit' : -1,

@@ -73,14 +73,26 @@
     <link rel="stylesheet" href="style/sm-core-css.css" type="text/css">
     <link rel="stylesheet" href="style/sm-mint.css" type="text/css">
 
-
+<style>
+  #accordion-resizer {
+    height: 860px;
+    padding: 5px;
+  }
+</style>
+  
 <script type='text/javascript'>
+	
 	$(document).ready(function() {
 		
 		$( "#smartmenu" ).smartmenus();    
 			$("#search").find('input').autocomplete();
-
-		
+			
+			$( "#accordion" ).accordion({
+				 heightStyle: "content",
+				  collapsible: true
+			});
+			
+		/*
 		 $( ".portlet" )
 	      .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
 	      .find( ".portlet-header" )
@@ -92,7 +104,19 @@
 	      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
 	      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
 	    });
+	    */
+
+	    
 	});
+  $(function() {
+    $( "#accordion-resizer" ).resizable({
+      minHeight: 400,
+      //minWidth: 200,
+      resize: function() {
+        $( "#accordion" ).accordion( "refresh" );
+      }
+    });
+  });	
 </script>
 
 </head>
@@ -208,41 +232,65 @@
 				<h5>Current Selection</h5>
 				<ul id="selection"></ul>	
 			</div>
-
-			<div class='row remove-bottom'>
-				<h5>Data sources</h5>
-				<ul class="tags green  remove-bottom" id="owner_name"></ul>
-			</div>
-
-			<div class='row remove-bottom'>
-				<h5>Nanomaterial type</h5>
-				<ul class="tagcloud tags  remove-bottom" id="substanceType"></ul>
-			</div>
-
-			<div class='row remove-bottom'>
-				<h5 id="P-CHEM_header">Phys-chem</h5>
-				<ul class="remove-bottom tags green remove-bottom" id="P-CHEM_endpointcategory"></ul>
-				<ul class="tags blue  remove-bottom" id="P-CHEM_effectendpoint"></ul>
+			
+			<div id="accordion-resizer" class="ui-widget-content">
+		    <div id="accordion" style="padding:1px; margin:1px;">
+					<h3>Data sources</h3>
+					<div style="padding:2px; margin:2px;">
+						<ul class="tags green  remove-bottom" id="owner_name"></ul>
+					</div>	    	
+					
+					<h3>Nanomaterial type</h3>
+					<div style="padding:2px; margin:1px;">
+						<ul class="tags  remove-bottom" id="substanceType"></ul>				
+					</div>
+					
+					<h5 id="P-CHEM_header">Phys-chem</h5>
+					<div style="padding:1px; margin:1px;">
+						<ul class="remove-bottom tags green remove-bottom" id="P-CHEM_endpointcategory"></ul>
+						<ul class="tags blue  remove-bottom" id="P-CHEM_effectendpoint"></ul>
+					</div>		
+					
+					<h3 id="TOX_header">Assays</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="remove-bottom tags green remove-bottom" id="TOX_endpointcategory"></ul>
+						<ul class="tags blue  remove-bottom" id="TOX_effectendpoint"></ul>
+					</div>
+					
+					<h3 >Cell</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags green remove-bottom" id="cell"></ul>
+					</div>
+					
+					<h3 >Species</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags green remove-bottom" id="species"></ul>
+					</div>				
+										
+					<h3>Results</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags  remove-bottom" id="interpretation_result"></ul>
+					</div>					
+					
+					<h3>References</h3>
+					<div style="padding:1px; margin:1px;">
+					<ul class="tags green remove-bottom" id="reference_year"></ul>				
+					<ul class="tags remove-bottom" id="reference"></ul>
+					</div>		
+					
+					<h3>Protocols</h3>
+					<div style="padding:1px; margin:1px;">
+					<ul class="tags blue  remove-bottom" id="protocol"></ul>
+					</div>		
+					
+					<h3>Instruments</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="portlet-content  tags green remove-bottom" id="instruments"></ul>
+					</div>
+						
+				</div>
 			</div>
 			
-			<div class='row remove-bottom'>
-				<h5 id="TOX_header">Assays</h5>
-				<ul class="remove-bottom tags green remove-bottom" id="TOX_endpointcategory"></ul>
-				<ul class="tags blue  remove-bottom" id="TOX_effectendpoint"></ul>
-			</div>
-
-									
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">Species</div>
-				<ul class="portlet-content  tags green remove-bottom" id="species"></ul>
-			</div>				
-
-									
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">Cell</div>
-				<ul class="portlet-content  tags green remove-bottom" id="cell_line"></ul>
-			</div>				
-
 <!-- 						
 			<div class='row remove-bottom'>
 				<h5>Assay type</h5>
@@ -252,29 +300,10 @@
 <!-- 
 
  -->
-
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">Results</div>
-				<ul class="portlet-content tagcloud tags  remove-bottom" id="interpretation_result"></ul>
-			</div>			
-
-
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">References</div>
-				<ul class="portlet-content tags remove-bottom" id="reference"></ul>
-			</div>
+						
 			<div class="clear"></div>
 			
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">Protocols</div>
-				<ul class="portlet-content tags blue  remove-bottom" id="protocol"></ul>
-			</div>				
 			
-			<div class='portlet row half-bottom'>
-				<div class="portlet-header">Instruments</div>
-				<ul class="portlet-content  tags green remove-bottom" id="instruments"></ul>
-			</div>		
-
 		</div>
 
 		<!-- right -->

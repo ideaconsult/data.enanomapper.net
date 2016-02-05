@@ -6696,4 +6696,9 @@ var lookup = {
 	"DUSTINESS_SECTION" : "Dustiness",
 	"TO_GENETIC_IN_VITRO_SECTION" : "Genetic toxicity in vitro",
 	"GI_GENERAL_INFORM_SECTION" : "Appearance",
+	
+	"NPO_882":"biopolymer",
+	"NPO_719" : "liposome",
+	"NPO_755" : "metalloid",
+	"CHEBI_60027" : "polymer"
 }		
