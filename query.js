@@ -101,7 +101,7 @@ var Manager;
 			facet : true,
 			'facet.field' : [ 'endpointcategory', 'substanceType',
 					'effectendpoint', 'reference',
-					//'_childDocuments_.params.Species',
+					'_childDocuments_.params.Species',
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
 					'interpretation_result', 'owner_name' ,'unit'],
