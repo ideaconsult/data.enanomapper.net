@@ -114,6 +114,7 @@ var Manager;
 			// 'facet.date.start': '1987-02-26T00:00:00.000Z/DAY',
 			// 'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
 			// 'facet.date.gap': '+1DAY',
+			'f.reference.facet.mincount' : 2,
 			'f.endpointcategory.facet.limit' : -1,
 			'f.substanceType.facet.limit' : -1,
 			'f.s_uuid.facet.limit' : -1,
