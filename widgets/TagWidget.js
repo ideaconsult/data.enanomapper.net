@@ -25,9 +25,10 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
       var facet = objectedItems[i].facet;
       var view = facet;
       var short = view;
-      if (facet.lastIndexOf("http://dx.doi.org/",0)==0) { 
+      if (facet.lastIndexOf("caNanoLab.",0)==0) { 
+     	 short = facet.replace("caNanoLab.","");
+      } else  if (facet.lastIndexOf("http://dx.doi.org/",0)==0) { 
     	 short = facet.replace("http://dx.doi.org/","");
-      	 short = view;
       } else {
     	  view = lookup[facet];
     	  if (view === undefined) {

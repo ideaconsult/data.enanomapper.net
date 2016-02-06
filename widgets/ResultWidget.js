@@ -111,13 +111,34 @@
 						var output = '<article class="item"><header>' + header
 								+ ' ' + href + '</header>';
 						output += '<p>' + snippet;
-						output += '<a href="#" class="avatar"><img src="images/logo.png"></a>';
+						
+						var link = "#";
+						var logo = "images/logo.png";
+						
+						if (doc.content == undefined) {
+							logo = "images/logo.png";
+							link = "https://apps.ideaconsult.net/enanomapper/substance/" + doc.s_uuid;
+						} else {
+							logo =  "images/external.png";
+							if (doc.content!=undefined && doc.content.length>0)
+								link = doc.content[0];	
+						}	
+						
+						output += '<a href="'+link+'" class="avatar" title="' +link +'"  target=_blank><img src="'+logo + '"></a>';
+						
 						output += '</p>';
 						output += '<footer id="links_' + doc.s_uuid
 								+ '" class="links">';
-						output +=root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>"
-						output +=root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>"
-						output +=root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>"
+						
+						if (doc.content == undefined) {
+							output +=root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
+							output +=root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
+							output +=root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
+						} else {
+							for (var i = 0, l = doc.content.length; i < l; i++) {
+								output += "<a href='"+doc.content[i] + "' target='external'>Material</a>";	
+							}
+						}
 						output += '</footer>';
 						output += '</article>';
 
@@ -173,9 +194,10 @@
 							snippet += " [" + doc.guidance + "]";
 
 						if (doc.reference != null) {
+							var link = (doc.reference_year===undefined)?"DOI":("["+doc.reference_year+"]");
 							snippet += " <a href='" + doc.reference[0]
 									+ "' title='" + doc.reference
-									+ "' target='ref'>DOI</a>";
+									+ "' target='ref'>"+link+"</a>";
 						}
 						/*
 						 * snippet += value + "<br/>" +

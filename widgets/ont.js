@@ -3586,6 +3586,7 @@ var lookup = {
 	"NPO_145": "doxorubicin-loaded nanoparticle",
 	"NPO_1537": "superparamagnetic nanoparticle",
 	"NPO_1541": "metal oxide nanoparticle",
+	"NPO_1540": "metal oxide nanoparticle",
 	"NPO_1551": "spherical nanoparticle",
 	"NPO_1552": "lipid nanoparticle",
 	"NPO_1568": "hydroxyapatite nanoparticle",
@@ -6682,8 +6683,13 @@ var lookup = {
 	"BAO_0002167_SECTION" : "Genotoxicity Assay",
 	"BAO_0002993_SECTION" : "Cytotoxicity Assay",
 	"BAO_0003009_SECTION" : "Cell Viability Assay",
+	"BAO_0010001_SECTION" : "ATP Assay",
+	"NPO_1911_SECTION" : "MTT Assay",
 	"CRYSTALLITE_AND_GRAIN_SIZE_SECTION" : "Nanomaterial crystallite and grain size",
 	"PC_GRANULOMETRY_SECTION" : "Particle size distribution (Granulometry)",
+	"PC_BOILING_SECTION" : "Boiling point",
+	"PC_MELTING_SECTION" : "Melting point",
+	"PC_UNKNOWN_SECTION" : "Phys-chem (other)",
 	"PROTEOMICS_SECTION" : "Proteomics",
 	"SPECIFIC_SURFACE_AREA_SECTION" : "Nanomaterial specific surface area",
 	"SPECIFIC_SURFACE_AREA" : "Nanomaterial specific surface area",
@@ -6696,9 +6702,9 @@ var lookup = {
 	"DUSTINESS_SECTION" : "Dustiness",
 	"TO_GENETIC_IN_VITRO_SECTION" : "Genetic toxicity in vitro",
 	"GI_GENERAL_INFORM_SECTION" : "Appearance",
-	
 	"NPO_882":"biopolymer",
 	"NPO_719" : "liposome",
 	"NPO_755" : "metalloid",
-	"CHEBI_60027" : "polymer"
+	"CHEBI_60027" : "polymer",
+	"CHEBI_82297":"carbon_black"
 }		

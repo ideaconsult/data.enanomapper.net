@@ -2,7 +2,7 @@ var Manager;
 (function($) {
 	$(function() {
 		Manager = new AjaxSolr.Manager({
-			solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
+			solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm02_shard1_replica1/'
 		});
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
@@ -106,11 +106,17 @@ var Manager;
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
 					'interpretation_result', 'owner_name' ,'unit'
-					//,'reference_year'
+					,'reference_year'
 					],
 			'facet.limit' : -1,
-			'facet.mincount' : 5,
-			'f._childDocuments_.params.Cell_line.facet.mincount' : 2,
+			'facet.mincount' : 3,
+			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
+			'f.interpretation_result.facet.mincount' : 2,
+			'f.reference.facet.mincount' : 2,
+			'f.owner_name.facet.mincount' : 2,
+			'f.reference_year.facet.mincount' : 1,
+			'f.substanceType.facet.mincount' : 2,
+			'f.guidance.facet.mincount' : 1,
 			// 'f.topcategory.facet.limit': 50,
 			// 'f.countryCodes.facet.limit': -1,
 			// 'facet.date': 'date',
@@ -133,7 +139,7 @@ var Manager;
 			'fq' : '{!collapse field=s_uuid}',
 			'expand' : true,
 			'expand.rows' : 20,
-			'fl' : 'id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue'
+			'fl' : 'id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content'
 		};
 		for ( var name in params) {
 			Manager.store.addByValue(name, params[name]);
