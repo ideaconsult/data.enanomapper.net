@@ -115,9 +115,15 @@
 						var link = "#";
 						var logo = "images/logo.png";
 						
+						var external = null;
 						if (doc.content == undefined) {
 							logo = "images/logo.png";
 							link = "https://apps.ideaconsult.net/enanomapper/substance/" + doc.s_uuid;
+						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
+								logo =  "images/canano.jpg";
+								if (doc.content!=undefined && doc.content.length>0)
+								link = doc.content[0];	
+								external = "caNanoLab";
 						} else {
 							logo =  "images/external.png";
 							if (doc.content!=undefined && doc.content.length>0)
@@ -130,13 +136,14 @@
 						output += '<footer id="links_' + doc.s_uuid
 								+ '" class="links">';
 						
-						if (doc.content == undefined) {
+						if (external == null) {
 							output +=root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
 							output +=root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
 							output +=root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
-						} else {
+						}	
+						if (doc.content != undefined) {							
 							for (var i = 0, l = doc.content.length; i < l; i++) {
-								output += "<a href='"+doc.content[i] + "' target='external'>Material</a>";	
+								output += "<a href='"+doc.content[i] + "' target='external'>"+ (external==null?"External database":external) +"</a>";	
 							}
 						}
 						output += '</footer>';

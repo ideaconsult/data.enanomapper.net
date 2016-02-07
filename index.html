@@ -117,6 +117,18 @@
       }
     });
   });	
+  
+ $(function() {
+    $( "#about-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    $( "#about-message" ).dialog("close");
+  });  
 </script>
 
 </head>
@@ -190,11 +202,35 @@
 								<ul>
 								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
 								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								<li><a href='#' onClick='$( "#about-message" ).dialog("open");'>About</a></li>
 								</ul>
 							</li>
 						
 						</ul>				
-			</li>				
+			</li>			
+			<li>
+				<a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
+						<ul>
+							<li><a href="#">Content</a>
+								<ul>
+								<li><a href="https://apps.ideaconsult.net/enanomapper/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
+								<li><a href="https://apps.ideaconsult.net/enanomapper/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
+								<li><a href="https://apps.ideaconsult.net/enanomapper/bundle/1" target=_blank >FP7 MARINA / KI in-vitro dataset  (enanoMapper)</a></li>		
+								<li><a href="https://apps.ideaconsult.net/enanomapper/bundle/12" target=_blank >FP7 MODENA modelling dataset  (enanoMapper)</a></li>		
+								<li><a href="https://apps.ideaconsult.net/enanomapper/bundle/2" target=_blank >OECD HT import test  (enanoMapper)</a></li>		
+								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
+								</ul>
+							</li>
+							<li><a href="#">Acknowledgements</a>
+								<ul>
+								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
+								<li><a href="https://cananolab.nci.nih.gov/caNanoLab/#/" target=_blank title="caNanoLab collaboration">caNanoLab collaboration</a>	</li>		
+								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								</ul>
+							</li>
+						
+						</ul>				
+			</li>							
 			</ul>
 
 
@@ -210,9 +246,8 @@
 
 			<div class="eight columns remove-bottom" style="padding-left: 10px;">
 				<div id="breadCrumb" class="breadCrumb module remove-bottom h5">
-					<ul>
-						<li><a href="#" title="AMBIT Home">Home</a></li>
-					</ul>
+					<h4>Integrated view of <a href="https://apps.ideaconsult.net/enanomapper/" title="eNanoMapper"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> database  
+    			and <a href="https://cananolab.nci.nih.gov/caNanoLab/#/" title="caNanoLab"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a></h4>
 				</div>
 			</div>
 			<div class="one column remove-bottom"
@@ -329,5 +364,14 @@
   ga('send', 'pageview');
 
 </script>
+
+<div id="about-message" title="eNanoMapper search">
+  <p>
+    <h4>Integrated search</h4> 
+    <a href="https://apps.ideaconsult.net/enanomapper/"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> 
+    <br/>
+    <a href="https://cananolab.nci.nih.gov/caNanoLab/#/"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a>.
+  </p>
+</div>
 </body>
 </html>
