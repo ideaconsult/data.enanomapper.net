@@ -86,7 +86,7 @@
 				 */
 				template_substance : function(doc) {
 					var snippet = '';
-					var root = "<a href='https://apps.ideaconsult.net/enanomapper/substance/";
+					var root = "<a href='https://data.enanomapper.net/substance/";
 					if (doc.type_s == 'study') {
 						var header = doc.name[0]
 								+ " "
@@ -118,7 +118,7 @@
 						var external = null;
 						if (doc.content == undefined) {
 							logo = "images/logo.png";
-							link = "https://apps.ideaconsult.net/enanomapper/substance/" + doc.s_uuid;
+							link = "https://data.enanomapper.net/substance/" + doc.s_uuid;
 						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
 								logo =  "images/canano.jpg";
 								if (doc.content!=undefined && doc.content.length>0)
