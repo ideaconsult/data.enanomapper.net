@@ -10,11 +10,11 @@
 ===================*/
 
 	.sm-mint {
-		border-bottom:2px solid #729203;
+		border-bottom:2px solid #8C0305;
 		background:#fff;
 	}
 	.sm-mint-vertical {
-		border-right:2px solid #729203;
+		border-right:2px solid #8C0305;
 		border-bottom:0;
 	}
 	.sm-mint ul {
@@ -51,8 +51,8 @@
 		border-radius:4px 4px 0 0;
 	}
 	.sm-mint a:hover, .sm-mint a:focus, .sm-mint a:active {
-		border-bottom-color:#729203;
-		background:#729203;
+		border-bottom-color:#8C0305;
+		background:#8C0305;
 		color:#F5F2EB;
 	}
 	.sm-mint a.highlighted {
@@ -70,8 +70,8 @@
 	}
 	.sm-mint-vertical a:hover, .sm-mint-vertical a:focus, .sm-mint-vertical a:active,
 	.sm-mint-vertical a.highlighted {
-		border-bottom-color:#729203 !important;
-		background:#729203;
+		border-bottom-color:#8C0305 !important;
+		background:#8C0305;
 		color:#F5F2EB;
 		-moz-box-shadow:none;
 		-webkit-box-shadow:none;
@@ -88,7 +88,7 @@
 	}
 	.sm-mint ul a:hover, .sm-mint ul a:focus, .sm-mint ul a:active,
 	.sm-mint ul a.highlighted {
-		background:#729203;
+		background:#8C0305;
 		color:#F5F2EB;
 		-moz-box-shadow:none;
 		-webkit-box-shadow:none;
@@ -96,10 +96,10 @@
 	}
 	/* current items - add the class manually to some item or check the "markCurrentItem" script option */
 	.sm-mint a.current, .sm-mint a.current:hover, .sm-mint a.current:focus, .sm-mint a.current:active {
-		border-bottom-color:#729203;
+		border-bottom-color:#8C0305;
 	}
 	.sm-mint-vertical a.current, .sm-mint-vertical a.current:hover, .sm-mint-vertical a.current:focus, .sm-mint-vertical a.current:active {
-		border-right:2px solid #729203;
+		border-right:2px solid #8C0305;
 		border-bottom-color:#fff;
 	}
 	.sm-mint ul a.current, .sm-mint ul a.current:hover, .sm-mint ul a.current:focus, .sm-mint ul a.current:active {
@@ -124,7 +124,7 @@
 		width:0;
 		height:0;
 		overflow:hidden;
-		border-top:6px solid #729203; /* tweak size of the arrow */
+		border-top:6px solid #8C0305; /* tweak size of the arrow */
 		border-left:4px dashed transparent;
 		border-right:4px dashed transparent;
 	}
@@ -132,13 +132,13 @@
 		border-top-color:#F5F2EB;
 	}
 	.sm-mint a.highlighted span.sub-arrow {
-		border-top-color:#729203;
+		border-top-color:#8C0305;
 	}
 	.sm-mint-vertical a span.sub-arrow,
  	.sm-mint ul a span.sub-arrow {
 		right:15px;
 		margin-top:-4px;
-		border-left:6px solid #729203; /* tweak size of the arrow */
+		border-left:6px solid #8C0305; /* tweak size of the arrow */
 		border-top:4px dashed transparent;
 		border-bottom:4px dashed transparent;
 	}
@@ -172,12 +172,12 @@
 		width:0;
 		height:0;
 		overflow:hidden;
-		border-bottom:8px solid #729203; /* tweak size of the arrow */
+		border-bottom:8px solid #8C0305; /* tweak size of the arrow */
 		border-left:6px dashed transparent;
 		border-right:6px dashed transparent;
 	}
 	.sm-mint span.scroll-down-arrow {
-		border-top:8px solid #729203; /* tweak size of the arrow */
+		border-top:8px solid #8C0305; /* tweak size of the arrow */
 		border-bottom:0;
 	}
 
@@ -234,8 +234,8 @@
 ===================*/
 
 	.sm-mint {
-		border-top:2px solid #729203;
-		border-bottom:2px solid #729203;
+		border-top:2px solid #8C0305;
+		border-bottom:2px solid #8C0305;
 		border-right:0;
 	}
 	.sm-mint ul {
@@ -295,7 +295,7 @@
 		right:auto !important;
 		margin-top:-7px !important;
 		margin-left:-16px !important;
-		border-left:9px solid #729203 !important; /* tweak size of the arrow */
+		border-left:9px solid #8C0305 !important; /* tweak size of the arrow */
 		border-top:6px dashed transparent !important;
 		border-bottom:6px dashed transparent !important;
 	}
