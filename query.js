@@ -2,7 +2,9 @@ var Manager;
 (function($) {
 	$(function() {
 		Manager = new AjaxSolr.Manager({
-			solrUrl : 'http://search.data.enanomapper.net:40080/solr/enm_shard1_replica1/'
+			//solrUrl : 'http://search.data.enanomapper.net:40080/solr/enm_shard1_replica1/'
+			//this has cananolab index
+			solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
 		});
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
