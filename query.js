@@ -3,7 +3,7 @@ var Manager;
 	$(function() {
 		Manager = new AjaxSolr.Manager({
 			//this is now updated wih cananolab index
-			solrUrl : 'http://search.data.enanomapper.net:40080/solr/enm_shard1_replica1/'
+			solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
 			//this has cananolab index
 			//solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
 		});
