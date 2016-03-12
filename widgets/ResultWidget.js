@@ -88,10 +88,10 @@
 					var snippet = '';
 					var root = "<a href='https://data.enanomapper.net/substance/";
 					if (doc.type_s == 'study') {
-						var header = doc.name[0]
+						var header = doc.publicname[0]===undefined?"":doc.publicname[0]
 								+ " "
 								+ (doc.publicname[0] === doc.name[0] ? ""
-										: doc.publicname[0]);
+										: "(" + doc.name[0] + ")");
 						var href = root
 								+ doc.s_uuid
 								+ "/study' title='Study' target='s_uuid'><span class='ui-icon ui-icon-extlink' style='float:right;margin:0;'></span></a>"
