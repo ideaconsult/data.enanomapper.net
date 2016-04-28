@@ -89,7 +89,7 @@
 					var root = "<a href='https://data.enanomapper.net/substance/";
 					if (doc.type_s == 'study') {
 						var header = doc.publicname[0]===undefined?"":doc.publicname[0]
-								+ " "
+								+ "  "
 								+ (doc.publicname[0] === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
 						var href = root
