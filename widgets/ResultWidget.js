@@ -92,9 +92,7 @@
 								+ "  "
 								+ (doc.publicname[0] === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
-						var href = root
-								+ doc.s_uuid
-								+ "/study' title='Study' target='s_uuid'><span class='ui-icon ui-icon-extlink' style='float:right;margin:0;'></span></a>"
+						var href = null;
 
 						var snippet = this.template_measurement(doc);
 						var expanded = this.manager.response.expanded[doc.s_uuid];
@@ -108,27 +106,34 @@
 							}
 							snippet += '</span>';
 						}
-						var output = '<article class="item"><header>' + header
-								+ ' ' + href + '</header>';
-						output += '<p>' + snippet;
 						
 						var link = "#";
 						var logo = "images/logo.png";
 						
+						var href_suffix="><span class='ui-icon ui-icon-extlink' style='float:right;margin:0;'></span></a>";
+						
 						var external = null;
 						if (doc.content == undefined) {
 							logo = "images/logo.png";
-							link = "https://data.enanomapper.net/substance/" + doc.s_uuid;
+							link = root + doc.s_uuid;
+							href = link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
 						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
 								logo =  "images/canano.jpg";
 								if (doc.content!=undefined && doc.content.length>0)
 								link = doc.content[0];	
 								external = "caNanoLab";
+								href = "<a href='" + link + "'" + href_suffix;
 						} else {
 							logo =  "images/external.png";
-							if (doc.content!=undefined && doc.content.length>0)
+							if (doc.content!=undefined && doc.content.length>0) {
 								link = doc.content[0];	
+								href = "<a href='" + link + "'" + href_suffix;
+							}	
 						}	
+						
+						var output = '<article class="item"><header>' + header
+								+ ' ' + href + '</header>';
+						output += '<p>' + snippet;
 						
 						output += '<a href="'+link+'" class="avatar" title="' +link +'"  target=_blank><img src="'+logo + '"></a>';
 						
