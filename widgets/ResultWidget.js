@@ -86,13 +86,14 @@
 				 */
 				template_substance : function(doc) {
 					var snippet = '';
-					var root = "<a href='https://data.enanomapper.net/substance/";
+					var root = "https://data.enanomapper.net/substance/";
 					if (doc.type_s == 'study') {
 						var header = doc.publicname[0]===undefined?"":doc.publicname[0]
 								+ "  "
 								+ (doc.publicname[0] === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
 						var href = null;
+						
 
 						var snippet = this.template_measurement(doc);
 						var expanded = this.manager.response.expanded[doc.s_uuid];
@@ -116,7 +117,7 @@
 						if (doc.content == undefined) {
 							logo = "images/logo.png";
 							link = root + doc.s_uuid;
-							href = link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
+							href = "<a href='" + link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
 						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
 								logo =  "images/canano.jpg";
 								if (doc.content!=undefined && doc.content.length>0)
@@ -132,7 +133,7 @@
 						}	
 						
 						var output = '<article class="item"><header>' + header
-								+ ' ' + href + '</header>';
+								 + href + "</a></header>";
 						output += '<p>' + snippet;
 						
 						output += '<a href="'+link+'" class="avatar" title="' +link +'"  target=_blank><img src="'+logo + '"></a>';
@@ -142,9 +143,9 @@
 								+ '" class="links">';
 						
 						if (external == null) {
-							output +=root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
-							output +=root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
-							output +=root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
+							output += "<a href='" + root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
+							output += "<a href='" + root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
+							output += "<a href='" + root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
 						}	
 						if (doc.content != undefined) {							
 							for (var i = 0, l = doc.content.length; i < l; i++) {
