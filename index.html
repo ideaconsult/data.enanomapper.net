@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en" xmlns="http://www.w3.org/1999/xhtml"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!--<![endif]-->
+
+<head>
+
+<!-- CSS
+  ================================================== -->
+<link rel="stylesheet" href="style/skeleton/base.css" type="text/css">
+<link rel="stylesheet" href="style/skeleton/skeleton-fluid.css"
+	type="text/css">
+<link rel="stylesheet" href="style/skeleton/layout.css" type="text/css">
+
+<!-- JQuery
+	================================================== -->
+<script src="jquery/jquery-1.10.2.js"></script>
+<script src="jquery/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="jquery/purl.js"></script>
+<script src="widgets/ont.js"></script>
+
+<link rel="stylesheet" href="style/query.css">
+
+<link rel="stylesheet" href="style/jquery-ui-1.10.4.custom.min.css">
+<link rel="stylesheet" href="style/jquery.ui.theme.css">
+
+
+<link rel="stylesheet" href="style/skeleton/ambit2.css" type="text/css">
+<link rel="stylesheet" href="style/skeleton/toplinks.css"
+	type="text/css">
+<link rel="stylesheet" href="style/skeleton/table.css" type="text/css">
+
+<link rel="stylesheet" href="style/skeleton/cssflow.css" type="text/css">
+
+
+<meta charset="utf-8">
+<title>eNanoMapper</title>
+
+<link rel="shortcut icon" href="favicon.ico">
+
+<script src="query.js"></script>
+
+
+<script src="lib/core/Core.js"></script>
+<script src="lib/core/AbstractManager.js"></script>
+<script src="lib/managers/Manager.jquery.js"></script>
+
+<script src="lib/core/Parameter.js"></script>
+<script src="lib/core/ParameterStore.js"></script>
+
+<script src="lib/core/AbstractWidget.js"></script>
+<script src="widgets/ResultWidget.js"></script>
+
+<script src="lib/widgets/jquery/PagerWidget.js"></script>
+
+<script src="lib/core/AbstractFacetWidget.js"></script>
+
+<script src="widgets/TagcloudWidget.js"></script>
+<script src="widgets/TagWidget.js"></script>
+<script src="widgets/PivotWidget.js"></script>
+
+<script src="widgets/CurrentSearchWidget.js"></script>
+<script src="lib/core/AbstractTextWidget.js"></script>
+<!--
+<script src="widgets/TextWidget.js"></script>
+-->
+<script src="widgets/AutocompleteWidget.js"></script>
+
+    <!-- menus
+	================================================== -->
+    <script src="jquery/jquery.smartmenus.min.js" type="text/javascript" language="JavaScript"></script>
+    <link rel="stylesheet" href="style/sm-core-css.css" type="text/css">
+    <link rel="stylesheet" href="style/sm-mint.css" type="text/css">
+
+<style>
+  #accordion-resizer {
+    height: 860px;
+    padding: 5px;
+  }
+</style>
+  
+<script type='text/javascript'>
+	
+	$(document).ready(function() {
+		
+		$( "#smartmenu" ).smartmenus();    
+			$("#search").find('input').autocomplete();
+			
+			$( "#accordion" ).accordion({
+				 heightStyle: "content",
+				  collapsible: true
+			});
+			
+		/*
+		 $( ".portlet" )
+	      .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+	      .find( ".portlet-header" )
+	        .addClass( "ui-corner-all" )
+	        .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+	 
+	    $( ".portlet-toggle" ).click(function() {
+	      var icon = $( this );
+	      icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+	      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+	    });
+	    */
+
+	    
+	});
+  $(function() {
+    $( "#accordion-resizer" ).resizable({
+      minHeight: 400,
+      //minWidth: 200,
+      resize: function() {
+        $( "#accordion" ).accordion( "refresh" );
+      }
+    });
+  });	
+  
+ $(function() {
+    $( "#about-message" ).dialog({
+      modal: true,
+      buttons: {
+        Ok: function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+    $( "#about-message" ).dialog("close");
+  });  
+</script>
+
+</head>
+
+
+<body>
+
+
+	<div class="container" style="margin: 0; padding: 0;">
+
+		<!-- banner -->
+
+		<div class="row half-bottom" id="header" style="padding-top: 5px">
+			<div class="two columns">
+				<a href="#"><img class='scale-with-grid' border='0'
+					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
+			</div>
+			<div class="fourteen columns remove-bottom">
+			<ul id='smartmenu' class="sm sm-mint">
+			<li>
+				<a href="#" title="Search nanomaterials by chemical structure of components">Search</a>
+				<ul>
+					<li><a href="#" title="Free text search (experimental)">Free text search</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for nanomaterials by identifiers or reference">Search nanomaterials by name</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for nanomaterials by identifiers">Search nanomaterials by identifier</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for nanomaterials by paper reference">Search nanomaterials by citation</a></li>
+					<li><a href="https://data.enanomapper.net/query/study" title="Search substances by physico-chemical parameters or biological effects">Search nanomaterials by physchem parameters or biological effects</a></li>
+					<li><a href="https://data.enanomapper.net/_search?search=SiO2" title="Search nanomaterials by chemical structure of components">Search nanomaterials by composition</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="https://data.enanomapper.net/substance?page=0&amp;pagesize=100">Nanomaterials</a>
+				<ul>
+			<li ><a href="https://data.enanomapper.net/substance?page=0&pagesize=10" title="Nanomaterials">Nanomaterials</a></li>
+			
+				<li><a href="https://data.enanomapper.net/bundle" title="Browse/Edit">Nanomaterial Bundles</a></li>
+				
+				<li ><a href="https://data.enanomapper.net/substanceowner">Nanomaterial contributors</a></li>
+					
+				<li ><a href="#">Data management</a>
+					<ul>
+						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
+						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
+						<li ><a href="https://data.enanomapper.net/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>
+						<li>
+						<a href="https://data.enanomapper.net/bundle">Datasets of nanomaterials and studies</a>
+						</li>			
+					</ul>
+				</li>					
+				</ul>			
+			</li>
+			<li>
+				<a href="#">Help</a>
+						<ul>
+							<li> <a href="#">User guide</a>
+								<ul>
+								<li><a href='http://ambit.sourceforge.net/enanomapper_usage.html' target='guide'>Search by composition</a></li>
+								<li><a href='http://ambit.sourceforge.net/enanomapper_usage_substance.html' target='guide'>Search by phys chem or biological effects</a></li>
+								<li><a href='http://ambit.sourceforge.net/enanomapper.html' target='guide'>Downloads and Installation</a></li>
+								
+								</ul>
+							</li>
+							<li><a href='https://github.com/enanomapper/data.enanomapper.net/issues' target='report' title='Found an error? Report here'>Submit an issue <img src='images/logo.png'></a></li>	
+							<li><a href="#">OpenTox API</a>
+							<ul>
+								<li><a href='https://data.enanomapper.net/api-docs' target=_blank title="API documentation in Swagger JSON format">API Documentation</a></li>
+								<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
+							</ul>
+							</li>
+							<li><a href="#">About</a>
+								<ul>
+								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
+								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								<li><a href='#' onClick='$( "#about-message" ).dialog("open");'>About</a></li>
+								</ul>
+							</li>
+						
+						</ul>				
+			</li>			
+			<li>
+				<a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
+						<ul>
+							<li><a href="#">Content</a>
+								<ul>
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >FP7 MARINA / KI in-vitro dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/12" target=_blank >FP7 MODENA modelling dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/2" target=_blank >OECD HT import test  (enanoMapper)</a></li>		
+								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
+								</ul>
+							</li>
+							<li><a href="#">Acknowledgements</a>
+								<ul>
+								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
+								<li><a href="https://cananolab.nci.nih.gov/caNanoLab/#/" target=_blank title="caNanoLab collaboration">caNanoLab collaboration</a>	</li>		
+								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								</ul>
+							</li>
+						
+						</ul>				
+			</li>							
+			</ul>
+
+
+				
+			</div>
+
+		</div>
+
+		<div class="row remove-bottom" id="header">
+			<!-- toplinks -->
+		</div>
+		<div class="row half-bottom">
+
+			<div class="eight columns remove-bottom" style="padding-left: 10px;">
+				<div id="breadCrumb" class="breadCrumb module remove-bottom h5">
+					<h4>Integrated view of <a href="https://data.enanomapper.net/" title="eNanoMapper"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> database <a href='http://data.enanomapper.net/substanceowners' target=_blank>[contributors]</a> 
+    			and <a href="https://cananolab.nci.nih.gov/caNanoLab/#/" title="caNanoLab"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a></h4>
+				</div>
+			</div>
+			<div class="one column remove-bottom"
+				title='(press ESC to close suggestions)'>
+				<h4>Search</h4>
+			</div>
+			<div class="four columns remove-bottom" id="search">
+				<input type="text" id="query" name="query" autocomplete="off"
+					title='(press ESC to close suggestions)'>
+			</div>
+			<div one column remove-bottom>
+				<a href="http://goo.gl/forms/D7Y3v7vBsX" class='help' target=_blank>Feedback</a>
+			</div>
+
+		</div>
+		<!-- left -->
+		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
+
+			<div class='row remove-bottom'>
+				<h5>Current Selection</h5>
+				<ul id="selection"></ul>	
+			</div>
+			
+			<div id="accordion-resizer" class="ui-widget-content">
+		    <div id="accordion" style="padding:1px; margin:1px;">
+					<h3>Data sources</h3>
+					<div style="padding:2px; margin:2px;">
+						<ul class="tags green  remove-bottom" id="owner_name"></ul>
+					</div>	    	
+					
+					<h3>Nanomaterial type</h3>
+					<div style="padding:2px; margin:1px;">
+						<ul class="tags  remove-bottom" id="substanceType"></ul>				
+					</div>
+					
+					<h5 id="P-CHEM_header">Phys-chem</h5>
+					<div style="padding:1px; margin:1px;">
+						<ul class="remove-bottom tags green remove-bottom" id="P-CHEM_endpointcategory"></ul>
+						<ul class="tags blue  remove-bottom" id="P-CHEM_effectendpoint"></ul>
+					</div>		
+					
+					<h3 id="TOX_header">Assays</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="remove-bottom tags green remove-bottom" id="TOX_endpointcategory"></ul>
+						<ul class="tags blue  remove-bottom" id="TOX_effectendpoint"></ul>
+					</div>
+					
+					<h3 >Cell</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags green remove-bottom" id="cell"></ul>
+					</div>
+					
+					<h3 >Species</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags green remove-bottom" id="species"></ul>
+					</div>				
+										
+					<h3>Results</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="tags  remove-bottom" id="interpretation_result"></ul>
+					</div>					
+					
+					<h3>References</h3>
+					<div style="padding:1px; margin:1px;">
+					<ul class="tags green remove-bottom" id="reference_year"></ul>				
+					<ul class="tags remove-bottom" id="reference"></ul>
+					</div>		
+					
+					<h3>Protocols</h3>
+					<div style="padding:1px; margin:1px;">
+					<ul class="tags blue  remove-bottom" id="protocol"></ul>
+					</div>		
+					
+					<h3>Instruments</h3>
+					<div style="padding:1px; margin:1px;">
+						<ul class="portlet-content  tags green remove-bottom" id="instruments"></ul>
+					</div>
+						
+				</div>
+			</div>
+			
+<!-- 						
+			<div class='row remove-bottom'>
+				<h5>Assay type</h5>
+				<ul class="tagcloud tags blue  remove-bottom" id="endpointcategory"></ul>
+			</div>
+			 -->
+<!-- 
+
+ -->
+						
+			<div class="clear"></div>
+			
+			
+		</div>
+
+		<!-- right -->
+		<div class="twelve columns " style="padding: 0;margin: 0;">
+			<section id="result" >
+			<div id="navigation">
+				<ul id="pager"></ul>
+				<div id="pager-header"></div>
+			</div>
+			<section id="docs"> </section> </section>
+		</div>
+		<!-- container -->
+	</div>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-32347361-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<div id="about-message" title="eNanoMapper search">
+  <p>
+    <h4>Integrated search</h4> 
+    <a href="https://data.enanomapper.net/"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> 
+    <br/>
+    <a href="https://cananolab.nci.nih.gov/caNanoLab/#/"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a>.
+  </p>
+</div>
+</body>
+</html>
