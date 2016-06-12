@@ -1,0 +1,150 @@
+{
+  "name" : "ambit2.db.substance.QueryCountProtocolApplications",
+  "size" : 515166,
+  "children" : [ {
+    "name" : "ECOTOX",
+    "size" : 110810,
+    "children" : [ {
+      "name" : "6.1.5. Toxicity to aquatic algae and cyanobacteria",
+      "size" : 20713
+    }, {
+      "name" : "6.1.7. Toxicity to microorganisms",
+      "size" : 14717
+    }, {
+      "name" : "6.1.4. Long-term toxicity to aquatic inverterbrates",
+      "size" : 11804
+    }, {
+      "name" : "6.1.2. Long-term toxicity to fish",
+      "size" : 5082
+    }, {
+      "name" : "6.1.3. Short-term toxicity to aquatic inverterbrates",
+      "size" : 28093
+    }, {
+      "name" : "6.1.1. Short-term toxicity to fish",
+      "size" : 24687
+    }, {
+      "name" : "6.3.2. Toxicity to terrestrial arthropods",
+      "size" : 2270
+    }, {
+      "name" : "6.3.3. Toxicity to terrestrial plants",
+      "size" : 8733
+    }, {
+      "name" : "6.2. Sediment toxicity",
+      "size" : 4816
+    }, {
+      "name" : "6.3.1. Toxicity to soil macroorganisms",
+      "size" : 5177
+    }, {
+      "name" : "6.3.4. Toxicity to soil microorganisms",
+      "size" : 5431
+    } ]
+  }, {
+    "name" : "ENV FATE",
+    "size" : 55690,
+    "children" : [ {
+      "name" : "5.4.1. Adsorption / Desorption",
+      "size" : 13386
+    }, {
+      "name" : "5.3.1. Bioaccumulation: aquatic / sediment",
+      "size" : 15034
+    }, {
+      "name" : "5.3.2. Bioaccumulation: terrestrial",
+      "size" : 2171
+    }, {
+      "name" : "5.4.2. Henry's Law constant",
+      "size" : 2246
+    }, {
+      "name" : "5.2.3. Biodegradation in Soil",
+      "size" : 2342
+    }, {
+      "name" : "5.2.1. Biodegradation in water - screening tests",
+      "size" : 21322
+    }, {
+      "name" : "5.2.2. Biodegradation in water and sediment: simulation tests",
+      "size" : 2709
+    }, {
+      "name" : "5.1.2. Hydrolysis",
+      "size" : 7045
+    }, {
+      "name" : "5.1.1. Phototransformation in Air",
+      "size" : 2821
+    } ]
+  }, {
+    "name" : "P-CHEM",
+    "size" : 91169,
+    "children" : [ {
+      "name" : "4.1. Appearance",
+      "size" : 13659
+    }, {
+      "name" : "4.3. Boiling point",
+      "size" : 15586
+    }, {
+      "name" : "4.21. Dissociation constant",
+      "size" : 4284
+    }, {
+      "name" : "4.2. Melting point / freezing point",
+      "size" : 17852
+    }, {
+      "name" : "4.20. pH",
+      "size" : 822
+    }, {
+      "name" : "4.7. Partition coefficient",
+      "size" : 16668
+    }, {
+      "name" : "4.9. Solubility in organic solvents",
+      "size" : 2085
+    }, {
+      "name" : "4.6. Vapour pressure",
+      "size" : 15746
+    }, {
+      "name" : "4.8. Water solubility",
+      "size" : 18126
+    } ]
+  }, {
+    "name" : "TOX",
+    "size" : 197897,
+    "children" : [ {
+      "name" : "7.2.3. Acute toxicity - dermal",
+      "size" : 11841
+    }, {
+      "name" : "7.2.2. Acute toxicity - inhalation",
+      "size" : 9199
+    }, {
+      "name" : "7.2.1. Acute toxicity - oral",
+      "size" : 24073
+    }, {
+      "name" : "7.7. Carcinogenicity",
+      "size" : 6273
+    }, {
+      "name" : "7.8.2. Developmental toxicity / teratogenicity",
+      "size" : 11561
+    }, {
+      "name" : "7.3.2. Eye irritation",
+      "size" : 18430
+    }, {
+      "name" : "7.6.1. Genetic toxicity in vitro",
+      "size" : 41935
+    }, {
+      "name" : "7.6.2. Genetic toxicity in vivo",
+      "size" : 10174
+    }, {
+      "name" : "7.5.3. Repeated dose toxicity - dermal",
+      "size" : 2139
+    }, {
+      "name" : "7.5.2. Repeated dose toxicity - inhalation",
+      "size" : 6655
+    }, {
+      "name" : "7.5.1. Repeated dose toxicity - oral",
+      "size" : 19850
+    }, {
+      "name" : "7.8.1. Toxicity to reproduction",
+      "size" : 9510
+    }, {
+      "name" : "7.4.1. Skin sensitisation",
+      "size" : 16404
+    }, {
+      "name" : "7.3.1. Skin irritation / Corrosion",
+      "size" : 21694
+    } ]
+  } ]
+}

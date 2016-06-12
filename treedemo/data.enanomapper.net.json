@@ -1,0 +1,79 @@
+{
+  "name" : "ambit2.db.substance.QueryCountProtocolApplications",
+  "size" : 2521,
+  "children" : [ {
+    "name" : "P-CHEM",
+    "size" : 1679,
+    "children" : [ {
+      "name" : "4.27. Nanomaterial aspect ratio/shape",
+      "size" : 68
+    }, {
+      "name" : "4.26. Nanomaterial crystallite and grain size",
+      "size" : 105
+    }, {
+      "name" : "4.31. Nanomaterial dustiness",
+      "size" : 1
+    }, {
+      "name" : "4.1. Appearance",
+      "size" : 1
+    }, {
+      "name" : "4.3. Boiling point",
+      "size" : 5
+    }, {
+      "name" : "4.5. Particle size distribution (Granulometry)",
+      "size" : 599
+    }, {
+      "name" : "4.2. Melting point / freezing point",
+      "size" : 5
+    }, {
+      "name" : "4.99. Physico chemical properties (other)",
+      "size" : 227
+    }, {
+      "name" : "4.28. Nanomaterial specific surface area",
+      "size" : 80
+    }, {
+      "name" : "4.30. Nanomaterial surface chemistry",
+      "size" : 368
+    }, {
+      "name" : "4.29. Nanomaterial zeta potential",
+      "size" : 288
+    } ]
+  }, {
+    "name" : "TOX",
+    "size" : 761,
+    "children" : [ {
+      "name" : "BAO_0002167. Genotoxicity Assay",
+      "size" : 12
+    }, {
+      "name" : "BAO_0002993. Cytotoxicity Assay",
+      "size" : 20
+    }, {
+      "name" : "BAO_0003009. Cell Viability Assay",
+      "size" : 290
+    }, {
+      "name" : "BAO_0010001. ATP Assay",
+      "size" : 32
+    }, {
+      "name" : "NPO_1709. LDH Release Assay",
+      "size" : 35
+    }, {
+      "name" : "NPO_1911. MTT Assay",
+      "size" : 16
+    }, {
+      "name" : "8.100. Proteomics",
+      "size" : 121
+    }, {
+      "name" : "7.2.1. Acute toxicity - oral",
+      "size" : 1
+    }, {
+      "name" : "7.7. Carcinogenicity",
+      "size" : 1
+    }, {
+      "name" : "7.6.1. Genetic toxicity in vitro",
+      "size" : 1
+    }, {
+      "name" : "7.99. Toxicity (other)",
+      "size" : 244
+    } ]
+  } ]
+}

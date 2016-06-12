@@ -1,0 +1,172 @@
+{
+"name":"CHEBI_59999",
+"id":"CHEBI_59999",
+"children": [
+{
+"name":"medium",
+"id":"NPO_1853",
+"children": [
+{
+"name":"Composition",
+"id":"C53414",
+"size":1
+},{
+"name":"suspending medium",
+"id":"NPO_1856",
+"size":1
+},{
+"name":"emulsifier",
+"id":"NPO_1414",
+"size":1
+},{
+"name":"solvent medium",
+"id":"NPO_1855",
+"size":1
+},{
+"name":"aqueous medum",
+"id":"NPO_1854",
+"size":1
+}
+],
+"size":6
+},{
+"name":"nanomaterial",
+"id":"NPO_199",
+"children": [
+{
+"name":"nanoparticle formulation",
+"id":"NPO_868",
+"children": [
+{
+"name":"nanoemulsion",
+"id":"NPO_393",
+"size":1
+}
+],
+"size":2
+},{
+"name":"nano-object",
+"id":"NPO_1018",
+"children": [
+{
+"name":"two-dimensional nano-object",
+"id":"NPO_226",
+"children": [
+{
+"name":"nanopipette",
+"id":"NPO_447",
+"size":1
+},{
+"name":"nanowire",
+"id":"NPO_383",
+"size":1
+},{
+"name":"nanofiber",
+"id":"NPO_893",
+"children": [
+{
+"name":"carbon nanofiber",
+"id":"NPO_602",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":5
+},{
+"name":"three-dimensional nano-object",
+"id":"NPO_272",
+"size":1
+},{
+"name":"one-dimensional nano-object",
+"id":"NPO_411",
+"size":1
+}
+],
+"size":8
+},{
+"name":"dendrimer",
+"id":"NPO_735",
+"children": [
+{
+"name":"poly(amidoamine) dendrimer",
+"id":"NPO_965",
+"size":1
+}
+],
+"size":2
+},{
+"name":"nanostructured material",
+"id":"NPO_1910",
+"children": [
+{
+"name":"nanofilm",
+"id":"NPO_759",
+"size":1
+},{
+"name":"nanobud",
+"id":"NPO_711",
+"size":1
+}
+],
+"size":3
+},{
+"name":"engineered nanomaterial",
+"id":"NPO_1909",
+"children": [
+{
+"name":"nanodevice",
+"id":"NPO_115",
+"children": [
+{
+"name":"nanoarray",
+"id":"NPO_691",
+"size":1
+},{
+"name":"nanochannel",
+"id":"NPO_705",
+"size":1
+},{
+"name":"nanobomb",
+"id":"NPO_239",
+"size":1
+},{
+"name":"nanosensor",
+"id":"NPO_779",
+"children": [
+{
+"name":"fiber-optic nanosensor",
+"id":"NPO_183",
+"size":1
+}
+],
+"size":2
+},{
+"name":"nanocantilever",
+"id":"NPO_665",
+"children": [
+{
+"name":"gold nanocantilever",
+"id":"NPO_453",
+"size":1
+}
+],
+"size":2
+},{
+"name":"nanoprobe",
+"id":"NPO_684",
+"size":1
+}
+],
+"size":9
+}
+],
+"size":10
+}
+],
+"size":26
+}
+],
+"size":33
+}
