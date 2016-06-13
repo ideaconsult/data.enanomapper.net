@@ -1,0 +1,4111 @@
+{
+"name":"Protein class",
+"id":"0",
+"children": [
+{
+"name":"Enzyme",
+"id":"1",
+"children": [
+{
+"name":"Kinase",
+"id":"6",
+"children": [
+{
+"name":"Protein kinase regulatory subunit",
+"id":"129",
+"size":1
+},{
+"name":"Protein Kinase",
+"id":"1100",
+"children": [
+{
+"name":"CMGC protein kinase group",
+"id":"148",
+"children": [
+{
+"name":"CMGC protein kinase CK subfamily",
+"id":"211",
+"size":1
+},{
+"name":"CMGC protein kinase CDK family",
+"id":"237",
+"children": [
+{
+"name":"CMGC protein kinase CDC2 subfamily",
+"id":"323",
+"size":1
+},{
+"name":"CMGC protein kinase CDK2",
+"id":"324",
+"size":1
+},{
+"name":"CMGC protein kinase CDK5 subfamily",
+"id":"325",
+"size":1
+},{
+"name":"CMGC protein kinase CDK7 subfamily",
+"id":"326",
+"size":1
+},{
+"name":"CMGC protein kinase CDK8 subfamily",
+"id":"327",
+"size":1
+},{
+"name":"CMGC protein kinase CDK9 subfamily",
+"id":"328",
+"size":1
+},{
+"name":"CMGC protein kinase TAIRE subfamily",
+"id":"388",
+"size":1
+},{
+"name":"CMGC protein kinase PCTAIRE",
+"id":"429",
+"size":1
+},{
+"name":"CMGC protein kinase PFTAIRE",
+"id":"430",
+"size":1
+},{
+"name":"CMGC protein kinase PITSLRE subfamily",
+"id":"431",
+"size":1
+},{
+"name":"CMGC protein kinase unclassified CDK subfamily",
+"id":"497",
+"size":1
+}
+],
+"size":12
+},{
+"name":"CMGC protein kinase GSK family",
+"id":"239",
+"size":1
+},{
+"name":"CMGC protein kinase CDKL family",
+"id":"248",
+"size":1
+},{
+"name":"CMGC protein kinase MAPK family",
+"id":"249",
+"children": [
+{
+"name":"CMGC protein kinase ERK subfamily",
+"id":"329",
+"size":1
+},{
+"name":"CMGC protein kinase JNK subfamily",
+"id":"330",
+"size":1
+},{
+"name":"CMGC protein kinase nmo subfamily",
+"id":"331",
+"size":1
+},{
+"name":"CMGC protein kinase p38 subfamily",
+"id":"332",
+"size":1
+},{
+"name":"CMGC protein kinase ERK1",
+"id":"391",
+"size":1
+},{
+"name":"CMGC protein kinase ERK3",
+"id":"392",
+"size":1
+},{
+"name":"CMGC protein kinase ERK5",
+"id":"393",
+"size":1
+}
+],
+"size":8
+},{
+"name":"CMGC protein kinase SRPK family",
+"id":"250",
+"size":1
+},{
+"name":"CMGC protein kinase CLK family",
+"id":"297",
+"size":1
+},{
+"name":"CMGC protein kinase RCK family",
+"id":"1640",
+"children": [
+{
+"name":"CMGC protein kinase MAK",
+"id":"306",
+"size":1
+}
+],
+"size":2
+},{
+"name":"CMGC protein kinase DYRK family",
+"id":"1669",
+"children": [
+{
+"name":"CMGC protein kinase HIPK subfamily",
+"id":"390",
+"size":1
+},{
+"name":"CMGC protein kinase Dyrk1 subfamily",
+"id":"465",
+"size":1
+},{
+"name":"CMGC protein kinase Dyrk2 subfamily",
+"id":"466",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":32
+},{
+"name":"Other protein kinase group",
+"id":"158",
+"children": [
+{
+"name":"Other protein kinase AUR family",
+"id":"251",
+"size":1
+},{
+"name":"Other protein kinase CK2 family",
+"id":"252",
+"size":1
+},{
+"name":"Other protein kinase IKK family",
+"id":"253",
+"size":1
+},{
+"name":"Other protein kinase MOS family",
+"id":"254",
+"size":1
+},{
+"name":"Other protein kinase NAK family",
+"id":"255",
+"size":1
+},{
+"name":"Other protein kinase NEK family",
+"id":"256",
+"children": [
+{
+"name":"Other protein kinase Nek1",
+"id":"395",
+"size":1
+},{
+"name":"Other protein kinase Nek11",
+"id":"417",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Other protein kinase PLK family",
+"id":"257",
+"children": [
+{
+"name":"Other protein kinase PLK2",
+"id":"397",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Other protein kinase ULK family",
+"id":"258",
+"size":1
+},{
+"name":"Other protein kinase WEE family",
+"id":"259",
+"children": [
+{
+"name":"Other protein kinase WEE1",
+"id":"398",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Other protein kinase Wnk family",
+"id":"260",
+"size":1
+},{
+"name":"Other protein kinase CDC7 family",
+"id":"271",
+"size":1
+},{
+"name":"Other protein kinase NKF1 family",
+"id":"272",
+"size":1
+},{
+"name":"Other protein kinase TOPK family",
+"id":"273",
+"size":1
+},{
+"name":"Other protein kinase Bud32 family",
+"id":"292",
+"size":1
+},{
+"name":"Other protein kinase Haspin family",
+"id":"293",
+"size":1
+},{
+"name":"Other protein kinase TTK family",
+"id":"308",
+"size":1
+},{
+"name":"Other protein kinase unique family",
+"id":"440",
+"size":1
+},{
+"name":"Other protein kinase PEK family",
+"id":"1629",
+"children": [
+{
+"name":"Other protein kinase HRI",
+"id":"334",
+"size":1
+},{
+"name":"Other protein kinase PEK subfamily",
+"id":"335",
+"size":1
+},{
+"name":"Other protein kinase PKR",
+"id":"336",
+"size":1
+},{
+"name":"Other protein kinase GCN2 subfamily",
+"id":"396",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Other protein kinase TLK family",
+"id":"1657",
+"size":1
+},{
+"name":"Other protein kinase NKF4 family",
+"id":"1686",
+"size":1
+},{
+"name":"Other protein kinase CAMKK family",
+"id":"1701",
+"children": [
+{
+"name":"Other protein kinase Meta subfamily",
+"id":"432",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":31
+},{
+"name":"TK protein kinase group",
+"id":"1285",
+"children": [
+{
+"name":"Tyrosine protein kinase Abl family",
+"id":"130",
+"size":1
+},{
+"name":"Tyrosine protein kinase Ack family",
+"id":"131",
+"size":1
+},{
+"name":"Tyrosine protein kinase Alk family",
+"id":"132",
+"size":1
+},{
+"name":"Tyrosine protein kinase Axl family",
+"id":"133",
+"size":1
+},{
+"name":"Tyrosine protein kinase Csk family",
+"id":"134",
+"size":1
+},{
+"name":"Tyrosine protein kinase Eph family",
+"id":"135",
+"size":1
+},{
+"name":"Tyrosine protein kinase Fak family",
+"id":"136",
+"size":1
+},{
+"name":"Tyrosine protein kinase Fer family",
+"id":"137",
+"size":1
+},{
+"name":"Tyrosine protein kinase Met family",
+"id":"139",
+"size":1
+},{
+"name":"Tyrosine protein kinase Ret family",
+"id":"140",
+"size":1
+},{
+"name":"Tyrosine protein kinase Src family",
+"id":"141",
+"children": [
+{
+"name":"Tyrosine protein kinase Srm",
+"id":"219",
+"size":1
+},{
+"name":"Tyrosine protein kinase SrcA",
+"id":"242",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Tyrosine protein kinase Syk family",
+"id":"142",
+"size":1
+},{
+"name":"Tyrosine protein kinase Tec family",
+"id":"143",
+"size":1
+},{
+"name":"Tyrosine protein kinase Tie family",
+"id":"144",
+"size":1
+},{
+"name":"Tyrosine protein kinase Trk family",
+"id":"146",
+"size":1
+},{
+"name":"Tyrosine protein kinase EGFR family",
+"id":"149",
+"size":1
+},{
+"name":"Tyrosine protein kinase FGFR family",
+"id":"150",
+"size":1
+},{
+"name":"Tyrosine protein kinase InsR family",
+"id":"151",
+"size":1
+},{
+"name":"Tyrosine protein kinase JakA family",
+"id":"152",
+"size":1
+},{
+"name":"Tyrosine protein kinase JakB family",
+"id":"153",
+"size":1
+},{
+"name":"Tyrosine protein kinase PDGFR family",
+"id":"159",
+"size":1
+},{
+"name":"Tyrosine protein kinase VEGFR family",
+"id":"160",
+"size":1
+},{
+"name":"Tyrosine protein kinase DDR family",
+"id":"1614",
+"size":1
+},{
+"name":"Tyrosine protein kinase Sev family",
+"id":"1649",
+"size":1
+},{
+"name":"Tyrosine protein kinase Musk family",
+"id":"1684",
+"size":1
+}
+],
+"size":28
+},{
+"name":"AGC protein kinase group",
+"id":"1289",
+"children": [
+{
+"name":"AGC protein kinase AKT family",
+"id":"203",
+"size":1
+},{
+"name":"AGC protein kinase NDR family",
+"id":"204",
+"size":1
+},{
+"name":"AGC protein kinase PKA family",
+"id":"205",
+"size":1
+},{
+"name":"AGC protein kinase PKC family",
+"id":"206",
+"children": [
+{
+"name":"AGC protein kinase PKC eta subfamily",
+"id":"286",
+"size":1
+},{
+"name":"AGC protein kinase PKC iota subfamily",
+"id":"303",
+"size":1
+},{
+"name":"AGC protein kinase PKC theta",
+"id":"304",
+"size":1
+},{
+"name":"AGC protein kinase PKC alpha subfamily",
+"id":"317",
+"size":1
+},{
+"name":"AGC protein kinase PKC delta subfamily",
+"id":"318",
+"size":1
+},{
+"name":"AGC protein kinase PKC unclassified",
+"id":"490",
+"size":1
+}
+],
+"size":7
+},{
+"name":"AGC protein kinase PKG family",
+"id":"207",
+"size":1
+},{
+"name":"AGC protein kinase PKN family",
+"id":"208",
+"size":1
+},{
+"name":"AGC protein kinase SGK family",
+"id":"209",
+"size":1
+},{
+"name":"AGC protein kinase PDK1 subfamily",
+"id":"232",
+"size":1
+},{
+"name":"AGC protein kinase YANK family",
+"id":"233",
+"size":1
+},{
+"name":"AGC protein kinase GRK family",
+"id":"1618",
+"children": [
+{
+"name":"AGC protein kinase GRK subfamily",
+"id":"283",
+"size":1
+},{
+"name":"AGC protein kinase BARK subfamily",
+"id":"302",
+"size":1
+}
+],
+"size":3
+},{
+"name":"AGC protein kinase RSK family",
+"id":"1648",
+"children": [
+{
+"name":"AGC protein kinase MSK subfamily",
+"id":"287",
+"size":1
+},{
+"name":"AGC protein kinase p70 subfamily",
+"id":"288",
+"size":1
+},{
+"name":"AGC protein kinase RSK subfamily",
+"id":"289",
+"size":1
+},{
+"name":"AGC protein kinase RSKp70",
+"id":"382",
+"size":1
+}
+],
+"size":5
+},{
+"name":"AGC protein kinase DMPK family",
+"id":"1668",
+"children": [
+{
+"name":"AGC protein kinase GEK subfamily",
+"id":"301",
+"size":1
+},{
+"name":"AGC protein kinase CRIK subfamily",
+"id":"314",
+"size":1
+},{
+"name":"AGC protein kinase ROCK subfamily",
+"id":"315",
+"size":1
+}
+],
+"size":4
+},{
+"name":"AGC protein kinase MAST family",
+"id":"1682",
+"size":1
+}
+],
+"size":29
+},{
+"name":"CK1 protein kinase group",
+"id":"1301",
+"children": [
+{
+"name":"CK1 protein kinase CK1 family",
+"id":"210",
+"children": [
+{
+"name":"CK1 protein kinase CK1-a",
+"id":"321",
+"size":1
+},{
+"name":"CK1 protein kinase CK1-g",
+"id":"322",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+},{
+"name":"STE protein kinase group",
+"id":"1331",
+"children": [
+{
+"name":"STE protein kinase STE11 family",
+"id":"261",
+"children": [
+{
+"name":"STE protein kinase ASK",
+"id":"340",
+"size":1
+},{
+"name":"STE protein kinase MEKK2",
+"id":"419",
+"size":1
+}
+],
+"size":3
+},{
+"name":"STE protein kinase STE20 family",
+"id":"262",
+"children": [
+{
+"name":"STE protein kinase KHS subfamily",
+"id":"341",
+"size":1
+},{
+"name":"STE protein kinase MSN subfamily",
+"id":"342",
+"size":1
+},{
+"name":"STE protein kinase MST subfamily",
+"id":"343",
+"size":1
+},{
+"name":"STE protein kinase SLK subfamily",
+"id":"344",
+"size":1
+},{
+"name":"STE protein kinase TAO subfamily",
+"id":"345",
+"size":1
+},{
+"name":"STE protein kinase YSK subfamily",
+"id":"346",
+"size":1
+},{
+"name":"STE protein kinase FRAY subfamily",
+"id":"400",
+"size":1
+},{
+"name":"STE protein kinase PAKA subfamily",
+"id":"401",
+"size":1
+},{
+"name":"STE protein kinase PAKB subfamily",
+"id":"402",
+"size":1
+},{
+"name":"STE protein kinase NinaC subfamily",
+"id":"420",
+"size":1
+}
+],
+"size":11
+},{
+"name":"STE protein kinase STE7 family",
+"id":"298",
+"size":1
+},{
+"name":"STE protein kinase unique family",
+"id":"1714",
+"size":1
+}
+],
+"size":17
+},{
+"name":"TKL protein kinase group",
+"id":"1334",
+"children": [
+{
+"name":"TKL protein kinase LRRK family",
+"id":"240",
+"size":1
+},{
+"name":"TKL protein kinase RIPK family",
+"id":"241",
+"size":1
+},{
+"name":"TKL protein kinase MLK family",
+"id":"1623",
+"children": [
+{
+"name":"TKL protein kinase ILK subfamily",
+"id":"294",
+"size":1
+},{
+"name":"TKL protein kinase LZK subfamily",
+"id":"295",
+"size":1
+},{
+"name":"TKL protein kinase TAK1 subfamily",
+"id":"307",
+"size":1
+},{
+"name":"TKL protein kinase HH498 subfamily",
+"id":"349",
+"size":1
+},{
+"name":"TKL protein kinase MLK subfamily",
+"id":"421",
+"size":1
+}
+],
+"size":6
+},{
+"name":"TKL protein kinase RAF family",
+"id":"1638",
+"size":1
+},{
+"name":"TKL protein kinase IRAK family",
+"id":"1674",
+"size":1
+},{
+"name":"TKL protein kinase LISK family",
+"id":"1678",
+"children": [
+{
+"name":"TKL protein kinase LIMK subfamily",
+"id":"348",
+"size":1
+},{
+"name":"TKL protein kinase TESK subfamily",
+"id":"441",
+"size":1
+}
+],
+"size":3
+},{
+"name":"TKL protein kinase STKR family",
+"id":"1693",
+"children": [
+{
+"name":"TKL protein kinase STKR1",
+"id":"403",
+"size":1
+},{
+"name":"TKL protein kinase STKR Type 1 subfamily",
+"id":"404",
+"size":1
+},{
+"name":"TKL protein kinase STKR Type 2 subfamily",
+"id":"405",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":18
+},{
+"name":"CAMK protein kinase group",
+"id":"1339",
+"children": [
+{
+"name":"CAMK protein kinase PHk family",
+"id":"234",
+"size":1
+},{
+"name":"CAMK protein kinase PIM family",
+"id":"235",
+"size":1
+},{
+"name":"CAMK protein kinase PKD family",
+"id":"236",
+"size":1
+},{
+"name":"CAMK protein kinase DAPK family",
+"id":"245",
+"size":1
+},{
+"name":"CAMK protein kinase MLCK family",
+"id":"246",
+"size":1
+},{
+"name":"CAMK protein kinase TSSK family",
+"id":"247",
+"size":1
+},{
+"name":"CAMK protein kinase CAMK2 family",
+"id":"269",
+"size":1
+},{
+"name":"CAMK protein kinase RAD53 family",
+"id":"270",
+"size":1
+},{
+"name":"CAMK protein kinase RSKb family",
+"id":"1690",
+"children": [
+{
+"name":"CAMK protein kinase MSKb subfamily",
+"id":"385",
+"size":1
+},{
+"name":"CAMK protein kinase RSKb subfamily",
+"id":"386",
+"size":1
+}
+],
+"size":3
+},{
+"name":"CAMK protein kinase CAMK1 family",
+"id":"1702",
+"children": [
+{
+"name":"CAMK protein kinase LKB subfamily",
+"id":"383",
+"size":1
+},{
+"name":"CAMK protein kinase QIK subfamily",
+"id":"384",
+"size":1
+},{
+"name":"CAMK protein kinase AMPK subfamily",
+"id":"409",
+"size":1
+},{
+"name":"CAMK protein kinase BRSK subfamily",
+"id":"410",
+"size":1
+},{
+"name":"CAMK protein kinase CHK1 subfamily",
+"id":"411",
+"size":1
+},{
+"name":"CAMK protein kinase MARK subfamily",
+"id":"412",
+"size":1
+},{
+"name":"CAMK protein kinase MELK subfamily",
+"id":"413",
+"size":1
+},{
+"name":"CAMK protein kinase NIM1 subfamily",
+"id":"414",
+"size":1
+},{
+"name":"CAMK protein kinase NuaK subfamily",
+"id":"415",
+"size":1
+},{
+"name":"CAMK protein kinase PASK subfamily",
+"id":"416",
+"size":1
+}
+],
+"size":11
+},{
+"name":"CAMK protein kinase DCAMK1 family",
+"id":"1710",
+"size":1
+},{
+"name":"CAMK protein kinase MAPKAPK family",
+"id":"1713",
+"children": [
+{
+"name":"CAMK protein kinase MNK subfamily",
+"id":"428",
+"size":1
+},{
+"name":"CAMK protein kinase MAPKAPK subfamily",
+"id":"472",
+"size":1
+}
+],
+"size":3
+},{
+"name":"CAMK protein kinase unique family",
+"id":"1715",
+"size":1
+}
+],
+"size":28
+},{
+"name":"Atypical protein kinase group",
+"id":"1452",
+"children": [
+{
+"name":"Atypical protein kinase PDHK subfamily",
+"id":"119",
+"size":1
+},{
+"name":"Atypical protein kinase BCR family",
+"id":"291",
+"size":1
+},{
+"name":"Atypical protein kinase PIKK family",
+"id":"305",
+"children": [
+{
+"name":"Atypical protein kinase FRAP subfamily",
+"id":"450",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Atypical protein kinase alpha family",
+"id":"320",
+"size":1
+},{
+"name":"Atypical protein kinase RIO family",
+"id":"1647",
+"children": [
+{
+"name":"Atypical protein kinase RIO1 subfamily",
+"id":"437",
+"size":1
+},{
+"name":"Atypical protein kinase RIO2 subfamily",
+"id":"438",
+"size":1
+},{
+"name":"Atypical protein kinase RIO3 subfamily",
+"id":"439",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Atypical protein kinase ABC1 family",
+"id":"1664",
+"children": [
+{
+"name":"Atypical protein kinase ABC1-A subfamily",
+"id":"471",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":12
+}
+],
+"size":200
+}
+],
+"size":202
+},{
+"name":"Oxidoreductase",
+"id":"10",
+"size":1
+},{
+"name":"Transferase",
+"id":"643",
+"size":1
+},{
+"name":"Isomerase",
+"id":"644",
+"size":1
+},{
+"name":"Ligase",
+"id":"645",
+"size":1
+},{
+"name":"Hydrolase",
+"id":"646",
+"size":1
+},{
+"name":"Lyase",
+"id":"648",
+"children": [
+{
+"name":"Guanylate cyclase",
+"id":"1264",
+"children": [
+{
+"name":"Soluble guanylate cyclase",
+"id":"890",
+"size":1
+},{
+"name":"Receptor guanylate cyclase",
+"id":"1315",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+},{
+"name":"Protease",
+"id":"1028",
+"children": [
+{
+"name":"Serine protease",
+"id":"1079",
+"children": [
+{
+"name":"Serine protease unclassified",
+"id":"90",
+"size":1
+},{
+"name":"Serine protease SB clan",
+"id":"1119",
+"children": [
+{
+"name":"Serine protease S8A subfamily",
+"id":"15",
+"size":1
+},{
+"name":"Serine protease S8B subfamily",
+"id":"16",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Serine protease SC clan",
+"id":"1120",
+"children": [
+{
+"name":"Serine protease S10 family",
+"id":"18",
+"size":1
+},{
+"name":"Serine protease S28 family",
+"id":"19",
+"size":1
+},{
+"name":"Serine protease S33 family",
+"id":"20",
+"size":1
+},{
+"name":"Serine protease S9A subfamily",
+"id":"21",
+"size":1
+},{
+"name":"Serine protease S9B subfamily",
+"id":"22",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Serine protease SE clan",
+"id":"1121",
+"children": [
+{
+"name":"Serine protease S11 family",
+"id":"23",
+"size":1
+},{
+"name":"Serine protease S12 family",
+"id":"24",
+"size":1
+},{
+"name":"Serine protease S13 family",
+"id":"25",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Serine protease SF clan",
+"id":"1122",
+"children": [
+{
+"name":"Serine protease S26A subfamily",
+"id":"43",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Serine protease SH clan",
+"id":"1123",
+"children": [
+{
+"name":"Serine protease S21 family",
+"id":"27",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Serine protease SR clan",
+"id":"1124",
+"children": [
+{
+"name":"Serine protease S60 family",
+"id":"44",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Serine protease PA clan",
+"id":"1136",
+"children": [
+{
+"name":"Serine protease S6 family",
+"id":"14",
+"size":1
+},{
+"name":"Serine protease S1A subfamily",
+"id":"38",
+"size":1
+},{
+"name":"Serine protease S1B subfamily",
+"id":"40",
+"size":1
+},{
+"name":"Serine protease S29 family",
+"id":"41",
+"children": [
+{
+"name":"Serine protease S29 regulatory subfamily",
+"id":"93",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":6
+}
+],
+"size":27
+},{
+"name":"Metallo protease",
+"id":"1081",
+"children": [
+{
+"name":"Metallo protease unclassified clan",
+"id":"1113",
+"children": [
+{
+"name":"Metallo protease M79 family",
+"id":"30",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Metallo protease MC clan",
+"id":"1114",
+"children": [
+{
+"name":"Metallo protease M14A subfamily",
+"id":"62",
+"size":1
+},{
+"name":"Metallo protease M14B subfamily",
+"id":"63",
+"children": [
+{
+"name":"Metallo protease M14B regulatory subfamily",
+"id":"116",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":4
+},{
+"name":"Metallo protease MF clan",
+"id":"1115",
+"children": [
+{
+"name":"Metallo protease M17 family",
+"id":"35",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Metallo protease MG clan",
+"id":"1116",
+"children": [
+{
+"name":"Metallo protease M24A subfamily",
+"id":"65",
+"size":1
+},{
+"name":"Metallo protease M24B subfamily",
+"id":"66",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Metallo protease MH clan",
+"id":"1117",
+"children": [
+{
+"name":"Metallo protease M18 family",
+"id":"36",
+"size":1
+},{
+"name":"Metallo protease M28 family",
+"id":"59",
+"children": [
+{
+"name":"Metallo protease M28A subfamily",
+"id":"68",
+"size":1
+},{
+"name":"Metallo protease M28B subfamily",
+"id":"69",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Metallo protease M20A subfamily",
+"id":"67",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Metallo protease MJ clan",
+"id":"1118",
+"children": [
+{
+"name":"Metallo protease M19 family",
+"id":"37",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Metallo protease MAE clan",
+"id":"1130",
+"children": [
+{
+"name":"Metallo protease M49 family",
+"id":"29",
+"size":1
+},{
+"name":"Metallo protease M1 family",
+"id":"31",
+"size":1
+},{
+"name":"Metallo protease M2 family",
+"id":"33",
+"size":1
+},{
+"name":"Metallo protease M4 family",
+"id":"34",
+"size":1
+},{
+"name":"Metallo protease M13 family",
+"id":"55",
+"size":1
+},{
+"name":"Metallo protease M27 family",
+"id":"57",
+"size":1
+},{
+"name":"Metallo protease M34 family",
+"id":"60",
+"size":1
+},{
+"name":"Metallo protease M9B subfamily",
+"id":"61",
+"size":1
+},{
+"name":"Metallo protease M48A subfamily",
+"id":"81",
+"size":1
+}
+],
+"size":10
+},{
+"name":"Metallo protease MAM clan",
+"id":"1131",
+"children": [
+{
+"name":"Metallo protease M10A subfamily",
+"id":"82",
+"size":1
+},{
+"name":"Metallo protease M12A subfamily",
+"id":"83",
+"size":1
+},{
+"name":"Metallo protease M12B subfamily",
+"id":"84",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":34
+},{
+"name":"Protease unclassified",
+"id":"1084",
+"children": [
+{
+"name":"Protease unclassified U family",
+"id":"1125",
+"children": [
+{
+"name":"Protease unclassified U48 family",
+"id":"45",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Aspartic protease",
+"id":"1085",
+"children": [
+{
+"name":"Aspartic protease AA clan",
+"id":"1106",
+"children": [
+{
+"name":"Aspartic protease A1A subfamily",
+"id":"47",
+"size":1
+},{
+"name":"Aspartic protease A2A subfamily",
+"id":"48",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Aspartic protease AD clan",
+"id":"1107",
+"children": [
+{
+"name":"Aspartic protease A22A subfamily",
+"id":"71",
+"children": [
+{
+"name":"Aspartic protease A22A regulatory subfamily",
+"id":"120",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Aspartic protease AF clan",
+"id":"1108",
+"children": [
+{
+"name":"Aspartic protease A26 family",
+"id":"72",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":9
+},{
+"name":"Cysteine protease",
+"id":"1087",
+"children": [
+{
+"name":"Cysteine protease CM clan",
+"id":"1109",
+"children": [
+{
+"name":"Cysteine protease C18 family",
+"id":"49",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Cysteine protease CA clan",
+"id":"1110",
+"children": [
+{
+"name":"Cysteine protease C2 family",
+"id":"28",
+"children": [
+{
+"name":"Cysteine protease C2 regulatory subfamily",
+"id":"92",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Cysteine protease C1A family",
+"id":"50",
+"size":1
+},{
+"name":"Cysteine protease C2A subfamily",
+"id":"51",
+"size":1
+},{
+"name":"Cysteine protease C12 family",
+"id":"73",
+"size":1
+},{
+"name":"Cysteine protease C19 family",
+"id":"74",
+"size":1
+}
+],
+"size":7
+},{
+"name":"Cysteine protease CD clan",
+"id":"1111",
+"children": [
+{
+"name":"Cysteine protease C13 family",
+"id":"52",
+"size":1
+},{
+"name":"Cysteine protease C14 family",
+"id":"53",
+"children": [
+{
+"name":"Cysteine protease C14A subfamily",
+"id":"77",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Cysteine protease C25 family",
+"id":"54",
+"size":1
+},{
+"name":"Cysteine protease C11 family",
+"id":"76",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Cysteine protease PAC clan",
+"id":"1135",
+"children": [
+{
+"name":"Cysteine protease C3A subfamily",
+"id":"78",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Cysteine protease PCC clan",
+"id":"1138",
+"children": [
+{
+"name":"Cysteine protease C26 family",
+"id":"79",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":20
+},{
+"name":"Protease inhibitor",
+"id":"1090",
+"children": [
+{
+"name":"Protease inhibitor unclassified clan",
+"id":"1112",
+"children": [
+{
+"name":"Protease inhibitor I49 family",
+"id":"80",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Threonine protease",
+"id":"1091",
+"children": [
+{
+"name":"Threonine protease PBT clan",
+"id":"1137",
+"children": [
+{
+"name":"Threonine protease T2 family",
+"id":"87",
+"size":1
+},{
+"name":"Threonine protease T1A subfamily",
+"id":"89",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+}
+],
+"size":101
+},{
+"name":"Phosphatase",
+"id":"1030",
+"children": [
+{
+"name":"Protein Phosphatase",
+"id":"1103",
+"children": [
+{
+"name":"Protein phosphatase regulatory subunit",
+"id":"154",
+"size":1
+},{
+"name":"Serine protein phosphatase",
+"id":"155",
+"size":1
+},{
+"name":"Tyrosine protein phosphatase",
+"id":"156",
+"children": [
+{
+"name":"Receptor tyrosine-protein phosphatase",
+"id":"310",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Serine/threonine protein phosphatase",
+"id":"222",
+"size":1
+},{
+"name":"Serine/threonine/tyrosine protein phosphatase",
+"id":"279",
+"size":1
+}
+],
+"size":7
+}
+],
+"size":8
+},{
+"name":"Cytochrome P450",
+"id":"1031",
+"children": [
+{
+"name":"Cytochrome P450 CAM family",
+"id":"13",
+"size":1
+},{
+"name":"Cytochrome P450 family 1",
+"id":"1054",
+"children": [
+{
+"name":"Cytochrome P450 family 1A",
+"id":"1179",
+"children": [
+{
+"name":"Cytochrome P450 1A1",
+"id":"167",
+"size":1
+},{
+"name":"Cytochrome P450 1A2",
+"id":"168",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 1B",
+"id":"1180",
+"children": [
+{
+"name":"Cytochrome P450 1B1",
+"id":"169",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":6
+},{
+"name":"Cytochrome P450 family 2",
+"id":"1055",
+"children": [
+{
+"name":"Cytochrome P450 family 2A",
+"id":"1181",
+"children": [
+{
+"name":"Cytochrome P450 2A2",
+"id":"170",
+"size":1
+},{
+"name":"Cytochrome P450 2A5",
+"id":"171",
+"size":1
+},{
+"name":"Cytochrome P450 2A6",
+"id":"172",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Cytochrome P450 family 2B",
+"id":"1182",
+"children": [
+{
+"name":"Cytochrome P450 2B1",
+"id":"173",
+"size":1
+},{
+"name":"Cytochrome P450 2B6",
+"id":"174",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 2C",
+"id":"1183",
+"children": [
+{
+"name":"Cytochrome P450 2C8",
+"id":"175",
+"size":1
+},{
+"name":"Cytochrome P450 2C9",
+"id":"176",
+"size":1
+},{
+"name":"Cytochrome P450 2C11",
+"id":"195",
+"size":1
+},{
+"name":"Cytochrome P450 2C18",
+"id":"196",
+"size":1
+},{
+"name":"Cytochrome P450 2C19",
+"id":"197",
+"size":1
+},{
+"name":"Cytochrome P450 2C23",
+"id":"198",
+"size":1
+}
+],
+"size":7
+},{
+"name":"Cytochrome P450 family 2D",
+"id":"1184",
+"children": [
+{
+"name":"Cytochrome P450 2D1",
+"id":"177",
+"size":1
+},{
+"name":"Cytochrome P450 2D2",
+"id":"178",
+"size":1
+},{
+"name":"Cytochrome P450 2D3",
+"id":"179",
+"size":1
+},{
+"name":"Cytochrome P450 2D6",
+"id":"180",
+"size":1
+},{
+"name":"Cytochrome P450 2D18",
+"id":"199",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Cytochrome P450 family 2E",
+"id":"1185",
+"children": [
+{
+"name":"Cytochrome P450 2E1",
+"id":"181",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":23
+},{
+"name":"Cytochrome P450 family 3",
+"id":"1056",
+"children": [
+{
+"name":"Cytochrome P450 family 3A",
+"id":"1186",
+"children": [
+{
+"name":"Cytochrome P450 3A1",
+"id":"182",
+"size":1
+},{
+"name":"Cytochrome P450 3A2",
+"id":"183",
+"size":1
+},{
+"name":"Cytochrome P450 3A4",
+"id":"184",
+"size":1
+},{
+"name":"Cytochrome P450 3A5",
+"id":"185",
+"size":1
+}
+],
+"size":5
+}
+],
+"size":6
+},{
+"name":"Cytochrome P450 family 4",
+"id":"1057",
+"children": [
+{
+"name":"Cytochrome P450 family 4A",
+"id":"1187",
+"children": [
+{
+"name":"Cytochrome P450 4A1",
+"id":"186",
+"size":1
+},{
+"name":"Cytochrome P450 4A3",
+"id":"187",
+"size":1
+},{
+"name":"Cytochrome P450 4A4",
+"id":"188",
+"size":1
+},{
+"name":"Cytochrome P450 4A11",
+"id":"200",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Cytochrome P450 family 4F",
+"id":"1188",
+"children": [
+{
+"name":"Cytochrome P450 4F2",
+"id":"189",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":8
+},{
+"name":"Cytochrome P450 family 5",
+"id":"1058",
+"children": [
+{
+"name":"Cytochrome P450 family 5A",
+"id":"1189",
+"children": [
+{
+"name":"Cytochrome P450 5A1",
+"id":"190",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 7",
+"id":"1059",
+"children": [
+{
+"name":"Cytochrome P450 family 7A",
+"id":"1190",
+"children": [
+{
+"name":"Cytochrome P450 7A1",
+"id":"191",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 8",
+"id":"1060",
+"children": [
+{
+"name":"Cytochrome P450 family 8A",
+"id":"1191",
+"children": [
+{
+"name":"Cytochrome P450 8A1",
+"id":"192",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 11",
+"id":"1070",
+"children": [
+{
+"name":"Cytochrome P450 family 11A",
+"id":"1218",
+"children": [
+{
+"name":"Cytochrome P450 11A1",
+"id":"223",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Cytochrome P450 family 11B",
+"id":"1219",
+"children": [
+{
+"name":"Cytochrome P450 11B1",
+"id":"224",
+"size":1
+},{
+"name":"Cytochrome P450 11B2",
+"id":"225",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":6
+},{
+"name":"Cytochrome P450 family 17",
+"id":"1071",
+"children": [
+{
+"name":"Cytochrome P450 family 17A",
+"id":"1220",
+"children": [
+{
+"name":"Cytochrome P450 17A1",
+"id":"226",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 19",
+"id":"1072",
+"children": [
+{
+"name":"Cytochrome P450 family 19A",
+"id":"1221",
+"children": [
+{
+"name":"Cytochrome P450 19A1",
+"id":"227",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 21",
+"id":"1073",
+"children": [
+{
+"name":"Cytochrome P450 family 21A",
+"id":"1222",
+"children": [
+{
+"name":"Cytochrome P450 21A2",
+"id":"228",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 24",
+"id":"1074",
+"children": [
+{
+"name":"Cytochrome P450 family 24A",
+"id":"1223",
+"children": [
+{
+"name":"Cytochrome P450 24A1",
+"id":"229",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 26",
+"id":"1075",
+"children": [
+{
+"name":"Cytochrome P450 family 26A",
+"id":"1224",
+"children": [
+{
+"name":"Cytochrome P450 26A1",
+"id":"230",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Cytochrome P450 family 51",
+"id":"1076",
+"children": [
+{
+"name":"Cytochrome P450 family 51A",
+"id":"1225",
+"children": [
+{
+"name":"Cytochrome P450 51A1",
+"id":"231",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+}
+],
+"size":78
+},{
+"name":"Phosphodiesterase",
+"id":"1034",
+"children": [
+{
+"name":"Phosphodiesterase 1",
+"id":"1061",
+"children": [
+{
+"name":"Phosphodiesterase 1A",
+"id":"94",
+"size":1
+},{
+"name":"Phosphodiesterase 1B",
+"id":"95",
+"size":1
+},{
+"name":"Phosphodiesterase 1C",
+"id":"96",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Phosphodiesterase 2",
+"id":"1062",
+"children": [
+{
+"name":"Phosphodiesterase 2A",
+"id":"97",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Phosphodiesterase 3",
+"id":"1063",
+"children": [
+{
+"name":"Phosphodiesterase 3A",
+"id":"98",
+"size":1
+},{
+"name":"Phosphodiesterase 3B",
+"id":"99",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Phosphodiesterase 4",
+"id":"1064",
+"children": [
+{
+"name":"Phosphodiesterase 4A",
+"id":"100",
+"size":1
+},{
+"name":"Phosphodiesterase 4B",
+"id":"101",
+"size":1
+},{
+"name":"Phosphodiesterase 4C",
+"id":"102",
+"size":1
+},{
+"name":"Phosphodiesterase 4D",
+"id":"103",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Phosphodiesterase 5",
+"id":"1065",
+"children": [
+{
+"name":"Phosphodiesterase 5A",
+"id":"104",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Phosphodiesterase 6",
+"id":"1066",
+"children": [
+{
+"name":"Phosphodiesterase 6A",
+"id":"105",
+"size":1
+},{
+"name":"Phosphodiesterase 6B",
+"id":"106",
+"size":1
+},{
+"name":"Phosphodiesterase 6C",
+"id":"107",
+"size":1
+},{
+"name":"Phosphodiesterase 6D",
+"id":"108",
+"size":1
+},{
+"name":"Phosphodiesterase 6G",
+"id":"109",
+"size":1
+},{
+"name":"Phosphodiesterase 6H",
+"id":"110",
+"size":1
+}
+],
+"size":7
+},{
+"name":"Phosphodiesterase 7",
+"id":"1067",
+"children": [
+{
+"name":"Phosphodiesterase 7A",
+"id":"111",
+"size":1
+},{
+"name":"Phosphodiesterase 7B",
+"id":"112",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Phosphodiesterase 8",
+"id":"1068",
+"children": [
+{
+"name":"Phosphodiesterase 8A",
+"id":"113",
+"size":1
+},{
+"name":"Phosphodiesterase 8B",
+"id":"114",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Phosphodiesterase 9",
+"id":"1069",
+"children": [
+{
+"name":"Phosphodiesterase 9A",
+"id":"115",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Phosphodiesterase 10",
+"id":"1077",
+"children": [
+{
+"name":"Phosphodiesterase 10A",
+"id":"123",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Phosphodiesterase 11",
+"id":"1078",
+"children": [
+{
+"name":"Phosphodiesterase 11A",
+"id":"124",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":36
+},{
+"name":"Aminoacyltransferase",
+"id":"1035",
+"children": [
+{
+"name":"Protein-glutamine glutamyl-transferase",
+"id":"496",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":437
+},{
+"name":"Adhesion",
+"id":"2",
+"size":1
+},{
+"name":"Secreted protein",
+"id":"3",
+"size":1
+},{
+"name":"Structural protein",
+"id":"4",
+"size":1
+},{
+"name":"Other nuclear protein",
+"id":"5",
+"size":1
+},{
+"name":"Other membrane protein",
+"id":"7",
+"size":1
+},{
+"name":"Other cytosolic protein",
+"id":"8",
+"size":1
+},{
+"name":"Surface antigen",
+"id":"9",
+"size":1
+},{
+"name":"Membrane receptor",
+"id":"11",
+"children": [
+{
+"name":"Frizzled family G protein-coupled receptor",
+"id":"619",
+"children": [
+{
+"name":"Smoothened receptor (frizzled family GPCR)",
+"id":"612",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Taste family G protein-coupled receptor",
+"id":"620",
+"children": [
+{
+"name":"Taste receptor (taste family GPCR)",
+"id":"614",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Toll-like and Il-1 receptors",
+"id":"649",
+"size":1
+},{
+"name":"Family A G protein-coupled receptor",
+"id":"1020",
+"children": [
+{
+"name":"Opsin",
+"id":"621",
+"children": [
+{
+"name":"Rhodopsin",
+"id":"611",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Peptide receptor (family A GPCR)",
+"id":"1082",
+"children": [
+{
+"name":"N-formyl methionyl peptide receptor",
+"id":"506",
+"children": [
+{
+"name":"N-formyl methionyl peptide receptor",
+"id":"574",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Peptide growth factor receptor (family A GPCR)",
+"id":"617",
+"children": [
+{
+"name":"Prokineticin receptor",
+"id":"609",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Relaxin-like peptide receptor (family A GPCR)",
+"id":"618",
+"children": [
+{
+"name":"Relaxin receptor",
+"id":"610",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Short peptide receptor (family A GPCR)",
+"id":"1253",
+"children": [
+{
+"name":"MCH receptor",
+"id":"460",
+"size":1
+},{
+"name":"GnRH receptor",
+"id":"468",
+"size":1
+},{
+"name":"Opioid receptor",
+"id":"479",
+"size":1
+},{
+"name":"Orexin receptor",
+"id":"480",
+"size":1
+},{
+"name":"Galanin receptor",
+"id":"483",
+"size":1
+},{
+"name":"Motilin receptor",
+"id":"484",
+"size":1
+},{
+"name":"RF amide receptor",
+"id":"486",
+"size":1
+},{
+"name":"Bradykinin receptor",
+"id":"499",
+"size":1
+},{
+"name":"Endothelin receptor",
+"id":"500",
+"size":1
+},{
+"name":"Neurokinin receptor",
+"id":"501",
+"size":1
+},{
+"name":"Neuromedin receptor",
+"id":"502",
+"size":1
+},{
+"name":"Angiotensin receptor",
+"id":"507",
+"size":1
+},{
+"name":"GRP-related receptor",
+"id":"508",
+"size":1
+},{
+"name":"Neurotensin receptor",
+"id":"509",
+"size":1
+},{
+"name":"Melanocortin receptor",
+"id":"515",
+"size":1
+},{
+"name":"Neuropeptide receptor",
+"id":"516",
+"size":1
+},{
+"name":"Somatostatin receptor",
+"id":"517",
+"size":1
+},{
+"name":"Adrenomedullin receptor",
+"id":"533",
+"size":1
+},{
+"name":"Neuropeptide Y receptor",
+"id":"534",
+"size":1
+},{
+"name":"Cholecystokinin receptor",
+"id":"540",
+"size":1
+},{
+"name":"Vasopressin and oxytocin receptor",
+"id":"562",
+"size":1
+},{
+"name":"Neuromedin U receptor",
+"id":"607",
+"size":1
+},{
+"name":"Prolactin-releasing peptide receptor",
+"id":"608",
+"size":1
+}
+],
+"size":24
+},{
+"name":"Chemokine receptor",
+"id":"1265",
+"children": [
+{
+"name":"CC chemokine receptor",
+"id":"547",
+"size":1
+},{
+"name":"XC chemokine receptor",
+"id":"548",
+"size":1
+},{
+"name":"CXC chemokine receptor",
+"id":"554",
+"size":1
+},{
+"name":"CX3C chemokine receptor",
+"id":"558",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Glycohormone receptor",
+"id":"1268",
+"children": [
+{
+"name":"Glycohormone receptor",
+"id":"561",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Anaphylatoxin receptor family",
+"id":"1269",
+"children": [
+{
+"name":"Anaphylatoxin receptor",
+"id":"528",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Chemokine receptor-like",
+"id":"1270",
+"children": [
+{
+"name":"Chemerin receptor",
+"id":"555",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Protease-activated receptor",
+"id":"1274",
+"children": [
+{
+"name":"Protease-activated receptor",
+"id":"571",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":44
+},{
+"name":"Small molecule receptor (family A GPCR)",
+"id":"1088",
+"children": [
+{
+"name":"Carboxylic acid receptor",
+"id":"616",
+"children": [
+{
+"name":"Hydroxycarboxylic acid receptor",
+"id":"603",
+"size":1
+},{
+"name":"Kynurenic acid receptor",
+"id":"604",
+"size":1
+},{
+"name":"Succinate receptor",
+"id":"605",
+"size":1
+},{
+"name":"Oxoglutarate receptor",
+"id":"615",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Monoamine receptor",
+"id":"1266",
+"children": [
+{
+"name":"Dopamine receptor",
+"id":"535",
+"size":1
+},{
+"name":"Histamine receptor",
+"id":"541",
+"size":1
+},{
+"name":"Serotonin receptor",
+"id":"542",
+"size":1
+},{
+"name":"Adrenergic receptor",
+"id":"544",
+"size":1
+},{
+"name":"Trace amine receptor",
+"id":"550",
+"size":1
+},{
+"name":"Acetylcholine receptor",
+"id":"559",
+"size":1
+}
+],
+"size":7
+},{
+"name":"Monoamine-derivative receptor (family A GPCR)",
+"id":"1267",
+"children": [
+{
+"name":"Melatonin receptor",
+"id":"551",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Nucleotide-like receptor (family A GPCR)",
+"id":"1272",
+"children": [
+{
+"name":"Purine receptor",
+"id":"556",
+"size":1
+},{
+"name":"Adenosine receptor",
+"id":"563",
+"size":1
+},{
+"name":"Nicotinic acid receptor",
+"id":"568",
+"size":1
+},{
+"name":"Nucleotide-like receptor",
+"id":"569",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Lipid-like ligand receptor (family A GPCR)",
+"id":"1273",
+"children": [
+{
+"name":"PAF receptor",
+"id":"487",
+"size":1
+},{
+"name":"EDG receptor",
+"id":"549",
+"size":1
+},{
+"name":"Prostanoid receptor",
+"id":"565",
+"size":1
+},{
+"name":"Cannabinoid receptor",
+"id":"566",
+"size":1
+},{
+"name":"Leukotriene receptor",
+"id":"567",
+"size":1
+},{
+"name":"Free fatty acid receptor",
+"id":"570",
+"size":1
+},{
+"name":"Steroid-like ligand receptor",
+"id":"573",
+"size":1
+},{
+"name":"Lysophosphatidylinositol receptor",
+"id":"606",
+"size":1
+}
+],
+"size":9
+}
+],
+"size":29
+}
+],
+"size":76
+},{
+"name":"Family B G protein-coupled receptor",
+"id":"1021",
+"children": [
+{
+"name":"Peptide receptor (family B GPCR)",
+"id":"1083",
+"children": [
+{
+"name":"Glucagon-like receptor",
+"id":"1251",
+"children": [
+{
+"name":"Glucagon receptor",
+"id":"165",
+"size":1
+},{
+"name":"Secretin receptor receptor",
+"id":"166",
+"size":1
+},{
+"name":"Glucagon-like peptide receptor",
+"id":"435",
+"size":1
+},{
+"name":"Gastric inhibitory polypeptide receptor",
+"id":"504",
+"size":1
+},{
+"name":"Growth hormone-releasing hormone receptor",
+"id":"518",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Calcitonin-like receptor",
+"id":"1256",
+"children": [
+{
+"name":"Calcitonin receptor",
+"id":"202",
+"size":1
+},{
+"name":"Calcitonin gene-related peptide receptor",
+"id":"510",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Parathyroid hormone receptor",
+"id":"1275",
+"children": [
+{
+"name":"Parathyroid hormone receptor",
+"id":"407",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Vasoactive intestinal peptide receptor",
+"id":"1277",
+"children": [
+{
+"name":"Vasoactive intestinal peptide receptor",
+"id":"491",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Corticotropin releasing factor receptor",
+"id":"1278",
+"children": [
+{
+"name":"Corticotropin releasing factor receptor",
+"id":"503",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":16
+}
+],
+"size":17
+},{
+"name":"Family C G protein-coupled receptor",
+"id":"1022",
+"children": [
+{
+"name":"Taste receptor (family C GPCR)",
+"id":"613",
+"size":1
+},{
+"name":"Ion receptor (family C GPCR)",
+"id":"1038",
+"children": [
+{
+"name":"Calcium sensing receptor",
+"id":"1271",
+"children": [
+{
+"name":"Calcium sensing receptor",
+"id":"281",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+},{
+"name":"Small molecule receptor (family C GPCR)",
+"id":"1089",
+"children": [
+{
+"name":"Neurotransmitter receptor (family C GPCR)",
+"id":"1259",
+"children": [
+{
+"name":"GABA-B receptor",
+"id":"147",
+"size":1
+},{
+"name":"Metabotropic glutamate receptor",
+"id":"446",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+}
+],
+"size":9
+}
+],
+"size":108
+},{
+"name":"Transcription factor",
+"id":"12",
+"children": [
+{
+"name":"Nuclear receptor",
+"id":"1033",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 0",
+"id":"1040",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 0 group B",
+"id":"1152",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 0 group B member 1",
+"id":"597",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 0 group B member 2",
+"id":"598",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 1",
+"id":"1041",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group A",
+"id":"1153",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group A member 1",
+"id":"352",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group A member 2",
+"id":"353",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 1 group B",
+"id":"1154",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group B member 1",
+"id":"354",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group B member 2",
+"id":"355",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group B member 3",
+"id":"356",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 1 group C",
+"id":"1155",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group C member 1",
+"id":"357",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group C member 2",
+"id":"358",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group C member 3",
+"id":"359",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 1 group D",
+"id":"1156",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group D member 1",
+"id":"581",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group D member 2",
+"id":"582",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 1 group F",
+"id":"1157",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group F member 1",
+"id":"583",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group F member 3",
+"id":"584",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 1 group H",
+"id":"1158",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group H member 1",
+"id":"360",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group H member 3",
+"id":"361",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group H member 4",
+"id":"362",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 1 group I",
+"id":"1159",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 1 group I member 1",
+"id":"363",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group I member 2",
+"id":"364",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 1 group I member 3",
+"id":"365",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":26
+},{
+"name":"Nuclear hormone receptor subfamily 2",
+"id":"1042",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group A",
+"id":"1160",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group A member 2",
+"id":"586",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Nuclear hormone receptor subfamily 2 group B",
+"id":"1161",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group B member 1",
+"id":"366",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group B member 2",
+"id":"367",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group B member 3",
+"id":"368",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 2 group C",
+"id":"1162",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group C member 1",
+"id":"587",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group C member 2",
+"id":"588",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 2 group E",
+"id":"1163",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group E member 3",
+"id":"369",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group E member 1",
+"id":"589",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 2 group F",
+"id":"1164",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 2 group F member 1",
+"id":"590",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group F member 2",
+"id":"591",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 2 group F member 6",
+"id":"592",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":17
+},{
+"name":"Nuclear hormone receptor subfamily 3",
+"id":"1043",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 3 group A",
+"id":"1165",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 3 group A member 1",
+"id":"370",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group A member 2",
+"id":"371",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Nuclear hormone receptor subfamily 3 group B",
+"id":"1166",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 3 group B member 1",
+"id":"372",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group B member 2",
+"id":"373",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group B member 3",
+"id":"374",
+"size":1
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 3 group C",
+"id":"1167",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 3 group C member 1",
+"id":"375",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group C member 2",
+"id":"376",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group C member 3",
+"id":"377",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 3 group C member 4",
+"id":"378",
+"size":1
+}
+],
+"size":5
+}
+],
+"size":13
+},{
+"name":"Nuclear hormone receptor subfamily 4",
+"id":"1044",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 4 group A",
+"id":"1168",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 4 group A member 1",
+"id":"593",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 4 group A member 2",
+"id":"594",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 4 group A member 3",
+"id":"595",
+"size":1
+}
+],
+"size":4
+}
+],
+"size":5
+},{
+"name":"Nuclear hormone receptor subfamily 5",
+"id":"1045",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 5 group A",
+"id":"1169",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 5 group A member 1",
+"id":"379",
+"size":1
+},{
+"name":"Nuclear hormone receptor subfamily 5 group A member 2",
+"id":"380",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":4
+},{
+"name":"Nuclear hormone receptor subfamily 6",
+"id":"1046",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 6 group A",
+"id":"1170",
+"children": [
+{
+"name":"Nuclear hormone receptor subfamily 6 group A member 1",
+"id":"596",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":3
+}
+],
+"size":73
+}
+],
+"size":74
+},{
+"name":"Unclassified protein",
+"id":"601",
+"size":1
+},{
+"name":"Auxiliary transport protein",
+"id":"825",
+"children": [
+{
+"name":"Voltage-gated potassium channel beta-subunit family",
+"id":"826",
+"size":1
+},{
+"name":"Basigin family",
+"id":"827",
+"size":1
+},{
+"name":"Ankyrin family",
+"id":"828",
+"size":1
+},{
+"name":"Slow voltage-gated potassium channel accessory protein family",
+"id":"829",
+"size":1
+},{
+"name":"Fatty acid binding protein family",
+"id":"830",
+"size":1
+},{
+"name":"Calcium-activated potassium channel auxiliary subunit slowpoke-beta family",
+"id":"831",
+"size":1
+},{
+"name":"Calcium channel auxiliary subunit gamma family",
+"id":"832",
+"size":1
+},{
+"name":"Calcium channel auxiliary subunit beta family",
+"id":"833",
+"size":1
+},{
+"name":"Calcium channel auxiliary subunit alpha2delta family",
+"id":"834",
+"size":1
+},{
+"name":"Sodium channel auxiliary subunit beta family",
+"id":"835",
+"size":1
+},{
+"name":"Calcium-activated potassium channel auxiliary subunit gamma family",
+"id":"883",
+"size":1
+}
+],
+"size":12
+},{
+"name":"Epigenetic regulator",
+"id":"836",
+"children": [
+{
+"name":"Reader",
+"id":"837",
+"children": [
+{
+"name":"Bromodomain",
+"id":"857",
+"size":1
+},{
+"name":"Methyl-lysine/arginine binding protein",
+"id":"858",
+"children": [
+{
+"name":"Tudor domain",
+"id":"860",
+"size":1
+},{
+"name":"MBT domain",
+"id":"861",
+"size":1
+},{
+"name":"Chromodomain",
+"id":"862",
+"size":1
+},{
+"name":"WDR domain",
+"id":"863",
+"size":1
+},{
+"name":"PWWP domain",
+"id":"864",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Plant homeodomain",
+"id":"859",
+"size":1
+},{
+"name":"Methyl-CpG-binding domain",
+"id":"894",
+"size":1
+}
+],
+"size":10
+},{
+"name":"Writer",
+"id":"838",
+"children": [
+{
+"name":"Histone acetyltransferase",
+"id":"849",
+"children": [
+{
+"name":"MYST family",
+"id":"850",
+"size":1
+},{
+"name":"GNAT family",
+"id":"851",
+"size":1
+},{
+"name":"p300/CBP family",
+"id":"852",
+"size":1
+},{
+"name":"SRC family",
+"id":"886",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Protein methyltransferase",
+"id":"853",
+"children": [
+{
+"name":"Protein arginine methyltransferase",
+"id":"854",
+"size":1
+},{
+"name":"PR domain",
+"id":"855",
+"size":1
+},{
+"name":"SET domain",
+"id":"856",
+"size":1
+}
+],
+"size":4
+},{
+"name":"DNA methyltransferase",
+"id":"889",
+"size":1
+}
+],
+"size":11
+},{
+"name":"Eraser",
+"id":"839",
+"children": [
+{
+"name":"Histone deacetylase",
+"id":"840",
+"children": [
+{
+"name":"HDAC class I",
+"id":"841",
+"size":1
+},{
+"name":"HDAC class IIa",
+"id":"842",
+"size":1
+},{
+"name":"HDAC class IIb",
+"id":"843",
+"size":1
+},{
+"name":"HDAC class III",
+"id":"844",
+"size":1
+},{
+"name":"HDAC class IV",
+"id":"845",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Lysine demethylase",
+"id":"846",
+"children": [
+{
+"name":"Lysine-specific demethylase",
+"id":"847",
+"size":1
+},{
+"name":"Jumonji domain-containing",
+"id":"848",
+"size":1
+}
+],
+"size":3
+}
+],
+"size":10
+}
+],
+"size":32
+},{
+"name":"Ion channel",
+"id":"1005",
+"children": [
+{
+"name":"Other ion channel",
+"id":"670",
+"children": [
+{
+"name":"Aquaporin",
+"id":"671",
+"children": [
+{
+"name":"Aquaglyceroporin",
+"id":"672",
+"size":1
+},{
+"name":"Aquaporin 8",
+"id":"673",
+"size":1
+},{
+"name":"Unorthodox aquaporin",
+"id":"674",
+"size":1
+},{
+"name":"Water-specific aquaporin",
+"id":"675",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Chloride channel",
+"id":"676",
+"children": [
+{
+"name":"Calcium-activated chloride channel",
+"id":"677",
+"size":1
+},{
+"name":"ClC chloride channel",
+"id":"678",
+"size":1
+},{
+"name":"Epithelial chloride channel",
+"id":"679",
+"size":1
+},{
+"name":"Intracellular chloride channel",
+"id":"680",
+"size":1
+},{
+"name":"Cystic fibrosis transmembrane conductance regulator",
+"id":"1146",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Gap junction protein",
+"id":"681",
+"children": [
+{
+"name":"Gap junction protein alpha",
+"id":"682",
+"size":1
+},{
+"name":"Gap junction protein beta",
+"id":"683",
+"size":1
+},{
+"name":"Gap junction protein delta",
+"id":"684",
+"size":1
+},{
+"name":"Gap junction protein epsilon",
+"id":"685",
+"size":1
+},{
+"name":"Gap junction protein gamma",
+"id":"686",
+"size":1
+},{
+"name":"Pannexin",
+"id":"687",
+"size":1
+}
+],
+"size":7
+},{
+"name":"Annexin",
+"id":"688",
+"size":1
+},{
+"name":"Miscellaneous ion channel",
+"id":"763",
+"children": [
+{
+"name":"Sodium leak channel, non-selective",
+"id":"764",
+"size":1
+},{
+"name":"Anion channel tweety family",
+"id":"765",
+"size":1
+},{
+"name":"Anion channel-forming bestrophin family",
+"id":"766",
+"size":1
+},{
+"name":"Bcl-2 family",
+"id":"767",
+"size":1
+},{
+"name":"Ca2+ release-activated Ca2+ channel family",
+"id":"768",
+"size":1
+},{
+"name":"Calcium homeostasis modulator Ca2+ channel family",
+"id":"769",
+"size":1
+},{
+"name":"CD20 Ca2+ channel family",
+"id":"770",
+"size":1
+},{
+"name":"Cholesterol uptake protein and double stranded RNA uptake family",
+"id":"771",
+"size":1
+},{
+"name":"CorA metal ion transporter family",
+"id":"772",
+"size":1
+},{
+"name":"Golgi pH regulator family",
+"id":"773",
+"size":1
+},{
+"name":"Homotrimeric cation channel family",
+"id":"774",
+"size":1
+},{
+"name":"Membrane Mg2+ transporter family",
+"id":"776",
+"size":1
+},{
+"name":"Mechanical nociceptor piezo family",
+"id":"777",
+"size":1
+},{
+"name":"Mg2+/Ca2+ uniporter family",
+"id":"778",
+"size":1
+},{
+"name":"Mitochondrial EF hand Ca2+ uptake porter/regulator family",
+"id":"780",
+"size":1
+},{
+"name":"Non-selective cation channel-2 family",
+"id":"781",
+"size":1
+},{
+"name":"Plasmolipin family",
+"id":"782",
+"size":1
+},{
+"name":"Presenilin ER Ca2+ leak channel family",
+"id":"783",
+"size":1
+},{
+"name":"Synaptic vesicle-associated Ca2+ channel flower family",
+"id":"784",
+"size":1
+},{
+"name":"Testis-enhanced gene transfer family",
+"id":"785",
+"size":1
+},{
+"name":"Type A influenza virus matrix-2 channel family",
+"id":"786",
+"size":1
+}
+],
+"size":22
+},{
+"name":"Pore-forming toxins (proteins and peptides)",
+"id":"787",
+"size":1
+},{
+"name":"Mitochondrial and plastid porin family",
+"id":"789",
+"children": [
+{
+"name":"Voltage-dependent anion-selective channel",
+"id":"790",
+"size":1
+}
+],
+"size":2
+},{
+"name":"Nuclear pore complex family",
+"id":"791",
+"size":1
+},{
+"name":"Phospholemman family",
+"id":"792",
+"size":1
+},{
+"name":"Vesicle fusion pores",
+"id":"793",
+"size":1
+},{
+"name":"Paracellular channels",
+"id":"796",
+"children": [
+{
+"name":"Claudin tight junction family",
+"id":"795",
+"size":1
+}
+],
+"size":2
+}
+],
+"size":50
+},{
+"name":"Voltage-gated ion channel",
+"id":"1019",
+"children": [
+{
+"name":"CatSper and Two-Pore channels",
+"id":"666",
+"size":1
+},{
+"name":"Potassium channels",
+"id":"667",
+"children": [
+{
+"name":"Voltage-gated potassium channel",
+"id":"118",
+"size":1
+},{
+"name":"Two-pore domain potassium channel",
+"id":"647",
+"size":1
+},{
+"name":"Calcium-activated potassium channel",
+"id":"668",
+"size":1
+},{
+"name":"Inwardly rectifying potassium channel",
+"id":"1015",
+"size":1
+}
+],
+"size":5
+},{
+"name":"Voltage-gated proton channel",
+"id":"669",
+"size":1
+},{
+"name":"Transient receptor potential channel",
+"id":"1018",
+"size":1
+},{
+"name":"Cyclic nucleotide-regulated channel",
+"id":"1178",
+"size":1
+},{
+"name":"Voltage-gated calcium channel",
+"id":"1583",
+"size":1
+},{
+"name":"Voltage-gated sodium channel",
+"id":"1590",
+"size":1
+}
+],
+"size":12
+},{
+"name":"Ligand-gated ion channel",
+"id":"1024",
+"children": [
+{
+"name":"Epithelial sodium channel",
+"id":"243",
+"size":1
+},{
+"name":"Glutamate-gated chloride channel (invertebrate)",
+"id":"663",
+"size":1
+},{
+"name":"Zinc-activated channel",
+"id":"665",
+"size":1
+},{
+"name":"IP3 receptor",
+"id":"1014",
+"size":1
+},{
+"name":"Ryanodine receptor",
+"id":"1016",
+"size":1
+},{
+"name":"Acid-sensing ion channel",
+"id":"1023",
+"size":1
+},{
+"name":"P2X receptor",
+"id":"1047",
+"size":1
+},{
+"name":"Ionotropic glutamate receptor",
+"id":"1053",
+"children": [
+{
+"name":"Ionotropic glutamate receptor-like",
+"id":"664",
+"size":1
+},{
+"name":"AMPA receptor",
+"id":"1145",
+"size":1
+},{
+"name":"Glutamate receptor ionotropic delta-1",
+"id":"1149",
+"size":1
+},{
+"name":"NMDA receptor",
+"id":"1150",
+"size":1
+},{
+"name":"Kainate receptor",
+"id":"1226",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Nicotinic acetylcholine receptor",
+"id":"1126",
+"children": [
+{
+"name":"Nicotinic acetylcholine receptor beta subunit",
+"id":"406",
+"size":1
+},{
+"name":"Nicotinic acetylcholine receptor alpha subunit",
+"id":"422",
+"size":1
+},{
+"name":"Nicotinic acetylcholine receptor delta subunit",
+"id":"423",
+"size":1
+},{
+"name":"Nicotinic acetylcholine receptor gamma subunit",
+"id":"424",
+"size":1
+},{
+"name":"Nicotinic acetylcholine receptor epsilon subunit",
+"id":"442",
+"size":1
+}
+],
+"size":6
+},{
+"name":"Glycine receptor",
+"id":"1127",
+"size":1
+},{
+"name":"5HT3 receptor",
+"id":"1144",
+"size":1
+},{
+"name":"GABA-A receptor",
+"id":"1173",
+"size":1
+}
+],
+"size":23
+}
+],
+"size":86
+},{
+"name":"Transporter",
+"id":"1006",
+"children": [
+{
+"name":"Group translocator",
+"id":"754",
+"size":1
+},{
+"name":"Transmembrane 1-electron transfer carriers",
+"id":"797",
+"size":1
+},{
+"name":"Primary active transporter",
+"id":"1027",
+"children": [
+{
+"name":"Oxidoreduction-driven transporters",
+"id":"744",
+"size":1
+},{
+"name":"F-type and V-type ATPases",
+"id":"745",
+"children": [
+{
+"name":"F-type ATPase",
+"id":"1096",
+"size":1
+},{
+"name":"V-type ATPase",
+"id":"1235",
+"size":1
+}
+],
+"size":3
+},{
+"name":"Endoplasmic reticular retrotranslocon family",
+"id":"813",
+"size":1
+},{
+"name":"General secretory pathway family",
+"id":"814",
+"size":1
+},{
+"name":"Mitochondrial protein translocase family",
+"id":"815",
+"size":1
+},{
+"name":"Nuclear mRNA exporter family",
+"id":"816",
+"size":1
+},{
+"name":"Peroxisomal protein importer family",
+"id":"817",
+"size":1
+},{
+"name":"TMS recognition/insertion complex family",
+"id":"818",
+"size":1
+},{
+"name":"P-type ATPase",
+"id":"1098",
+"children": [
+{
+"name":"Hydrogen potassium ATPase",
+"id":"449",
+"size":1
+},{
+"name":"Sodium potassium ATPase",
+"id":"494",
+"size":1
+},{
+"name":"Copper ATPase",
+"id":"751",
+"size":1
+},{
+"name":"Phospholipid-transporting ATPase",
+"id":"752",
+"size":1
+},{
+"name":"Probable cation-transporting ATPase (V subfamily)",
+"id":"753",
+"size":1
+},{
+"name":"Calcium ATPase",
+"id":"1175",
+"size":1
+}
+],
+"size":7
+},{
+"name":"ATP-binding cassette",
+"id":"1104",
+"children": [
+{
+"name":"ABCA subfamily",
+"id":"746",
+"size":1
+},{
+"name":"ABCD subfamily",
+"id":"747",
+"size":1
+},{
+"name":"ABCE subfamily",
+"id":"748",
+"size":1
+},{
+"name":"ABCF subfamily",
+"id":"749",
+"size":1
+},{
+"name":"ABCG subfamily",
+"id":"750",
+"size":1
+},{
+"name":"ABCB subfamily",
+"id":"1132",
+"size":1
+},{
+"name":"ABCC subfamily",
+"id":"1133",
+"size":1
+}
+],
+"size":8
+}
+],
+"size":26
+},{
+"name":"Electrochemical transporter",
+"id":"1032",
+"children": [
+{
+"name":"SLC superfamily of solute carriers",
+"id":"689",
+"children": [
+{
+"name":"SLC01 family of amino acid transporters",
+"id":"690",
+"size":1
+},{
+"name":"SLC02 family of hexose and sugar alcohol transporters",
+"id":"691",
+"size":1
+},{
+"name":"SLC03 and SLC07 families of heteromeric amino acid transporters (HATs)",
+"id":"692",
+"children": [
+{
+"name":"SLC03 Heavy subunits of the heteromeric amino acid transporters",
+"id":"740",
+"size":1
+},{
+"name":"SLC07 Cationic amino acid transporter/glycoprotein-associated family",
+"id":"741",
+"size":1
+}
+],
+"size":3
+},{
+"name":"SLC04 family of bicarbonate transporters",
+"id":"693",
+"size":1
+},{
+"name":"SLC05 family of sodium-dependent glucose transporters",
+"id":"694",
+"size":1
+},{
+"name":"SLC06 neurotransmitter transporter family",
+"id":"695",
+"size":1
+},{
+"name":"SLC08 family of sodium/calcium exchangers",
+"id":"696",
+"size":1
+},{
+"name":"SLC09 family of sodium/hydrogen exchangers",
+"id":"697",
+"size":1
+},{
+"name":"SLC10 family of sodium-bile acid co-transporters",
+"id":"698",
+"size":1
+},{
+"name":"SLC11 family of proton-coupled metal ion transporters",
+"id":"699",
+"size":1
+},{
+"name":"SLC12 family of cation-coupled chloride transporters",
+"id":"700",
+"size":1
+},{
+"name":"SLC13 family of sodium-dependent sulphate/carboxylate transporters",
+"id":"701",
+"size":1
+},{
+"name":"SLC14 family of facilitative urea transporters",
+"id":"702",
+"size":1
+},{
+"name":"SLC15 family of peptide transporters",
+"id":"703",
+"size":1
+},{
+"name":"SLC16 family of monocarboxylate transporters",
+"id":"704",
+"size":1
+},{
+"name":"SLC17 phosphate and organic anion transporter family",
+"id":"705",
+"size":1
+},{
+"name":"SLC18 family of vesicular amine transporters",
+"id":"706",
+"size":1
+},{
+"name":"SLC19 family of vitamin transporters",
+"id":"707",
+"size":1
+},{
+"name":"SLC20 family of sodium-dependent phosphate transporters",
+"id":"708",
+"size":1
+},{
+"name":"SLC21/SLCO family of organic anion transporting polypeptides",
+"id":"709",
+"size":1
+},{
+"name":"SLC22 family of organic cation and anion transporters",
+"id":"710",
+"size":1
+},{
+"name":"SLC23 family of ascorbic acid transporters",
+"id":"711",
+"size":1
+},{
+"name":"SLC24 family of sodium/potassium/calcium exchangers",
+"id":"712",
+"size":1
+},{
+"name":"SLC25 family of mitochondrial transporters",
+"id":"713",
+"size":1
+},{
+"name":"SLC26 family of anion exchangers",
+"id":"714",
+"size":1
+},{
+"name":"SLC27 family of fatty acid transporters",
+"id":"715",
+"size":1
+},{
+"name":"SLC28 and SLC29 families of nucleoside transporters",
+"id":"716",
+"children": [
+{
+"name":"SLC28 Na+-coupled nucleoside transport family",
+"id":"742",
+"size":1
+},{
+"name":"SLC29 Facilitative nucleoside transporter family",
+"id":"743",
+"size":1
+}
+],
+"size":3
+},{
+"name":"SLC30 zinc transporter family",
+"id":"717",
+"size":1
+},{
+"name":"SLC31 family of copper transporters",
+"id":"718",
+"size":1
+},{
+"name":"SLC32 vesicular inhibitory amino acid transporter",
+"id":"719",
+"size":1
+},{
+"name":"SLC33 acetylCoA transporter",
+"id":"720",
+"size":1
+},{
+"name":"SLC34 family of sodium phosphate co-transporters",
+"id":"721",
+"size":1
+},{
+"name":"SLC35 family of nucleotide sugar transporters",
+"id":"722",
+"size":1
+},{
+"name":"SLC36 family of proton-coupled amino acid transporters",
+"id":"723",
+"size":1
+},{
+"name":"SLC37 family of phosphosugar/phosphate exchangers",
+"id":"724",
+"size":1
+},{
+"name":"SLC38 family of sodium-dependent neutral amino acid transporters",
+"id":"725",
+"size":1
+},{
+"name":"SLC39 family of metal ion transporters",
+"id":"726",
+"size":1
+},{
+"name":"SLC40 iron transporter",
+"id":"727",
+"size":1
+},{
+"name":"SLC41 family of divalent cation transporters",
+"id":"728",
+"size":1
+},{
+"name":"SLC42 Rh ammonium transporter",
+"id":"729",
+"size":1
+},{
+"name":"SLC43 family of large neutral amino acid transporters",
+"id":"730",
+"size":1
+},{
+"name":"SLC44 choline transporter-like family",
+"id":"731",
+"size":1
+},{
+"name":"SLC45 family of putative sugar transporters",
+"id":"732",
+"size":1
+},{
+"name":"SLC46 family of folate transporters",
+"id":"733",
+"size":1
+},{
+"name":"SLC47 family of multidrug and toxin extrusion transporters",
+"id":"734",
+"size":1
+},{
+"name":"SLC48 haem transporter",
+"id":"735",
+"size":1
+},{
+"name":"SLC49 family of FLVCR-related haem transporters",
+"id":"736",
+"size":1
+},{
+"name":"SLC50 sugar transporter",
+"id":"737",
+"size":1
+},{
+"name":"SLC51 family of steroid-derived molecule transporters",
+"id":"738",
+"size":1
+},{
+"name":"SLC52 family of riboflavin transporters",
+"id":"739",
+"size":1
+}
+],
+"size":55
+},{
+"name":"4 TMS multidrug endosomal transporter family",
+"id":"799",
+"size":1
+},{
+"name":"Amino acid-polyamine-organocation family",
+"id":"800",
+"size":1
+},{
+"name":"Arsenite-antimonite efflux family",
+"id":"801",
+"size":1
+},{
+"name":"Drug/metabolite transporter superfamily",
+"id":"802",
+"size":1
+},{
+"name":"Glycoside-pentoside-hexuronide:cation symporter family",
+"id":"803",
+"size":1
+},{
+"name":"Lysosomal cystine transporter family",
+"id":"804",
+"size":1
+},{
+"name":"Mitochondrial inner membrane K+/H+ and Ca2+/H+ exchanger family",
+"id":"806",
+"size":1
+},{
+"name":"Mitochondrial pyruvate carrier family",
+"id":"807",
+"size":1
+},{
+"name":"Mitochondrial tricarboxylate carrier family",
+"id":"808",
+"size":1
+},{
+"name":"Monovalent cation:proton antiporter-2 family",
+"id":"809",
+"size":1
+},{
+"name":"Multidrug/oligosaccharidyl-lipid/polysaccharide flippase superfamily",
+"id":"810",
+"size":1
+},{
+"name":"Reduced folate carrier family",
+"id":"811",
+"size":1
+},{
+"name":"Vitamin A receptor/transporter family",
+"id":"812",
+"size":1
+},{
+"name":"Aromatic acid:H+ symporter family",
+"id":"823",
+"size":1
+},{
+"name":"Vesicular neurotransmitter transporter family",
+"id":"824",
+"size":1
+}
+],
+"size":71
+}
+],
+"size":100
+}
+],
+"size":858
+}
