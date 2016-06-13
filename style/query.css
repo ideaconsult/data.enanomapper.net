@@ -58,8 +58,14 @@ a:hover {
   font-weight: 100;
   letter-spacing: -2px;
 }
-#result a {
+#hits-tab a {
   margin-right: 5px;
+}
+#result-tabs {
+  height: 100%;
+}
+#result-tabs>div {
+  overflow-y: scroll;
 }
 #navigation {
   border-bottom: 1px solid #000;

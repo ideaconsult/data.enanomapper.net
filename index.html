@@ -83,16 +83,17 @@
 </style>
   
 <script type='text/javascript'>
-	
 	$(document).ready(function() {
 		
 		$( "#smartmenu" ).smartmenus();    
 			$("#search").find('input').autocomplete();
 			
 			$( "#accordion" ).accordion({
-				 heightStyle: "content",
-				  collapsible: true
+				heightStyle: "content",
+				collapsible: true
 			});
+			
+			$( "#result-tabs" ).tabs();
 			
 		/*
 		 $( ".portlet" )
@@ -107,15 +108,15 @@
 	      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
 	    });
 	    */
-
-	    
 	});
+	
   $(function() {
     $( "#accordion-resizer" ).resizable({
       minHeight: 400,
       //minWidth: 200,
       resize: function() {
         $( "#accordion" ).accordion( "refresh" );
+        // TODO: Resize the results pane.
       }
     });
   });	
@@ -137,7 +138,6 @@
 
 
 <body>
-
 
 	<div class="container" style="margin: 0; padding: 0;">
 
@@ -267,12 +267,6 @@
 		</div>
 		<!-- left -->
 		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
-
-			<div class='row remove-bottom'>
-				<h5>Current Selection</h5>
-				<ul id="selection"></ul>	
-			</div>
-			
 			<div id="accordion-resizer" class="ui-widget-content">
 		    <div id="accordion" style="padding:1px; margin:1px;">
 					<h3>Data sources</h3>
@@ -347,14 +341,26 @@
 		</div>
 
 		<!-- right -->
-		<div class="twelve columns " style="padding: 0;margin: 0;">
-			<section id="result" >
-			<div id="navigation">
-				<ul id="pager"></ul>
-				<div id="pager-header"></div>
-			</div>
-			<section id="docs"> </section> </section>
+		<div id="result-tabs" class="twelve columns " style="padding: 0;margin: 0;">
+      <ul>
+        <li><a href="#hits_tab">Hits list</a></li>
+        <li><a href="#basket_tab">Basket</a></li>
+      </ul>
+  		<div id="hits_tab">
+  			<div class='row remove-bottom'>
+  				<ul id="selection"></ul>	
+  			</div>
+  			<div id="navigation">
+  				<ul id="pager"></ul>
+  				<div id="pager-header"></div>
+  			</div>
+        <section id="docs"></section>
+  		</div>
+  		<div id="basket_tab">
+        <section id="basket-docs"></section>
+  		</div>
 		</div>
+		
 		<!-- container -->
 	</div>
 

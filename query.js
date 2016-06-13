@@ -102,15 +102,16 @@ var Manager;
 
 		var params = {
 			facet : true,
-			'facet.field' : [ 'endpointcategory', 'substanceType',
-					'effectendpoint', 'reference',
-					'_childDocuments_.params.Species',
-					'_childDocuments_.params.Cell_line',
-					'guidance',
-					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
-					'interpretation_result', 'owner_name' ,'unit'
-					,'reference_year'
-					],
+			'facet.field' : [ 
+			  'endpointcategory', 'substanceType',
+				'effectendpoint', 'reference',
+				'_childDocuments_.params.Species',
+				'_childDocuments_.params.Cell_line',
+				'guidance',
+				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
+				'interpretation_result', 'owner_name' ,'unit',
+				'reference_year'
+      ],
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
