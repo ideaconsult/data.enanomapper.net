@@ -126,6 +126,16 @@ a:hover {
   margin-right: 8px;
 }
 
+#accordion .tags li {
+  width: auto;
+  max-width: 150px;
+}
+
+#accordion .tags li>a {
+  text-overflow: ellipsis;  
+  overflow: hidden;
+}
+
 a.tagcloud_size_0 {
 font-size: 80%;
 }
