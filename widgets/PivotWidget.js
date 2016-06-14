@@ -14,8 +14,9 @@
 
 			// console.log(
 			// this.manager.response.facet_counts.facet_pivot);
-			var maxCount = 0;
-			var objectedItems = [];
+			var objectedItems = [],
+			    facet = null;
+			    
 			for ( var facet in this.manager.response.facet_counts.facet_pivot[f]) {
 
 				var topcategory = this.manager.response.facet_counts.facet_pivot[f][facet];
@@ -23,20 +24,16 @@
 						|| ((topcategory.value + "_effectendpoint") == this.id)) {
 
 					var count = parseInt(topcategory.count);
-					if (count > maxCount) {
-						maxCount = count;
-					}
+
 					$("#" + topcategory.value + "_header").text(
 							topcategory.value + " (" + count + ")");
 					for ( var endpointcategory in topcategory.pivot) try {
 						if ((topcategory.value + "_endpointcategory") == this.id) {
-							objectedItems
-									.push({
-										id : "#" + this.id,
-										facet : topcategory.pivot[endpointcategory].value,
-										count : topcategory.pivot[endpointcategory].count,
-										hint : " "
-									});
+							objectedItems.push(this.tagRenderer(
+							  facet = topcategory.pivot[endpointcategory].value,
+							  topcategory.pivot[endpointcategory].count,
+							  this.clickHandler(facet)
+              ));
 						}
 						if ((topcategory.value + "_effectendpoint") == this.id)
 							for ( var endpoint in topcategory.pivot[endpointcategory].pivot) {
@@ -60,40 +57,21 @@
 												+ stats.loValue.max
 												+ ") " + u + " ";
 									}
-								objectedItems
-										.push({
-											id : "#" + this.id,
-											facet : topcategory.pivot[endpointcategory].pivot[endpoint].value,
-											count : topcategory.pivot[endpointcategory].pivot[endpoint].count,
-											hint : " " + msg
-										});
-
+									
+  							objectedItems.push(this.tagRenderer(
+  							  facet = topcategory.pivot[endpointcategory].pivot[endpoint].value,
+  							  topcategory.pivot[endpointcategory].pivot[endpoint].count,
+  							  " " + msg,
+  							  this.clickHandler(facet)
+                ));
 							}
 					} catch (err) {
 						console.log(err);
 					}
 				}
 			}
-			/*
-			 * objectedItems.sort(function(a, b) { return a.facet <
-			 * b.facet ? -1 : 1; });
-			 */
 
-			$(this.target).empty();
-			for (var i = 0, l = objectedItems.length; i < l; i++) {
-				var facet = objectedItems[i].facet,
-				    view = lookup[facet] || facet;
-
-				$(this.target).append(
-					$('<li><a href="#" class="tag" title="'
-							+ facet + objectedItems[i].hint
-							+ '">' + view + ' <span>'
-							+ objectedItems[i].count
-							+ '</span></a></li>')
-            .addClass('tagcloud_size_1')
-            .click(this.clickHandler(facet))
-        );
-			}
+			$(this.target).empty().append(objectedItems);
 		}
 	});
 	

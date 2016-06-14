@@ -31,30 +31,34 @@ var Manager;
 		}));
 
 		var fields = [ 'endpointcategory', 'substanceType', 'effectendpoint',
-				'owner_name', 'reference', 'guidance',
-				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
-				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'];
-		var divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
-				'owner_name', 'reference', 'protocol',
-				'interpretation_result', 'species', 'cell','instruments','reference_year'];
-    var renderTag = function (facet, count, handler) {
-      var view = facet,
-          short = view;
+  				'owner_name', 'reference', 'guidance',
+  				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
+  				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'],
+				
+        divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
+  				'owner_name', 'reference', 'protocol',
+  				'interpretation_result', 'species', 'cell','instruments','reference_year'],
+  				
+        renderTag = function (facet, count, hint, handler) {
+          var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
+          if (typeof hint === 'function') {
+            handler = hint;
+            hint = null;
+          }
+              
+          if (facet.lastIndexOf("caNanoLab.", 0) == 0)
+            view = facet.replace("caNanoLab.","");
+          else if (facet.lastIndexOf("http://dx.doi.org/", 0) == 0)
+            view = facet.replace("http://dx.doi.org/", "");
+          else
+        	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
           
-      if (facet.lastIndexOf("caNanoLab.", 0) == 0)
-        short = facet.replace("caNanoLab.","");
-      else  if (facet.lastIndexOf("http://dx.doi.org/", 0) == 0)
-        short = facet.replace("http://dx.doi.org/", "");
-      else {
-    	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
-    	  short = view.substring(0,26);
-      }
-      
-      return $('<li><a href="#" class="tag" title="' + view + ' [' + facet + ']">' + short + ' <span>' + (count || 0) + '</span></a></li>')
-          .addClass('tagcloud_size_1')
-          .click(handler);
-      };
+          return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view.substring(0, 26) + ' <span>' + (count || 0) + '</span></a></li>')
+              .addClass('tagcloud_size_1')
+              .click(handler);
+          };
     
+    // now start the actual widget initialization    
 		for (var i = 0, l = fields.length; i < l; i++) {
 			Manager.addWidget(new AjaxSolr.TagWidget({
 				id : divs[i],
@@ -116,18 +120,11 @@ var Manager;
 
 		var params = {
 			facet : true,
-			'facet.field' : [ 
-			  'endpointcategory', 'substanceType',
-				'effectendpoint', 'reference',
-				'_childDocuments_.params.Species',
-				'_childDocuments_.params.Cell_line',
-				'guidance',
-				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
-				'interpretation_result', 'owner_name' ,'unit',
-				'reference_year'
-      ],
+			'facet.field' : fields.concat('unit'),
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
+// 			'facet.pivot' : 'topcategory,endpointcategory,effectendpoint,unit',
+			'facet.pivot': '{!stats=piv1}topcategory,endpointcategory,effectendpoint,unit',
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
 			'f.interpretation_result.facet.mincount' : 2,
 			'f.reference.facet.mincount' : 2,
@@ -147,18 +144,17 @@ var Manager;
 			'f.s_uuid.facet.limit' : -1,
 			'f.doc_uuid.facet.limit' : -1,
 			'f.e_hash.facet.limit' : -1,
-			'facet.pivot' : 'topcategory,endpointcategory,effectendpoint,unit',
-			'stats':true,
-			'stats.field':'{!tag=piv1 min=true max=true}loValue',
-			'facet.pivot': '{!stats=piv1}topcategory,endpointcategory,effectendpoint,unit',
-			'json.nl' : 'map',
-			'rows' : 20,
 // 			'fq' : 'sType=study',
       // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
 			'fq' : '{!collapse field=s_uuid}',
+			'fl' : 'id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name',
+			'stats':true,
+			'stats.field':'{!tag=piv1 min=true max=true}loValue',
+			
+			'json.nl' : 'map',
+			'rows' : 20,
 			'expand' : true,
-			'expand.rows' : 20,
-			'fl' : 'id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name'
+			'expand.rows' : 20
 		};
 		
 		for ( var name in params)

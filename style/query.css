@@ -121,6 +121,11 @@ a:hover {
 
 /* tagcloud */
 
+#hits_tab .tags li {
+  margin-left: 0px;
+  margin-right: 8px;
+}
+
 a.tagcloud_size_0 {
 font-size: 80%;
 }
