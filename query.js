@@ -1,4 +1,5 @@
 var Manager;
+
 (function($) {
 	$(function() {
 		Manager = new AjaxSolr.Manager({
@@ -7,6 +8,7 @@ var Manager;
 			//this has cananolab index
 			//solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
 		});
+		
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
 			target : '#docs'
@@ -19,12 +21,12 @@ var Manager;
 			nextLabel : '&gt;',
 			innerWindow : 1,
 			renderHeader : function(perPage, offset, total) {
-				$('#pager-header').html(
-						$('<span></span>').text(
+				$('#pager-header').html('<span>' +
 								'displaying ' + Math.min(total, offset + 1)
 										+ ' to '
 										+ Math.min(total, offset + perPage)
-										+ ' of ' + total));
+										+ ' of ' + total
+								+ '</span>');
 			}
 		}));
 
@@ -34,49 +36,66 @@ var Manager;
 				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'];
 		var divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'protocol',
-				'interpretation_result', 'species', 'cell','instruments','reference_year']; 
+				'interpretation_result', 'species', 'cell','instruments','reference_year'];
+    var renderTag = function (facet, count, handler) {
+      var view = facet,
+          short = view;
+          
+      if (facet.lastIndexOf("caNanoLab.", 0) == 0)
+        short = facet.replace("caNanoLab.","");
+      else  if (facet.lastIndexOf("http://dx.doi.org/", 0) == 0)
+        short = facet.replace("http://dx.doi.org/", "");
+      else {
+    	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
+    	  short = view.substring(0,26);
+      }
+      
+      return $('<li><a href="#" class="tag" title="' + view + ' [' + facet + ']">' + short + ' <span>' + (count || 0) + '</span></a></li>')
+          .addClass('tagcloud_size_1')
+          .click(handler);
+      };
+    
 		for (var i = 0, l = fields.length; i < l; i++) {
-			if ("xxx" == divs[i])
-				Manager.addWidget(new AjaxSolr.TagcloudWidget({
-					id : divs[i],
-					target : '#' + divs[i],
-					field : fields[i]
-				}));
-			else
-				Manager.addWidget(new AjaxSolr.TagWidget({
-					id : divs[i],
-					target : '#' + divs[i],
-					field : fields[i]
-				}));
+			Manager.addWidget(new AjaxSolr.TagWidget({
+				id : divs[i],
+				target : '#' + divs[i],
+				field : fields[i],
+				tagRenderer: renderTag
+			}));
 		}
 
 		Manager.addWidget(new AjaxSolr.PivotWidget({
 				id : "P-CHEM_endpointcategory",
 				target : '#P-CHEM_endpointcategory',
-				field : "endpointcategory"
+				field : "endpointcategory",
+				tagRenderer: renderTag
 		}));	
 		
 		Manager.addWidget(new AjaxSolr.PivotWidget({
 			id : "TOX_endpointcategory",
 			target : '#TOX_endpointcategory',
-			field : "endpointcategory"
+			field : "endpointcategory",
+      tagRenderer: renderTag
 		}));		
 		
 		Manager.addWidget(new AjaxSolr.PivotWidget({
 			id : "P-CHEM_effectendpoint",
 			target : '#P-CHEM_effectendpoint',
-			field : "effectendpoint"
+			field : "effectendpoint",
+			tagRenderer: renderTag
 		}));	
 		
 		Manager.addWidget(new AjaxSolr.PivotWidget({
 			id : "TOX_effectendpoint",
 			target : '#TOX_effectendpoint',
-			field : "effectendpoint"
+			field : "effectendpoint",
+			tagRenderer: renderTag			
 		}));	
 	
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
-			target : '#selection'
+			target : '#selection',
+			tagRenderer: renderTag
 		}));
 		/*
 		 * Manager.addWidget(new AjaxSolr.TextWidget({ id: 'text', target:
@@ -93,12 +112,7 @@ var Manager;
 
 		Manager.init();
 			
-		var purl = $.url();
-		var searchValue = purl.param('search');
-		if (searchValue!=undefined) {
-			Manager.store.addByValue('q', searchValue);
-		}	else
-			Manager.store.addByValue('q', '*:*');
+		Manager.store.addByValue('q', $.url().param('search') || '*:*');
 
 		var params = {
 			facet : true,
@@ -139,16 +153,16 @@ var Manager;
 			'facet.pivot': '{!stats=piv1}topcategory,endpointcategory,effectendpoint,unit',
 			'json.nl' : 'map',
 			'rows' : 20,
-			'fq' : 'sType=study',
-			// https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
+// 			'fq' : 'sType=study',
+      // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
 			'fq' : '{!collapse field=s_uuid}',
 			'expand' : true,
 			'expand.rows' : 20,
 			'fl' : 'id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name'
 		};
-		for ( var name in params) {
+		
+		for ( var name in params)
 			Manager.store.addByValue(name, params[name]);
-		}
 
 		Manager.doRequest();
 	});
