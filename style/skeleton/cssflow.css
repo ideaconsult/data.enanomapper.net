@@ -105,12 +105,14 @@ ol, ul {
   transition-property: padding, max-width;
 }
 
-.green li:after {
+.tags.green li:after,
+.tags li.green:after {
   background: #65bb34;
   -webkit-box-shadow: inset 1px 0 #3a6b1e;
   box-shadow: inset 1px 0 #3a6b1e;
 }
-.green span {
+.tags.green span,
+.tags li.green span {
   background: #65bb34;
   border-color: #549b2b #4f9329 #4b8b27;
   background-image: -webkit-linear-gradient(top, #71ca3f, #5aa72e);
@@ -119,12 +121,15 @@ ol, ul {
   background-image: linear-gradient(to bottom, #71ca3f, #5aa72e);
 }
 
-.blue li:after {
+.tags.blue li:after,
+.tags li.blue:after {
   background: #56a3d5;
   -webkit-box-shadow: inset 1px 0 #276f9e;
   box-shadow: inset 1px 0 #276f9e;
 }
-.blue span {
+
+.tags.blue span,
+.tags li.blue span {
   background: #56a3d5;
   border-color: #3591cd #318cc7 #2f86be;
   background-image: -webkit-linear-gradient(top, #6aaeda, #4298d0);
