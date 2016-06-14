@@ -37,7 +37,7 @@
 
 
 <meta charset="utf-8">
-<title>AMBIT</title>
+<title>eNanoMapper</title>
 
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -83,16 +83,17 @@
 </style>
   
 <script type='text/javascript'>
-	
 	$(document).ready(function() {
 		
 		$( "#smartmenu" ).smartmenus();    
 			$("#search").find('input').autocomplete();
 			
 			$( "#accordion" ).accordion({
-				 heightStyle: "content",
-				  collapsible: true
+				heightStyle: "content",
+				collapsible: true
 			});
+			
+			$( "#result-tabs" ).tabs();
 			
 		/*
 		 $( ".portlet" )
@@ -107,15 +108,15 @@
 	      icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
 	    });
 	    */
-
-	    
 	});
+	
   $(function() {
     $( "#accordion-resizer" ).resizable({
       minHeight: 400,
       //minWidth: 200,
       resize: function() {
         $( "#accordion" ).accordion( "refresh" );
+        // TODO: Resize the results pane.
       }
     });
   });	
@@ -138,7 +139,6 @@
 
 <body>
 
-
 	<div class="container" style="margin: 0; padding: 0;">
 
 		<!-- banner -->
@@ -146,79 +146,45 @@
 		<div class="row half-bottom" id="header" style="padding-top: 5px">
 			<div class="two columns">
 				<a href="#"><img class='scale-with-grid' border='0'
-					src='https://ambitlri.ideaconsult.net/tool/images/profile/lri/logo.png' title='Home' 
-alt='AMBIT'></a>
+					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
 			</div>
 			<div class="fourteen columns remove-bottom">
 			<ul id='smartmenu' class="sm sm-mint">
-				<li>
-				<a href="https://ambitlri.ideaconsult.net" title="Home">Home</a>
+			<li>
+				<a href="#" title="Search nanomaterials by chemical structure of components">Search</a>
+				<ul>
+					<li><a href="#" title="Free text search (experimental)">Free text search</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for nanomaterials by identifiers or reference">Search nanomaterials by name</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for nanomaterials by identifiers">Search nanomaterials by identifier</a></li>
+					<li ><a href="https://data.enanomapper.net/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for nanomaterials by paper reference">Search nanomaterials by citation</a></li>
+					<li><a href="https://data.enanomapper.net/query/study" title="Search substances by physico-chemical parameters or biological effects">Search nanomaterials by physchem parameters or biological effects</a></li>
+					<li><a href="https://data.enanomapper.net/_search?search=SiO2" title="Search nanomaterials by chemical structure of components">Search nanomaterials by composition</a></li>
+				</ul>
 			</li>
 			<li>
-	<a href="#" title="Search chemical substances">Search</a>
-	<ul>
-		<li ><a href="https://ambitlri.ideaconsult.net/tool/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for Substances by identifiers or reference">Search Substances by name</a></li>
-		<li ><a href="https://ambitlri.ideaconsult.net/tool/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for Substances by identifiers">Search Substances by identifier</a></li>
-		<li ><a href="https://ambitlri.ideaconsult.net/tool/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for Substances by paper reference">Search Substances by citation</a></li>
-		<li><a href="https://ambitlri.ideaconsult.net/tool/query/study" title="Search substances by physico-chemical parameters or biological effects">Search Substances by physchem parameters or biological effects</a></li>
-		<li><a href="https://ambitlri.ideaconsult.net/tool/ui/_search?search=SiO2" title="Search Substances by chemical structure of components">Search Substances by composition</a></li>
-		<!--
-		<li><a href="https://ambitlri.ideaconsult.net/tool/ontobucket?search=cytotoxicity&type=protocol&qe=true" title="Free text search (experimental)">Free text search</a></li>
-		-->
-		<li><a href="https://search.ambitlri.ideaconsult.net/tool/" title="Free text search"><br/>Free text search</a></li>
-	</ul>
-</li>
-<li>
-	<a href="https://ambitlri.ideaconsult.net/tool/bundle">Data collections</a>
-<ul id="menu_substance">
-
-	<li ><a href="https://ambitlri.ideaconsult.net/tool/substance?page=0&pagesize=10" title="Substances">Browse Substances and studies</a></li>
-
-	<li><a href="https://ambitlri.ideaconsult.net/tool/bundle" title="Data collections">Content</a>
-	
-	</li>
-	<li ><a href="https://ambitlri.ideaconsult.net/tool/substanceowner">Substance contributors</a></li>
-
-</ul>
-
-</li>
-<li>
-	<a href="https://ambitlri.ideaconsult.net/tool/substance?page=0&amp;pagesize=100">Data upload</a>
-	<ul>
-			<li ><a href="https://ambitlri.ideaconsult.net/tool/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
-			<li ><a href="https://ambitlri.ideaconsult.net/tool/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
-			<li ><a href="https://ambitlri.ideaconsult.net/tool/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>		
-		</ul>
-</li>
-<li>
-	<a href="#" title="For developers">For developers</a>
-    <ul>
-	<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
-	<li><a href="#">Resources</a>		
-	<ul>
-	<li>
-		<a href="https://ambitlri.ideaconsult.net/tool/dataset?page=0&pagesize=100" title="Datasets: Chemical structures and properties">Datasets</a>
-	</li>
-	<li>
-		<a href="https://ambitlri.ideaconsult.net/tool/algorithm" title="Descriptor calculations, model building and data processing algorithms">Algorithms</a>
-	</li>
-	<li>
-		<a href="https://ambitlri.ideaconsult.net/tool/model" title="Regression, classification, clustering, structural alerts, applicability domain, structure optimisation.">Models</a>
-	</li>	
-
-	</ul>
-		
-		<li>
-		<a href="treedemo/index.html" title="Data and ontology visualisation">Data and ontology visualisation</a>
-	</li>	
-	</ul>
-</li>
+				<a href="https://data.enanomapper.net/substance?page=0&amp;pagesize=100">Nanomaterials</a>
+				<ul>
+			<li ><a href="https://data.enanomapper.net/substance?page=0&pagesize=10" title="Nanomaterials">Nanomaterials</a></li>
 			
+				<li><a href="https://data.enanomapper.net/bundle" title="Browse/Edit">Nanomaterial Bundles</a></li>
+				
+				<li ><a href="https://data.enanomapper.net/substanceowner">Nanomaterial contributors</a></li>
+					
+				<li ><a href="#">Data management</a>
+					<ul>
+						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
+						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
+						<li ><a href="https://data.enanomapper.net/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>
+						<li>
+						<a href="https://data.enanomapper.net/bundle">Datasets of nanomaterials and studies</a>
+						</li>			
+					</ul>
+				</li>					
+				</ul>			
+			</li>
 			<li>
 				<a href="#">Help</a>
-					<ul>
-
-
+						<ul>
 							<li> <a href="#">User guide</a>
 								<ul>
 								<li><a href='http://ambit.sourceforge.net/enanomapper_usage.html' target='guide'>Search by composition</a></li>
@@ -227,27 +193,16 @@ alt='AMBIT'></a>
 								
 								</ul>
 							</li>
-							<li><a href='https://github.com/enanomapper/ambitlri.ideaconsult.net/tool/issues' target='report' title='Found an error? Report here'>Submit an issue <img src='images/logo.png'></a></li>	
+							<li><a href='https://github.com/enanomapper/data.enanomapper.net/issues' target='report' title='Found an error? Report here'>Submit an issue <img src='images/logo.png'></a></li>	
 							<li><a href="#">OpenTox API</a>
 							<ul>
-								<li><a href='https://ambitlri.ideaconsult.net/tool/api-docs' target=_blank title="API documentation in Swagger JSON format">API Documentation</a></li>
+								<li><a href='https://data.enanomapper.net/api-docs' target=_blank title="API documentation in Swagger JSON format">API Documentation</a></li>
 								<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
 							</ul>
 							</li>
-							<li><a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
+							<li><a href="#">About</a>
 								<ul>
-									<li><a href="#">Content</a>
-								<ul>
-								<li><a href="https://ambitlri.ideaconsult.net/tool/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
-								<li><a href="https://ambitlri.ideaconsult.net/tool/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
-								<li><a href="https://ambitlri.ideaconsult.net/tool/bundle/1" target=_blank >FP7 MARINA / KI in-vitro dataset  (enanoMapper)</a></li>		
-								<li><a href="https://ambitlri.ideaconsult.net/tool/bundle/12" target=_blank >FP7 MODENA modelling dataset  (enanoMapper)</a></li>		
-								<li><a href="https://ambitlri.ideaconsult.net/tool/bundle/2" target=_blank >OECD HT import test  (enanoMapper)</a></li>		
-								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
-								</ul>
-							</li>
 								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
-								<li><a href="https://cananolab.nci.nih.gov/caNanoLab/#/" target=_blank title="caNanoLab collaboration">caNanoLab collaboration</a>	</li>		
 								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
 								<li><a href='#' onClick='$( "#about-message" ).dialog("open");'>About</a></li>
 								</ul>
@@ -255,7 +210,29 @@ alt='AMBIT'></a>
 						
 						</ul>				
 			</li>			
-							
+			<li>
+				<a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
+						<ul>
+							<li><a href="#">Content</a>
+								<ul>
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >FP7 MARINA / KI in-vitro dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/12" target=_blank >FP7 MODENA modelling dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/2" target=_blank >OECD HT import test  (enanoMapper)</a></li>		
+								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
+								</ul>
+							</li>
+							<li><a href="#">Acknowledgements</a>
+								<ul>
+								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
+								<li><a href="https://cananolab.nci.nih.gov/caNanoLab/#/" target=_blank title="caNanoLab collaboration">caNanoLab collaboration</a>	</li>		
+								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								</ul>
+							</li>
+						
+						</ul>				
+			</li>							
 			</ul>
 
 
@@ -271,7 +248,8 @@ alt='AMBIT'></a>
 
 			<div class="eight columns remove-bottom" style="padding-left: 10px;">
 				<div id="breadCrumb" class="breadCrumb module remove-bottom h5">
-					<h4>The LRI AMBIT tool for read across experimental search page</h4>
+					<h4>Integrated view of <a href="https://data.enanomapper.net/" title="eNanoMapper"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> database <a href='http://data.enanomapper.net/substanceowners' target=_blank>[contributors]</a> 
+    			and <a href="https://cananolab.nci.nih.gov/caNanoLab/#/" title="caNanoLab"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a></h4>
 				</div>
 			</div>
 			<div class="one column remove-bottom"
@@ -289,12 +267,6 @@ alt='AMBIT'></a>
 		</div>
 		<!-- left -->
 		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
-
-			<div class='row remove-bottom'>
-				<h5>Current Selection</h5>
-				<ul id="selection"></ul>	
-			</div>
-			
 			<div id="accordion-resizer" class="ui-widget-content">
 		    <div id="accordion" style="padding:1px; margin:1px;">
 					<h3>Data sources</h3>
@@ -302,9 +274,9 @@ alt='AMBIT'></a>
 						<ul class="tags green  remove-bottom" id="owner_name"></ul>
 					</div>	    	
 					
-					<h3>Substance type</h3>
+					<h3>Nanomaterial type</h3>
 					<div style="padding:2px; margin:1px;">
-						<ul class="tags  remove-bottom" id="substanceType"></ul>				
+						<ul class="tags remove-bottom" id="substanceType"></ul>				
 					</div>
 					
 					<h5 id="P-CHEM_header">Phys-chem</h5>
@@ -324,37 +296,14 @@ alt='AMBIT'></a>
 						<ul class="tags green remove-bottom" id="cell"></ul>
 					</div>
 					
-					
-					<h3 >Test type</h3>
-					<div style="padding:1px; margin:1px;">
-						<ul class="tags green remove-bottom" id="testtype"></ul>
-					</div>
-					
-
-					
-					<h3 >Route of administration</h3>
-					<div style="padding:1px; margin:1px;">
-						<ul class="tags green remove-bottom" id="route"></ul>
-					</div>
-					
-						<h3 >Solvent</h3>
-					<div style="padding:1px; margin:1px;">
-						<ul class="tags green remove-bottom" id="solvent"></ul>
-					</div>					
-					
 					<h3 >Species</h3>
 					<div style="padding:1px; margin:1px;">
 						<ul class="tags green remove-bottom" id="species"></ul>
 					</div>				
 										
-					<h3>Type of genotoxicity</h3>
-					<div style="padding:1px; margin:1px;">
-						<ul class="tags  remove-bottom" id="type_of_genotoxicity"></ul>
-					</div>											
-										
 					<h3>Results</h3>
 					<div style="padding:1px; margin:1px;">
-						<ul class="tags  remove-bottom" id="interpretation_result"></ul>
+						<ul class="tags remove-bottom" id="interpretation_result"></ul>
 					</div>					
 					
 					<h3>References</h3>
@@ -365,12 +314,12 @@ alt='AMBIT'></a>
 					
 					<h3>Protocols</h3>
 					<div style="padding:1px; margin:1px;">
-					<ul class="tags blue  remove-bottom" id="protocol"></ul>
+					<ul class="tags blue remove-bottom" id="protocol"></ul>
 					</div>		
 					
 					<h3>Instruments</h3>
 					<div style="padding:1px; margin:1px;">
-						<ul class="portlet-content  tags green remove-bottom" id="instruments"></ul>
+						<ul class="portlet-content tags green remove-bottom" id="instruments"></ul>
 					</div>
 						
 				</div>
@@ -392,14 +341,26 @@ alt='AMBIT'></a>
 		</div>
 
 		<!-- right -->
-		<div class="twelve columns " style="padding: 0;margin: 0;">
-			<section id="result" >
-			<div id="navigation">
-				<ul id="pager"></ul>
-				<div id="pager-header"></div>
-			</div>
-			<section id="docs"> </section> </section>
+		<div id="result-tabs" class="twelve columns " style="padding: 0;margin: 0;">
+      <ul>
+        <li><a href="#hits_tab">Hits list</a></li>
+        <li><a href="#basket_tab">Basket</a></li>
+      </ul>
+  		<div id="hits_tab">
+  			<div class='row remove-bottom'>
+  				<ul class="tags remove-bottom" id="selection"></ul>	
+  			</div>
+  			<div id="navigation">
+  				<ul id="pager"></ul>
+  				<div id="pager-header"></div>
+  			</div>
+        <section id="docs"></section>
+  		</div>
+  		<div id="basket_tab">
+        <section id="basket-docs"></section>
+  		</div>
 		</div>
+		
 		<!-- container -->
 	</div>
 
@@ -415,16 +376,12 @@ alt='AMBIT'></a>
 
 </script>
 
-<div id="about-message" title="AMBIT LRI search">
+<div id="about-message" title="eNanoMapper search">
   <p>
-    <h4>Free text search</h4> 
-    <a href="https://ambitlri.ideaconsult.net/"><img src='https://ambitlri.ideaconsult.net/tool/images/profile/lri/logo.png' 
-title='AMBIT LRI'>
-AMBIT LRI</a>
-<!-- 
+    <h4>Integrated search</h4> 
+    <a href="https://data.enanomapper.net/"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> 
     <br/>
     <a href="https://cananolab.nci.nih.gov/caNanoLab/#/"><img src='images/canano.jpg' title='cananolab'> caNanoLab</a>.
--->
   </p>
 </div>
 </body>

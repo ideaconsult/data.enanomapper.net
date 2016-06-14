@@ -4,52 +4,43 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
 
   afterRequest: function () {
-    var self = this;
-    var links = [];
+    var self = this,
+        links = [];
 
     var q = this.manager.store.get('q').val();
     if (q != '*:*') {
-        links.push($('<a href="#"></a>').text('(x) ' + q).click(function () {
-        self.manager.store.get('q').val('*:*');
-        self.doRequest();
-        return false;
-      }));
+        links.push($('<a href="#"></a>').text(q).click(function () {
+          self.manager.store.get('q').val('*:*');
+          self.doRequest();
+          return false;
+        }));
     }
 
-    var fq = this.manager.store.values('fq');
+    var fq = this.manager.store.values('fq'),
+        clearIdx = null;
     for (var i = 0, l = fq.length; i < l; i++) {
-    	
     	var style = 'class="tag_selected"';
-    	var donotremove = false;
-    	if (fq[i].indexOf("!collapse field=s_uuid")>=0) {
-    		style='style="display:none;"';
-    		donotremove = true;
-    		links.push($('<a href="#"  '+style+'></a>').text(fq[i]));
-    	} else 
-    		links.push($('<a href="#"  '+style+'></a>').text('(x) ' + fq[i]  ).click(self.removeFacet(fq[i]))  );
+    	    
+    	if (fq[i].indexOf("!collapse field=s_uuid") >= 0)
+    	  clearIdx = i;
+      else
+    		links.push(self.tagRenderer(fq[i], null, self.removeFacet(fq[i])).addClass('tag_selected'));
     }
-    /*
-     *have to ensure the collapsed query is not removed! 
-    if (links.length > 1) {
-      links.unshift($('<a href="#"></a>').text('remove all').click(function () {
+    
+    //have to ensure the collapsed query is not removed! 
+    if (links.length > 1 && clearIdx !== null) {
+      links.unshift(self.tagRenderer("Clear filters", null, function () {
         self.manager.store.get('q').val('*:*');
         self.manager.store.remove('fq');
         self.doRequest();
         return false;
       }));
     }
-    */
 
-    if (links.length) {
-      var $target = $(this.target);
-      $target.empty();
-      for (var i = 0, l = links.length; i < l; i++) {
-        $target.append($('<li></li>').append(links[i]));
-      }
-    }
-    else {
-      $(this.target).html('<li>Viewing all materials!</li>');
-    }
+    if (links.length)
+      $(this.target).empty().addClass('tags').append(links);
+    else
+      $(this.target).removeClass('tags').html('<li>No filters selected!</li>');
   },
 
   removeFacet: function (facet) {
