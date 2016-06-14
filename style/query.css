@@ -73,12 +73,6 @@ a:hover {
   list-style-type: none;
   display: inline;
 }
-#selection {
-  padding: 10px 15px 0;
-}
-#selection li {
-  list-style-type: none;
-}
 #docs {
   padding-top: 1px;
 }

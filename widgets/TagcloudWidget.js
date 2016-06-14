@@ -7,8 +7,9 @@ AjaxSolr.TagcloudWidget = AjaxSolr.AbstractFacetWidget.extend({
       return;
     }
 
-    var maxCount = 0;
-    var objectedItems = [];
+    var maxCount = 0,
+        objectedItems = [];
+        
     for (var facet in this.manager.response.facet_counts.facet_fields[this.field]) {
       var count = parseInt(this.manager.response.facet_counts.facet_fields[this.field][facet]);
       if (count > maxCount) {
@@ -16,6 +17,7 @@ AjaxSolr.TagcloudWidget = AjaxSolr.AbstractFacetWidget.extend({
       }
       objectedItems.push({ facet: facet, count: count });
     }
+    
     objectedItems.sort(function (a, b) {
       return a.facet < b.facet ? -1 : 1;
     });
@@ -36,10 +38,9 @@ AjaxSolr.TagcloudWidget = AjaxSolr.AbstractFacetWidget.extend({
     	  }
       }
       $(this.target).append(
-        $('<a href="#" class="tagcloud_item" title="'+ facet +'">'+view + ' ('+objectedItems[i].count+')</a>')
-        //.html(view + " <span>"+objectedItems[i].count+"</span>")
-        .addClass('tagcloud_size_' + parseInt(objectedItems[i].count / maxCount * 10))
-        .click(this.clickHandler(facet))
+        $('<a href="#" class="tagcloud_item" title="' + facet + '">' + view + ' (' + objectedItems[i].count + ')</a>')
+          .addClass('tagcloud_size_' + parseInt(objectedItems[i].count / maxCount * 10))
+          .click(this.clickHandler(facet))
       );
     }
   }
