@@ -2,13 +2,15 @@
 
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
-  fieldRegExp: /^[\w\.]+:/,
+  fieldRegExp: /^([\w\.]+):/,
 
   afterRequest: function () {
-    var self = this,
-        links = [];
-
-    var q = this.manager.store.get('q').val();
+    var self = this, el, f,
+        links = [],
+        q = this.manager.store.get('q').val(),
+        fq = this.manager.store.values('fq'),
+        clearIdx = null;
+        
     if (q != '*:*') {
         links.push(self.tagRenderer(q, "x", function () {
           self.manager.store.get('q').val('*:*');
@@ -17,14 +19,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         }));
     }
 
-    var fq = this.manager.store.values('fq'),
-        clearIdx = null;
-        
     for (var i = 0, l = fq.length; i < l; i++) {
     	if (fq[i].indexOf("!collapse field=s_uuid") >= 0)
     	  clearIdx = i;
       else {
-    		links.push(self.tagRenderer(fq[i].replace(self.fieldRegExp, ""), "x", self.removeFacet(fq[i])).addClass('tag_selected'));
+        f = fq[i].match(self.fieldRegExp)[1];
+    		links.push(el = self.tagRenderer(fq[i].replace(self.fieldRegExp, ""), "x", self.removeFacet(fq[i])).addClass('tag_selected'));
+    		el.addClass(self.colorMap[f]);
       }
     }
     

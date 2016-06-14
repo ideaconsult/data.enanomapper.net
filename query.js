@@ -39,6 +39,10 @@ var Manager;
   				'owner_name', 'reference', 'protocol',
   				'interpretation_result', 'species', 'cell','instruments','reference_year'],
   				
+        pivots = [ 'P-CHEM_endpointcategory', 'TOX_endpointcategory', 'P-CHEM_effectendpoint', 'TOX_effectendpoint' ],
+        
+        colors = {},
+  				
         renderTag = function (facet, count, hint, handler) {
           var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
           if (typeof hint === 'function') {
@@ -53,58 +57,56 @@ var Manager;
           else
         	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
           
-          return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view.substring(0, 26) + ' <span>' + (count || 0) + '</span></a></li>')
-              .addClass('tagcloud_size_1')
+          return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view + ' <span>' + (count || 0) + '</span></a></li>')
+              .addClass('tagcloud_size_1' + (colors))
               .click(handler);
           };
     
-    // now start the actual widget initialization    
+    // now start with adding non-hierarchical facet-blocks...
 		for (var i = 0, l = fields.length; i < l; i++) {
+  		var f = fields[i],
+  		    el = $('#' + divs[i]);
+  		
+      colors[f] = el.data('color');
+      el.addClass(colors[f]);
 			Manager.addWidget(new AjaxSolr.TagWidget({
 				id : divs[i],
 				target : '#' + divs[i],
-				field : fields[i],
+				field : f,
 				tagRenderer: renderTag
 			}));
 		}
 
-		Manager.addWidget(new AjaxSolr.PivotWidget({
-				id : "P-CHEM_endpointcategory",
-				target : '#P-CHEM_endpointcategory',
-				field : "endpointcategory",
-				tagRenderer: renderTag
-		}));	
-		
-		Manager.addWidget(new AjaxSolr.PivotWidget({
-			id : "TOX_endpointcategory",
-			target : '#TOX_endpointcategory',
-			field : "endpointcategory",
-      tagRenderer: renderTag
-		}));		
-		
-		Manager.addWidget(new AjaxSolr.PivotWidget({
-			id : "P-CHEM_effectendpoint",
-			target : '#P-CHEM_effectendpoint',
-			field : "effectendpoint",
-			tagRenderer: renderTag
-		}));	
-		
-		Manager.addWidget(new AjaxSolr.PivotWidget({
-			id : "TOX_effectendpoint",
-			target : '#TOX_effectendpoint',
-			field : "effectendpoint",
-			tagRenderer: renderTag			
-		}));	
-	
+    
+    // ... then - hierarhical (pivotal) ones...
+    
+    for (i = 0, l = pivots.length; i < l; ++i) {
+      var fi = pivots[i].lastIndexOf("_"),
+          f = pivots[i].substr(fi + 1),
+          el = $('#' + pivots[i]);
+      
+      colors[f] = el.data('color');
+      el.addClass(colors[f]);
+  		Manager.addWidget(new AjaxSolr.PivotWidget({
+  				id : pivots[i],
+  				target : '#' + pivots[i],
+  				field : f,
+  				tagRenderer: renderTag
+  		}));	
+    }
+    
+    // ... And finally the current-selection one, and ...
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
 			target : '#selection',
-			tagRenderer: renderTag
+			tagRenderer: renderTag,
+			colorMap: colors
 		}));
 		/*
 		 * Manager.addWidget(new AjaxSolr.TextWidget({ id: 'text', target:
 		 * '#search' }));
 		 */
+		// ... auto-completed text-search.
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
 			target : '#search',

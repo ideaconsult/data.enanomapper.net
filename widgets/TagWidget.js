@@ -7,13 +7,10 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
       return;
     }
 
-    var maxCount = 0,
-        objectedItems = [];
+    var objectedItems = [], facet = null;
         
     for (var facet in this.manager.response.facet_counts.facet_fields[this.field]) {
       var count = parseInt(this.manager.response.facet_counts.facet_fields[this.field][facet]);
-      if (count > maxCount)
-        maxCount = count;
 
       objectedItems.push({ facet: facet, count: count });
     }
@@ -22,13 +19,8 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
     });
 
     $(this.target).empty();
-    for (var i = 0, l = objectedItems.length; i < l; i++) {
-      var facet = objectedItems[i].facet,
-          count = objectedItems[i].count,
-          tagEl = this.tagRenderer(facet, count, this.clickHandler(facet));
-          
-      $(this.target).append(tagEl);
-    }
+    for (var i = 0, l = objectedItems.length; i < l; i++)
+      $(this.target).append(this.tagRenderer(facet = objectedItems[i].facet, count = objectedItems[i].count, this.clickHandler(facet)));
   }
 });
 
