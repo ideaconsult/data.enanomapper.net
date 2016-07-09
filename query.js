@@ -30,14 +30,14 @@ var Manager;
 			}
 		}));
 
-		var fields = [ 'endpointcategory', 'substanceType', 'effectendpoint',
+		var fields = [ 'substanceType',
   				'owner_name', 'reference', 'guidance',
   				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
   				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'],
 				
-        divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
+        divs = [ 'substanceType',
   				'owner_name', 'reference', 'protocol',
-  				'interpretation_result', 'species', 'cell','instruments','reference_year'],
+  				'interpretation_result', 'species', 'cell', 'instruments','reference_year'],
   				
         pivots = [ 'P-CHEM_endpointcategory', 'TOX_endpointcategory', 'P-CHEM_effectendpoint', 'TOX_effectendpoint' ],
         
@@ -58,7 +58,7 @@ var Manager;
         	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
           
           return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view + ' <span>' + (count || 0) + '</span></a></li>')
-              .addClass('tagcloud_size_1' + (colors))
+              .addClass('tagcloud_size_1 ')
               .click(handler);
           };
     
@@ -93,6 +93,8 @@ var Manager;
   				field : f,
   				tagRenderer: renderTag
   		}));	
+  		
+  		// TODO: Add
     }
     
     // ... And finally the current-selection one, and ...
@@ -110,7 +112,8 @@ var Manager;
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
 			target : '#search',
-			fields : [ 'substanceType', 'effectendpoint', 'endpointcategory',
+			fields : [ 
+			    'substanceType', 'effectendpoint', 'endpointcategory',
 					'name', 'guidance', 'interpretation_result',
 					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
 					'_text_' ]

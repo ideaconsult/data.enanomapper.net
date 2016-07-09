@@ -8,8 +8,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this, el, f,
         links = [],
         q = this.manager.store.get('q').val(),
-        fq = this.manager.store.values('fq'),
-        clearIdx = null;
+        fq = this.manager.store.values('fq');
         
     if (q != '*:*') {
         links.push(self.tagRenderer(q, "x", function () {
@@ -20,25 +19,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
 
     for (var i = 0, l = fq.length; i < l; i++) {
-    	if (fq[i].indexOf("!collapse field=s_uuid") >= 0)
-    	  clearIdx = i;
-      else {
+    	if (fq[i].indexOf("!collapse field=s_uuid") < 0) {
         f = fq[i].match(self.fieldRegExp)[1];
     		links.push(el = self.tagRenderer(fq[i].replace(self.fieldRegExp, ""), "x", self.removeFacet(fq[i])).addClass('tag_selected'));
     		el.addClass(self.colorMap[f]);
       }
     }
     
-    //have to ensure the collapsed query is not removed! 
-    if (links.length > 1 && clearIdx !== null) {
-      links.unshift(self.tagRenderer("Clear filters", "x", function () {
-        self.manager.store.get('q').val('*:*');
-        self.manager.store.removeByValue('fq', self.fieldRegExp);
-        self.doRequest();
-        return false;
-      }));
-    }
-
     if (links.length)
       $(this.target).empty().addClass('tags').append(links);
     else
