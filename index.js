@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var widgetFilterScroll = 35;
 	
-	$( "#smartmenu" ).smartmenus();    
+	$("#smartmenu" ).smartmenus();    
 	$("#search").find('input').autocomplete();
 		
 	// Prepare the widget filter UI prepartion method.
@@ -32,7 +32,7 @@ $(document).ready(function() {
 	};
 	
 	// Now instantiate the accordion...
-	$( "#accordion" ).accordion({
+	$("#accordion").accordion({
 		heightStyle: "content",
 		collapsible: true,
 		animate: 200,
@@ -62,10 +62,10 @@ $(document).ready(function() {
 			});
 	});
 	
-	$( "#result-tabs" ).tabs();
+	$("#result-tabs").tabs();
 		
   $(function() {
-    $( "#accordion-resizer" ).resizable({
+    $("#accordion-resizer").resizable({
       minHeight: 400,
       //minWidth: 200,
       resize: function() {
