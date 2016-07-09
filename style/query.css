@@ -120,6 +120,11 @@ a:hover {
   margin-right: 8px;
 }
 
+#accordion-resizer {
+  height: 860px;
+  padding: 5px;
+}
+
 #accordion .tags li {
   width: auto;
   max-width: 150px;
@@ -128,6 +133,34 @@ a:hover {
 #accordion .tags li>a {
   text-overflow: ellipsis;  
   overflow: hidden;
+}
+
+#accordion div.ui-accordion-content {
+  max-height: 345px;
+  overflow-x: hidden;
+  overflow-y: scroll;  
+}
+
+#accordion>h3>span.ui-icon-search {
+	float: right;	
+	opacity: 0.4;
+}
+
+#accordion>h3>span.ui-icon-search:hover {
+	opacity: 1.0;
+}
+
+div.widget-content.ui-accordion-content.ui-widget-content {
+	padding:1px; 
+	margin:1px;	
+}
+
+input.widget-filter {
+  width: 100%;
+  border-radius: 5px;
+  padding-left: 12px;
+  margin-bottom: 5px;
+  box-sizing: border-box;  
 }
 
 a.tagcloud_size_0 {
