@@ -20,8 +20,13 @@ a:hover {
   width: 1000px;
   margin: 0px auto;
 }
+
 .clear {
   clear: both;
+}
+
+.templates {
+	display: none;
 }
 
 /* header */

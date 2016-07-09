@@ -208,6 +208,7 @@
 			</div>
 
 		</div>
+		
 		<!-- left -->
 		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
 			<div id="accordion-resizer" class="ui-widget-content">
@@ -279,16 +280,6 @@
 				</div>
 			</div>
 			
-<!-- 						
-			<div class='row remove-bottom'>
-				<h5>Assay type</h5>
-				<ul class="tagcloud tags blue  remove-bottom" id="endpointcategory"></ul>
-			</div>
-			 -->
-<!-- 
-
- -->
-						
 			<div class="clear"></div>
 			
 			
@@ -317,7 +308,25 @@
 		
 		<!-- container -->
 	</div>
-
+	
+	<div class="templates">
+		<article id="result-item" class="item">
+			<header>{{publicname}}
+				<a href="{{href}}">
+					<span class="ui-icon ui-icon-extlink" style="float:right;margin:0;"></span>
+				</a>
+			</header>
+			<p>{{snipper}}</p>
+			<div class="avatar">
+				<a href="{{href}}" title="{{href_title}}" target="href_target"><img src="{{logo}}"/></a>
+				<a href="#" class="ui-icon ui-icon-circle-plus"></a>
+			</div>
+			<p></p>
+			<footer id="{{link}}" class="links">
+				<a href="{{href}}" target="external">{{datasource}}</a>
+			</footer>
+		</article>
+	</div>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

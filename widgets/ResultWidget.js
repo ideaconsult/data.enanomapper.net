@@ -85,79 +85,74 @@
 				 * substance
 				 */
 				template_substance : function(doc) {
-					var snippet = '';
-					var root = "https://data.enanomapper.net/substance/";
-					if (doc.type_s == 'study') {
-						var header = doc.publicname[0]===undefined?"":doc.publicname[0]
-								+ "  "
-								+ (doc.publicname[0] === doc.name[0] ? ""
-										: "(" + doc.name[0] + ")");
-						var href = null;
-						
+					if (doc.type_s != 'study') return;
+					
+					var snippet = '',
+							root = "https://data.enanomapper.net/substance/",
+							item = { 
+								logo: "images/logo.png",
+								link: "#"
+							};
+							
+					item.publicname = doc.publicname[0] === undefined ? "" : doc.publicname[0]
+							+ "  "
+							+ (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")");
+					
 
-						var snippet = this.template_measurement(doc);
-						var expanded = this.manager.response.expanded[doc.s_uuid];
-						if (expanded != undefined) {
-							snippet += ' <a href="#" class="more">more</a>';
-							snippet += '<span style="display:none;">';
-							for (var i = 0, l = expanded.docs.length; i < l; i++) {
-								snippet += "<br/>";
-								snippet += this
-										.template_measurement(expanded.docs[i]);
-							}
-							snippet += '</span>';
+					var snippet = this.template_measurement(doc);
+					var expanded = this.manager.response.expanded[doc.s_uuid];
+					if (expanded != undefined) {
+						snippet += ' <a href="#" class="more">more</a>';
+						snippet += '<span style="display:none;">';
+						for (var i = 0, l = expanded.docs.length; i < l; i++) {
+							snippet += "<br/>";
+							snippet += this.template_measurement(expanded.docs[i]);
 						}
-						
-						var link = "#";
-						var logo = "images/logo.png";
-						
-						var href_suffix="><span class='ui-icon ui-icon-extlink' style='float:right;margin:0;'></span></a>";
-						
-						var external = null;
-						if (doc.content == undefined) {
-							logo = "images/logo.png";
-							link = root + doc.s_uuid;
-							href = "<a href='" + link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
-						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
-								logo =  "images/canano.jpg";
-								if (doc.content!=undefined && doc.content.length>0)
-								link = doc.content[0];	
-								external = "caNanoLab";
-								href = "<a href='" + link + "'" + href_suffix;
-						} else {
-							logo =  "images/external.png";
-							if (doc.content!=undefined && doc.content.length>0) {
-								link = doc.content[0];	
-								href = "<a href='" + link + "'" + href_suffix;
-							}	
-						}	
-						
-						var output = '<article class="item"><header>' + header
-								 + href + "</a></header>";
-						output += '<p>' + snippet;
-						
-						output += '<a href="'+link+'" class="avatar" title="' +link +'"  target=_blank><img src="'+logo + '"></a>';
-						
-						output += '</p>';
-						output += '<footer id="links_' + doc.s_uuid
-								+ '" class="links">';
-						
-						if (external == null) {
-							output += "<a href='" + root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
-							output += "<a href='" + root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
-							output += "<a href='" + root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
-						}	
-						if (doc.content != undefined) {							
-							for (var i = 0, l = doc.content.length; i < l; i++) {
-								output += "<a href='"+doc.content[i] + "' target='external'>"+ (external==null?"External database":external) +"</a>";	
-							}
-						}
-						output += '</footer>';
-						output += '</article>';
-
-						return output;
-
+						snippet += '</span>';
 					}
+					
+					var external = null;
+					if (doc.content == undefined) {
+						logo = "images/logo.png";
+						link = root + doc.s_uuid;
+						href = "<a href='" + link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
+					} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
+							logo =  "images/canano.jpg";
+							if (doc.content!=undefined && doc.content.length>0)
+							link = doc.content[0];	
+							external = "caNanoLab";
+							href = "<a href='" + link + "'" + href_suffix;
+					} else {
+						logo =  "images/external.png";
+						if (doc.content!=undefined && doc.content.length>0) {
+							link = doc.content[0];	
+							href = "<a href='" + link + "'" + href_suffix;
+						}	
+					}	
+					
+					var output = '<article class="item"><header>' + header + href + "</a></header>";
+					output += '<p>' + snippet;
+					
+					output += '<div class="avatar"><a href="' + link + '" title="' + link +'" target="_blank"><img src="' + logo + '"></a><a href="#" class="ui-icon ui-icon-circle-plus"></a></div>';
+					
+					output += '</p>';
+					output += '<footer id="links_' + doc.s_uuid
+							+ '" class="links">';
+					
+					if (external == null) {
+						output += "<a href='" + root + doc.s_uuid + "' title='Substance' target='s_uuid'>material</a>";
+						output += "<a href='" + root + doc.s_uuid + "/structure' title='composition' target='s_uuid'>composition</a>";
+						output += "<a href='" + root + doc.s_uuid + "/study' title='Study' target='s_uuid'>study</a>";
+					}	
+					if (doc.content != undefined) {							
+						for (var i = 0, l = doc.content.length; i < l; i++) {
+							output += "<a href='"+doc.content[i] + "' target='external'>"+ (external==null?"External database":external) +"</a>";	
+						}
+					}
+					output += '</footer>';
+					output += '</article>';
+
+					return output;
 				},
 				template_measurement : function(doc) {
 					var snippet = "";
