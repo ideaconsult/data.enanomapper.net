@@ -272,7 +272,7 @@
 					</div>		
 					
 					<h3>Instruments</h3>
-							<div class="widget-content">
+					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="portlet-content tags remove-bottom" id="instruments" data-color="green"></ul>
 					</div>
@@ -310,22 +310,22 @@
 	</div>
 	
 	<div class="templates">
-		<article id="result-item" class="item">
-			<header>{{publicname}}
-				<a href="{{href}}">
-					<span class="ui-icon ui-icon-extlink" style="float:right;margin:0;"></span>
-				</a>
-			</header>
-			<p>{{snipper}}</p>
-			<div class="avatar">
-				<a href="{{href}}" title="{{href_title}}" target="href_target"><img src="{{logo}}"/></a>
-				<a href="#" class="ui-icon ui-icon-circle-plus"></a>
-			</div>
-			<p></p>
-			<footer id="{{link}}" class="links">
-				<a href="{{href}}" target="external">{{datasource}}</a>
-			</footer>
-		</article>
+		<section id="result-item">
+			<article class="item">
+				<header>{{publicname}}
+					<a href="{{href}}" title="{{href_title}}" target="{{href_target}}"><span class="ui-icon ui-icon-extlink" style="float:right;margin:0;"></span></a>
+				</header>
+				<div class="avatar">
+					<a href="{{link}}" title="{{link}}" target="_blank"><img src="{{logo}}"/></a>
+					<a href="#" class="ui-icon ui-icon-circle-plus"></a>
+				</div>
+				<p>{{snippet}}</p>
+				<p></p>
+				<footer id="{{footer_link}}" class="links">
+					{{footer}}
+				</footer>
+			</article>
+		</section>
 	</div>
 
 <script>
