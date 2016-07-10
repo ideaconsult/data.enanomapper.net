@@ -1,3 +1,28 @@
+// Some of the tools
+function fillString(str, info) {
+	var pieces = str.split(/{{(\w+)}}/),
+			pl = pieces.length,
+			out = "",
+			i, f;
+	
+	for (i = 0;; ++i) {
+		out += pieces[i++];
+		if (i >= pl)
+			break;
+			
+		f = info[pieces[i]];
+		out += f != null ? f : "{{" + pieces[i] + "}}";
+	}
+	
+	return out;
+}
+
+function getFillTemplate(name, info) {
+	var t = $("#" + name).html(),
+			r = fillString(t, info)
+	return $(r);
+}
+
 $(document).ready(function() {
 
   var widgetFilterScroll = 35;
