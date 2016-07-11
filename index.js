@@ -19,7 +19,8 @@ function fillString(str, info) {
 
 function getFillTemplate(name, info) {
 	var t = $("#" + name).html(),
-			r = fillString(t, info)
+			s = fillString(t, info),
+			r = s.replace(/(<img(\s+.*)?)(\s+jt-src=")/, "$1 src=\"");
 	return $(r);
 }
 
@@ -27,7 +28,7 @@ $(document).ready(function() {
 
   var widgetFilterScroll = 35;
 	
-	$("#smartmenu" ).smartmenus();    
+	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
 		
 	// Prepare the widget filter UI prepartion method.
