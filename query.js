@@ -12,11 +12,16 @@ var Manager, Basket;
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
 			target : '#docs',
-			onClick: function (e, doc, exp) { 
+			onClick: function (e, doc, exp, widget) { 
 				if (!Basket.findItem(doc)) {
 					Basket.addItem(doc, exp);
 					updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
+					updateCollectionURL(Basket);
+					$("footer", this).toggleClass("add none");					
 				}
+			},
+			onCreated: function (doc) {
+				$("footer", this).addClass("add");
 			}
 		}));
 
@@ -136,11 +141,15 @@ var Manager, Basket;
 				
 				$(this).remove();
 				updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
-			}
+				updateCollectionURL(Basket);
+				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
+			},
+			onCreated: function (doc) {
+				$("footer", this).addClass("remove");
+			}			
 		});
 		
 		Manager.init();
-		ItemListWidget.initItemList();
 			
 		Manager.store.addByValue('q', $.url().param('search') || '*:*');
 

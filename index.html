@@ -300,10 +300,10 @@
   				<ul id="pager"></ul>
   				<div id="pager-header"></div>
   			</div>
-        <section id="docs"></section>
+        <section id="docs" class="item-list"></section>
   		</div>
   		<div id="basket_tab">
-        <section id="basket-docs"></section>
+        <section id="basket-docs" class="item-list"></section>
   		</div>
 		</div>
 		
@@ -312,14 +312,17 @@
 	
 	<div class="templates">
 		<section id="result-item">
-			<article class="item">
+			<article id="{{item_id}}" class="item">
 				<header>{{publicname}}
 					<a href="{{href}}" title="{{href_title}}" target="{{href_target}}"><span class="ui-icon ui-icon-extlink" style="float:right;margin:0;"></span></a>
 				</header>
 				<a href="{{link}}" title="{{link}}" class="avatar" target="_blank"><img jt-src="{{logo}}"/></a>
 				<p>{{snippet}}</p>
-				<footer id="{{footer_link}}" class="links">
+				<footer class="links">
 					{{footer}}
+					<span class="item_add">Click to add to basket</span>
+					<span class="item_remove">Click to remove from basket</span>
+					<span class="item_none">Already added</span>
 				</footer>
 			</article>
 		</section>
