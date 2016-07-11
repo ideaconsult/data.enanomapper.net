@@ -18,23 +18,39 @@ function fillString(str, info) {
 }
 
 function getFillTemplate(name, info) {
-	var t = $("#" + name).html(),
-			s = fillString(t, info),
-			r = s.replace(/(<img(\s+.*)?)(\s+jt-src=")/, "$1 src=\"");
-	return $(r);
+	return $(fillString($("#" + name).html(), info).replace(/(<img(\s+.*)?)(\s+jt-src=")/, "$1 src=\""));
 }
 
 function updateInlineCounter(jel, count) {
 	var htt = jel.html(),
 			m = htt.match(/\s\(\d+\)/);
 	
-	if (m == null)
+	if (!m)
 		htt = htt + " (" + count + ")";
 	else
 		htt = htt.replace(m[0], count > 0 ? " (" + count + ")" : "");
 	
 	jel.html(htt);
 }
+
+function updateCollectionURL(basket) {
+	var str = "",
+			href = window.location.href,
+			mbs = href.match(/basket=[\S^&]+/);
+			
+	basket.enumerateItems(function (doc) {
+		str += doc.s_uuid + ";";
+	});
+	
+	if (str != "") str = "basket=" + str;
+	
+	if (!!mbs)
+		href = href.replace(mbs[0], str);
+	else
+		href += (href.slice(-1) == "&" ? "" : "&") + str;
+		
+	window.history.pushState({ "basket" : str }, document.title, href);
+};
 
 $(document).ready(function() {
 
