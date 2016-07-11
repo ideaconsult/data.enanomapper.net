@@ -24,6 +24,18 @@ function getFillTemplate(name, info) {
 	return $(r);
 }
 
+function updateInlineCounter(jel, count) {
+	var htt = jel.html(),
+			m = htt.match(/\s\(\d+\)/);
+	
+	if (m == null)
+		htt = htt + " (" + count + ")";
+	else
+		htt = htt.replace(m[0], count > 0 ? " (" + count + ")" : "");
+	
+	jel.html(htt);
+}
+
 $(document).ready(function() {
 
   var widgetFilterScroll = 35;
