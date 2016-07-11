@@ -45,41 +45,9 @@
 				afterRequest : function() {
 					$(this.target).empty();
 
-					for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++) {
-						var doc = this.manager.response.response.docs[i];
-						$(this.target).append(this.template_substance(doc));
-
-						/*
-						var items = [];
-						var view_category = lookup[doc.endpointcategory];
-						var view_effectendpoint = lookup[doc.effectendpoint];
-						var view_type = lookup[doc.substanceType];
-						items = items.concat(this.facetLinks('substanceType',
-								doc.substanceType,
-								view_type == null ? doc.substanceType
-										: view_type));
-						items = items.concat(this.facetLinks(
-								'endpointcategory', doc.endpointcategory,
-								view_category == null ? doc.endpointcategory
-										: view_category));
-						items = items
-								.concat(this
-										.facetLinks(
-												'effectendpoint',
-												doc.effectendpoint,
-												view_effectendpoint == null ? doc.effectendpoint
-														: view_effectendpoint));
-						items = items.concat(this.facetLinks('doc_uuid',
-								doc.doc_uuid, 'study'));
-
-						var $links = $('#links_' + doc.s_uuid);
-						$links.empty();
-						for (var j = 0, m = items.length; j < m; j++) {
-							$links.append($('<li></li>').append(items[j]));
-						}
-						*/
-
-					}
+					for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++)
+						$(this.target).append(this.template_substance(this.manager.response.response.docs[i]));
+						
 				},
 				/**
 				 * substance
@@ -118,7 +86,7 @@
 					
 					if (doc.content == null) {
 						item.link = root + doc.s_uuid;
-						item.href = link	+ "/study";
+						item.href = item.link	+ "/study";
 						item.href_title = "Study";
 						item.href_target = doc.s_uuid;
 					} 
