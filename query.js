@@ -1,4 +1,4 @@
-var Manager;
+var Manager, Basket;
 
 (function($) {
 	$(function() {
@@ -11,7 +11,13 @@ var Manager;
 		
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
-			target : '#docs'
+			target : '#docs',
+			onClick: function (e, doc, exp) { 
+				if (!Basket.findItem(doc)) {
+					Basket.addItem(doc, exp);
+					updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
+				}
+			}
 		}));
 
 		Manager.addWidget(new AjaxSolr.PagerWidget({
@@ -119,7 +125,22 @@ var Manager;
 					'_text_' ]
 		}));
 
+		Basket = new ItemListWidget({
+			id : 'basket',
+			target : '#basket-docs',
+			onClick: function (e, doc, exp) {
+				if (Basket.eraseItem(doc.s_uuid) === false) {
+					console.log("Trying to remove from basket an inexistent entry: " + JSON.stringify(doc));
+					return;
+				}
+				
+				$(this).remove();
+				updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
+			}
+		});
+		
 		Manager.init();
+		ItemListWidget.initItemList();
 			
 		Manager.store.addByValue('q', $.url().param('search') || '*:*');
 
