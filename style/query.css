@@ -17,7 +17,11 @@ sup, sub { font-size: 75%; }
 sup { vertical-align: super; }
 sub { vertical-align: sub; }
 i { font-style: italic; }
-span.units { font-size: 80% !important; }
+
+span.units { 
+	font-size: 80% !important;
+	margin-left: 2px !important;
+}
 
 a:hover,
 section.item-list article.teim a:hover {

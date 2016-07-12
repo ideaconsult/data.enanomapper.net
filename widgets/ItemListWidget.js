@@ -165,7 +165,7 @@
 		if (!!doc.effectendpoint)	value += (lookup[doc.effectendpoint] || doc.effectendpoint[0]) + " = ";
 		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
 		if (!!doc.upValue) value += (!doc.loValue ? " " : "…") + (doc.upValue[0] || "");
-		if (!!doc.unit) value += '<span class="units"> ' + formatUnits(doc.unit[0] || "") + '</span>';
+		if (!!doc.unit) value += '<span class="units">' + formatUnits(doc.unit[0] || "") + '</span>';
 		if (!!doc.textValue) value += " " + formatUnits(doc.textValue || "");
 
 		snippet.value = value;
