@@ -52,6 +52,15 @@ function updateCollectionURL(basket) {
 	window.history.pushState({ "basket" : str }, document.title, href);
 };
 
+function formatUnits(str) {
+	// change the exponential
+	str = "" + str;
+	str = str.replace(/\^\(?([\-\d]+)\)?/, '<sup>$1</sup>');
+	str = str.replace(/([A-Za-z])(\d)(\D)/, '$1<sup>$2</sup>$3');
+
+	return str;
+}
+
 $(document).ready(function() {
 
   var widgetFilterScroll = 35;
