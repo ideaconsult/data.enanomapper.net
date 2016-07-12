@@ -54,11 +54,10 @@ function updateCollectionURL(basket) {
 
 function formatUnits(str) {
 	// change the exponential
-	str = "" + str;
-	str = str.replace(/\^\(?([\-\d]+)\)?/, '<sup>$1</sup>');
-	str = str.replace(/([A-Za-z])(\d)(\D)/, '$1<sup>$2</sup>$3');
-
-	return str;
+	return str.toString()
+		.replace(/\^\(?([\-\d]+)\)?/, '<sup>$1</sup>')
+		.replace(/([A-Za-z])(\d)(\D)/, '$1<sup>$2</sup>$3')
+		.replace(/(\W)?u/, '$1&#x00B5;');
 }
 
 $(document).ready(function() {
