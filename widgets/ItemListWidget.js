@@ -124,6 +124,14 @@
 			item.href_target = doc.s_uuid;
 		} 
 		else {
+			if (doc.content.length > 0) {
+				item.link = doc.content[0];	
+
+				for (var i = 0, l = doc.content.length; i < l; i++)
+					item.footer += '<a href="' + doc.content[i] + '" target="external">' + (external == null ? "External database" : external) + '</a>';	
+			}
+			item.href = item.link || "#";
+			
 			if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {
 				item.logo = "images/canano.jpg";
 				item.href_title = "caNanoLab: " + item.link;
@@ -133,20 +141,11 @@
 				item.logo = "images/external.png";
 				item.href_title = "External: " + item.link;
 				item.href_target = "external";
-				item.footer = 
-					'<a href="' + item.root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">material</a>' +
-					'<a href="' + item.root + doc.s_uuid + '/structure" title="composition" target="' + doc.s_uuid + '">composition</a>' +
-					'<a href="' + item.root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">study</a>';
+				item.footer += 
+					'<a href="' + root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
+					'<a href="' + root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
+					'<a href="' + root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">Study</a>';
 			}
-
-			if (doc.content != null && doc.content.length > 0) {
-				item.link = doc.content[0];	
-
-				for (var i = 0, l = doc.content.length; i < l; i++)
-					item.footer += '<a href="' + doc.content[i] + '" target="external">' + (external == null ? "External database" : external) + '</a>';	
-			}
-				
-			item.href = item.link || "#";
 		}	
 		
 		return getFillTemplate("result-item", item);
@@ -166,7 +165,7 @@
 		if (!!doc.effectendpoint)	value += (lookup[doc.effectendpoint] || doc.effectendpoint[0]) + " = ";
 		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
 		if (!!doc.upValue) value += (!doc.loValue ? " " : "…") + (doc.upValue[0] || "");
-		if (!!doc.unit) value += " <i>" + formatUnits(doc.unit[0] || "") + "</i>";
+		if (!!doc.unit) value += '<span class="units"> ' + formatUnits(doc.unit[0] || "") + '</span>';
 		if (!!doc.textValue) value += " " + formatUnits(doc.textValue || "");
 
 		snippet.value = value;
