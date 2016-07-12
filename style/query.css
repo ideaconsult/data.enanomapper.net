@@ -109,6 +109,10 @@ div.item-list header {
 	margin-bottom: 10px;	
 }
 
+article.item footer {
+	margin-top: 10px;
+}
+
 article footer span {
 	display: none;
 	float: right;	
@@ -127,6 +131,18 @@ article footer.add span.item_add,
 article footer.remove span.item_remove,
 article footer.none span.item_none {	
 	display: block; 
+}
+
+article div.one-study {
+	margin-top: 10px;
+}
+
+article span.category { 
+	font-weight: bold;
+}
+
+article span.guidance { 
+	font-style: italic; 
 }
 
 /* left */

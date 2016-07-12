@@ -48,13 +48,13 @@
 			e.preventDefault();
 			e.stopPropagation();
 			var $this = $(this), 
-					span = $this.parent().find('span');
+					$div = $(".more-less", $this.parent()[0]);
 
-			if (span.is(':visible')) {
-				span.hide();
+			if ($div.is(':visible')) {
+				$div.hide();
 				$this.text('more');
 			} else {
-				span.show();
+				$div.show();
 				$this.text('less');
 			}
 
@@ -106,13 +106,13 @@
 				external = null;
 				
 		if (expanded != null) {
-			snippet += ' <a href="#" class="more">more</a>';
-			snippet += '<span style="display:none;">';
-			for (var i = 0, l = expanded.docs.length; i < l; i++) {
-				snippet += "<br/>";
+			snippet += '<a href="#" class="more">more</a>';
+			snippet += '<div class="more-less" style="display:none;">';
+			
+			for (var i = 0, l = expanded.docs.length; i < l; i++)
 				snippet += this.template_measurement(expanded.docs[i]);
-			}
-			snippet += '</span>';
+				
+			snippet += '</div>';
 		}
 		
 		item.snippet = snippet;
@@ -153,69 +153,26 @@
 	};
 	
 	ItemListWidget.prototype.template_measurement = function(doc) {
-		var snippet = "";
-		try {
-			var value = doc.topcategory + ".";
-			var view = lookup[doc.endpointcategory];
-			value += (view==undefined?doc.endpointcategory:view) + " ";
-			try {
-				if (doc.interpretation_result != undefined)
-					value += doc.interpretation_result + " ";
-			} catch (err) {
-			}
+		var value = "",
+				snippet = {
+					'category': doc.topcategory + "." + (lookup[doc.endpointcategory] || doc.endpointcategory),
+					'interpretation': doc.interpretation_result || "",
+					'guidance': !!doc.guidance ? "[" + doc.guidance + "]" : ""
+				};
+				
+		if (!!doc.effectendpoint)	value += (lookup[doc.effectendpoint] || doc.effectendpoint[0]) + " = ";
+		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
+		if (!!doc.upValue) value += " " + (doc.upValue[0] || "");
+		if (!!doc.unit) value += " " + (doc.unit[0] || "");
+		if (!!doc.textValue) value += " " + (doc.textValue || "");
 
-			try {
-				if (doc.effectendpoint != undefined) {
-					var view_effectendpoint = lookup[doc.effectendpoint];
-					value += (view_effectendpoint == undefined ? doc.effectendpoint[0]
-							: view_effectendpoint);
-				}
-			} catch (err) {
-			}
-
-			value += " = ";
-			try {
-				value += doc.loValue[0];
-			} catch (err) {
-			}
-			try {
-				value += " ";
-				value += doc.upValue[0];
-			} catch (err) {
-			}
-
-			try {
-				value += " " + doc.unit[0];
-			} catch (err) {
-			}
-
-			try {
-				if (textValue != undefined)
-					value += " " + doc.textValue;
-			} catch (err) {
-			}
-
-			snippet += value;
-			if (doc.guidance != null)
-				snippet += " [" + doc.guidance + "]";
-
-			if (doc.reference != null) {
-				var link = (doc.reference_year===undefined)?"DOI":("["+doc.reference_year+"]");
-				snippet += " <a href='" + doc.reference[0]
-						+ "' title='" + doc.reference
-						+ "' target='ref'>"+link+"</a>";
-			}
-			/*
-			 * snippet += value + "<br/>" +
-			 * (doc.reference_owner===undefined)?"":doc.reference_owner + ' ' +
-			 * (doc.reference===null?"":doc.reference) + "<br/>";
-			 * snippet += "<b>"+ doc.topcategory + "." +
-			 * doc.endpointcategory + "</b><br/>Protocol: <i>" +
-			 * doc.guidance+ "</i>";
-			 */
-		} catch (err) {
-			console.log(err);
+		snippet.value = value;
+		if (doc.reference != null) {
+			snippet.link = (doc.reference_year == null) ? "DOI" : "[" + doc.reference_year + "]";
+			snippet.href = doc.reference[0];
+			snippet.title = doc.reference;
 		}
-		return snippet;
+
+		return fillString($("#study-item").html(), snippet);
 	};
 })(jQuery);
