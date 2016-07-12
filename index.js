@@ -49,7 +49,7 @@ function updateCollectionURL(basket) {
 	else
 		href += (href.slice(-1) == "&" ? "" : "&") + str;
 		
-	window.history.pushState({ "basket" : str }, document.title, href);
+	window.history.replaceState({ "basket" : str }, document.title, href);
 };
 
 function formatUnits(str) {
