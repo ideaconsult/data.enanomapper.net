@@ -157,14 +157,17 @@
 				snippet = {
 					'category': doc.topcategory + "." + (lookup[doc.endpointcategory] || doc.endpointcategory),
 					'interpretation': doc.interpretation_result || "",
-					'guidance': !!doc.guidance ? "[" + doc.guidance + "]" : ""
+					'guidance': !!doc.guidance ? "[" + doc.guidance + "]" : "",
+					'link': "",
+					'href': "",
+					'title': ""
 				};
 				
 		if (!!doc.effectendpoint)	value += (lookup[doc.effectendpoint] || doc.effectendpoint[0]) + " = ";
 		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
-		if (!!doc.upValue) value += " " + (doc.upValue[0] || "");
-		if (!!doc.unit) value += " " + (doc.unit[0] || "");
-		if (!!doc.textValue) value += " " + (doc.textValue || "");
+		if (!!doc.upValue) value += (!doc.loValue ? " " : "…") + (doc.upValue[0] || "");
+		if (!!doc.unit) value += " <i>" + formatUnits(doc.unit[0] || "") + "</i>";
+		if (!!doc.textValue) value += " " + formatUnits(doc.textValue || "");
 
 		snippet.value = value;
 		if (doc.reference != null) {
