@@ -17,6 +17,7 @@ sup, sub { font-size: 75%; }
 sup { vertical-align: super; }
 sub { vertical-align: sub; }
 i { font-style: italic; }
+span.units { font-size: 80% !important; }
 
 a:hover,
 section.item-list article.teim a:hover {
@@ -116,6 +117,10 @@ div.item-list header {
 
 article.item footer {
 	margin-top: 10px;
+}
+
+article.item footer a {
+	margin-right: 10px;
 }
 
 article footer span {
