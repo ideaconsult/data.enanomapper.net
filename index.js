@@ -46,6 +46,8 @@ function updateCollectionURL(basket) {
 	
 	if (!!mbs)
 		href = href.replace(mbs[0], str);
+	else if (href.lastIndexOf('?') < 0)
+		href += '?' + str;
 	else
 		href += (href.slice(-1) == "&" ? "" : "&") + str;
 		
