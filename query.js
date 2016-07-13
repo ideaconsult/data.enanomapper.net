@@ -150,8 +150,19 @@ var Manager, Basket;
 		});
 		
 		Manager.init();
-			
+		
+		// now get the search parameters passed via URL	
 		Manager.store.addByValue('q', $.url().param('search') || '*:*');
+		
+		var fq = $.url().param('facet');
+		if (typeof fq === 'string') fq = [fq];
+			
+		for (i = 0, l = fq.length; i < l; ++i) {
+			var p = fq[i].split(":"),
+					w = Manager.widgets[p[0]];
+					
+			if (w != null) w.add(p[1]);
+		}
 
 		var params = {
 			facet : true,
