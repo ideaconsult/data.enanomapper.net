@@ -33,25 +33,20 @@ function updateInlineCounter(jel, count) {
 	jel.html(htt);
 }
 
-function updateCollectionURL(basket) {
-	var str = "",
-			href = window.location.href,
-			mbs = href.match(/basket=[\S^&]+/);
+function updateQueryURL(name, value) {
+	var href = window.location.href,
+			mbs = href.match(new RegExp(name + "=[\\S^&]+")),
+			str = !!value ? name + "=" + value : "",
+			he = href.slice(-1);
 			
-	basket.enumerateItems(function (doc) {
-		str += doc.s_uuid + ";";
-	});
-	
-	if (str != "") str = "basket=" + str;
-	
 	if (!!mbs)
 		href = href.replace(mbs[0], str);
 	else if (href.lastIndexOf('?') < 0)
 		href += '?' + str;
 	else
-		href += (href.slice(-1) == "&" ? "" : "&") + str;
+		href += (he == "&" || he == "?" ? "" : "&") + str;
 		
-	window.history.replaceState({ "basket" : str }, document.title, href);
+	window.history.pushState({ query : window.location.search }, document.title, href);
 };
 
 function formatUnits(str) {
