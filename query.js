@@ -15,8 +15,10 @@ var Manager, Basket;
 			onClick: function (e, doc, exp, widget) { 
 				if (!Basket.findItem(doc)) {
 					Basket.addItem(doc, exp);
+					var s = "";
+					Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
+					updateQueryURL("basket", s);
 					updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
-					updateCollectionURL(Basket);
 					$("footer", this).toggleClass("add none");					
 				}
 			},
@@ -141,7 +143,9 @@ var Manager, Basket;
 				
 				$(this).remove();
 				updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
-				updateCollectionURL(Basket);
+				var s = "";
+				Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
+				updateQueryURL("basket", s);
 				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
 			},
 			onCreated: function (doc) {
@@ -155,13 +159,14 @@ var Manager, Basket;
 		Manager.store.addByValue('q', $.url().param('search') || '*:*');
 		
 		var fq = $.url().param('facet');
-		if (typeof fq === 'string') fq = [fq];
-			
-		for (i = 0, l = fq.length; i < l; ++i) {
-			var p = fq[i].split(":"),
-					w = Manager.widgets[p[0]];
-					
-			if (w != null) w.add(p[1]);
+		if (!!fq) {
+			fq = fq.split(";");
+			for (i = 0, l = fq.length; i < l; ++i) {
+				var p = fq[i].split(":"),
+						w = Manager.widgets[p[0]];
+						
+				if (w != null) w.add(p[1]);
+			}
 		}
 
 		var params = {
