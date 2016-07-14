@@ -140,6 +140,7 @@
 				item.logo = "images/canano.jpg";
 				item.href_title = "caNanoLab: " + item.link;
 				item.href_target = external = "caNanoLab";
+				item.footer = '';
 			}
 			else {
 				item.logo = "images/external.png";
