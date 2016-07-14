@@ -121,6 +121,7 @@ div.item-list header {
 
 article.item footer {
 	margin-top: 10px;
+	min-height: 10px;
 }
 
 article.item footer a {

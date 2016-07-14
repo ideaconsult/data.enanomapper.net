@@ -5,7 +5,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   fieldRegExp: /^([\w\.]+):/,
 
   afterRequest: function () {
-    var self = this, el, f, fhref = "",
+    var self = this, el, f, fk,
         links = [],
         q = this.manager.store.get('q').val(),
         fq = this.manager.store.values('fq');
@@ -19,16 +19,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
 
     for (var i = 0, l = fq.length; i < l; i++) {
-    	if (fq[i].indexOf("!collapse field=s_uuid") < 0) {
-        fhref += fq[i] + ";";
-        f = fq[i].match(self.fieldRegExp)[1];
-    		links.push(el = self.tagRenderer(fq[i].replace(self.fieldRegExp, ""), "x", self.removeFacet(fq[i])).addClass('tag_selected'));
-    		el.addClass(self.colorMap[f]);
+	    f = fq[i];
+    	if (f.indexOf("!collapse field=s_uuid") < 0) {
+        fk = f.match(self.fieldRegExp)[1];
+    		links.push(el = self.tagRenderer(f.replace(self.fieldRegExp, ""), "x", self.removeFacet(f)).addClass('tag_selected'));
+    		el.addClass(self.colorMap[fk]);
       }
     }
-    
-    if (!!href) 
-    	updateQueryURL("facet", fhref);
     
     if (links.length)
       $(this.target).empty().addClass('tags').append(links);
