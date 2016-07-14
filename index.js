@@ -36,11 +36,13 @@ function updateInlineCounter(jel, count) {
 function updateQueryURL(name, value) {
 	var href = window.location.href,
 			mbs = href.match(new RegExp(name + "=[\\S^&]+")),
-			str = !!value ? name + "=" + value : "",
+			str = !!value ? name + "=" + encodeURIComponent(value) : "",
 			he = href.slice(-1);
 			
 	if (!!mbs)
 		href = href.replace(mbs[0], str);
+	else if (!str)
+		return;
 	else if (href.lastIndexOf('?') < 0)
 		href += '?' + str;
 	else
@@ -52,9 +54,8 @@ function updateQueryURL(name, value) {
 function formatUnits(str) {
 	// change the exponential
 	return str.toString()
-		.replace(/\^\(?([\-\d]+)\)?/, '<sup>$1</sup>')
-		.replace(/([A-Za-z])(\d)(\D)/, '$1<sup>$2</sup>$3')
-		.replace(/(\W)?u/, '$1&#x00B5;');
+		.replace(/(\W)?u(\w)/, '$1&#x00B5;$2')
+		.replace(/\^\(?([\-\d]+)\)?/, '<sup>$1</sup>');
 }
 
 $(document).ready(function() {
