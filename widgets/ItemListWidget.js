@@ -90,32 +90,42 @@
 	ItemListWidget.prototype.template_substance = function(doc) {
 		if (doc.type_s != 'study') return;
 		
-		var snippet = "",
-				root = "https://data.enanomapper.net/substance/",
+		var root = "https://data.enanomapper.net/substance/",
+				expanded = this.itemData.expanded[doc.s_uuid],
+				external = null,
+				sniphtml = $("#study-item").html();
+				snippets = [this.template_measurement(doc)],
 				item = { 
 					logo: "images/logo.png",
 					link: "#",
-					footer: "",
+					snippet: "",
 					item_id: (this.prefix || this.id || "item") + "_" + doc.s_uuid,
-					publicname: (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")")
+					publicname: (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")"),
+					footer: 
+						'<a href="' + root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
+						'<a href="' + root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
+						'<a href="' + root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">Study</a>'
 				};
 		
-
-		var snippet = this.template_measurement(doc),
-				expanded = this.itemData.expanded[doc.s_uuid],
-				external = null;
-				
 		if (expanded != null) {
-			snippet += '<a href="#" class="more">more</a>';
-			snippet += '<div class="more-less" style="display:none;">';
-			
 			for (var i = 0, l = expanded.docs.length; i < l; i++)
-				snippet += this.template_measurement(expanded.docs[i]);
+				snippets.push(this.template_measurement(expanded.docs[i]));
 				
-			snippet += '</div>';
+			snippets.sort(function (a, b) {
+				return a.category < b.category ? -1 : (a.category > b.category ? 1 : (a.value < b.value ? -1 : (a.value > b.value ? 1 : 0)));
+			});
 		}
-		
-		item.snippet = snippet;
+
+		item.snippet = fillString(sniphtml, snippets[0]);
+		if (snippets.length > 1) {
+			snippets.splice(0, 1);
+			item.snippet += 
+				'<a href="#" class="more">more</a>' +
+				'<div class="more-less" style="display:none;">' + 
+				snippets.map(function (s) { return fillString(sniphtml, s)}).join("") +
+				'</div>';
+		}
+			
 		
 		if (doc.content == null) {
 			item.link = root + doc.s_uuid;
@@ -124,12 +134,6 @@
 			item.href_target = doc.s_uuid;
 		} 
 		else {
-			if (doc.content.length > 0) {
-				item.link = doc.content[0];	
-
-				for (var i = 0, l = doc.content.length; i < l; i++)
-					item.footer += '<a href="' + doc.content[i] + '" target="external">' + (external == null ? "External database" : external) + '</a>';	
-			}
 			item.href = item.link || "#";
 			
 			if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {
@@ -141,10 +145,13 @@
 				item.logo = "images/external.png";
 				item.href_title = "External: " + item.link;
 				item.href_target = "external";
-				item.footer += 
-					'<a href="' + root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
-					'<a href="' + root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
-					'<a href="' + root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">Study</a>';
+			}
+			
+			if (doc.content.length > 0) {
+				item.link = doc.content[0];	
+
+				for (var i = 0, l = doc.content.length; i < l; i++)
+					item.footer += '<a href="' + doc.content[i] + '" target="external">' + (external == null ? "External database" : external) + '</a>';	
 			}
 		}	
 		
@@ -166,7 +173,7 @@
 		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
 		if (!!doc.upValue) value += (!doc.loValue ? " " : "…") + (doc.upValue[0] || "");
 		if (!!doc.unit) value += '<span class="units">' + formatUnits(doc.unit[0] || "") + '</span>';
-		if (!!doc.textValue) value += " " + formatUnits(doc.textValue || "");
+		if (!!doc.textValue) value += " " + doc.textValue || "";
 
 		snippet.value = value;
 		if (doc.reference != null) {
@@ -175,6 +182,6 @@
 			snippet.title = doc.reference;
 		}
 
-		return fillString($("#study-item").html(), snippet);
+		return snippet;
 	};
 })(jQuery);
