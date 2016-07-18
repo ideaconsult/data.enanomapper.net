@@ -15,10 +15,14 @@ var Manager, Basket;
 			onClick: function (e, doc, exp, widget) { 
 				if (!Basket.findItem(doc)) {
 					Basket.addItem(doc, exp);
-					var s = "";
+					var s = "", jel = $('a[href="#basket_tab"]');
+					
+					jel.html(jT.ui.updateCounter(jel.html(), Basket.length));
+					
 					Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
-					updateQueryURL("basket", s);
-					updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
+					if (!!(s = ccLib.modifyURL(window.location.href, "basket", s)))
+						window.history.pushState({ query : window.location.search }, document.title, s);					
+
 					$("footer", this).toggleClass("add none");					
 				}
 			},
@@ -142,10 +146,11 @@ var Manager, Basket;
 				}
 				
 				$(this).remove();
-				updateInlineCounter($('a[href="#basket_tab"]'), Basket.length);
-				var s = "";
+				var s = "", jel = $('a[href="#basket_tab"]');
+				jel.html(jT.ui.updateCounter(jel.html(), Basket.length));
 				Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
-				updateQueryURL("basket", s);
+				if (!!(s = ccLib.modifyURL(window.location.href, "basket", s)))
+					window.history.pushState({ query : window.location.search }, document.title, s);					
 				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
 			},
 			onCreated: function (doc) {

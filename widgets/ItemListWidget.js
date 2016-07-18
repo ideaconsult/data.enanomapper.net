@@ -116,13 +116,13 @@
 			});
 		}
 
-		item.snippet = fillString(sniphtml, snippets[0]);
+		item.snippet = ccLib.formatString(sniphtml, snippets[0]);
 		if (snippets.length > 1) {
 			snippets.splice(0, 1);
 			item.snippet += 
 				'<a href="#" class="more">more</a>' +
 				'<div class="more-less" style="display:none;">' + 
-				snippets.map(function (s) { return fillString(sniphtml, s)}).join("") +
+				snippets.map(function (s) { return ccLib.formatString(sniphtml, s)}).join("") +
 				'</div>';
 		}
 			
@@ -156,7 +156,7 @@
 			}
 		}	
 		
-		return getFillTemplate("result-item", item);
+		return jT.getFillTemplate("#result-item", item);
 	};
 	
 	ItemListWidget.prototype.template_measurement = function(doc) {
@@ -173,7 +173,7 @@
 		if (!!doc.effectendpoint)	value += (lookup[doc.effectendpoint] || doc.effectendpoint[0]) + " = ";
 		if (!!doc.loValue) value += " " + (doc.loValue[0] || "");
 		if (!!doc.upValue) value += (!doc.loValue ? " " : "…") + (doc.upValue[0] || "");
-		if (!!doc.unit) value += '<span class="units">' + formatUnits(doc.unit[0] || "") + '</span>';
+		if (!!doc.unit) value += '<span class="units">' + jT.ui.formatUnits(doc.unit[0] || "") + '</span>';
 		if (!!doc.textValue) value += " " + doc.textValue || "";
 
 		snippet.value = value;
