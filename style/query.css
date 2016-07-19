@@ -38,10 +38,6 @@ section.item-list article.teim a:hover {
   clear: both;
 }
 
-.templates {
-	display: none;
-}
-
 /* header */
 
 #header {
@@ -58,6 +54,18 @@ section.item-list article.teim a:hover {
   color: #666;
   font-size: 14px;
   font-weight: 100;
+}
+
+#search input {
+  width: 350px;
+}
+
+#calendar {
+  width: 160px;
+}
+
+#search_help {
+  font-size: 80%;
 }
 
 /* right */
@@ -103,6 +111,26 @@ section.item-list article.teim a:hover {
 .links li {
   list-style-type: none;
   display: inline;
+}
+
+/* left */
+
+.left {
+  float: left;
+  width: 300px;
+  padding: 0 0 10px 10px;
+}
+
+.left h2 {
+  clear: left;
+  padding-top: 20px;
+  color: #333;
+  font-size: 13px;
+}
+
+.jtox-foldable {
+  box-sizing: border-box;  
+  width: 100%;
 }
 
 div.item-list {
@@ -160,48 +188,6 @@ article span.guidance {
 	font-style: italic; 
 }
 
-/* left */
-
-.left {
-  float: left;
-  width: 300px;
-  padding: 0 0 10px 10px;
-}
-
-.left h2 {
-  clear: left;
-  padding-top: 20px;
-  color: #333;
-  font-size: 13px;
-}
-
-#search input {
-  width: 350px;
-}
-
-#calendar {
-  width: 160px;
-}
-
-#search_help {
-  font-size: 80%;
-}
-
-.tagcloud {
-  padding: 10px 15px 0;
-}
-
-.tagcloud_item {
-  float: left;
-  display: block;
-  margin-right: 4px;
-  color: #000000;
-}
-
-.tagcloud_item:hover {
-  color: #f00;
-}
-
 /* tagcloud */
 
 #hits_tab .tags li {
@@ -216,18 +202,26 @@ article span.guidance {
 
 #accordion .tags li {
   width: auto;
-  max-width: 150px;
+  max-width: 130px;
+  margin-left: 4px;
+  margin-right: 8px;
 }
 
 #accordion .tags li>a {
   text-overflow: ellipsis;  
   overflow: hidden;
+  white-space: nowrap;
+}
+
+#accordion div.ui-accordion-content::-webkit-scrollbar {
+	display: none !important;
 }
 
 #accordion div.ui-accordion-content {
   max-height: 345px;
   overflow-x: hidden;
-  overflow-y: scroll;  
+  overflow-y: scroll;
+  -ms-overflow-style: none;
 }
 
 #accordion>h3>span.ui-icon-search {
@@ -237,6 +231,21 @@ article span.guidance {
 
 #accordion>h3>span.ui-icon-search:hover {
 	opacity: 1.0;
+}
+
+#accordion .jtox-foldable h7 {
+	display: block;
+	margin-left: 4px;
+	margin-bottom: 2px;
+	font-size: 90%;
+}
+
+#accordion .jtox-foldable:hover h7 {
+	color: rgba(0, 0, 0, 0.6);
+}
+
+#accordion .jtox-foldable.folded:hover h7 {
+	color: inherit;
 }
 
 div.widget-content.ui-accordion-content.ui-widget-content {
