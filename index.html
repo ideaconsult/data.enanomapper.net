@@ -24,6 +24,7 @@
 <script src="lib/jtoxkit.js"></script>
 
 <link rel="stylesheet" href="style/query.css">
+<link rel="stylesheet" href="style/jtoxkit.css">
 
 <link rel="stylesheet" href="style/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" href="style/jquery.ui.theme.css">
@@ -60,7 +61,6 @@
 
 <script src="lib/core/AbstractFacetWidget.js"></script>
 
-<script src="widgets/TagcloudWidget.js"></script>
 <script src="widgets/TagWidget.js"></script>
 <script src="widgets/PivotWidget.js"></script>
 
@@ -218,8 +218,7 @@
 					<h3>Data sources</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" id="owner_name" data-color="green">
-						</ul>
+						<ul class="tags remove-bottom" id="owner_name" data-color="green"></ul>
 					</div>	    	
 					
 					<h3>Nanomaterial type</h3>
@@ -231,15 +230,27 @@
 					<h3 id="P-CHEM_header">Phys-chem</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" id="P-CHEM_endpointcategory" data-color="green"></ul>
-						<ul class="tags remove-bottom" id="P-CHEM_effectendpoint" data-color="blue"></ul>
+            <div class="jtox-foldable">
+							<h7 class="title">P-Chem 1</h7>
+							<ul class="tags remove-bottom" id="P-CHEM_endpointcategory" data-color="green"></ul>
+            </div>
+            <div class="jtox-foldable folded">
+							<h7 class="title">P-Chem 2</h7>
+							<ul class="tags remove-bottom" id="P-CHEM_effectendpoint" data-color="blue"></ul>
+            </div>
 					</div>		
 					
 					<h3 id="TOX_header">Assays</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" id="TOX_endpointcategory" data-color="green"></ul>
-						<ul class="tags remove-bottom" id="TOX_effectendpoint" data-color="blue"></ul>
+            <div class="jtox-foldable">
+							<h7 class="title">Tox 1</h7>
+							<ul class="tags remove-bottom" id="TOX_endpointcategory" data-color="green"></ul>
+            </div>
+						<div class="jtox-foldable folded">
+							<h7 class="title">Tox 2</h7>
+							<ul class="tags remove-bottom" id="TOX_effectendpoint" data-color="blue"></ul>
+						</div>
 					</div>
 					
 					<h3>Cell</h3>
@@ -294,7 +305,7 @@
         <li><a href="#basket_tab">Basket</a></li>
       </ul>
   		<div id="hits_tab">
-  			<div class='row remove-bottom'>
+  			<div class="row remove-bottom">
   				<ul class="tags remove-bottom" id="selection"></ul>	
   			</div>
   			<div id="navigation">
@@ -311,7 +322,7 @@
 		<!-- container -->
 	</div>
 	
-	<div class="templates">
+	<div class="jtox-template">
 		<section id="result-item">
 			<article id="{{item_id}}" class="item">
 				<header>{{publicname}}
@@ -327,6 +338,7 @@
 				</footer>
 			</article>
 		</section>
+		
 		<div id="study-item">
 			<div class="one-study">
 				<span class="category">{{category}}</span>
@@ -335,6 +347,27 @@
 				<span class="guidance">{{guidance}}</span>
 				<a href="{{href}}" title="{{title}}" target="ref">{{link}}</a>
 		</div>
+
+		<div id="tag-width">
+			<h3>{{name}} <span class="ui-icon ui-icon-search"></span></h3>
+			<div class="widget-content">
+	      <input type="text" placeholder="Filter_" class="widget-filter"/>
+	      {{content}}
+			</div>
+		</div>
+		
+		<div id="tag-group-simple"
+			<ul class="tags remove-bottom {{color}}" data-field="{{data-field}}"></ul>
+		</div>
+		
+		<div id="tag-group-foldable">
+	    <div class="jtox-foldable {{color}}">
+				<h7 class="title">{{title}} <span class="ui-icon ui-icon-plus"></span></h7>
+				<ul class="tags remove-bottom" data-color="{{color}}"></ul>
+	    </div>
+		</div>
+		
+		
 	</div>
 
 <script>

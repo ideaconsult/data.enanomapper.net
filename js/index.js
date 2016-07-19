@@ -45,6 +45,10 @@ $(document).ready(function() {
 		var jq = $(this);
 		jq.data('initWidget', function(e) { initWidgetFilter( e, { newPanel: jq, newHeader: jq.prev() } )});
 	});
+	
+	$(document).on('click', ".jtox-foldable", function (e) {
+		$(this).closest('div.widget-content').data('initWidget').call();
+	});
 
 	// ... and prepare the actual filtering funtion.
 	$("#accordion input.widget-filter").on("keyup", function (e) {
@@ -85,6 +89,6 @@ $(document).ready(function() {
       }
     });
     $( "#about-message" ).dialog("close");
-  });  
+  });
 });
 
