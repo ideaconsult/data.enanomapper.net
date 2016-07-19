@@ -72,7 +72,7 @@
 			}
 
 			$(this.target).empty().append(objectedItems);
-			$(this.target).parent('div.widget-content').data('initWidget').call();
+			$(this.target).closest('div.widget-content').data('initWidget').call();
 		}
 	});
 	
