@@ -21,8 +21,6 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
     $(this.target).empty();
     for (var i = 0, l = objectedItems.length; i < l; i++)
       $(this.target).append(this.tagRenderer(facet = objectedItems[i].facet, count = objectedItems[i].count, this.clickHandler(facet)));
-      
-		$(this.target).closest('div.widget-content').data('initWidget').call();
   }
 });
 
