@@ -7,15 +7,15 @@
 			var topcategory = this.id;
 			f = "topcategory,endpointcategory,effectendpoint,unit";
 			if (this.manager.response.facet_counts.facet_pivot[f] === undefined) {
-				$(this.target).html(
-						'no items found in current selection');
+				this.target.html('no items found in current selection');
 				return;
 			}
 
 			// console.log(
 			// this.manager.response.facet_counts.facet_pivot);
 			var objectedItems = [],
-			    facet = null;
+			    facet = null,
+			    hdr = getHeaderText(this.header);
 			    
 			for ( var facet in this.manager.response.facet_counts.facet_pivot[f]) {
 
@@ -23,10 +23,8 @@
 				if (((topcategory.value + "_endpointcategory") == this.id)
 						|| ((topcategory.value + "_effectendpoint") == this.id)) {
 
-					var count = parseInt(topcategory.count);
+					hdr.textContent = jT.ui.updateCounter(hdr.textContent, parseInt(topcategory.count));
 
-					$("#" + topcategory.value + "_header").text(
-							topcategory.value + " (" + count + ")");
 					for ( var endpointcategory in topcategory.pivot) try {
 						if ((topcategory.value + "_endpointcategory") == this.id) {
 							objectedItems.push(this.tagRenderer(
@@ -71,7 +69,7 @@
 				}
 			}
 
-			$(this.target).empty().append(objectedItems);
+			this.target.empty().append(objectedItems);
 		}
 	});
 	
