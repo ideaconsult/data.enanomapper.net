@@ -216,91 +216,76 @@
 		    <div id="accordion" style="padding:1px; margin:1px;">
 			    
 					<h3>Data sources</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="owner_name" data-color="green">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="owner_name" data-color="green"></ul>
+						<ul class="tags remove-bottom"></ul>
 					</div>	    	
 					
 					<h3>Nanomaterial type</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="substanceType">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="substanceType"></ul>				
+						<ul class="tags remove-bottom"></ul>
 					</div>
 					
 					<h3>Phys-chem</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="P-CHEM">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <div class="jtox-panel facet-foldable folded">
-							<h7 class="title">P-Chem 1 <span class="ui-icon ui-icon-plus jtox-fadable"></span></h7>
-							<ul class="tags remove-bottom" id="P-CHEM_endpointcategory" data-color="green"></ul>
-            </div>
-            <div class="jtox-panel facet-foldable">
-							<h7 class="title">P-Chem 2 <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
-							<ul class="tags remove-bottom" id="P-CHEM_effectendpoint" data-color="blue"></ul>
-            </div>
-					</div>		
+					</div>
 					
 					<h3>Assays</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="TOX">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <div class="jtox-panel facet-foldable green">
-							<h7 class="title">Tox 1 <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
-							<ul class="tags remove-bottom" id="TOX_endpointcategory" data-color="green"></ul>
-            </div>
-						<div class="jtox-panel facet-foldable blue">
-							<h7 class="title">Tox 2 <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
-							<ul class="tags remove-bottom" id="TOX_effectendpoint" data-color="blue"></ul>
-						</div>
 					</div>
 					
 					<h3>Cell</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="cell" data-color="green">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="cell" data-color="green"></ul>
+						<ul class="tags remove-bottom"></ul>
 					</div>
 					
 					<h3>Species</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="species" data-color="green">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="species" data-color="green"></ul>
+						<ul class="tags remove-bottom"></ul>
 					</div>				
 										
 					<h3>Results</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="interpretation">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="interpretation"></ul>
+						<ul class="tags remove-bottom"></ul>
 					</div>					
 					
 					<h3>References</h3>
-					<div class="widget-content">
+					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <div class="jtox-panel facet-foldable green">
-							<h7 class="title">Year <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
-							<ul class="tags remove-bottom" data-facet="reference_year" data-color="green"></ul>
+            <div class="jtox-panel facet-foldable green widget-content" data-facet="reference_year" data-color="green">
+	            <span class="ui-icon ui-icon-minus jtox-fadable"></span>
+							<h7 class="title">Year </h7>
+							<ul class="tags remove-bottom"></ul>
             </div>
-						<div class="jtox-panel facet-foldable">
-							<h7 class="title">Identifier <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
-  					<ul class="tags remove-bottom" data-facet="reference"></ul>
+						<div class="jtox-panel facet-foldable widget-content" data-facet="reference">
+							<span class="ui-icon ui-icon-minus jtox-fadable"></span>
+							<h7 class="title">Identifier</h7>
+							<ul class="tags remove-bottom" ></ul>
 						</div>
 					</div>		
 					
 					<h3>Protocols</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="protocol" data-color="blue">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <ul class="tags remove-bottom" data-facet="protocol" data-color="blue"></ul>
+            <ul class="tags remove-bottom"></ul>
 					</div>		
 					
 					<h3>Instruments</h3>
-					<div class="widget-content">
+					<div class="widget-content widget-root" data-facet="instruments" data-color="green">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="portlet-content tags remove-bottom" data-facet="instruments" data-color="green"></ul>
+						<ul class="portlet-content tags remove-bottom"></ul>
 					</div>
 						
 				</div>
 			</div>
 			
 			<div class="clear"></div>
-			
 			
 		</div>
 
@@ -355,14 +340,14 @@
 			</div>
 		</div>
 
-		<div id="tag-facet"
+		<div id="tag-facet">
 			<ul class="tags remove-bottom {{color}}" data-field="{{field}}"></ul>
 		</div>
 		
 		<div id="tag-group">
 	    <div class="jtox-panel facet-foldable folded {{color}}">
-				<h7 class="title">{{title}} <span class="ui-icon ui-icon-plus jtox-fadable"></span></h7>
-				{{content}}
+		    <span class="ui-icon ui-icon-plus jtox-fadable"></span>
+				<h7 class="title">{{value}} <span class="units">{{count}}</span></h7>
 	    </div>
 		</div>
 		
