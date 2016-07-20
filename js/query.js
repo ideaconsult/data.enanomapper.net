@@ -11,8 +11,8 @@ var Manager,
   		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
   		'reference_year': "reference_year",
   		
-			'P-CHEM':					["topcategory", "endpointcategory", "effectendpoint", "unit"],
-			'TOX':						["topcategory", "endpointcategory", "effectendpoint", "unit"]
+			'P-CHEM':					["effectendpoint"],
+			'TOX':						["effectendpoint"]
   	};
 
 (function($) {
@@ -106,7 +106,8 @@ var Manager,
 			}
 			else {
 				fcls = AjaxSolr.PivotWidget;
-				colId = f.join(",");
+				f = f[0];
+				colId = fid + "_" + f;
 			}
 
   		if (!!col) {
@@ -130,10 +131,7 @@ var Manager,
 			tagRenderer: renderTag,
 			colorMap: colors
 		}));
-		/*
-		 * Manager.addWidget(new AjaxSolr.TextWidget({ id: 'text', target:
-		 * '#search' }));
-		 */
+
 		// ... auto-completed text-search.
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
@@ -144,7 +142,15 @@ var Manager,
 					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
 					'_text_' ]
 		}));
+		
+		// Add the category filter handling.
+		$(document).on("click", "span.ui-icon-plus.category", function (e) {
+			var dt = $(this).data();
+			Manager.store.addByValue('fq', dt.field + ":" + AjaxSolr.Parameter.escapeValue(dt.value));
+			Manager.doRequest();
+		});
 
+		// Now add the basket.
 		Basket = new ItemListWidget({
 			id : 'basket',
 			target : '#basket-docs',
