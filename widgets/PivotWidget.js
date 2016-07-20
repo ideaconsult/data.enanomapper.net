@@ -1,10 +1,10 @@
 (function($) {
 	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit";
-	var buildValueRange = function (facet) {
+	var buildValueRange = function (facet, suffix) {
 		var stats = facet.stats.stats_fields;
-		return	" (" + stats.loValue.min +
-						"&#x2026;" + stats.loValue.max +
-						") " + facet.value;
+		return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
+						"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
+						" " + (suffix == null ? facet.value : suffix);
 	};
 	
 	var buildFacetDom = function (facet, leafId, renderer) {
@@ -66,9 +66,13 @@
 					var msg = "";
 					
 					if (f.pivot == undefined) 
-						msg = buildValueRange(f);
-					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) 
+						msg = buildValueRange(f, "");
+					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) { 
+						if (j > 0)
+							msg += ", ";
+							
 						msg += buildValueRange(f.pivot[j]);
+					}
 					
 					return self.tagRenderer( f.value, f.count, msg, self.clickHandler(f.value) );
 				}));
