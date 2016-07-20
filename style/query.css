@@ -207,7 +207,8 @@ article span.guidance {
   margin-right: 8px;
 }
 
-#accordion .tags li>a {
+#accordion .tags li>a,
+.facet-foldable .title {
   text-overflow: ellipsis;  
   overflow: hidden;
   white-space: nowrap;
@@ -252,17 +253,23 @@ article span.guidance {
 	display: block;
 	margin-left: 4px;
 	margin-bottom: 2px;
-	font-size: 90%;
+	font-size: 85%;
 }
 
-.facet-foldable .title>span.ui-icon { 
+.facet-foldable .title span.units {
+	margin-right: 5px;
+	float: right;
+}
+
+.facet-foldable>span.ui-icon { 
 	float: right; 
 	opacity: 0.4;
 }
 
 .facet-foldable .title>span.ui-icon:hover { opacity: 1.0; }
 .facet-foldable.folded>* { display: none; }
-.facet-foldable.folded>.title { display: inherit !important; }
+.facet-foldable.folded>.title, 
+.facet-foldable>span.ui-icon { display: inherit !important; }
 .facet-foldable:hover .title { color: rgba(0, 0, 0, 0.6); }
 .facet-foldable.folded:hover .title { color: inherit; }
 
@@ -296,7 +303,7 @@ div.facet-foldable:hover {
 	background: linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* W3C */
 }
 
-div.widget-content.ui-accordion-content.ui-widget-content {
+div.ui-accordion-content.ui-widget-content {
 	padding:1px; 
 	margin:1px;	
 }
