@@ -8,10 +8,7 @@ $(document).ready(function() {
 	
 	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
-	$(document).on("click", ".facet-foldable", function (e) {
-		$(this).toggleClass("folded");
-		$("span.ui-icon", this).toggleClass("ui-icon-minus").toggleClass("ui-icon-plus");
-	});
+	$(document).on("click", ".facet-foldable", function (e) { $(this).toggleClass("folded"); });
 			
 	// Now instantiate the accordion...
 	$("#accordion").accordion({
