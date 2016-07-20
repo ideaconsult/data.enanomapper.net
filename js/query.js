@@ -103,10 +103,11 @@ var Manager,
 	      	colors[f] = col;
 	      	me.addClass(col);
 	      }
-	      	
+	      
 				Manager.addWidget(new AjaxSolr.TagWidget({
 					id : fid,
 					target : me,
+					header: me.closest(".widget-content").prev(),
 					field : f,
 					tagRenderer: renderTag
 				}));
@@ -127,7 +128,8 @@ var Manager,
       el.addClass(colors[f]);
   		Manager.addWidget(new AjaxSolr.PivotWidget({
   				id : pivots[i],
-  				target : '#' + pivots[i],
+  				target : el,
+  				header : el.closest(".widget-content").prev(),
   				field : f,
   				tagRenderer: renderTag
   		}));	
