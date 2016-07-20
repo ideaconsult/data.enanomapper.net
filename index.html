@@ -11,8 +11,7 @@
 <!-- CSS
   ================================================== -->
 <link rel="stylesheet" href="style/skeleton/base.css" type="text/css">
-<link rel="stylesheet" href="style/skeleton/skeleton-fluid.css"
-	type="text/css">
+<link rel="stylesheet" href="style/skeleton/skeleton-fluid.css" type="text/css">
 <link rel="stylesheet" href="style/skeleton/layout.css" type="text/css">
 
 <!-- JQuery
@@ -84,11 +83,11 @@
 
 <body>
 
-	<div class="container" style="margin: 0; padding: 0;">
+	<div class="container">
 
 		<!-- banner -->
 
-		<div class="row half-bottom" id="header" style="padding-top: 5px">
+		<div class="row half-bottom cc-fixed" id="banner" style="padding-top: 5px">
 			<div class="two columns">
 				<a href="#"><img class='scale-with-grid' border='0'
 					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
@@ -186,10 +185,10 @@
 
 		</div>
 
-		<div class="row remove-bottom" id="header">
+		<div class="row remove-bottom cc-fixed" id="header">
 			<!-- toplinks -->
 		</div>
-		<div class="row half-bottom">
+		<div class="row half-bottom cc-fixed">
 
 			<div class="eight columns remove-bottom" style="padding-left: 10px;">
 				<div id="breadCrumb" class="breadCrumb module remove-bottom h5">
@@ -228,7 +227,7 @@
 						<ul class="tags remove-bottom" data-facet="substanceType"></ul>				
 					</div>
 					
-					<h3 id="P-CHEM_header">Phys-chem</h3>
+					<h3>Phys-chem</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
             <div class="jtox-panel facet-foldable folded">
@@ -241,7 +240,7 @@
             </div>
 					</div>		
 					
-					<h3 id="TOX_header">Assays</h3>
+					<h3>Assays</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
             <div class="jtox-panel facet-foldable green">
@@ -269,14 +268,20 @@
 					<h3>Results</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="tags remove-bottom" data-facet="interpretation_result"></ul>
+						<ul class="tags remove-bottom" data-facet="interpretation"></ul>
 					</div>					
 					
 					<h3>References</h3>
 					<div class="widget-content">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-  					<ul class="tags remove-bottom" data-facet="reference_year" data-color="green"></ul>				
+            <div class="jtox-panel facet-foldable green">
+							<h7 class="title">Year <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
+							<ul class="tags remove-bottom" data-facet="reference_year" data-color="green"></ul>
+            </div>
+						<div class="jtox-panel facet-foldable">
+							<h7 class="title">Identifier <span class="ui-icon ui-icon-minus jtox-fadable"></span></h7>
   					<ul class="tags remove-bottom" data-facet="reference"></ul>
+						</div>
 					</div>		
 					
 					<h3>Protocols</h3>
@@ -300,7 +305,7 @@
 		</div>
 
 		<!-- right -->
-		<div id="result-tabs" class="twelve columns " style="padding: 0;margin: 0;">
+		<div id="result-tabs" class="twelve columns cc-flex">
       <ul>
         <li><a href="#hits_tab">Hits list</a></li>
         <li><a href="#basket_tab">Basket</a></li>

@@ -86,12 +86,21 @@ section.item-list article.teim a:hover {
   letter-spacing: -2px;
 }
 
+.container {
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+	height: 100%;
+}
+
 #hits-tab a {
   margin-right: 5px;
 }
 
 #result-tabs {
   height: 100%;
+  padding: 0px;
+  margin: 0px;
 }
 
 #result-tabs>div {
@@ -126,11 +135,6 @@ section.item-list article.teim a:hover {
   padding-top: 20px;
   color: #333;
   font-size: 13px;
-}
-
-.jtox-foldable {
-  box-sizing: border-box;  
-  width: 100%;
 }
 
 div.item-list {
@@ -240,6 +244,8 @@ article span.guidance {
 .facet-foldable {
 	padding-left: 4px;
 	padding-right: 4px;
+	box-sizing: border-box;  
+  width: 100%;
 }
 
 .facet-foldable .title {
