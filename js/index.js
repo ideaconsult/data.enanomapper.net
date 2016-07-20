@@ -1,68 +1,81 @@
+function getHeaderText(jel) {
+	return jel.contents().filter(function () { return this.nodeType == 3; })[0];	
+}
+
 $(document).ready(function() {
 
-  var widgetFilterScroll = 35;
+  ccLib.flexSize($(".container")[0]);
 	
 	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
-		
-	// Prepare the widget filter UI prepartion method.
-	var initWidgetFilter = function( event, ui ) {
-		if (!!ui.oldHeader && !!ui.oldHeader[0])
-			$("span.ui-icon-search", ui.oldHeader[0]).remove();
-
-		if (!!ui.newPanel && !!ui.newPanel[0]) {
-			if (ui.newPanel[0].scrollHeight > ui.newPanel[0].clientHeight) {
-	  		$("input.widget-filter", ui.newPanel[0]).show().val("");
-		  			
-  			var fe = $("<span class=\"ui-icon ui-icon-search\"></span>").on("click", function (e) {
-					ui.newPanel.animate({ scrollTop: ui.newPanel.scrollTop() > 0 ? 0 : widgetFilterScroll });
-					$("input.widget-filter", ui.newPanel[0]).focus();
-					e.stopPropagation();
-					e.preventDefault();
-  			});
-		  			
-  			ui.newPanel.scrollTop(widgetFilterScroll);
-  			ui.newHeader.append(fe);
-  		}
-  		else {
-	  		$("input.widget-filter", ui.newPanel[0]).hide();
-				$("span.ui-icon-search", ui.newHeader[0]).remove();
-	  	}
-  	}
-	};
-	
+	$(document).on("click", ".facet-foldable", function (e) { $(this).toggleClass("folded"); });
+			
 	// Now instantiate the accordion...
 	$("#accordion").accordion({
 		heightStyle: "content",
 		collapsible: true,
 		animate: 200,
 		active: false,
-		activate: initWidgetFilter
+		activate: function( event, ui ) {
+			if (!!ui.newPanel && !!ui.newPanel[0]) {
+	  		var widgetFilterScroll = $("input.widget-filter", ui.newPanel[0]).val("").outerHeight(true);
+				ui.newPanel.scrollTop(widgetFilterScroll);
+				
+				if (!$("span.ui-icon-search", ui.newHeader[0]).length) {
+					ui.newHeader.append($('<span class="ui-icon ui-icon-search"></span>').on("click", function (e) {
+						ui.newPanel.animate({ scrollTop: ui.newPanel.scrollTop() > 0 ? 0 : widgetFilterScroll });
+						$("input.widget-filter", ui.newPanel[0]).focus();
+						e.stopPropagation();
+						e.preventDefault();
+					}));
+				}
+	  	}
+		}
 	});
 	
-	// .. assign the widget-initialization funtion for each panel ...
-	$("#accordion div.widget-content").each(function () {
-		var jq = $(this);
-		jq.data('initWidget', function(e) { initWidgetFilter( e, { newPanel: jq, newHeader: jq.prev() } )});
-	});
-
 	// ... and prepare the actual filtering funtion.
 	$("#accordion input.widget-filter").on("keyup", function (e) {
 		var needle = $(this).val().toLowerCase(),
-				div = $(this).parent('div.widget-content');
+				div = $(this).parent('div.widget-root'),
+				cnt;
 
+		if ((e.keyCode || e.which) == 27)
+			$(this).val(needle = "");
+		
 		if (needle == "")
-			$('li', div[0]).show();
-		else
+			$('li,div.facet-foldable', div[0]).show();
+		else {
 			$('li>a', div[0]).each( function () {
+				var fold = $(this).parents(".facet-foldable");
+				cnt = fold.data("hidden") || 0;
 				if (this.title.toLowerCase().indexOf(needle) >= 0 || this.innerText.toLowerCase().indexOf(needle) >= 0)
 					$(this).parent().show();
-				else
+				else {
 					$(this).parent().hide();
+					++cnt;
+				}
+				
+				if (!!fold.length && !!cnt)
+					fold.data("hidden", cnt);
 			});
+		}
+		
+		// now check if some of the boxes need to be hidden.
+		$("div.facet-foldable ul", div[0]).each(function () {
+			var par = $(this).parent();
+			cnt = parseInt(par.data("hidden")) || 0;
+			if ($(this).children().length > cnt)
+				par.show();
+			else
+				par.hide();
+
+			par.data("hidden", null);
+		});
 	});
 	
-	$("#result-tabs").tabs();
+	$("#result-tabs").tabs( {
+// 		"heightStyle": "fill"
+	});
 		
   $(function() {
     $("#accordion-resizer").resizable({
@@ -70,8 +83,8 @@ $(document).ready(function() {
       //minWidth: 200,
       resize: function() {
         $( "#accordion" ).accordion( "refresh" );
-        // TODO: Resize the results pane.
-      }
+      },
+      alsoResize: "#result-tabs"
     });
   });	
   
@@ -85,6 +98,6 @@ $(document).ready(function() {
       }
     });
     $( "#about-message" ).dialog("close");
-  });  
+  });
 });
 

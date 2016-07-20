@@ -1,78 +1,80 @@
 (function($) {
+	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit";
+	var buildValueRange = function (facet) {
+		var stats = facet.stats.stats_fields;
+		return	" (" + stats.loValue.min +
+						"&#x2026;" + stats.loValue.max +
+						") " + facet.value;
+	};
+	
+	var buildFacetDom = function (facet, leafId, renderer) {
+		var elements = [], root, childs = [];
+		
+		if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
+			;
+		else if (facet.pivot[0].field == leafId) { // reached the bottom level
+			for (var i = 0, fl = facet.pivot.length;i < fl; ++i)
+				childs.push(renderer(facet.pivot[i]));
 
+			if (childs.length > 0) {
+				root = jT.getFillTemplate($("#tag-facet"), facet);
+				root.append(childs);
+				elements = [root];
+			}
+		}
+
+		else if (facet.pivot.length == 1) { // single pivot entry - jump over it - provide the next level.
+			elements = buildFacetDom(facet.pivot[0], leafId, renderer);
+		}
+
+		else { // i.e. more than one pivot - we must group
+			for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
+				f = facet.pivot[i];
+				childs = buildFacetDom(f, leafId, renderer);
+				
+				if (childs.length > 0) {
+					elements.push(root = jT.getFillTemplate($("#tag-group"), f));
+					root.append(childs);
+				}
+			}
+		}
+		
+		return elements;
+	};
+	
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
 		afterRequest : function() {
-			var f = this.field;
-
-			var topcategory = this.id;
-			f = "topcategory,endpointcategory,effectendpoint,unit";
-			if (this.manager.response.facet_counts.facet_pivot[f] === undefined) {
-				$(this.target).html(
-						'no items found in current selection');
+			var self = this,
+					root = this.manager.response.facet_counts.facet_pivot[pivot_fields],
+					hdr = getHeaderText(this.header),
+					dad = this.target.closest(".widget-content"),
+					cnt = 0;
+					
+			if (root === undefined) {
+				this.target.html('no items found in current selection');
 				return;
 			}
 
-			// console.log(
-			// this.manager.response.facet_counts.facet_pivot);
-			var objectedItems = [],
-			    facet = null;
-			    
-			for ( var facet in this.manager.response.facet_counts.facet_pivot[f]) {
+			$("div,ul", dad[0]).remove();
 
-				var topcategory = this.manager.response.facet_counts.facet_pivot[f][facet];
-				if (((topcategory.value + "_endpointcategory") == this.id)
-						|| ((topcategory.value + "_effectendpoint") == this.id)) {
-
-					var count = parseInt(topcategory.count);
-
-					$("#" + topcategory.value + "_header").text(
-							topcategory.value + " (" + count + ")");
-					for ( var endpointcategory in topcategory.pivot) try {
-						if ((topcategory.value + "_endpointcategory") == this.id) {
-							objectedItems.push(this.tagRenderer(
-							  facet = topcategory.pivot[endpointcategory].value,
-							  topcategory.pivot[endpointcategory].count,
-							  this.clickHandler(facet)
-              ));
-						}
-						if ((topcategory.value + "_effectendpoint") == this.id)
-							for ( var endpoint in topcategory.pivot[endpointcategory].pivot) {
-
-								var msg = " ";
-								if (topcategory.pivot[endpointcategory].pivot[endpoint].pivot == undefined) {
-									var stats = topcategory.pivot[endpointcategory].pivot[endpoint].stats.stats_fields;
-									var u = topcategory.pivot[endpointcategory].pivot[endpoint];
-									u = u == undefined ? "" : u.value;
-									msg += "(" + stats.loValue.min
-											+ " , " + stats.loValue.max
-											+ ") " + u + " ";
-								} else
-									for ( var unit in topcategory.pivot[endpointcategory].pivot[endpoint].pivot) {
-										var stats = topcategory.pivot[endpointcategory].pivot[endpoint].pivot[unit].stats.stats_fields;
-										var u = topcategory.pivot[endpointcategory].pivot[endpoint].pivot[unit];
-										u = u == undefined ? ""
-												: u.value;
-										msg += "(" + stats.loValue.min
-												+ " , "
-												+ stats.loValue.max
-												+ ") " + u + " ";
-									}
-									
-  							objectedItems.push(this.tagRenderer(
-  							  facet = topcategory.pivot[endpointcategory].pivot[endpoint].value,
-  							  topcategory.pivot[endpointcategory].pivot[endpoint].count,
-  							  " " + msg,
-  							  this.clickHandler(facet)
-                ));
-							}
-					} catch (err) {
-						console.log(err);
-					}
-				}
+			for (var i = 0, fl = root.length; i < fl; ++i) {
+				var facet = root[i], dad;
+				if (facet.value != this.id) continue;
+				
+				cnt = parseInt(facet.count);
+				dad.append(buildFacetDom(facet, "effectendpoint", function (f) {
+					var msg = "";
+					
+					if (f.pivot == undefined) 
+						msg = buildValueRange(f);
+					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) 
+						msg += buildValueRange(f.pivot[j]);
+					
+					return self.tagRenderer( f.value, f.count, msg, self.clickHandler(f.value) );
+				}));
 			}
-
-			$(this.target).empty().append(objectedItems);
-			$(this.target).parent('div.widget-content').data('initWidget').call();
+			
+			hdr.textContent = jT.ui.updateCounter(hdr.textContent, cnt);
 		}
 	});
 	

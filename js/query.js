@@ -1,4 +1,19 @@
-var Manager, Basket;
+var Manager, 
+		Basket,
+		Facets = { 
+			'substanceType': 	"substanceType",
+  		'owner_name': 		"owner_name", 
+  		'reference': 			"reference", 
+  		'protocol': 			"guidance",
+  		'interpretation': "interpretation_result", 
+  		'species': 				"_childDocuments_.params.Species", 
+  		'cell': 					"_childDocuments_.params.Cell_line", 
+  		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
+  		'reference_year': "reference_year",
+  		
+			'P-CHEM':					["effectendpoint"],
+			'TOX':						["effectendpoint"]
+  	};
 
 (function($) {
 	$(function() {
@@ -11,7 +26,7 @@ var Manager, Basket;
 		
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
-			target : '#docs',
+			target : $('#docs'),
 			onClick: function (e, doc, exp, widget) { 
 				if (!Basket.findItem(doc)) {
 					Basket.addItem(doc, exp);
@@ -33,7 +48,7 @@ var Manager, Basket;
 
 		Manager.addWidget(new AjaxSolr.PagerWidget({
 			id : 'pager',
-			target : '#pager',
+			target : $('#pager'),
 			prevLabel : '&lt;',
 			nextLabel : '&gt;',
 			innerWindow : 1,
@@ -47,19 +62,9 @@ var Manager, Basket;
 			}
 		}));
 
-		var fields = [ 'substanceType',
-  				'owner_name', 'reference', 'guidance',
-  				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
-  				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'],
-				
-        divs = [ 'substanceType',
-  				'owner_name', 'reference', 'protocol',
-  				'interpretation_result', 'species', 'cell', 'instruments','reference_year'],
-  				
-        pivots = [ 'P-CHEM_endpointcategory', 'TOX_endpointcategory', 'P-CHEM_effectendpoint', 'TOX_effectendpoint' ],
-        
-        colors = {},
-  				
+		var fields = [],
+				colors = {},
+				fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
           var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
           if (typeof hint === 'function') {
@@ -78,42 +83,47 @@ var Manager, Basket;
               .addClass('tagcloud_size_1 ')
               .click(handler);
           };
-    
-    // now start with adding non-hierarchical facet-blocks...
-		for (var i = 0, l = fields.length; i < l; i++) {
-  		var f = fields[i],
-  		    el = $('#' + divs[i]);
-  		
-      colors[f] = el.data('color');
-      el.addClass(colors[f]);
-			Manager.addWidget(new AjaxSolr.TagWidget({
-				id : divs[i],
-				target : '#' + divs[i],
+
+		// Now the actual initialization of facet widgets
+		$("#accordion .widget-content").each(function (idx){
+			var me = $(this),
+					hdr = me.closest(".widget-root").prev(),
+					fid = me.data("facet"),
+					col = me.data("color"),
+					f = Facets[fid],
+					fcls, colId;
+					
+			if (!f) {
+				console.log("Referred a missing wisget: " + fid);
+				return;
+			}
+
+			if (typeof f === 'string') {
+				fields.push(f);
+				fcls = AjaxSolr.TagWidget;
+				colId = f;
+				me = $(".tags", me[0]);
+			}
+			else {
+				fcls = AjaxSolr.PivotWidget;
+				f = f[0];
+				colId = fid + "_" + f;
+			}
+
+  		if (!!col) {
+      	colors[colId] = col;
+      	me.addClass(col);
+      }
+	      
+			Manager.addWidget(new fcls({
+				id : fid,
+				target : me,
+				header: hdr,
 				field : f,
 				tagRenderer: renderTag
 			}));
-		}
-
-    
-    // ... then - hierarhical (pivotal) ones...
-    
-    for (i = 0, l = pivots.length; i < l; ++i) {
-      var fi = pivots[i].lastIndexOf("_"),
-          f = pivots[i].substr(fi + 1),
-          el = $('#' + pivots[i]);
-      
-      colors[f] = el.data('color');
-      el.addClass(colors[f]);
-  		Manager.addWidget(new AjaxSolr.PivotWidget({
-  				id : pivots[i],
-  				target : '#' + pivots[i],
-  				field : f,
-  				tagRenderer: renderTag
-  		}));	
-  		
-  		// TODO: Add
-    }
-    
+		});
+		
     // ... And finally the current-selection one, and ...
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
@@ -121,10 +131,7 @@ var Manager, Basket;
 			tagRenderer: renderTag,
 			colorMap: colors
 		}));
-		/*
-		 * Manager.addWidget(new AjaxSolr.TextWidget({ id: 'text', target:
-		 * '#search' }));
-		 */
+
 		// ... auto-completed text-search.
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
@@ -135,7 +142,15 @@ var Manager, Basket;
 					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
 					'_text_' ]
 		}));
+		
+		// Add the category filter handling.
+		$(document).on("click", "span.ui-icon-plus.category", function (e) {
+			var dt = $(this).data();
+			Manager.store.addByValue('fq', dt.field + ":" + AjaxSolr.Parameter.escapeValue(dt.value));
+			Manager.doRequest();
+		});
 
+		// Now add the basket.
 		Basket = new ItemListWidget({
 			id : 'basket',
 			target : '#basket-docs',
