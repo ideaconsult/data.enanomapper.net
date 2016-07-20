@@ -1,4 +1,5 @@
 (function($) {
+	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit";
 	var buildValueRange = function (facet) {
 		var stats = facet.stats.stats_fields;
 		return	" (" + stats.loValue.min +
@@ -44,24 +45,23 @@
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
 		afterRequest : function() {
 			var self = this,
-					farr = this.field,
-					pivots = farr.join(","),
-					root = this.manager.response.facet_counts.facet_pivot[pivots],
-					hdr = getHeaderText(this.header);
+					root = this.manager.response.facet_counts.facet_pivot[pivot_fields],
+					hdr = getHeaderText(this.header),
+					dad = this.target.closest(".widget-content"),
+					cnt = 0;
 					
 			if (root === undefined) {
 				this.target.html('no items found in current selection');
 				return;
 			}
 
+			$("div,ul", dad[0]).remove();
+
 			for (var i = 0, fl = root.length; i < fl; ++i) {
 				var facet = root[i], dad;
 				if (facet.value != this.id) continue;
 				
-				hdr.textContent = jT.ui.updateCounter(hdr.textContent, parseInt(facet.count));
-				
-				dad = this.target.closest(".widget-content");
-				$("div", dad[0]).remove();
+				cnt = parseInt(facet.count);
 				dad.append(buildFacetDom(facet, "effectendpoint", function (f) {
 					var msg = "";
 					
@@ -70,9 +70,11 @@
 					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) 
 						msg += buildValueRange(f.pivot[j]);
 					
-					return self.tagRenderer( f.value, f.count, msg, self.clickHandler(f.field) );
+					return self.tagRenderer( f.value, f.count, msg, self.clickHandler(f.value) );
 				}));
 			}
+			
+			hdr.textContent = jT.ui.updateCounter(hdr.textContent, cnt);
 		}
 	});
 	
