@@ -10,7 +10,7 @@ $(document).ready(function() {
 	$("#search").find('input').autocomplete();
 	$(document).on("click", ".facet-foldable", function (e) {
 		$(this).toggleClass("folded");
-		$(".title>.ui-icon", this).toggleClass("ui-icon-minus").toggleClass("ui-icon-plus");
+		$("span.ui-icon", this).toggleClass("ui-icon-minus").toggleClass("ui-icon-plus");
 	});
 			
 	// Now instantiate the accordion...
@@ -39,20 +39,41 @@ $(document).ready(function() {
 	// ... and prepare the actual filtering funtion.
 	$("#accordion input.widget-filter").on("keyup", function (e) {
 		var needle = $(this).val().toLowerCase(),
-				div = $(this).parent('div.widget-content');
+				div = $(this).parent('div.widget-root'),
+				cnt;
 
 		if ((e.keyCode || e.which) == 27)
 			$(this).val(needle = "");
 		
 		if (needle == "")
-			$('li', div[0]).show();
-		else
+			$('li,div.facet-foldable', div[0]).show();
+		else {
 			$('li>a', div[0]).each( function () {
+				var fold = $(this).parents(".facet-foldable");
+				cnt = fold.data("hidden") || 0;
 				if (this.title.toLowerCase().indexOf(needle) >= 0 || this.innerText.toLowerCase().indexOf(needle) >= 0)
 					$(this).parent().show();
-				else
+				else {
 					$(this).parent().hide();
+					++cnt;
+				}
+				
+				if (!!fold.length && !!cnt)
+					fold.data("hidden", cnt);
 			});
+		}
+		
+		// now check if some of the boxes need to be hidden.
+		$("div.facet-foldable ul", div[0]).each(function () {
+			var par = $(this).parent();
+			cnt = parseInt(par.data("hidden")) || 0;
+			if ($(this).children().length > cnt)
+				par.show();
+			else
+				par.hide();
+
+			par.data("hidden", null);
+		});
 	});
 	
 	$("#result-tabs").tabs( {

@@ -11,10 +11,8 @@ var Manager,
   		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
   		'reference_year': "reference_year",
   		
-/*
-			'P-CHEM':					["endpointcategory", "effectendpoint"],
-			'TOX':						["endpointcategory", "effectendpoint"],
-*/
+			'P-CHEM':					["topcategory", "endpointcategory", "effectendpoint", "unit"],
+			'TOX':						["topcategory", "endpointcategory", "effectendpoint", "unit"]
   	};
 
 (function($) {
@@ -64,8 +62,7 @@ var Manager,
 			}
 		}));
 
-		var pivots = [ 'P-CHEM_endpointcategory', 'TOX_endpointcategory', 'P-CHEM_effectendpoint', 'TOX_effectendpoint' ],
-				fields = [],
+		var fields = [],
 				colors = {},
 				fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
@@ -88,55 +85,44 @@ var Manager,
           };
 
 		// Now the actual initialization of facet widgets
-		$("#accordion .widget-content .tags").each(function (idx){
+		$("#accordion .widget-content").each(function (idx){
 			var me = $(this),
+					hdr = me.closest(".widget-root").prev(),
 					fid = me.data("facet"),
 					col = me.data("color"),
-					f = Facets[fid];
+					f = Facets[fid],
+					fcls, colId;
 					
-			if (!f)
+			if (!f) {
 				console.log("Referred a missing wisget: " + fid);
+				return;
+			}
 
-			else if (typeof f === 'string') { // a normal field-facet widget
+			if (typeof f === 'string') {
 				fields.push(f);
-	  		if (!!col) {
-	      	colors[f] = col;
-	      	me.addClass(col);
-	      }
-	      
-				Manager.addWidget(new AjaxSolr.TagWidget({
-					id : fid,
-					target : me,
-					header: me.closest(".widget-content").prev(),
-					field : f,
-					tagRenderer: renderTag
-				}));
+				fcls = AjaxSolr.TagWidget;
+				colId = f;
+				me = $(".tags", me[0]);
+			}
+			else {
+				fcls = AjaxSolr.PivotWidget;
+				colId = f.join(",");
 			}
 
-			else { // a pivot-based widget
-				
-			}
+  		if (!!col) {
+      	colors[colId] = col;
+      	me.addClass(col);
+      }
+	      
+			Manager.addWidget(new fcls({
+				id : fid,
+				target : me,
+				header: hdr,
+				field : f,
+				tagRenderer: renderTag
+			}));
 		});
 		
-    // ... then - hierarhical (pivotal) ones...
-    for (i = 0, l = pivots.length; i < l; ++i) {
-      var fi = pivots[i].lastIndexOf("_"),
-          f = pivots[i].substr(fi + 1),
-          el = $('#' + pivots[i]);
-      
-      colors[f] = el.data('color');
-      el.addClass(colors[f]);
-  		Manager.addWidget(new AjaxSolr.PivotWidget({
-  				id : pivots[i],
-  				target : el,
-  				header : el.closest(".widget-content").prev(),
-  				field : f,
-  				tagRenderer: renderTag
-  		}));	
-  		
-  		// TODO: Add
-    }
-    
     // ... And finally the current-selection one, and ...
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
