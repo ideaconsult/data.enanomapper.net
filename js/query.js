@@ -101,12 +101,11 @@ var Manager,
 				fields.push(f);
 				fcls = AjaxSolr.TagWidget;
 				colId = f;
-				me = $(".tags", me[0]);
 			}
 			else {
 				fcls = AjaxSolr.PivotWidget;
 				f = f[0];
-				colId = fid + "_" + f;
+				colId = fid;
 			}
 
   		if (!!col) {
@@ -119,6 +118,7 @@ var Manager,
 				target : me,
 				header: hdr,
 				field : f,
+				color: col,
 				tagRenderer: renderTag
 			}));
 		});

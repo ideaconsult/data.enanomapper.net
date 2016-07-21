@@ -8,9 +8,8 @@ $(document).ready(function() {
 	
 	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
-	$(document).on("click", "ul.group", function (e) { 
+	$(document).on("click", "ul.tag-group", function (e) { 
 		$(this).toggleClass("folded");
-		$("div.ui-icon", this).toggleClass("ui-icon-triangle-1-s ui-icon-triangle-1-w") 
 		$(this).parents(".widget-root").data("refreshPanel").call();
 	});
 			
@@ -77,7 +76,7 @@ $(document).ready(function() {
 			$('li,ul', div[0]).show();
 		else {
 			$('li>a', div[0]).each( function () {
-				var fold = $(this).parents("ul.group");
+				var fold = $(this).parents("ul.tag-group");
 				cnt = fold.data("hidden") || 0;
 				if (this.title.toLowerCase().indexOf(needle) >= 0 || this.innerText.toLowerCase().indexOf(needle) >= 0)
 					$(this).parent().show();
@@ -92,15 +91,15 @@ $(document).ready(function() {
 		}
 		
 		// now check if some of the boxes need to be hidden.
-		$("ul.group", div[0]).each(function () {
-			var par = $(this).parent();
-			cnt = parseInt(par.data("hidden")) || 0;
-			if ($(this).children().length > cnt)
-				par.show();
+		$("ul.tag-group", div[0]).each(function () {
+  		var me = $(this);
+			cnt = parseInt(me.data("hidden")) || 0;
+			if (me.children().length > cnt)
+				me.show();
 			else
-				par.hide();
+				me.hide();
 
-			par.data("hidden", null);
+			me.data("hidden", null);
 		});
 	});
 	
