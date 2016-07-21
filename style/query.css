@@ -160,20 +160,20 @@ article.item footer a {
 	margin-right: 10px;
 }
 
-article footer span {
-	display: none;
+article footer a.command {
 	float: right;	
-	opacity: 0.0;
-}
-
-article:hover footer span {
 	opacity: 0.5;
+	display: none;
 }
 
-article footer.add span.item_add,
-article footer.remove span.item_remove,
-article footer.none span.item_none {	
-	display: block; 
+article footer a.command:hover {
+	opacity: 0.9;
+}
+
+article footer.add .command.add,
+article footer.remove .command.remove,
+article footer.none .command.none {
+	display: inline-block;
 }
 
 article div.one-study {
