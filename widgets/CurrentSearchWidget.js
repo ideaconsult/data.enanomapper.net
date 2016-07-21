@@ -10,6 +10,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         q = this.manager.store.get('q').val(),
         fq = this.manager.store.values('fq');
         
+    // add the free text search as a tag
     if (q != '*:*') {
         links.push(self.tagRenderer(q, "x", function () {
           self.manager.store.get('q').val('*:*');
@@ -18,6 +19,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         }));
     }
 
+    // now add the facets
     for (var i = 0, l = fq.length; i < l; i++) {
 	    f = fq[i];
     	if (f.indexOf("!collapse field=s_uuid") < 0) {
@@ -28,8 +30,16 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       }
     }
     
-    if (links.length)
+    if (links.length) {
+      links.push(self.tagRenderer("Clear", "x", function () {
+        self.manager.store.get('q').val('*:*');
+        self.manager.store.removeByValue('fq', self.fieldRegExp);
+        self.doRequest();
+        return false;
+      }).addClass('tag_selected tag_clear'));
+      
       $(this.target).empty().addClass('tags').append(links);
+    }
     else
       $(this.target).removeClass('tags').html('<li>No filters selected!</li>');
   },
