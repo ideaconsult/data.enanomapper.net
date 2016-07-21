@@ -10,10 +10,11 @@ var Manager,
   		'cell': 					"_childDocuments_.params.Cell_line", 
   		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
   		'reference_year': "reference_year",
-  		
-			'P-CHEM':					["effectendpoint"],
-			'TOX':						["effectendpoint"]
-  	};
+  	},
+    Colors = {
+      "endpointcategory": "blue",
+      "effectendpoint": "green",
+    };
 
 (function($) {
 	$(function() {
@@ -63,7 +64,6 @@ var Manager,
 		}));
 
 		var fields = [],
-				colors = {},
 				fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
           var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
@@ -89,31 +89,20 @@ var Manager,
 					hdr = me.closest(".widget-root").prev(),
 					fid = me.data("facet"),
 					col = me.data("color"),
-					f = Facets[fid],
-					fcls, colId;
+					f = Facets[fid];
 					
 			if (!f) {
 				console.log("Referred a missing wisget: " + fid);
 				return;
 			}
 
-			if (typeof f === 'string') {
-				fields.push(f);
-				fcls = AjaxSolr.TagWidget;
-				colId = f;
-			}
-			else {
-				fcls = AjaxSolr.PivotWidget;
-				f = f[0];
-				colId = fid;
-			}
-
   		if (!!col) {
-      	colors[colId] = col;
+      	Colors[f] = col;
       	me.addClass(col);
       }
-	      
-			Manager.addWidget(new fcls({
+
+			fields.push(f);
+			Manager.addWidget(new AjaxSolr.TagWidget({
 				id : fid,
 				target : me,
 				header: hdr,
@@ -123,12 +112,21 @@ var Manager,
 			}));
 		});
 		
+		// ... add the mighty pivot widget.
+		Manager.addWidget(new AjaxSolr.PivotWidget({
+			id : "studies",
+			target : $(".after_topcategory"),
+			colorMap: Colors,
+			tagRenderer: renderTag,
+			tabsRefresher: getTabsRefresher 
+		}));
+		
     // ... And finally the current-selection one, and ...
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
-			target : '#selection',
+			target : $('#selection'),
 			tagRenderer: renderTag,
-			colorMap: colors
+			colorMap: Colors
 		}));
 
 		// ... auto-completed text-search.
