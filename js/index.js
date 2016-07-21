@@ -1,6 +1,6 @@
-function getHeaderText(jel) {
-	return jel.contents().filter(function () { return this.nodeType == 3; })[0];	
-}
+function getHeaderText(jel) { return jel.contents().filter(function () { return this.nodeType == 3; })[0]; }
+
+function getNiceName(facet) { return (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "") }
 
 $(document).ready(function() {
 
@@ -8,8 +8,9 @@ $(document).ready(function() {
 	
 	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
-	$(document).on("click", ".facet-foldable", function (e) { 
-		$(this).toggleClass("folded"); 
+	$(document).on("click", "ul.group", function (e) { 
+		$(this).toggleClass("folded");
+		$("div.ui-icon", this).toggleClass("ui-icon-triangle-1-s ui-icon-triangle-1-w") 
 		$(this).parents(".widget-root").data("refreshPanel").call();
 	});
 			
@@ -73,10 +74,10 @@ $(document).ready(function() {
 			$(this).val(needle = "");
 		
 		if (needle == "")
-			$('li,div.facet-foldable', div[0]).show();
+			$('li,ul', div[0]).show();
 		else {
 			$('li>a', div[0]).each( function () {
-				var fold = $(this).parents(".facet-foldable");
+				var fold = $(this).parents("ul.group");
 				cnt = fold.data("hidden") || 0;
 				if (this.title.toLowerCase().indexOf(needle) >= 0 || this.innerText.toLowerCase().indexOf(needle) >= 0)
 					$(this).parent().show();
@@ -91,7 +92,7 @@ $(document).ready(function() {
 		}
 		
 		// now check if some of the boxes need to be hidden.
-		$("div.facet-foldable ul", div[0]).each(function () {
+		$("ul.group", div[0]).each(function () {
 			var par = $(this).parent();
 			cnt = parseInt(par.data("hidden")) || 0;
 			if ($(this).children().length > cnt)

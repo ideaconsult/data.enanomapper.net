@@ -80,7 +80,6 @@ var Manager,
         	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
           
           return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view + ' <span>' + (count || 0) + '</span></a></li>')
-              .addClass('tagcloud_size_1 ')
               .click(handler);
           };
 
@@ -143,13 +142,6 @@ var Manager,
 					'_text_' ]
 		}));
 		
-		// Add the category filter handling.
-		$(document).on("click", "span.ui-icon-plus.category", function (e) {
-			var dt = $(this).data();
-			Manager.store.addByValue('fq', dt.field + ":" + AjaxSolr.Parameter.escapeValue(dt.value));
-			Manager.doRequest();
-		});
-
 		// Now add the basket.
 		Basket = new ItemListWidget({
 			id : 'basket',
