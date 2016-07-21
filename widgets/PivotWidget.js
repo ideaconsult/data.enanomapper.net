@@ -48,6 +48,7 @@
 					root = this.manager.response.facet_counts.facet_pivot[pivot_fields],
 					hdr = getHeaderText(this.header),
 					dad = this.target.closest(".widget-content"),
+					refresh = this.header.data("refreshPanel"),
 					cnt = 0;
 					
 			if (root === undefined) {
@@ -79,6 +80,8 @@
 			}
 			
 			hdr.textContent = jT.ui.updateCounter(hdr.textContent, cnt);
+			if (!!refresh)
+				refresh.call();
 		}
 	});
 	

@@ -10,7 +10,8 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
     var objectedItems = [], 
     		facet = null, 
     		total = 0,
-    		hdr = getHeaderText(this.header);
+    		hdr = getHeaderText(this.header),
+    		refresh = this.header.data("refreshPanel");
         
     for (var facet in this.manager.response.facet_counts.facet_fields[this.field]) {
       var count = parseInt(this.manager.response.facet_counts.facet_fields[this.field][facet]);
@@ -28,6 +29,8 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
       
     
     hdr.textContent = jT.ui.updateCounter(hdr.textContent, total);
+    if (!!refresh)
+    	refresh.call();
   }
 });
 
