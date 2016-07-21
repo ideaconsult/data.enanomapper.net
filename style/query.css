@@ -248,26 +248,45 @@ article span.guidance {
 	opacity: 1.0;
 }
 
-#accordion ul.group {
+#accordion ul.tag-group {
   padding: 4px 0px 0px 0px;
 	margin-bottom: 2px;
 	box-sizing: border-box;  
   width: 100%;
   border: #aaa solid 1px;
   border-radius: 7px;
+  position: relative;
 }
 
-#accordion ul.group div.ui-icon {
-  opacity: 0.5;
+#accordion ul.tag-group.folded { border-color: #eee; }
+#accordion ul.tag-group.folded li { margin-bottom: 4px; }
+#accordion ul.tag-group.folded>* { display: none !important; }
+#accordion ul.tag-group.folded>.title { display: inherit !important; }
+
+#accordion ul.tag-group::before {
   float: right;
-  margin-top: 4px;
+  margin: 4px 5px 2px 0px;
+  font-size: smaller;
+  opacity: 0.5;
 }
 
-#accordion ul.group div.ui-icon:hover { opacity: 0.9; }
-#accordion ul.group.folded { border-color: #eee; }
-#accordion ul.group.folded li { margin-bottom: 4px; }
-#accordion ul.group.folded>* { display: none; }
-#accordion ul.group.folded>.title { display: inherit !important; }
+#accordion ul.tag-group::before:hover {
+  opacity: 0.9;
+}
+
+#accordion ul.tag-group.static::before {
+  margin-top: 0px;
+  text-align: right;
+  width: 90%;
+}
+
+#accordion ul.tag-group::before { content: "˅"; }
+#accordion ul.tag-group.folded::before { content: "˂"; }
+
+#accordion ul.tag-group.static.year::before { content: "Year ˅"; }
+#accordion ul.tag-group.static.reference::before { content: "Reference ˅"; }
+#accordion ul.tag-group.static.folded.year::before { content: "Year ˂"; }
+#accordion ul.tag-group.static.folded.reference::before { content: "Reference ˂ "; }
 
 .jtox-panel:hover {
 	background: #ddd; /* Old browsers */
