@@ -165,7 +165,8 @@ var Manager,
 				jel.html(jT.ui.updateCounter(jel.html(), Basket.length));
 				Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
 				if (!!(s = ccLib.modifyURL(window.location.href, "basket", s)))
-					window.history.pushState({ query : window.location.search }, document.title, s);					
+					window.history.pushState({ query : window.location.search }, document.title, s);
+							
 				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
 			},
 			onCreated: function (doc) {

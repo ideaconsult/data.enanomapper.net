@@ -38,7 +38,7 @@
 				el = $(this.template_substance(doc));
 				
 		if (typeof this.onClick === "function")
-			el.on("click", function (e) { self.onClick.call(this, e, doc, exp, self); });
+			$("a.command", el[0]).on("click", function (e) { self.onClick.call(el[0], e, doc, exp, self); });
 			
 		if (typeof this.onCreated === 'function')
 			this.onCreated.call(el, doc, this);
