@@ -258,14 +258,8 @@
 					<h3>References</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <div class="jtox-panel facet-foldable green widget-content" data-facet="reference_year" data-color="green">
-							<h7 class="title">Year </h7>
-							<ul class="tags remove-bottom"></ul>
-            </div>
-						<div class="jtox-panel facet-foldable widget-content" data-facet="reference">
-							<h7 class="title">Identifier</h7>
-							<ul class="tags remove-bottom" ></ul>
-						</div>
+						<ul class="tags group jtox-panel"></ul>
+						<ul class="tags remove-bottom jtox-panel" ></ul>
 					</div>		
 					
 					<h3>Protocols</h3>
@@ -291,7 +285,7 @@
 		<div id="result-tabs" class="twelve columns cc-flex">
       <ul>
         <li><a href="#hits_tab">Hits list</a></li>
-        <li><a href="#basket_tab">Basket</a></li>
+        <li><a href="#basket_tab">Selection</a></li>
       </ul>
   		<div id="hits_tab">
   			<div class="row remove-bottom">
@@ -321,8 +315,8 @@
 				{{snippet}}
 				<footer class="links">
 					{{footer}}
-					<a href="#" class="add jtox-fadable command">Click to add to basket</a>
-					<a href="#" class="remove jtox-fadable command">Click to remove from basket</a>
+					<a href="#" class="add jtox-fadable command">Add to Selection</a>
+					<a href="#" class="remove jtox-fadable command">Remove from Selection</a>
 					<a href="#" class="none jtox-fadable command">Already added</a>
 				</footer>
 			</article>
@@ -339,14 +333,9 @@
 		</div>
 
 		<div id="tag-facet">
-			<ul class="tags remove-bottom {{color}}" data-field="{{field}}"></ul>
-		</div>
-		
-		<div id="tag-group">
-	    <div class="jtox-panel facet-foldable folded {{color}}">
-		    <span class="units counter">{{count}}</span>
-				<h7 class="title"><span class="ui-icon ui-icon-plus jtox-fadable category" data-field="{{field}}" data-value="{{value}}"></span> {{value}}</h7>
-	    </div>
+			<ul class="tags group folded {{color}}" data-field="{{field}}">
+  			<div class="ui-icon ui-icon-triangle-1-w title"></div>
+			</ul>
 		</div>
 		
 	</div>
