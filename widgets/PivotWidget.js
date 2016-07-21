@@ -8,7 +8,7 @@
 								" " + (suffix == null ? facet.value : suffix);
 			},
 			
-			buildFacetDom = function (facet, color, renderer) {
+			buildFacetDom = function (facet, colorMap, renderer) {
         var elements = [], root;
 				
 				if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
@@ -16,7 +16,7 @@
 				else {
 					for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
 						f = facet.pivot[i];
-						elements.push(f.field == bottom_field ? renderer(f) : buildFacetDom(f, color, renderer)[0]);
+						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
 					}
 		
 					if (elements.length > 0 && facet.field != top_field) {
@@ -24,7 +24,7 @@
 						
 						// we need to add outselves as main tag
 						if (facet.field != bottom_field)
-  				    root.append(renderer(facet).addClass("category title").addClass(color));
+  				    root.append(renderer(facet).addClass("category title").addClass(colorMap[facet.field]));
 						
 						root.append(elements);
 						elements = [root];
@@ -47,28 +47,44 @@
         return false;
       }
     },
-  	
+    
 		afterRequest : function() {
 			var self = this,
 					root = this.manager.response.facet_counts.facet_pivot[pivot_fields],
-					hdr = getHeaderText(this.header),
-					dad = this.target.closest(".widget-content"),
-					refresh = this.header.data("refreshPanel"),
-					cnt = 0;
+					refresh = this.target.data("refreshPanel");
 					
 			if (root === undefined) {
 				this.target.html('No items found in current selection');
 				return;
 			}
 
-			$("ul", dad[0]).remove();
-
+      // some cleanup...
+      $(".dynamic-tab", self.target.parent()[0]).each(function () {
+  			var hdr = getHeaderText($(this).closest(".widget-root").prev());
+  			
+        hdr.textContent = jT.ui.updateCounter(hdr.textContent, 0);
+        $("ul", this).remove();
+      });
+      
 			for (var i = 0, fl = root.length; i < fl; ++i) {
-				var facet = root[i], dad;
-				if (facet.value != this.id) continue;
+				var facet = root[i], target;
 				
-				cnt = parseInt(facet.count);
-				dad.append(buildFacetDom(facet, self.color, function (f) {
+				// we need to check if we have that accordion element created.
+				if (facet.field == top_field) {
+  				target = $("#" + facet.value);
+  				
+  				if (target.length > 0) {
+    				var hdr = getHeaderText(target.closest(".widget-root").prev());
+            hdr.textContent = jT.ui.updateCounter(hdr.textContent, facet.count);
+    		  }
+  				else {
+    				self.target.before(target = jT.getFillTemplate($("#tab-topcategory"), facet));
+    				target = $(target.last()).addClass("dynamic-tab");
+    				self.tabsRefresher();
+  				}
+				}
+				
+				target.append(buildFacetDom(facet, self.colorMap, function (f) {
 					var msg = "";
 					
 					if (f.pivot == undefined) 
@@ -84,7 +100,6 @@
 				}));
 			}
 			
-			hdr.textContent = jT.ui.updateCounter(hdr.textContent, cnt);
 			if (!!refresh)
 				refresh.call();
 		}

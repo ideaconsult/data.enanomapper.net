@@ -1,6 +1,6 @@
 function getHeaderText(jel) { return jel.contents().filter(function () { return this.nodeType == 3; })[0]; }
 
-function getNiceName(facet) { return (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "") }
+function getTabsRefresher() { $("#accordion").accordion( "refresh" ); }
 
 $(document).ready(function() {
 
