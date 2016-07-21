@@ -310,3 +310,14 @@ input.widget-filter {
   margin-bottom: 5px;
   box-sizing: border-box;  
 }
+
+.tags li.tag_clear {
+  float: right;
+}
+
+/*
+.tags li.tag_selected a span {
+  padding: 0 7px 0 6px;
+  max-width: 40px;
+}
+*/
