@@ -226,18 +226,8 @@
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="substanceType"></ul>
 					</div>
-					
-					<h3>Phys-chem</h3>
-					<div class="widget-content widget-root" data-facet="P-CHEM" data-color="blue">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-					</div>
-					
-					<h3>TOX</h3>
-					<div class="widget-content widget-root" data-facet="TOX" data-color="green">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-					</div>
-					
-					<h3>Cell</h3>
+										
+					<h3 class="after_topcategory">Cell</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="cell" data-color="green"></ul>
@@ -335,6 +325,13 @@
 		<div id="tag-facet">
 			<ul class="tags tag-group folded {{color}}" data-field="{{field}}"></ul>
 		</div>
+
+    <div id="tab-topcategory">
+  		<h3>{{value}} ({{count}})</h3>
+  		<div id="{{value}}" class="widget-content widget-root">
+        <input type="text" placeholder="Filter_" class="widget-filter"/>
+  		</div>
+    </div>
 		
 	</div>
 

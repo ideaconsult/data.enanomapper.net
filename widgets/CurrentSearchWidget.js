@@ -38,10 +38,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         return false;
       }).addClass('tag_selected tag_clear'));
       
-      $(this.target).empty().addClass('tags').append(links);
+      this.target.empty().addClass('tags').append(links);
     }
     else
-      $(this.target).removeClass('tags').html('<li>No filters selected!</li>');
+      this.target.removeClass('tags').html('<li>No filters selected!</li>');
   },
 
   rangeToggle: function (facet) {
