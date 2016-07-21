@@ -1,46 +1,38 @@
 (function($) {
-	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit";
-	var buildValueRange = function (facet, suffix) {
-		var stats = facet.stats.stats_fields;
-		return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
-						"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
-						" " + (suffix == null ? facet.value : suffix);
-	};
-	
-	var buildFacetDom = function (facet, leafId, renderer) {
-		var elements = [], root, childs = [];
-		
-		if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
-			;
-		else if (facet.pivot[0].field == leafId) { // reached the bottom level
-			for (var i = 0, fl = facet.pivot.length;i < fl; ++i)
-				childs.push(renderer(facet.pivot[i]));
-
-			if (childs.length > 0) {
-				root = jT.getFillTemplate($("#tag-facet"), facet);
-				root.append(childs);
-				elements = [root];
-			}
-		}
-
-		else if (facet.pivot.length == 1) { // single pivot entry - jump over it - provide the next level.
-			elements = buildFacetDom(facet.pivot[0], leafId, renderer);
-		}
-
-		else { // i.e. more than one pivot - we must group
-			for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
-				f = facet.pivot[i];
-				childs = buildFacetDom(f, leafId, renderer);
+	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
+	    bottom_field = "effectendpoint", top_field = "topcategory",
+			buildValueRange = function (facet, suffix) {
+				var stats = facet.stats.stats_fields;
+				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
+								"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
+								" " + (suffix == null ? facet.value : suffix);
+			},
+			
+			buildFacetDom = function (facet, renderer) {
+        var elements = [], root;
 				
-				if (childs.length > 0) {
-					elements.push(root = jT.getFillTemplate($("#tag-group"), f));
-					root.append(childs);
-				}
-			}
-		}
+				if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
+					;
+				else {
+					for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
+						f = facet.pivot[i];
+						elements.push(f.field == bottom_field ? renderer(f) : buildFacetDom(f, renderer)[0]);
+					}
 		
-		return elements;
-	};
+					if (elements.length > 0 && facet.field != top_field) {
+						root = jT.getFillTemplate($("#tag-facet"), facet);
+						
+						// we need to add outselves as main tag
+						if (facet.field != bottom_field)
+  				    root.append(renderer(facet).addClass("blue category title"));
+						
+						root.append(elements);
+						elements = [root];
+					}
+				}
+				
+				return elements;
+			};
 	
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
 		afterRequest : function() {
@@ -52,18 +44,18 @@
 					cnt = 0;
 					
 			if (root === undefined) {
-				this.target.html('no items found in current selection');
+				this.target.html('No items found in current selection');
 				return;
 			}
 
-			$("div,ul", dad[0]).remove();
+			$("ul", dad[0]).remove();
 
 			for (var i = 0, fl = root.length; i < fl; ++i) {
 				var facet = root[i], dad;
 				if (facet.value != this.id) continue;
 				
 				cnt = parseInt(facet.count);
-				dad.append(buildFacetDom(facet, "effectendpoint", function (f) {
+				dad.append(buildFacetDom(facet, function (f) {
 					var msg = "";
 					
 					if (f.pivot == undefined) 

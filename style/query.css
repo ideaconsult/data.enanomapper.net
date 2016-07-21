@@ -207,8 +207,14 @@ article span.guidance {
   margin-right: 8px;
 }
 
-#accordion .tags li>a,
-.facet-foldable .title {
+#accordion .tags li.category {
+  width: 85%;
+  max-width: inherit;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+#accordion .tags li>a {
   text-overflow: ellipsis;  
   overflow: hidden;
   white-space: nowrap;
@@ -234,7 +240,7 @@ article span.guidance {
 }
 
 #accordion>h3>span.ui-icon-search {
-	float: right;	
+	float: right;
 	opacity: 0.4;
 }
 
@@ -242,38 +248,28 @@ article span.guidance {
 	opacity: 1.0;
 }
 
-.facet-foldable {
-	padding-left: 4px;
-	padding-right: 4px;
+#accordion ul.group {
+  padding: 4px 0px 0px 0px;
+	margin-bottom: 2px;
 	box-sizing: border-box;  
   width: 100%;
+  border: #aaa solid 1px;
+  border-radius: 7px;
 }
 
-.facet-foldable .title {
-	display: block;
-	margin-left: 4px;
-	margin-bottom: 2px;
-	font-size: 85%;
+#accordion ul.group div.ui-icon {
+  opacity: 0.5;
+  float: right;
+  margin-top: 4px;
 }
 
-.facet-foldable span.units.counter {
-	margin-right: 5px;
-	float: right;
-}
+#accordion ul.group div.ui-icon:hover { opacity: 0.9; }
+#accordion ul.group.folded { border-color: #eee; }
+#accordion ul.group.folded li { margin-bottom: 4px; }
+#accordion ul.group.folded>* { display: none; }
+#accordion ul.group.folded>.title { display: inherit !important; }
 
-.facet-foldable .title>span.ui-icon { 
-	opacity: 0.4;
-	display: inline-block;
-}
-
-.facet-foldable .title>span.ui-icon:hover { opacity: 1.0; }
-.facet-foldable.folded>* { display: none; }
-.facet-foldable.folded>.title, 
-.facet-foldable>span.counter { display: inherit !important; }
-.facet-foldable:hover .title { color: rgba(0, 0, 0, 0.6); }
-.facet-foldable.folded:hover .title { color: inherit; }
-
-div.facet-foldable:hover {
+.jtox-panel:hover {
 	background: #ddd; /* Old browsers */
 	background: -moz-linear-gradient(top, rgba(255,255,255,.2) 0%, rgba(200,200,200,.2) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,.2)), color-stop(100%,rgba(200,200,200,.2))); /* Chrome,Safari4+ */
@@ -281,26 +277,6 @@ div.facet-foldable:hover {
 	background: -o-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(200,200,200,.2) 100%); /* Opera11.10+ */
 	background: -ms-linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(200,200,200,.2) 100%); /* IE10+ */
 	background: linear-gradient(top, rgba(255,255,255,.2) 0%,rgba(200,200,200,.2) 100%); /* W3C */
-}
-
-.facet-foldable.green {
-	background: rgba(101,187,52,.1); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(101,187,52,.1) 0%, rgba(101,187,52,.2) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(101,187,52,.1)), color-stop(100%,rgba(101,187,52,.2))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(101,187,52,.1) 0%, rgba(101,187,52,.2) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(101,187,52,.1) 0%, rgba(101,187,52,.2) 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, rgba(101,187,52,.1) 0%, rgba(101,187,52,.2) 100%); /* IE10+ */
-	background: linear-gradient(top, rgba(101,187,52,.1) 0%, rgba(101,187,52,.2) 100%); /* W3C */
-}
-
-.facet-foldable.blue {
-	background: rgba(87, 164, 215, 0.17); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(87, 164, 215,.1)), color-stop(100%,rgba(87, 164, 215,.2))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* Opera11.10+ */
-	background: -ms-linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* IE10+ */
-	background: linear-gradient(top, rgba(87, 164, 215,.1) 0%, rgba(87, 164, 215,.2) 100%); /* W3C */
 }
 
 div.ui-accordion-content.ui-widget-content {
@@ -315,15 +291,3 @@ input.widget-filter {
   margin-bottom: 5px;
   box-sizing: border-box;  
 }
-
-a.tagcloud_size_0 { font-size: 80%; }
-a.tagcloud_size_1 { font-size: 90%; }
-a.tagcloud_size_2 { font-size: 100%; }
-a.tagcloud_size_3 { font-size: 110%; }
-a.tagcloud_size_4 { font-size: 120%; }
-a.tagcloud_size_5 { font-size: 130%; }
-a.tagcloud_size_6 { font-size: 140%; }
-a.tagcloud_size_7 { font-size: 150% }
-a.tagcloud_size_8 { font-size: 160%; }
-a.tagcloud_size_9 { font-size: 170%; }
-a.tagcloud_size_10 { font-size: 180%; }

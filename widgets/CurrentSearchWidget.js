@@ -22,7 +22,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 	    f = fq[i];
     	if (f.indexOf("!collapse field=s_uuid") < 0) {
         fk = f.match(self.fieldRegExp)[1];
-    		links.push(el = self.tagRenderer(f.replace(self.fieldRegExp, ""), "x", self.removeFacet(f)).addClass('tag_selected'));
+    		links.push(el = self.tagRenderer(f.replace(self.fieldRegExp, ""), "x", self.rangeToggle(f)).addClass('tag_selected'));
+    		$("span", el[0]).on("click", self.removeFacet(f));
     		el.addClass(self.colorMap[fk]);
       }
     }
@@ -31,6 +32,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       $(this.target).empty().addClass('tags').append(links);
     else
       $(this.target).removeClass('tags').html('<li>No filters selected!</li>');
+  },
+
+  rangeToggle: function (facet) {
+    var self = this;
+    return function () {
+	    alert("Select ranges for: " + facet);
+      return false;
+    };
   },
 
   removeFacet: function (facet) {
