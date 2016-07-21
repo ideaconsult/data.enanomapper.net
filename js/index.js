@@ -8,7 +8,10 @@ $(document).ready(function() {
 	
 	$("#smartmenu" ).smartmenus();
 	$("#search").find('input').autocomplete();
-	$(document).on("click", ".facet-foldable", function (e) { $(this).toggleClass("folded"); });
+	$(document).on("click", ".facet-foldable", function (e) { 
+		$(this).toggleClass("folded"); 
+		$(this).parents(".widget-root").data("refreshPanel").call();
+	});
 			
 	// Now instantiate the accordion...
 	$("#accordion").accordion({
@@ -18,17 +21,44 @@ $(document).ready(function() {
 		active: false,
 		activate: function( event, ui ) {
 			if (!!ui.newPanel && !!ui.newPanel[0]) {
-	  		var widgetFilterScroll = $("input.widget-filter", ui.newPanel[0]).val("").outerHeight(true);
-				ui.newPanel.scrollTop(widgetFilterScroll);
+					var header = ui.newHeader[0],
+							panel = ui.newPanel[0],
+							filter = $("input.widget-filter", panel),
+							widgetFilterScroll = filter.outerHeight(true),
+							refreshPanel;
 				
 				if (!$("span.ui-icon-search", ui.newHeader[0]).length) {
+					refreshPanel = function () {
+			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "") {
+							$(panel).scrollTop(widgetFilterScroll);
+							filter.show()
+							$("span.ui-icon-search", header).show();
+						}
+						else {
+							filter.hide();
+							$("span.ui-icon-search", header).hide();
+						}
+					};
+
+					ui.newPanel.data("refreshPanel", refreshPanel);
+					ui.newHeader.data("refreshPanel", refreshPanel);
 					ui.newHeader.append($('<span class="ui-icon ui-icon-search"></span>').on("click", function (e) {
-						ui.newPanel.animate({ scrollTop: ui.newPanel.scrollTop() > 0 ? 0 : widgetFilterScroll });
-						$("input.widget-filter", ui.newPanel[0]).focus();
+						ui.newPanel.animate({ scrollTop: ui.newPanel.scrollTop() > 0 ? 0 : widgetFilterScroll }, 300, function () {
+							if (ui.newPanel.scrollTop() > 0)
+								$("input.widget-filter", ui.newPanel[0]).blur();
+							else
+								$("input.widget-filter", ui.newPanel[0]).focus();
+						});
+							
 						e.stopPropagation();
 						e.preventDefault();
 					}));
 				}
+				else
+					refreshPanel = $(panel).data("refreshPanel");
+				
+				filter.val("");
+				refreshPanel();
 	  	}
 		}
 	});

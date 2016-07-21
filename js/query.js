@@ -21,7 +21,7 @@ var Manager,
 			//this is now updated wih cananolab index
 			solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
 			//this has cananolab index
-			//solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
+// 			solrUrl : 'http://ambit.uni-plovdiv.bg:8983/solr/enm_shard1_replica1/'
 		});
 		
 		Manager.addWidget(new AjaxSolr.ResultWidget({
