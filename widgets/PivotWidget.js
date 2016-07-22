@@ -16,6 +16,7 @@
 				else {
 					for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
 						f = facet.pivot[i];
+						f.parent = facet;
 						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
 					}
 		
@@ -35,12 +36,16 @@
 			};
 	
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
-    clickHandler: function (field, value) {
-      var self = this, 
-          arg = field + ':' + AjaxSolr.Parameter.escapeValue(value);
-      return function () {
+    clickHandler: function (path) {
+      var self = this;
+
+      return function (e) {
         if (self.changeSelection(function () {
-          return self.manager.store.addByValue('fq', arg);
+          var go = false;
+          for(var i = 0, pl = path.length; i < pl; ++i)
+            go |= !!self.manager.store.addByValue('fq', path[i].field + ':' + AjaxSolr.Parameter.escapeValue(path[i].value));
+
+          return go;
         })) {
           self.doRequest();
         }
@@ -84,19 +89,24 @@
   				}
 				}
 				
-				target.append(buildFacetDom(facet, self.colorMap, function (f) {
-					var msg = "";
+				target.append(buildFacetDom(facet, self.colorMap, function (facet) {
+					var msg = "",
+					    path = [],
+					    f;
 					
-					if (f.pivot == undefined) 
-						msg = buildValueRange(f, "");
-					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) { 
+					if (facet.pivot == undefined) 
+						msg = buildValueRange(facet, "");
+					else for ( var j = 0, ul = facet.pivot.length; j < ul; ++j ) { 
 						if (j > 0)
 							msg += ", ";
 							
-						msg += buildValueRange(f.pivot[j]);
+						msg += buildValueRange(facet.pivot[j]);
 					}
 					
-					return self.tagRenderer( f.value, f.count, msg, self.clickHandler(f.field, f.value) );
+					for (f = facet; !!f ;f = f.parent)
+					  path.push({ field: f.field, value: f.value});
+					  
+					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(path.reverse()));
 				}));
 			}
 			
