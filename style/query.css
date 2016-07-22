@@ -151,6 +151,10 @@ div.item-list header {
 	margin-bottom: 10px;	
 }
 
+article a.more {
+  font-style: italic;
+}
+
 article.item footer {
 	margin-top: 10px;
 	min-height: 10px;
