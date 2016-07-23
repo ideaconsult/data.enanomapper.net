@@ -1,14 +1,40 @@
-(function ($) {
+(function ($) {  
 
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
   fieldRegExp: /^([\w\.]+):/,
+  
+  scanBuildPrefix: function (facet, arr) {
+    var q = facet.field + ":" + facet.value,
+        res = null,
+        idx = -1;
+
+    if (!facet.parent)
+      res = [];
+    else if ((idx = arr.indexOf(q)) >= 0)
+      res = this.scanBuildPrefix(facet.parent, arr);
+      
+    if (res != null) {
+      if (facet.field != AjaxSolr.PivotWidget.topField)
+        res.push(facet.value);
+      
+      for(;idx >= 0;idx = arr.indexOf(q))
+        arr.splice(idx, 1);
+    }
+    
+    return res;
+  },
 
   afterRequest: function () {
-    var self = this, el, f, fk,
+    var self = this,
         links = [],
         q = this.manager.store.get('q').val(),
-        fq = this.manager.store.values('fq');
+        fq = this.manager.store.values('fq').sort(function (a, b) {
+          var am = a.match(self.fieldRegExp) || ["1"],
+              bm = b.match(self.fieldRegExp) || ["2"];
+              
+          return AjaxSolr.PivotWidget.fieldList.indexOf(bm[1]) - AjaxSolr.PivotWidget.fieldList.indexOf(am[1]);
+        });
         
     // add the free text search as a tag
     if (q != '*:*') {
@@ -20,13 +46,26 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
 
     // now add the facets
-    for (var i = 0, l = fq.length; i < l; i++) {
-	    f = fq[i];
+    for (var i = 0; i < fq.length; ++i) {
+	    var f = fq[i], fcat, fval, el, map, ffull, fpre;
     	if (f.indexOf("!collapse field=s_uuid") < 0) {
-        fk = f.match(self.fieldRegExp)[1];
-    		links.push(el = self.tagRenderer(f.replace(self.fieldRegExp, ""), "x", self.rangeToggle(f)).addClass('tag_selected'));
+        fcat = f.match(self.fieldRegExp)[1];
+        fval = f.replace(self.fieldRegExp, "");
+        
+        map = self.pivotMap[fval];
+        fpre = [];
+        
+        if (map != null) {
+          for (var j = 0;j < map.length; ++j)
+            if (!!(fpre = self.scanBuildPrefix(map[j].parent, fq)))
+              break;
+        }
+
+        fpre.push(fval);
+        
+    		links.push(el = self.tagRenderer(fpre, "x", self.rangeToggle(f)).addClass('tag_selected'));
     		$("span", el[0]).on("click", self.removeFacet(f));
-    		el.addClass(self.colorMap[fk]);
+    		el.addClass(self.colorMap[fcat]);
       }
     }
     

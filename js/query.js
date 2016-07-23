@@ -14,7 +14,8 @@ var Manager,
     Colors = {
       "endpointcategory": "blue",
       "effectendpoint": "green",
-    };
+    },
+    Pivots = {};
 
 (function($) {
 	$(function() {
@@ -66,18 +67,31 @@ var Manager,
 		var fields = [],
 				fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
-          var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
+          if (typeof facet === 'string')
+            facet = [facet]; 
           if (typeof hint === 'function') {
             handler = hint;
             hint = null;
           }
-              
-          if (facet.lastIndexOf("caNanoLab.", 0) == 0)
-            view = facet.replace("caNanoLab.","");
-          else if (facet.lastIndexOf("http://dx.doi.org/", 0) == 0)
-            view = facet.replace("http://dx.doi.org/", "");
-          else
-        	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
+          
+          var view = new Array(facet.length);
+            
+          for (var i = 0, fl = facet.length; i < fl; ++i) {
+            var v = full = facet[i].replace(/^\"(.+)\"$/, "$1");
+                
+            if (full.lastIndexOf("caNanoLab.", 0) == 0)
+              v = full.replace("caNanoLab.","");
+            else if (full.lastIndexOf("http://dx.doi.org/", 0) == 0)
+              v = full.replace("http://dx.doi.org/", "");
+            else
+          	  v = (lookup[full] || full).replace("NPO_", "").replace(" nanoparticle", "");
+          	  
+            facet[i] = full;
+            view[i] = v;
+          }
+        
+          view = view.join(":");
+          facet = facet.join(":");
           
           return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view + ' <span>' + (count || 0) + '</span></a></li>')
               .click(handler);
@@ -117,6 +131,7 @@ var Manager,
 			id : "studies",
 			target : $(".after_topcategory"),
 			colorMap: Colors,
+			pivotMap: Pivots,
 			tagRenderer: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
@@ -126,7 +141,8 @@ var Manager,
 			id : 'currentsearch',
 			target : $('#selection'),
 			tagRenderer: renderTag,
-			colorMap: Colors
+			colorMap: Colors,
+			pivotMap: Pivots
 		}));
 
 		// ... auto-completed text-search.

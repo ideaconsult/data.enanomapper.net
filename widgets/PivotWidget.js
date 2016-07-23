@@ -6,35 +6,8 @@
 				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
 								"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
 								" " + (suffix == null ? facet.value : suffix);
-			},
-			
-			buildFacetDom = function (facet, colorMap, renderer) {
-        var elements = [], root;
-				
-				if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
-					;
-				else {
-					for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
-						f = facet.pivot[i];
-						f.parent = facet;
-						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
-					}
-		
-					if (elements.length > 0 && facet.field != top_field) {
-						root = jT.getFillTemplate($("#tag-facet"), facet);
-						
-						// we need to add outselves as main tag
-						if (facet.field != bottom_field)
-  				    root.append(renderer(facet).addClass("category title").addClass(colorMap[facet.field]));
-						
-						root.append(elements);
-						elements = [root];
-					}
-				}
-				
-				return elements;
 			};
-	
+			
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
     clickHandler: function (path) {
       var self = this;
@@ -52,6 +25,40 @@
         return false;
       }
     },
+    
+    buildFacetDom: function (facet, renderer) {
+      var elements = [], root;
+			
+			if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
+				;
+			else {
+				for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
+					f = facet.pivot[i];
+					f.parent = facet;
+					elements.push(f.field == bottom_field ? renderer(f).addClass(this.colorMap[f.field]) : this.buildFacetDom(f, renderer)[0]);
+					
+					if (f.field == bottom_field) {
+					  if (this.pivotMap[f.value] === undefined)
+					    this.pivotMap[f.value] = [f];
+            else
+              this.pivotMap[f.value].push(f);
+					}
+				}
+	
+				if (elements.length > 0 && facet.field != top_field) {
+					root = jT.getFillTemplate($("#tag-facet"), facet);
+					
+					// we need to add outselves as main tag
+					if (facet.field != bottom_field)
+				    root.append(renderer(facet).addClass("category title").addClass(this.colorMap[facet.field]));
+					
+					root.append(elements);
+					elements = [root];
+				}
+			}
+			
+			return elements;
+		},
     
 		afterRequest : function() {
 			var self = this,
@@ -89,7 +96,7 @@
   				}
 				}
 				
-				target.append(buildFacetDom(facet, self.colorMap, function (facet) {
+				target.append(self.buildFacetDom(facet, function (facet) {
 					var msg = "",
 					    path = [],
 					    f;
@@ -103,10 +110,10 @@
 						msg += buildValueRange(facet.pivot[j]);
 					}
 					
-					for (f = facet; !!f ;f = f.parent)
+					for (f = facet; f.field != top_field ;f = f.parent)
 					  path.push({ field: f.field, value: f.value});
 					  
-					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(path.reverse()));
+					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(path));
 				}));
 			}
 			
@@ -114,5 +121,9 @@
 				refresh.call();
 		}
 	});
+	
+	AjaxSolr.PivotWidget.topField = top_field;
+	AjaxSolr.PivotWidget.bottomField = bottom_field;
+	AjaxSolr.PivotWidget.fieldList = pivot_fields.split(",");
 	
 })(jQuery);
