@@ -1,0 +1,4517 @@
+{
+	"name": "Protein class",
+	"id": "Protein class",
+	"description": "protein class",
+	"children": [{
+		"name": "Enzyme",
+		"id": "Enzyme",
+		"description": "enzyme",
+		"children": [{
+			"name": "Kinase",
+			"id": "Kinase",
+			"description": "enzyme  kinase",
+			"children": [{
+				"name": "Reg",
+				"id": "Reg",
+				"description": "enzyme  kinase  reg",
+				"size": 1
+			}, {
+				"name": "Protein Kinase",
+				"id": "Protein Kinase",
+				"description": "enzyme  kinase  protein kinase",
+				"children": [{
+					"name": "Cmgc",
+					"id": "Cmgc",
+					"description": "enzyme  kinase  protein kinase  cmgc",
+					"children": [{
+						"name": "Ck",
+						"id": "Ck",
+						"description": "enzyme  kinase  protein kinase  cmgc  ck",
+						"size": 1
+					}, {
+						"name": "Cdk",
+						"id": "Cdk",
+						"description": "enzyme  kinase  protein kinase  cmgc  cdk",
+						"children": [{
+							"name": "Cdc2",
+							"id": "Cdc2",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdc2",
+							"size": 1
+						}, {
+							"name": "Cdk2",
+							"id": "Cdk2",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk2",
+							"size": 1
+						}, {
+							"name": "Cdk5",
+							"id": "Cdk5",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk5",
+							"size": 1
+						}, {
+							"name": "Cdk7",
+							"id": "Cdk7",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk7",
+							"size": 1
+						}, {
+							"name": "Cdk8",
+							"id": "Cdk8",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk8",
+							"size": 1
+						}, {
+							"name": "Cdk9",
+							"id": "Cdk9",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk9",
+							"size": 1
+						}, {
+							"name": "Taire",
+							"id": "Taire",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  taire",
+							"size": 1
+						}, {
+							"name": "Pctaire",
+							"id": "Pctaire",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  pctaire",
+							"size": 1
+						}, {
+							"name": "Pftaire",
+							"id": "Pftaire",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  pftaire",
+							"size": 1
+						}, {
+							"name": "Pitslre",
+							"id": "Pitslre",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  pitslre",
+							"size": 1
+						}, {
+							"name": "Cdk-Unclassified",
+							"id": "Cdk-Unclassified",
+							"description": "enzyme  kinase  protein kinase  cmgc  cdk  cdk-unclassified",
+							"size": 1
+						}],
+						"size": 12
+					}, {
+						"name": "Gsk",
+						"id": "Gsk",
+						"description": "enzyme  kinase  protein kinase  cmgc  gsk",
+						"size": 1
+					}, {
+						"name": "Cdkl",
+						"id": "Cdkl",
+						"description": "enzyme  kinase  protein kinase  cmgc  cdkl",
+						"size": 1
+					}, {
+						"name": "Mapk",
+						"id": "Mapk",
+						"description": "enzyme  kinase  protein kinase  cmgc  mapk",
+						"children": [{
+							"name": "Erk",
+							"id": "Erk",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  erk",
+							"size": 1
+						}, {
+							"name": "Jnk",
+							"id": "Jnk",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  jnk",
+							"size": 1
+						}, {
+							"name": "nmo",
+							"id": "nmo",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  nmo",
+							"size": 1
+						}, {
+							"name": "p38",
+							"id": "p38",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  p38",
+							"size": 1
+						}, {
+							"name": "Erk1",
+							"id": "Erk1",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  erk1",
+							"size": 1
+						}, {
+							"name": "Erk3",
+							"id": "Erk3",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  erk3",
+							"size": 1
+						}, {
+							"name": "Erk5",
+							"id": "Erk5",
+							"description": "enzyme  kinase  protein kinase  cmgc  mapk  erk5",
+							"size": 1
+						}],
+						"size": 8
+					}, {
+						"name": "Srpk",
+						"id": "Srpk",
+						"description": "enzyme  kinase  protein kinase  cmgc  srpk",
+						"size": 1
+					}, {
+						"name": "Clk",
+						"id": "Clk",
+						"description": "enzyme  kinase  protein kinase  cmgc  clk",
+						"size": 1
+					}, {
+						"name": "Rck",
+						"id": "Rck",
+						"description": "enzyme  kinase  protein kinase  cmgc  rck",
+						"children": [{
+							"name": "Mak",
+							"id": "Mak",
+							"description": "enzyme  kinase  protein kinase  cmgc  rck  mak",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "Dyrk",
+						"id": "Dyrk",
+						"description": "enzyme  kinase  protein kinase  cmgc  dyrk",
+						"children": [{
+							"name": "Hipk",
+							"id": "Hipk",
+							"description": "enzyme  kinase  protein kinase  cmgc  dyrk  hipk",
+							"size": 1
+						}, {
+							"name": "Dyrk1",
+							"id": "Dyrk1",
+							"description": "enzyme  kinase  protein kinase  cmgc  dyrk  dyrk1",
+							"size": 1
+						}, {
+							"name": "Dyrk2",
+							"id": "Dyrk2",
+							"description": "enzyme  kinase  protein kinase  cmgc  dyrk  dyrk2",
+							"size": 1
+						}],
+						"size": 4
+					}],
+					"size": 32
+				}, {
+					"name": "Other",
+					"id": "Other",
+					"description": "enzyme  kinase  protein kinase  other",
+					"children": [{
+						"name": "Aur",
+						"id": "Aur",
+						"description": "enzyme  kinase  protein kinase  other  aur",
+						"size": 1
+					}, {
+						"name": "Ck2",
+						"id": "Ck2",
+						"description": "enzyme  kinase  protein kinase  other  ck2",
+						"size": 1
+					}, {
+						"name": "Ikk",
+						"id": "Ikk",
+						"description": "enzyme  kinase  protein kinase  other  ikk",
+						"size": 1
+					}, {
+						"name": "Mos",
+						"id": "Mos",
+						"description": "enzyme  kinase  protein kinase  other  mos",
+						"size": 1
+					}, {
+						"name": "Nak",
+						"id": "Nak",
+						"description": "enzyme  kinase  protein kinase  other  nak",
+						"size": 1
+					}, {
+						"name": "Nek",
+						"id": "Nek",
+						"description": "enzyme  kinase  protein kinase  other  nek",
+						"children": [{
+							"name": "Nek1",
+							"id": "Nek1",
+							"description": "enzyme  kinase  protein kinase  other  nek  nek1",
+							"size": 1
+						}, {
+							"name": "Nek11",
+							"id": "Nek11",
+							"description": "enzyme  kinase  protein kinase  other  nek  nek11",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Plk",
+						"id": "Plk",
+						"description": "enzyme  kinase  protein kinase  other  plk",
+						"children": [{
+							"name": "Plk2",
+							"id": "Plk2",
+							"description": "enzyme  kinase  protein kinase  other  plk  plk2",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "Ulk",
+						"id": "Ulk",
+						"description": "enzyme  kinase  protein kinase  other  ulk",
+						"size": 1
+					}, {
+						"name": "Wee",
+						"id": "Wee",
+						"description": "enzyme  kinase  protein kinase  other  wee",
+						"children": [{
+							"name": "Wee1",
+							"id": "Wee1",
+							"description": "enzyme  kinase  protein kinase  other  wee  wee1",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "Wnk",
+						"id": "Wnk",
+						"description": "enzyme  kinase  protein kinase  other  wnk",
+						"size": 1
+					}, {
+						"name": "Cdc7",
+						"id": "Cdc7",
+						"description": "enzyme  kinase  protein kinase  other  cdc7",
+						"size": 1
+					}, {
+						"name": "Nkf1",
+						"id": "Nkf1",
+						"description": "enzyme  kinase  protein kinase  other  nkf1",
+						"size": 1
+					}, {
+						"name": "Topk",
+						"id": "Topk",
+						"description": "enzyme  kinase  protein kinase  other  topk",
+						"size": 1
+					}, {
+						"name": "Bud 32",
+						"id": "Bud 32",
+						"description": "enzyme  kinase  protein kinase  other  bud 32",
+						"size": 1
+					}, {
+						"name": "Haspin",
+						"id": "Haspin",
+						"description": "enzyme  kinase  protein kinase  other  haspin",
+						"size": 1
+					}, {
+						"name": "Ttk",
+						"id": "Ttk",
+						"description": "enzyme  kinase  protein kinase  other  ttk",
+						"size": 1
+					}, {
+						"name": "Other-Unique",
+						"id": "Other-Unique",
+						"description": "enzyme  kinase  protein kinase  other  other-unique",
+						"size": 1
+					}, {
+						"name": "Pek",
+						"id": "Pek",
+						"description": "enzyme  kinase  protein kinase  other  pek",
+						"children": [{
+							"name": "Hri",
+							"id": "Hri",
+							"description": "enzyme  kinase  protein kinase  other  pek  hri",
+							"size": 1
+						}, {
+							"name": "Pek",
+							"id": "Pek",
+							"description": "enzyme  kinase  protein kinase  other  pek  pek",
+							"size": 1
+						}, {
+							"name": "Pkr",
+							"id": "Pkr",
+							"description": "enzyme  kinase  protein kinase  other  pek  pkr",
+							"size": 1
+						}, {
+							"name": "Gcn2",
+							"id": "Gcn2",
+							"description": "enzyme  kinase  protein kinase  other  pek  gcn2",
+							"size": 1
+						}],
+						"size": 5
+					}, {
+						"name": "Tlk",
+						"id": "Tlk",
+						"description": "enzyme  kinase  protein kinase  other  tlk",
+						"size": 1
+					}, {
+						"name": "Nkf4",
+						"id": "Nkf4",
+						"description": "enzyme  kinase  protein kinase  other  nkf4",
+						"size": 1
+					}, {
+						"name": "Camkk",
+						"id": "Camkk",
+						"description": "enzyme  kinase  protein kinase  other  camkk",
+						"children": [{
+							"name": "Meta",
+							"id": "Meta",
+							"description": "enzyme  kinase  protein kinase  other  camkk  meta",
+							"size": 1
+						}],
+						"size": 2
+					}],
+					"size": 31
+				}, {
+					"name": "Tk",
+					"id": "Tk",
+					"description": "enzyme  kinase  protein kinase  tk",
+					"children": [{
+						"name": "Abl",
+						"id": "Abl",
+						"description": "enzyme  kinase  protein kinase  tk  abl",
+						"size": 1
+					}, {
+						"name": "Ack",
+						"id": "Ack",
+						"description": "enzyme  kinase  protein kinase  tk  ack",
+						"size": 1
+					}, {
+						"name": "Alk",
+						"id": "Alk",
+						"description": "enzyme  kinase  protein kinase  tk  alk",
+						"size": 1
+					}, {
+						"name": "Axl",
+						"id": "Axl",
+						"description": "enzyme  kinase  protein kinase  tk  axl",
+						"size": 1
+					}, {
+						"name": "Csk",
+						"id": "Csk",
+						"description": "enzyme  kinase  protein kinase  tk  csk",
+						"size": 1
+					}, {
+						"name": "Eph",
+						"id": "Eph",
+						"description": "enzyme  kinase  protein kinase  tk  eph",
+						"size": 1
+					}, {
+						"name": "Fak",
+						"id": "Fak",
+						"description": "enzyme  kinase  protein kinase  tk  fak",
+						"size": 1
+					}, {
+						"name": "Fer",
+						"id": "Fer",
+						"description": "enzyme  kinase  protein kinase  tk  fer",
+						"size": 1
+					}, {
+						"name": "Met",
+						"id": "Met",
+						"description": "enzyme  kinase  protein kinase  tk  met",
+						"size": 1
+					}, {
+						"name": "Ret",
+						"id": "Ret",
+						"description": "enzyme  kinase  protein kinase  tk  ret",
+						"size": 1
+					}, {
+						"name": "Src",
+						"id": "Src",
+						"description": "enzyme  kinase  protein kinase  tk  src",
+						"children": [{
+							"name": "Srm",
+							"id": "Srm",
+							"description": "enzyme  kinase  protein kinase  tk  src  srm",
+							"size": 1
+						}, {
+							"name": "SrcA",
+							"id": "SrcA",
+							"description": "enzyme  kinase  protein kinase  tk  src  srca",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Syk",
+						"id": "Syk",
+						"description": "enzyme  kinase  protein kinase  tk  syk",
+						"size": 1
+					}, {
+						"name": "Tec",
+						"id": "Tec",
+						"description": "enzyme  kinase  protein kinase  tk  tec",
+						"size": 1
+					}, {
+						"name": "Tie",
+						"id": "Tie",
+						"description": "enzyme  kinase  protein kinase  tk  tie",
+						"size": 1
+					}, {
+						"name": "Trk",
+						"id": "Trk",
+						"description": "enzyme  kinase  protein kinase  tk  trk",
+						"size": 1
+					}, {
+						"name": "Egfr",
+						"id": "Egfr",
+						"description": "enzyme  kinase  protein kinase  tk  egfr",
+						"size": 1
+					}, {
+						"name": "Fgfr",
+						"id": "Fgfr",
+						"description": "enzyme  kinase  protein kinase  tk  fgfr",
+						"size": 1
+					}, {
+						"name": "InsR",
+						"id": "InsR",
+						"description": "enzyme  kinase  protein kinase  tk  insr",
+						"size": 1
+					}, {
+						"name": "Jaka",
+						"id": "Jaka",
+						"description": "enzyme  kinase  protein kinase  tk  jaka",
+						"size": 1
+					}, {
+						"name": "Jakb",
+						"id": "Jakb",
+						"description": "enzyme  kinase  protein kinase  tk  jakb",
+						"size": 1
+					}, {
+						"name": "Pdgfr",
+						"id": "Pdgfr",
+						"description": "enzyme  kinase  protein kinase  tk  pdgfr",
+						"size": 1
+					}, {
+						"name": "Vegfr",
+						"id": "Vegfr",
+						"description": "enzyme  kinase  protein kinase  tk  vegfr",
+						"size": 1
+					}, {
+						"name": "Ddr",
+						"id": "Ddr",
+						"description": "enzyme  kinase  protein kinase  tk  ddr",
+						"size": 1
+					}, {
+						"name": "Sev",
+						"id": "Sev",
+						"description": "enzyme  kinase  protein kinase  tk  sev",
+						"size": 1
+					}, {
+						"name": "Musk",
+						"id": "Musk",
+						"description": "enzyme  kinase  protein kinase  tk  musk",
+						"size": 1
+					}],
+					"size": 28
+				}, {
+					"name": "Agc",
+					"id": "Agc",
+					"description": "enzyme  kinase  protein kinase  agc",
+					"children": [{
+						"name": "Akt",
+						"id": "Akt",
+						"description": "enzyme  kinase  protein kinase  agc  akt",
+						"size": 1
+					}, {
+						"name": "Ndr",
+						"id": "Ndr",
+						"description": "enzyme  kinase  protein kinase  agc  ndr",
+						"size": 1
+					}, {
+						"name": "Pka",
+						"id": "Pka",
+						"description": "enzyme  kinase  protein kinase  agc  pka",
+						"size": 1
+					}, {
+						"name": "Pkc",
+						"id": "Pkc",
+						"description": "enzyme  kinase  protein kinase  agc  pkc",
+						"children": [{
+							"name": "Eta",
+							"id": "Eta",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  eta",
+							"size": 1
+						}, {
+							"name": "Iota",
+							"id": "Iota",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  iota",
+							"size": 1
+						}, {
+							"name": "Theta",
+							"id": "Theta",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  theta",
+							"size": 1
+						}, {
+							"name": "Alpha",
+							"id": "Alpha",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  alpha",
+							"size": 1
+						}, {
+							"name": "Delta",
+							"id": "Delta",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  delta",
+							"size": 1
+						}, {
+							"name": "Pkc-Unclassified",
+							"id": "Pkc-Unclassified",
+							"description": "enzyme  kinase  protein kinase  agc  pkc  pkc-unclassified",
+							"size": 1
+						}],
+						"size": 7
+					}, {
+						"name": "Pkg",
+						"id": "Pkg",
+						"description": "enzyme  kinase  protein kinase  agc  pkg",
+						"size": 1
+					}, {
+						"name": "Pkn",
+						"id": "Pkn",
+						"description": "enzyme  kinase  protein kinase  agc  pkn",
+						"size": 1
+					}, {
+						"name": "Sgk",
+						"id": "Sgk",
+						"description": "enzyme  kinase  protein kinase  agc  sgk",
+						"size": 1
+					}, {
+						"name": "Pdk1",
+						"id": "Pdk1",
+						"description": "enzyme  kinase  protein kinase  agc  pdk1",
+						"size": 1
+					}, {
+						"name": "Yank",
+						"id": "Yank",
+						"description": "enzyme  kinase  protein kinase  agc  yank",
+						"size": 1
+					}, {
+						"name": "Grk",
+						"id": "Grk",
+						"description": "enzyme  kinase  protein kinase  agc  grk",
+						"children": [{
+							"name": "Grk",
+							"id": "Grk",
+							"description": "enzyme  kinase  protein kinase  agc  grk  grk",
+							"size": 1
+						}, {
+							"name": "Bark",
+							"id": "Bark",
+							"description": "enzyme  kinase  protein kinase  agc  grk  bark",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Rsk",
+						"id": "Rsk",
+						"description": "enzyme  kinase  protein kinase  agc  rsk",
+						"children": [{
+							"name": "Msk",
+							"id": "Msk",
+							"description": "enzyme  kinase  protein kinase  agc  rsk  msk",
+							"size": 1
+						}, {
+							"name": "p70",
+							"id": "p70",
+							"description": "enzyme  kinase  protein kinase  agc  rsk  p70",
+							"size": 1
+						}, {
+							"name": "Rsk",
+							"id": "Rsk",
+							"description": "enzyme  kinase  protein kinase  agc  rsk  rsk",
+							"size": 1
+						}, {
+							"name": "Rskp70",
+							"id": "Rskp70",
+							"description": "enzyme  kinase  protein kinase  agc  rsk  rskp70",
+							"size": 1
+						}],
+						"size": 5
+					}, {
+						"name": "Dmpk",
+						"id": "Dmpk",
+						"description": "enzyme  kinase  protein kinase  agc  dmpk",
+						"children": [{
+							"name": "Gek",
+							"id": "Gek",
+							"description": "enzyme  kinase  protein kinase  agc  dmpk  gek",
+							"size": 1
+						}, {
+							"name": "Crik",
+							"id": "Crik",
+							"description": "enzyme  kinase  protein kinase  agc  dmpk  crik",
+							"size": 1
+						}, {
+							"name": "Rock",
+							"id": "Rock",
+							"description": "enzyme  kinase  protein kinase  agc  dmpk  rock",
+							"size": 1
+						}],
+						"size": 4
+					}, {
+						"name": "Mast",
+						"id": "Mast",
+						"description": "enzyme  kinase  protein kinase  agc  mast",
+						"size": 1
+					}],
+					"size": 29
+				}, {
+					"name": "Ck1",
+					"id": "Ck1",
+					"description": "enzyme  kinase  protein kinase  ck1",
+					"children": [{
+						"name": "Ck1",
+						"id": "Ck1",
+						"description": "enzyme  kinase  protein kinase  ck1  ck1",
+						"children": [{
+							"name": "Ck1-a",
+							"id": "Ck1-a",
+							"description": "enzyme  kinase  protein kinase  ck1  ck1  ck1-a",
+							"size": 1
+						}, {
+							"name": "Ck1-g",
+							"id": "Ck1-g",
+							"description": "enzyme  kinase  protein kinase  ck1  ck1  ck1-g",
+							"size": 1
+						}],
+						"size": 3
+					}],
+					"size": 4
+				}, {
+					"name": "Ste",
+					"id": "Ste",
+					"description": "enzyme  kinase  protein kinase  ste",
+					"children": [{
+						"name": "Ste11",
+						"id": "Ste11",
+						"description": "enzyme  kinase  protein kinase  ste  ste11",
+						"children": [{
+							"name": "Ask",
+							"id": "Ask",
+							"description": "enzyme  kinase  protein kinase  ste  ste11  ask",
+							"size": 1
+						}, {
+							"name": "Mekk2",
+							"id": "Mekk2",
+							"description": "enzyme  kinase  protein kinase  ste  ste11  mekk2",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Ste20",
+						"id": "Ste20",
+						"description": "enzyme  kinase  protein kinase  ste  ste20",
+						"children": [{
+							"name": "Khs",
+							"id": "Khs",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  khs",
+							"size": 1
+						}, {
+							"name": "Msn",
+							"id": "Msn",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  msn",
+							"size": 1
+						}, {
+							"name": "Mst",
+							"id": "Mst",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  mst",
+							"size": 1
+						}, {
+							"name": "Slk",
+							"id": "Slk",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  slk",
+							"size": 1
+						}, {
+							"name": "Tao",
+							"id": "Tao",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  tao",
+							"size": 1
+						}, {
+							"name": "Ysk",
+							"id": "Ysk",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  ysk",
+							"size": 1
+						}, {
+							"name": "Fray",
+							"id": "Fray",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  fray",
+							"size": 1
+						}, {
+							"name": "Paka",
+							"id": "Paka",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  paka",
+							"size": 1
+						}, {
+							"name": "Pakb",
+							"id": "Pakb",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  pakb",
+							"size": 1
+						}, {
+							"name": "NinaC",
+							"id": "NinaC",
+							"description": "enzyme  kinase  protein kinase  ste  ste20  ninac",
+							"size": 1
+						}],
+						"size": 11
+					}, {
+						"name": "Ste7",
+						"id": "Ste7",
+						"description": "enzyme  kinase  protein kinase  ste  ste7",
+						"size": 1
+					}, {
+						"name": "Ste-Unique",
+						"id": "Ste-Unique",
+						"description": "enzyme  kinase  protein kinase  ste  ste-unique",
+						"size": 1
+					}],
+					"size": 17
+				}, {
+					"name": "Tkl",
+					"id": "Tkl",
+					"description": "enzyme  kinase  protein kinase  tkl",
+					"children": [{
+						"name": "Lrrk",
+						"id": "Lrrk",
+						"description": "enzyme  kinase  protein kinase  tkl  lrrk",
+						"size": 1
+					}, {
+						"name": "Ripk",
+						"id": "Ripk",
+						"description": "enzyme  kinase  protein kinase  tkl  ripk",
+						"size": 1
+					}, {
+						"name": "Mlk",
+						"id": "Mlk",
+						"description": "enzyme  kinase  protein kinase  tkl  mlk",
+						"children": [{
+							"name": "Ilk",
+							"id": "Ilk",
+							"description": "enzyme  kinase  protein kinase  tkl  mlk  ilk",
+							"size": 1
+						}, {
+							"name": "Lzk",
+							"id": "Lzk",
+							"description": "enzyme  kinase  protein kinase  tkl  mlk  lzk",
+							"size": 1
+						}, {
+							"name": "Tak1",
+							"id": "Tak1",
+							"description": "enzyme  kinase  protein kinase  tkl  mlk  tak1",
+							"size": 1
+						}, {
+							"name": "HH498",
+							"id": "HH498",
+							"description": "enzyme  kinase  protein kinase  tkl  mlk  hh498",
+							"size": 1
+						}, {
+							"name": "Mlk",
+							"id": "Mlk",
+							"description": "enzyme  kinase  protein kinase  tkl  mlk  mlk",
+							"size": 1
+						}],
+						"size": 6
+					}, {
+						"name": "Raf",
+						"id": "Raf",
+						"description": "enzyme  kinase  protein kinase  tkl  raf",
+						"size": 1
+					}, {
+						"name": "Irak",
+						"id": "Irak",
+						"description": "enzyme  kinase  protein kinase  tkl  irak",
+						"size": 1
+					}, {
+						"name": "Lisk",
+						"id": "Lisk",
+						"description": "enzyme  kinase  protein kinase  tkl  lisk",
+						"children": [{
+							"name": "Limk",
+							"id": "Limk",
+							"description": "enzyme  kinase  protein kinase  tkl  lisk  limk",
+							"size": 1
+						}, {
+							"name": "Tesk",
+							"id": "Tesk",
+							"description": "enzyme  kinase  protein kinase  tkl  lisk  tesk",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Stkr",
+						"id": "Stkr",
+						"description": "enzyme  kinase  protein kinase  tkl  stkr",
+						"children": [{
+							"name": "Stkr1",
+							"id": "Stkr1",
+							"description": "enzyme  kinase  protein kinase  tkl  stkr  stkr1",
+							"size": 1
+						}, {
+							"name": "Type1",
+							"id": "Type1",
+							"description": "enzyme  kinase  protein kinase  tkl  stkr  type1",
+							"size": 1
+						}, {
+							"name": "Type2",
+							"id": "Type2",
+							"description": "enzyme  kinase  protein kinase  tkl  stkr  type2",
+							"size": 1
+						}],
+						"size": 4
+					}],
+					"size": 18
+				}, {
+					"name": "Camk",
+					"id": "Camk",
+					"description": "enzyme  kinase  protein kinase  camk",
+					"children": [{
+						"name": "Phk",
+						"id": "Phk",
+						"description": "enzyme  kinase  protein kinase  camk  phk",
+						"size": 1
+					}, {
+						"name": "Pim",
+						"id": "Pim",
+						"description": "enzyme  kinase  protein kinase  camk  pim",
+						"size": 1
+					}, {
+						"name": "Pkd",
+						"id": "Pkd",
+						"description": "enzyme  kinase  protein kinase  camk  pkd",
+						"size": 1
+					}, {
+						"name": "Dapk",
+						"id": "Dapk",
+						"description": "enzyme  kinase  protein kinase  camk  dapk",
+						"size": 1
+					}, {
+						"name": "Mlck",
+						"id": "Mlck",
+						"description": "enzyme  kinase  protein kinase  camk  mlck",
+						"size": 1
+					}, {
+						"name": "Tssk",
+						"id": "Tssk",
+						"description": "enzyme  kinase  protein kinase  camk  tssk",
+						"size": 1
+					}, {
+						"name": "Camk2",
+						"id": "Camk2",
+						"description": "enzyme  kinase  protein kinase  camk  camk2",
+						"size": 1
+					}, {
+						"name": "Rad53",
+						"id": "Rad53",
+						"description": "enzyme  kinase  protein kinase  camk  rad53",
+						"size": 1
+					}, {
+						"name": "Rskb",
+						"id": "Rskb",
+						"description": "enzyme  kinase  protein kinase  camk  rskb",
+						"children": [{
+							"name": "Mskb",
+							"id": "Mskb",
+							"description": "enzyme  kinase  protein kinase  camk  rskb  mskb",
+							"size": 1
+						}, {
+							"name": "Rskb",
+							"id": "Rskb",
+							"description": "enzyme  kinase  protein kinase  camk  rskb  rskb",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Camkl",
+						"id": "Camkl",
+						"description": "enzyme  kinase  protein kinase  camk  camkl",
+						"children": [{
+							"name": "Lkb",
+							"id": "Lkb",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  lkb",
+							"size": 1
+						}, {
+							"name": "Qik",
+							"id": "Qik",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  qik",
+							"size": 1
+						}, {
+							"name": "Ampk",
+							"id": "Ampk",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  ampk",
+							"size": 1
+						}, {
+							"name": "Brsk",
+							"id": "Brsk",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  brsk",
+							"size": 1
+						}, {
+							"name": "Chk1",
+							"id": "Chk1",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  chk1",
+							"size": 1
+						}, {
+							"name": "Mark",
+							"id": "Mark",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  mark",
+							"size": 1
+						}, {
+							"name": "Melk",
+							"id": "Melk",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  melk",
+							"size": 1
+						}, {
+							"name": "Nim1",
+							"id": "Nim1",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  nim1",
+							"size": 1
+						}, {
+							"name": "Nuak",
+							"id": "Nuak",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  nuak",
+							"size": 1
+						}, {
+							"name": "Pask",
+							"id": "Pask",
+							"description": "enzyme  kinase  protein kinase  camk  camkl  pask",
+							"size": 1
+						}],
+						"size": 11
+					}, {
+						"name": "Dcamkl",
+						"id": "Dcamkl",
+						"description": "enzyme  kinase  protein kinase  camk  dcamkl",
+						"size": 1
+					}, {
+						"name": "Mapkapk",
+						"id": "Mapkapk",
+						"description": "enzyme  kinase  protein kinase  camk  mapkapk",
+						"children": [{
+							"name": "Mnk",
+							"id": "Mnk",
+							"description": "enzyme  kinase  protein kinase  camk  mapkapk  mnk",
+							"size": 1
+						}, {
+							"name": "Mapkapk",
+							"id": "Mapkapk",
+							"description": "enzyme  kinase  protein kinase  camk  mapkapk  mapkapk",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "Camk-Unique",
+						"id": "Camk-Unique",
+						"description": "enzyme  kinase  protein kinase  camk  camk-unique",
+						"size": 1
+					}],
+					"size": 28
+				}, {
+					"name": "Atypical",
+					"id": "Atypical",
+					"description": "enzyme  kinase  protein kinase  atypical",
+					"children": [{
+						"name": "Pdhk",
+						"id": "Pdhk",
+						"description": "enzyme  kinase  protein kinase  atypical  pdhk",
+						"size": 1
+					}, {
+						"name": "Bcr",
+						"id": "Bcr",
+						"description": "enzyme  kinase  protein kinase  atypical  bcr",
+						"size": 1
+					}, {
+						"name": "Pikk",
+						"id": "Pikk",
+						"description": "enzyme  kinase  protein kinase  atypical  pikk",
+						"children": [{
+							"name": "Frap",
+							"id": "Frap",
+							"description": "enzyme  kinase  protein kinase  atypical  pikk  frap",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "Alpha",
+						"id": "Alpha",
+						"description": "enzyme  kinase  protein kinase  atypical  alpha",
+						"size": 1
+					}, {
+						"name": "Rio",
+						"id": "Rio",
+						"description": "enzyme  kinase  protein kinase  atypical  rio",
+						"children": [{
+							"name": "Rio1",
+							"id": "Rio1",
+							"description": "enzyme  kinase  protein kinase  atypical  rio  rio1",
+							"size": 1
+						}, {
+							"name": "Rio2",
+							"id": "Rio2",
+							"description": "enzyme  kinase  protein kinase  atypical  rio  rio2",
+							"size": 1
+						}, {
+							"name": "Rio3",
+							"id": "Rio3",
+							"description": "enzyme  kinase  protein kinase  atypical  rio  rio3",
+							"size": 1
+						}],
+						"size": 4
+					}, {
+						"name": "Abc1",
+						"id": "Abc1",
+						"description": "enzyme  kinase  protein kinase  atypical  abc1",
+						"children": [{
+							"name": "Abc1-A",
+							"id": "Abc1-A",
+							"description": "enzyme  kinase  protein kinase  atypical  abc1  abc1-a",
+							"size": 1
+						}],
+						"size": 2
+					}],
+					"size": 12
+				}],
+				"size": 200
+			}],
+			"size": 202
+		}, {
+			"name": "Oxidoreductase",
+			"id": "Reductase",
+			"description": "enzyme  reductase",
+			"size": 1
+		}, {
+			"name": "Transferase",
+			"id": "Transferase",
+			"description": "enzyme  transferase",
+			"size": 1
+		}, {
+			"name": "Isomerase",
+			"id": "Isomerase",
+			"description": "enzyme  isomerase",
+			"size": 1
+		}, {
+			"name": "Ligase",
+			"id": "Ligase",
+			"description": "enzyme  ligase",
+			"size": 1
+		}, {
+			"name": "Hydrolase",
+			"id": "Hydrolase",
+			"description": "enzyme  hydrolase",
+			"size": 1
+		}, {
+			"name": "Lyase",
+			"id": "Lyase",
+			"description": "enzyme  lyase",
+			"children": [{
+				"name": "Guanylate cyclase",
+				"id": "Guanylate cyclase",
+				"description": "enzyme  lyase  guanylate cyclase",
+				"children": [{
+					"name": "Sgc",
+					"id": "Sgc",
+					"description": "enzyme  lyase  guanylate cyclase  soluble guanylate cyclase",
+					"size": 1
+				}, {
+					"name": "Rgc",
+					"id": "Rgc",
+					"description": "enzyme  lyase  guanylate cyclase  receptor guanylate cyclase",
+					"size": 1
+				}],
+				"size": 3
+			}],
+			"size": 4
+		}, {
+			"name": "Protease",
+			"id": "Protease",
+			"description": "enzyme  protease",
+			"children": [{
+				"name": "Serine",
+				"id": "Serine",
+				"description": "enzyme  protease  serine",
+				"children": [{
+					"name": "Unclassified",
+					"id": "Unclassified",
+					"description": "enzyme  protease  serine  unclassified",
+					"size": 1
+				}, {
+					"name": "SB",
+					"id": "SB",
+					"description": "enzyme  protease  serine  sb",
+					"children": [{
+						"name": "S8A",
+						"id": "S8A",
+						"description": "enzyme  protease  serine  sb  s8a",
+						"size": 1
+					}, {
+						"name": "S8B",
+						"id": "S8B",
+						"description": "enzyme  protease  serine  sb  s8b",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "SC",
+					"id": "SC",
+					"description": "enzyme  protease  serine  sc",
+					"children": [{
+						"name": "S10",
+						"id": "S10",
+						"description": "enzyme  protease  serine  sc  s10",
+						"size": 1
+					}, {
+						"name": "S28",
+						"id": "S28",
+						"description": "enzyme  protease  serine  sc  s28",
+						"size": 1
+					}, {
+						"name": "S33",
+						"id": "S33",
+						"description": "enzyme  protease  serine  sc  s33",
+						"size": 1
+					}, {
+						"name": "S9A",
+						"id": "S9A",
+						"description": "enzyme  protease  serine  sc  s9a",
+						"size": 1
+					}, {
+						"name": "S9B",
+						"id": "S9B",
+						"description": "enzyme  protease  serine  sc  s9b",
+						"size": 1
+					}],
+					"size": 6
+				}, {
+					"name": "SE",
+					"id": "SE",
+					"description": "enzyme  protease  serine  se",
+					"children": [{
+						"name": "S11",
+						"id": "S11",
+						"description": "enzyme  protease  serine  se  s11",
+						"size": 1
+					}, {
+						"name": "S12",
+						"id": "S12",
+						"description": "enzyme  protease  serine  se  s12",
+						"size": 1
+					}, {
+						"name": "S13",
+						"id": "S13",
+						"description": "enzyme  protease  serine  se  s13",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "SF",
+					"id": "SF",
+					"description": "enzyme  protease  serine  sf",
+					"children": [{
+						"name": "S26A",
+						"id": "S26A",
+						"description": "enzyme  protease  serine  sf  s26a",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "SH",
+					"id": "SH",
+					"description": "enzyme  protease  serine  sh",
+					"children": [{
+						"name": "S21",
+						"id": "S21",
+						"description": "enzyme  protease  serine  sh  s21",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "SR",
+					"id": "SR",
+					"description": "enzyme  protease  serine  sr",
+					"children": [{
+						"name": "S60",
+						"id": "S60",
+						"description": "enzyme  protease  serine  sr  s60",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "PAS",
+					"id": "PAS",
+					"description": "enzyme  protease  serine  pas",
+					"children": [{
+						"name": "S6",
+						"id": "S6",
+						"description": "enzyme  protease  serine  pas  s6",
+						"size": 1
+					}, {
+						"name": "S1A",
+						"id": "S1A",
+						"description": "enzyme  protease  serine  pas  s1a",
+						"size": 1
+					}, {
+						"name": "S1B",
+						"id": "S1B",
+						"description": "enzyme  protease  serine  pas  s1b",
+						"size": 1
+					}, {
+						"name": "S29",
+						"id": "S29",
+						"description": "enzyme  protease  serine  pas  s29",
+						"children": [{
+							"name": "Reg",
+							"id": "Reg",
+							"description": "enzyme  protease  serine  pas  s29  reg",
+							"size": 1
+						}],
+						"size": 2
+					}],
+					"size": 6
+				}],
+				"size": 27
+			}, {
+				"name": "Metallo",
+				"id": "Metallo",
+				"description": "enzyme  protease  metallo",
+				"children": [{
+					"name": "M-",
+					"id": "M-",
+					"description": "enzyme  protease  metallo  m-",
+					"children": [{
+						"name": "M79",
+						"id": "M79",
+						"description": "enzyme  protease  metallo  m-  m79",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "MC",
+					"id": "MC",
+					"description": "enzyme  protease  metallo  mc",
+					"children": [{
+						"name": "M14A",
+						"id": "M14A",
+						"description": "enzyme  protease  metallo  mc  m14a",
+						"size": 1
+					}, {
+						"name": "M14B",
+						"id": "M14B",
+						"description": "enzyme  protease  metallo  mc  m14b",
+						"children": [{
+							"name": "Reg",
+							"id": "Reg",
+							"description": "enzyme  protease  metallo  mc  m14b  reg",
+							"size": 1
+						}],
+						"size": 2
+					}],
+					"size": 4
+				}, {
+					"name": "MF",
+					"id": "MF",
+					"description": "enzyme  protease  metallo  mf",
+					"children": [{
+						"name": "M17",
+						"id": "M17",
+						"description": "enzyme  protease  metallo  mf  m17",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "MG",
+					"id": "MG",
+					"description": "enzyme  protease  metallo  mg",
+					"children": [{
+						"name": "M24A",
+						"id": "M24A",
+						"description": "enzyme  protease  metallo  mg  m24a",
+						"size": 1
+					}, {
+						"name": "M24B",
+						"id": "M24B",
+						"description": "enzyme  protease  metallo  mg  m24b",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "MH",
+					"id": "MH",
+					"description": "enzyme  protease  metallo  mh",
+					"children": [{
+						"name": "M18",
+						"id": "M18",
+						"description": "enzyme  protease  metallo  mh  m18",
+						"size": 1
+					}, {
+						"name": "M28",
+						"id": "M28",
+						"description": "enzyme  protease  metallo  mh  m28",
+						"children": [{
+							"name": "M28A",
+							"id": "M28A",
+							"description": "enzyme  protease  metallo  mh  m28  m28a",
+							"size": 1
+						}, {
+							"name": "M28B",
+							"id": "M28B",
+							"description": "enzyme  protease  metallo  mh  m28  m28b",
+							"size": 1
+						}],
+						"size": 3
+					}, {
+						"name": "M20A",
+						"id": "M20A",
+						"description": "enzyme  protease  metallo  mh  m20a",
+						"size": 1
+					}],
+					"size": 6
+				}, {
+					"name": "MJ",
+					"id": "MJ",
+					"description": "enzyme  protease  metallo  mj",
+					"children": [{
+						"name": "M19",
+						"id": "M19",
+						"description": "enzyme  protease  metallo  mj  m19",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "MAE",
+					"id": "MAE",
+					"description": "enzyme  protease  metallo  mae",
+					"children": [{
+						"name": "M49",
+						"id": "M49",
+						"description": "enzyme  protease  metallo  mae  m49",
+						"size": 1
+					}, {
+						"name": "M1",
+						"id": "M1",
+						"description": "enzyme  protease  metallo  mae  m1",
+						"size": 1
+					}, {
+						"name": "M2",
+						"id": "M2",
+						"description": "enzyme  protease  metallo  mae  m2",
+						"size": 1
+					}, {
+						"name": "M4",
+						"id": "M4",
+						"description": "enzyme  protease  metallo  mae  m4",
+						"size": 1
+					}, {
+						"name": "M13",
+						"id": "M13",
+						"description": "enzyme  protease  metallo  mae  m13",
+						"size": 1
+					}, {
+						"name": "M27",
+						"id": "M27",
+						"description": "enzyme  protease  metallo  mae  m27",
+						"size": 1
+					}, {
+						"name": "M34",
+						"id": "M34",
+						"description": "enzyme  protease  metallo  mae  m34",
+						"size": 1
+					}, {
+						"name": "M9B",
+						"id": "M9B",
+						"description": "enzyme  protease  metallo  mae  m9b",
+						"size": 1
+					}, {
+						"name": "M48A",
+						"id": "M48A",
+						"description": "enzyme  protease  metallo  mae  m48a",
+						"size": 1
+					}],
+					"size": 10
+				}, {
+					"name": "MAM",
+					"id": "MAM",
+					"description": "enzyme  protease  metallo  mam",
+					"children": [{
+						"name": "M10A",
+						"id": "M10A",
+						"description": "enzyme  protease  metallo  mam  m10a",
+						"size": 1
+					}, {
+						"name": "M12A",
+						"id": "M12A",
+						"description": "enzyme  protease  metallo  mam  m12a",
+						"size": 1
+					}, {
+						"name": "M12B",
+						"id": "M12B",
+						"description": "enzyme  protease  metallo  mam  m12b",
+						"size": 1
+					}],
+					"size": 4
+				}],
+				"size": 34
+			}, {
+				"name": "Unknown",
+				"id": "Unknown",
+				"description": "enzyme  protease  unknown",
+				"children": [{
+					"name": "U-",
+					"id": "U-",
+					"description": "enzyme  protease  unknown  u-",
+					"children": [{
+						"name": "U48",
+						"id": "U48",
+						"description": "enzyme  protease  unknown  u-  u48",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "Aspartic",
+				"id": "Aspartic",
+				"description": "enzyme  protease  aspartic",
+				"children": [{
+					"name": "AA",
+					"id": "AA",
+					"description": "enzyme  protease  aspartic  aa",
+					"children": [{
+						"name": "A1A",
+						"id": "A1A",
+						"description": "enzyme  protease  aspartic  aa  a1a",
+						"size": 1
+					}, {
+						"name": "A2A",
+						"id": "A2A",
+						"description": "enzyme  protease  aspartic  aa  a2a",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "AD",
+					"id": "AD",
+					"description": "enzyme  protease  aspartic  ad",
+					"children": [{
+						"name": "A22A",
+						"id": "A22A",
+						"description": "enzyme  protease  aspartic  ad  a22a",
+						"children": [{
+							"name": "Reg",
+							"id": "Reg",
+							"description": "enzyme  protease  aspartic  ad  a22a  reg",
+							"size": 1
+						}],
+						"size": 2
+					}],
+					"size": 3
+				}, {
+					"name": "AF",
+					"id": "AF",
+					"description": "enzyme  protease  aspartic  af",
+					"children": [{
+						"name": "A26",
+						"id": "A26",
+						"description": "enzyme  protease  aspartic  af  a26",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 9
+			}, {
+				"name": "Cysteine",
+				"id": "Cysteine",
+				"description": "enzyme  protease  cysteine",
+				"children": [{
+					"name": "CM",
+					"id": "CM",
+					"description": "enzyme  protease  cysteine  cm",
+					"children": [{
+						"name": "C18",
+						"id": "C18",
+						"description": "enzyme  protease  cysteine  cm  c18",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "CA",
+					"id": "CA",
+					"description": "enzyme  protease  cysteine  ca",
+					"children": [{
+						"name": "C2",
+						"id": "C2",
+						"description": "enzyme  protease  cysteine  ca  c2",
+						"children": [{
+							"name": "Reg",
+							"id": "Reg",
+							"description": "enzyme  protease  cysteine  ca  c2  reg",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "C1A",
+						"id": "C1A",
+						"description": "enzyme  protease  cysteine  ca  c1a",
+						"size": 1
+					}, {
+						"name": "C2A",
+						"id": "C2A",
+						"description": "enzyme  protease  cysteine  ca  c2a",
+						"size": 1
+					}, {
+						"name": "C12",
+						"id": "C12",
+						"description": "enzyme  protease  cysteine  ca  c12",
+						"size": 1
+					}, {
+						"name": "C19",
+						"id": "C19",
+						"description": "enzyme  protease  cysteine  ca  c19",
+						"size": 1
+					}],
+					"size": 7
+				}, {
+					"name": "CD",
+					"id": "CD",
+					"description": "enzyme  protease  cysteine  cd",
+					"children": [{
+						"name": "C13",
+						"id": "C13",
+						"description": "enzyme  protease  cysteine  cd  c13",
+						"size": 1
+					}, {
+						"name": "C14",
+						"id": "C14",
+						"description": "enzyme  protease  cysteine  cd  c14",
+						"children": [{
+							"name": "C14A",
+							"id": "C14A",
+							"description": "enzyme  protease  cysteine  cd  c14  c14a",
+							"size": 1
+						}],
+						"size": 2
+					}, {
+						"name": "C25",
+						"id": "C25",
+						"description": "enzyme  protease  cysteine  cd  c25",
+						"size": 1
+					}, {
+						"name": "C11",
+						"id": "C11",
+						"description": "enzyme  protease  cysteine  cd  c11",
+						"size": 1
+					}],
+					"size": 6
+				}, {
+					"name": "PAC",
+					"id": "PAC",
+					"description": "enzyme  protease  cysteine  pac",
+					"children": [{
+						"name": "C3A",
+						"id": "C3A",
+						"description": "enzyme  protease  cysteine  pac  c3a",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "PCC",
+					"id": "PCC",
+					"description": "enzyme  protease  cysteine  pcc",
+					"children": [{
+						"name": "C26",
+						"id": "C26",
+						"description": "enzyme  protease  cysteine  pcc  c26",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 20
+			}, {
+				"name": "Inhibitor",
+				"id": "Inhibitor",
+				"description": "enzyme  protease  inhibitor",
+				"children": [{
+					"name": "I-",
+					"id": "I-",
+					"description": "enzyme  protease  inhibitor  i-",
+					"children": [{
+						"name": "I49",
+						"id": "I49",
+						"description": "enzyme  protease  inhibitor  i-  i49",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "Threonine",
+				"id": "Threonine",
+				"description": "enzyme  protease  threonine",
+				"children": [{
+					"name": "PBT",
+					"id": "PBT",
+					"description": "enzyme  protease  threonine  pbt",
+					"children": [{
+						"name": "T2",
+						"id": "T2",
+						"description": "enzyme  protease  threonine  pbt  t2",
+						"size": 1
+					}, {
+						"name": "T1A",
+						"id": "T1A",
+						"description": "enzyme  protease  threonine  pbt  t1a",
+						"size": 1
+					}],
+					"size": 3
+				}],
+				"size": 4
+			}],
+			"size": 101
+		}, {
+			"name": "Phosphatase",
+			"id": "Phosphatase",
+			"description": "enzyme  phosphatase",
+			"children": [{
+				"name": "Protein Phosphatase",
+				"id": "Protein Phosphatase",
+				"description": "enzyme  phosphatase  protein phosphatase",
+				"children": [{
+					"name": "Reg",
+					"id": "Reg",
+					"description": "enzyme  phosphatase  protein phosphatase  reg",
+					"size": 1
+				}, {
+					"name": "Ser",
+					"id": "Ser",
+					"description": "enzyme  phosphatase  protein phosphatase  ser",
+					"size": 1
+				}, {
+					"name": "Tyr",
+					"id": "Tyr",
+					"description": "enzyme  phosphatase  protein phosphatase  tyr",
+					"children": [{
+						"name": "Receptor",
+						"id": "Receptor",
+						"description": "enzyme  phosphatase  protein phosphatase  tyr  receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "SerThr",
+					"id": "SerThr",
+					"description": "enzyme  phosphatase  protein phosphatase  ser_thr",
+					"size": 1
+				}, {
+					"name": "SerThrTyr",
+					"id": "SerThrTyr",
+					"description": "enzyme  phosphatase  protein phosphatase  ser_thr_tyr",
+					"size": 1
+				}],
+				"size": 7
+			}],
+			"size": 8
+		}, {
+			"name": "Cytochrome P450",
+			"id": "Cytochrome P450",
+			"description": "enzyme  cytochrome p450",
+			"children": [{
+				"name": "CYPCAM",
+				"id": "CYPCAM",
+				"description": "enzyme  cytochrome p450  cyp_cam",
+				"size": 1
+			}, {
+				"name": "CYP1",
+				"id": "CYP1",
+				"description": "enzyme  cytochrome p450  cyp_1",
+				"children": [{
+					"name": "CYP1A",
+					"id": "CYP1A",
+					"description": "enzyme  cytochrome p450  cyp_1  cyp_1a",
+					"children": [{
+						"name": "CYP1A1",
+						"id": "CYP1A1",
+						"description": "enzyme  cytochrome p450  cyp_1  cyp_1a  cyp_1a1",
+						"size": 1
+					}, {
+						"name": "CYP1A2",
+						"id": "CYP1A2",
+						"description": "enzyme  cytochrome p450  cyp_1  cyp_1a  cyp_1a2",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "CYP1B",
+					"id": "CYP1B",
+					"description": "enzyme  cytochrome p450  cyp_1  cyp_1b",
+					"children": [{
+						"name": "CYP1B1",
+						"id": "CYP1B1",
+						"description": "enzyme  cytochrome p450  cyp_1  cyp_1b  cyp_1b1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 6
+			}, {
+				"name": "CYP2",
+				"id": "CYP2",
+				"description": "enzyme  cytochrome p450  cyp_2",
+				"children": [{
+					"name": "CYP2A",
+					"id": "CYP2A",
+					"description": "enzyme  cytochrome p450  cyp_2  cyp_2a",
+					"children": [{
+						"name": "CYP2A2",
+						"id": "CYP2A2",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2a  cyp_2a2",
+						"size": 1
+					}, {
+						"name": "CYP2A5",
+						"id": "CYP2A5",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2a  cyp_2a5",
+						"size": 1
+					}, {
+						"name": "CYP2A6",
+						"id": "CYP2A6",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2a  cyp_2a6",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "CYP2B",
+					"id": "CYP2B",
+					"description": "enzyme  cytochrome p450  cyp_2  cyp_2b",
+					"children": [{
+						"name": "CYP2B1",
+						"id": "CYP2B1",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2b  cyp_2b1",
+						"size": 1
+					}, {
+						"name": "CYP2B6",
+						"id": "CYP2B6",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2b  cyp_2b6",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "CYP2C",
+					"id": "CYP2C",
+					"description": "enzyme  cytochrome p450  cyp_2  cyp_2c",
+					"children": [{
+						"name": "CYP2C8",
+						"id": "CYP2C8",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c8",
+						"size": 1
+					}, {
+						"name": "CYP2C9",
+						"id": "CYP2C9",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c9",
+						"size": 1
+					}, {
+						"name": "CYP2C11",
+						"id": "CYP2C11",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c11",
+						"size": 1
+					}, {
+						"name": "CYP2C18",
+						"id": "CYP2C18",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c18",
+						"size": 1
+					}, {
+						"name": "CYP2C19",
+						"id": "CYP2C19",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c19",
+						"size": 1
+					}, {
+						"name": "CYP2C23",
+						"id": "CYP2C23",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2c  cyp_2c23",
+						"size": 1
+					}],
+					"size": 7
+				}, {
+					"name": "CYP2D",
+					"id": "CYP2D",
+					"description": "enzyme  cytochrome p450  cyp_2  cyp_2d",
+					"children": [{
+						"name": "CYP2D1",
+						"id": "CYP2D1",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2d  cyp_2d1",
+						"size": 1
+					}, {
+						"name": "CYP2D2",
+						"id": "CYP2D2",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2d  cyp_2d2",
+						"size": 1
+					}, {
+						"name": "CYP2D3",
+						"id": "CYP2D3",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2d  cyp_2d3",
+						"size": 1
+					}, {
+						"name": "CYP2D6",
+						"id": "CYP2D6",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2d  cyp_2d6",
+						"size": 1
+					}, {
+						"name": "CYP2D18",
+						"id": "CYP2D18",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2d  cyp_2d18",
+						"size": 1
+					}],
+					"size": 6
+				}, {
+					"name": "CYP2E",
+					"id": "CYP2E",
+					"description": "enzyme  cytochrome p450  cyp_2  cyp_2e",
+					"children": [{
+						"name": "CYP2E1",
+						"id": "CYP2E1",
+						"description": "enzyme  cytochrome p450  cyp_2  cyp_2e  cyp_2e1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 23
+			}, {
+				"name": "CYP3",
+				"id": "CYP3",
+				"description": "enzyme  cytochrome p450  cyp_3",
+				"children": [{
+					"name": "CYP3A",
+					"id": "CYP3A",
+					"description": "enzyme  cytochrome p450  cyp_3  cyp_3a",
+					"children": [{
+						"name": "CYP3A1",
+						"id": "CYP3A1",
+						"description": "enzyme  cytochrome p450  cyp_3  cyp_3a  cyp_3a1",
+						"size": 1
+					}, {
+						"name": "CYP3A2",
+						"id": "CYP3A2",
+						"description": "enzyme  cytochrome p450  cyp_3  cyp_3a  cyp_3a2",
+						"size": 1
+					}, {
+						"name": "CYP3A4",
+						"id": "CYP3A4",
+						"description": "enzyme  cytochrome p450  cyp_3  cyp_3a  cyp_3a4",
+						"size": 1
+					}, {
+						"name": "CYP3A5",
+						"id": "CYP3A5",
+						"description": "enzyme  cytochrome p450  cyp_3  cyp_3a  cyp_3a5",
+						"size": 1
+					}],
+					"size": 5
+				}],
+				"size": 6
+			}, {
+				"name": "CYP4",
+				"id": "CYP4",
+				"description": "enzyme  cytochrome p450  cyp_4",
+				"children": [{
+					"name": "CYP4A",
+					"id": "CYP4A",
+					"description": "enzyme  cytochrome p450  cyp_4  cyp_4a",
+					"children": [{
+						"name": "CYP4A1",
+						"id": "CYP4A1",
+						"description": "enzyme  cytochrome p450  cyp_4  cyp_4a  cyp_4a1",
+						"size": 1
+					}, {
+						"name": "CYP4A3",
+						"id": "CYP4A3",
+						"description": "enzyme  cytochrome p450  cyp_4  cyp_4a  cyp_4a3",
+						"size": 1
+					}, {
+						"name": "CYP4A4",
+						"id": "CYP4A4",
+						"description": "enzyme  cytochrome p450  cyp_4  cyp_4a  cyp_4a4",
+						"size": 1
+					}, {
+						"name": "CYP4A11",
+						"id": "CYP4A11",
+						"description": "enzyme  cytochrome p450  cyp_4  cyp_4a  cyp_4a11",
+						"size": 1
+					}],
+					"size": 5
+				}, {
+					"name": "CYP4F",
+					"id": "CYP4F",
+					"description": "enzyme  cytochrome p450  cyp_4  cyp_4f",
+					"children": [{
+						"name": "CYP4F2",
+						"id": "CYP4F2",
+						"description": "enzyme  cytochrome p450  cyp_4  cyp_4f  cyp_4f2",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 8
+			}, {
+				"name": "CYP5",
+				"id": "CYP5",
+				"description": "enzyme  cytochrome p450  cyp_5",
+				"children": [{
+					"name": "CYP5A",
+					"id": "CYP5A",
+					"description": "enzyme  cytochrome p450  cyp_5  cyp_5a",
+					"children": [{
+						"name": "CYP5A1",
+						"id": "CYP5A1",
+						"description": "enzyme  cytochrome p450  cyp_5  cyp_5a  cyp_5a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP7",
+				"id": "CYP7",
+				"description": "enzyme  cytochrome p450  cyp_7",
+				"children": [{
+					"name": "CYP7A",
+					"id": "CYP7A",
+					"description": "enzyme  cytochrome p450  cyp_7  cyp_7a",
+					"children": [{
+						"name": "CYP7A1",
+						"id": "CYP7A1",
+						"description": "enzyme  cytochrome p450  cyp_7  cyp_7a  cyp_7a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP8",
+				"id": "CYP8",
+				"description": "enzyme  cytochrome p450  cyp_8",
+				"children": [{
+					"name": "CYP8A",
+					"id": "CYP8A",
+					"description": "enzyme  cytochrome p450  cyp_8  cyp_8a",
+					"children": [{
+						"name": "CYP8A1",
+						"id": "CYP8A1",
+						"description": "enzyme  cytochrome p450  cyp_8  cyp_8a  cyp_8a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP11",
+				"id": "CYP11",
+				"description": "enzyme  cytochrome p450  cyp_11",
+				"children": [{
+					"name": "CYP11A",
+					"id": "CYP11A",
+					"description": "enzyme  cytochrome p450  cyp_11  cyp_11a",
+					"children": [{
+						"name": "CYP11A1",
+						"id": "CYP11A1",
+						"description": "enzyme  cytochrome p450  cyp_11  cyp_11a  cyp_11a1",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "CYP11B",
+					"id": "CYP11B",
+					"description": "enzyme  cytochrome p450  cyp_11  cyp_11b",
+					"children": [{
+						"name": "CYP11B1",
+						"id": "CYP11B1",
+						"description": "enzyme  cytochrome p450  cyp_11  cyp_11b  cyp_11b1",
+						"size": 1
+					}, {
+						"name": "CYP11B2",
+						"id": "CYP11B2",
+						"description": "enzyme  cytochrome p450  cyp_11  cyp_11b  cyp_11b2",
+						"size": 1
+					}],
+					"size": 3
+				}],
+				"size": 6
+			}, {
+				"name": "CYP17",
+				"id": "CYP17",
+				"description": "enzyme  cytochrome p450  cyp_17",
+				"children": [{
+					"name": "CYP17A",
+					"id": "CYP17A",
+					"description": "enzyme  cytochrome p450  cyp_17  cyp_17a",
+					"children": [{
+						"name": "CYP17A1",
+						"id": "CYP17A1",
+						"description": "enzyme  cytochrome p450  cyp_17  cyp_17a  cyp_17a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP19",
+				"id": "CYP19",
+				"description": "enzyme  cytochrome p450  cyp_19",
+				"children": [{
+					"name": "CYP19A",
+					"id": "CYP19A",
+					"description": "enzyme  cytochrome p450  cyp_19  cyp_19a",
+					"children": [{
+						"name": "CYP19A1",
+						"id": "CYP19A1",
+						"description": "enzyme  cytochrome p450  cyp_19  cyp_19a  cyp_19a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP21",
+				"id": "CYP21",
+				"description": "enzyme  cytochrome p450  cyp_21",
+				"children": [{
+					"name": "CYP21A",
+					"id": "CYP21A",
+					"description": "enzyme  cytochrome p450  cyp_21  cyp_21a",
+					"children": [{
+						"name": "CYP21A2",
+						"id": "CYP21A2",
+						"description": "enzyme  cytochrome p450  cyp_21  cyp_21a  cyp_21a2",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP24",
+				"id": "CYP24",
+				"description": "enzyme  cytochrome p450  cyp_24",
+				"children": [{
+					"name": "CYP24A",
+					"id": "CYP24A",
+					"description": "enzyme  cytochrome p450  cyp_24  cyp_24a",
+					"children": [{
+						"name": "CYP24A1",
+						"id": "CYP24A1",
+						"description": "enzyme  cytochrome p450  cyp_24  cyp_24a  cyp_24a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP26",
+				"id": "CYP26",
+				"description": "enzyme  cytochrome p450  cyp_26",
+				"children": [{
+					"name": "CYP26A",
+					"id": "CYP26A",
+					"description": "enzyme  cytochrome p450  cyp_26  cyp_26a",
+					"children": [{
+						"name": "CYP26A1",
+						"id": "CYP26A1",
+						"description": "enzyme  cytochrome p450  cyp_26  cyp_26a  cyp_26a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "CYP51",
+				"id": "CYP51",
+				"description": "enzyme  cytochrome p450  cyp_51",
+				"children": [{
+					"name": "CYP51A",
+					"id": "CYP51A",
+					"description": "enzyme  cytochrome p450  cyp_51  cyp_51a",
+					"children": [{
+						"name": "CYP51A1",
+						"id": "CYP51A1",
+						"description": "enzyme  cytochrome p450  cyp_51  cyp_51a  cyp_51a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}],
+			"size": 78
+		}, {
+			"name": "Phosphodiesterase",
+			"id": "Phosphodiesterase",
+			"description": "enzyme  phosphodiesterase",
+			"children": [{
+				"name": "PDE1",
+				"id": "PDE1",
+				"description": "enzyme  phosphodiesterase  pde_1",
+				"children": [{
+					"name": "PDE1A",
+					"id": "PDE1A",
+					"description": "enzyme  phosphodiesterase  pde_1  pde_1a",
+					"size": 1
+				}, {
+					"name": "PDE1B",
+					"id": "PDE1B",
+					"description": "enzyme  phosphodiesterase  pde_1  pde_1b",
+					"size": 1
+				}, {
+					"name": "PDE1C",
+					"id": "PDE1C",
+					"description": "enzyme  phosphodiesterase  pde_1  pde_1c",
+					"size": 1
+				}],
+				"size": 4
+			}, {
+				"name": "PDE2",
+				"id": "PDE2",
+				"description": "enzyme  phosphodiesterase  pde_2",
+				"children": [{
+					"name": "PDE2A",
+					"id": "PDE2A",
+					"description": "enzyme  phosphodiesterase  pde_2  pde_2a",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "PDE3",
+				"id": "PDE3",
+				"description": "enzyme  phosphodiesterase  pde_3",
+				"children": [{
+					"name": "PDE3A",
+					"id": "PDE3A",
+					"description": "enzyme  phosphodiesterase  pde_3  pde_3a",
+					"size": 1
+				}, {
+					"name": "PDE3B",
+					"id": "PDE3B",
+					"description": "enzyme  phosphodiesterase  pde_3  pde_3b",
+					"size": 1
+				}],
+				"size": 3
+			}, {
+				"name": "PDE4",
+				"id": "PDE4",
+				"description": "enzyme  phosphodiesterase  pde_4",
+				"children": [{
+					"name": "PDE4A",
+					"id": "PDE4A",
+					"description": "enzyme  phosphodiesterase  pde_4  pde_4a",
+					"size": 1
+				}, {
+					"name": "PDE4B",
+					"id": "PDE4B",
+					"description": "enzyme  phosphodiesterase  pde_4  pde_4b",
+					"size": 1
+				}, {
+					"name": "PDE4C",
+					"id": "PDE4C",
+					"description": "enzyme  phosphodiesterase  pde_4  pde_4c",
+					"size": 1
+				}, {
+					"name": "PDE4D",
+					"id": "PDE4D",
+					"description": "enzyme  phosphodiesterase  pde_4  pde_4d",
+					"size": 1
+				}],
+				"size": 5
+			}, {
+				"name": "PDE5",
+				"id": "PDE5",
+				"description": "enzyme  phosphodiesterase  pde_5",
+				"children": [{
+					"name": "PDE5A",
+					"id": "PDE5A",
+					"description": "enzyme  phosphodiesterase  pde_5  pde_5a",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "PDE6",
+				"id": "PDE6",
+				"description": "enzyme  phosphodiesterase  pde_6",
+				"children": [{
+					"name": "PDE6A",
+					"id": "PDE6A",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6a",
+					"size": 1
+				}, {
+					"name": "PDE6B",
+					"id": "PDE6B",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6b",
+					"size": 1
+				}, {
+					"name": "PDE6C",
+					"id": "PDE6C",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6c",
+					"size": 1
+				}, {
+					"name": "PDE6D",
+					"id": "PDE6D",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6d",
+					"size": 1
+				}, {
+					"name": "PDE6G",
+					"id": "PDE6G",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6g",
+					"size": 1
+				}, {
+					"name": "PDE6H",
+					"id": "PDE6H",
+					"description": "enzyme  phosphodiesterase  pde_6  pde_6h",
+					"size": 1
+				}],
+				"size": 7
+			}, {
+				"name": "PDE7",
+				"id": "PDE7",
+				"description": "enzyme  phosphodiesterase  pde_7",
+				"children": [{
+					"name": "PDE7A",
+					"id": "PDE7A",
+					"description": "enzyme  phosphodiesterase  pde_7  pde_7a",
+					"size": 1
+				}, {
+					"name": "PDE7B",
+					"id": "PDE7B",
+					"description": "enzyme  phosphodiesterase  pde_7  pde_7b",
+					"size": 1
+				}],
+				"size": 3
+			}, {
+				"name": "PDE8",
+				"id": "PDE8",
+				"description": "enzyme  phosphodiesterase  pde_8",
+				"children": [{
+					"name": "PDE8A",
+					"id": "PDE8A",
+					"description": "enzyme  phosphodiesterase  pde_8  pde_8a",
+					"size": 1
+				}, {
+					"name": "PDE8B",
+					"id": "PDE8B",
+					"description": "enzyme  phosphodiesterase  pde_8  pde_8b",
+					"size": 1
+				}],
+				"size": 3
+			}, {
+				"name": "PDE9",
+				"id": "PDE9",
+				"description": "enzyme  phosphodiesterase  pde_9",
+				"children": [{
+					"name": "PDE9A",
+					"id": "PDE9A",
+					"description": "enzyme  phosphodiesterase  pde_9  pde_9a",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "PDE10",
+				"id": "PDE10",
+				"description": "enzyme  phosphodiesterase  pde_10",
+				"children": [{
+					"name": "PDE10A",
+					"id": "PDE10A",
+					"description": "enzyme  phosphodiesterase  pde_10  pde_10a",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "PDE11",
+				"id": "PDE11",
+				"description": "enzyme  phosphodiesterase  pde_11",
+				"children": [{
+					"name": "PDE11A",
+					"id": "PDE11A",
+					"description": "enzyme  phosphodiesterase  pde_11  pde_11a",
+					"size": 1
+				}],
+				"size": 2
+			}],
+			"size": 36
+		}, {
+			"name": "Aminoacyltransferase",
+			"id": "Aminoacyltransferase",
+			"description": "enzyme  aminoacyltransferase",
+			"children": [{
+				"name": "Protein-glutamine glutamyl-transferase",
+				"id": "Protein-glutamine glutamyl-transferase",
+				"description": "enzyme  aminoacyltransferase  protein-glutamine glutamyl-transferase",
+				"size": 1
+			}],
+			"size": 2
+		}],
+		"size": 437
+	}, {
+		"name": "Adhesion",
+		"id": "Adhesion",
+		"description": "adhesion",
+		"size": 1
+	}, {
+		"name": "Secreted protein",
+		"id": "Secreted",
+		"description": "secreted",
+		"size": 1
+	}, {
+		"name": "Structural protein",
+		"id": "Structural",
+		"description": "structural",
+		"size": 1
+	}, {
+		"name": "Other nuclear protein",
+		"id": "Nuclear other",
+		"description": "nuclear other",
+		"size": 1
+	}, {
+		"name": "Other membrane protein",
+		"id": "Membrane other",
+		"description": "membrane other",
+		"size": 1
+	}, {
+		"name": "Other cytosolic protein",
+		"id": "Cytosolic other",
+		"description": "cytosolic other",
+		"size": 1
+	}, {
+		"name": "Surface antigen",
+		"id": "Surface antigen",
+		"description": "surface antigen",
+		"size": 1
+	}, {
+		"name": "Membrane receptor",
+		"id": "Membrane receptor",
+		"description": "membrane receptor",
+		"children": [{
+			"name": "Frizzled family G protein-coupled receptor",
+			"id": "7TMFZ",
+			"description": "membrane receptor  7tmfz",
+			"children": [{
+				"name": "Smoothened",
+				"id": "Smoothened",
+				"description": "membrane receptor  7tmfz  smoothened",
+				"size": 1
+			}],
+			"size": 2
+		}, {
+			"name": "Taste family G protein-coupled receptor",
+			"id": "7TMTAS2R",
+			"description": "membrane receptor  7tmtas2r",
+			"children": [{
+				"name": "Taste receptor",
+				"id": "Taste receptor",
+				"description": "membrane receptor  7tmtas2r  taste receptor",
+				"size": 1
+			}],
+			"size": 2
+		}, {
+			"name": "Toll-like and Il-1 receptors",
+			"id": "Toll-like and Il-1",
+			"description": "membrane receptor  toll-like and il-1",
+			"size": 1
+		}, {
+			"name": "Family A G protein-coupled receptor",
+			"id": "7TM1",
+			"description": "membrane receptor  7tm1",
+			"children": [{
+				"name": "Opsin",
+				"id": "Opsin",
+				"description": "membrane receptor  7tm1  opsin",
+				"children": [{
+					"name": "Rhodopsin",
+					"id": "Rhodopsin",
+					"description": "membrane receptor  7tm1  opsin  rhodopsin",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "Peptide",
+				"id": "Peptide",
+				"description": "membrane receptor  7tm1  peptide",
+				"children": [{
+					"name": "N-formyl methionyl peptide receptor",
+					"id": "N-formyl methionyl peptide receptor",
+					"description": "membrane receptor  7tm1  peptide  n-formyl methionyl peptide receptor",
+					"children": [{
+						"name": "N-formyl methionyl peptide receptor",
+						"id": "N-formyl methionyl peptide receptor",
+						"description": "membrane receptor  7tm1  peptide  n-formyl methionyl peptide receptor  n-formyl methionyl peptide receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Peptide growth factor",
+					"id": "Peptide growth factor",
+					"description": "membrane receptor  7tm1  peptide  peptide growth factor",
+					"children": [{
+						"name": "Prokineticin receptor",
+						"id": "Prokineticin receptor",
+						"description": "membrane receptor  7tm1  peptide  peptide growth factor  prokineticin receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Relaxin-like peptide",
+					"id": "Relaxin-like peptide",
+					"description": "membrane receptor  7tm1  peptide  relaxin-like peptide",
+					"children": [{
+						"name": "Relaxin",
+						"id": "Relaxin",
+						"description": "membrane receptor  7tm1  peptide  relaxin-like peptide  relaxin",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Short Peptide",
+					"id": "Short Peptide",
+					"description": "membrane receptor  7tm1  peptide  short peptide",
+					"children": [{
+						"name": "MCH receptor",
+						"id": "MCH receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  mch receptor",
+						"size": 1
+					}, {
+						"name": "GnRH receptor",
+						"id": "GnRH receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  gnrh receptor",
+						"size": 1
+					}, {
+						"name": "Opioid receptor",
+						"id": "Opioid receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  opioid receptor",
+						"size": 1
+					}, {
+						"name": "Orexin receptor",
+						"id": "Orexin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  orexin receptor",
+						"size": 1
+					}, {
+						"name": "Galanin receptor",
+						"id": "Galanin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  galanin receptor",
+						"size": 1
+					}, {
+						"name": "Motilin receptor",
+						"id": "Motilin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  motilin receptor",
+						"size": 1
+					}, {
+						"name": "RF amide receptor",
+						"id": "RF amide receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  rf amide receptor",
+						"size": 1
+					}, {
+						"name": "Bradykinin receptor",
+						"id": "Bradykinin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  bradykinin receptor",
+						"size": 1
+					}, {
+						"name": "Endothelin receptor",
+						"id": "Endothelin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  endothelin receptor",
+						"size": 1
+					}, {
+						"name": "Neurokinin receptor",
+						"id": "Neurokinin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neurokinin receptor",
+						"size": 1
+					}, {
+						"name": "Neuromedin receptor",
+						"id": "Neuromedin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neuromedin receptor",
+						"size": 1
+					}, {
+						"name": "Angiotensin receptor",
+						"id": "Angiotensin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  angiotensin receptor",
+						"size": 1
+					}, {
+						"name": "GRP-related receptor",
+						"id": "GRP-related receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  grp-related receptor",
+						"size": 1
+					}, {
+						"name": "Neurotensin receptor",
+						"id": "Neurotensin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neurotensin receptor",
+						"size": 1
+					}, {
+						"name": "Melanocortin receptor",
+						"id": "Melanocortin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  melanocortin receptor",
+						"size": 1
+					}, {
+						"name": "Neuropeptide receptor",
+						"id": "Neuropeptide receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neuropeptide receptor",
+						"size": 1
+					}, {
+						"name": "Somatostatin receptor",
+						"id": "Somatostatin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  somatostatin receptor",
+						"size": 1
+					}, {
+						"name": "Adrenomedullin receptor",
+						"id": "Adrenomedullin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  adrenomedullin receptor",
+						"size": 1
+					}, {
+						"name": "Neuropeptide Y receptor",
+						"id": "Neuropeptide Y receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neuropeptide y receptor",
+						"size": 1
+					}, {
+						"name": "Cholecystokinin receptor",
+						"id": "Cholecystokinin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  cholecystokinin receptor",
+						"size": 1
+					}, {
+						"name": "Vasopressin and oxytocin receptor",
+						"id": "Vasopressin and oxytocin receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  vasopressin and oxytocin receptor",
+						"size": 1
+					}, {
+						"name": "Neuromedin U receptor",
+						"id": "Neuromedin U receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  neuromedin u receptor",
+						"size": 1
+					}, {
+						"name": "Prolactin-releasing peptide receptor",
+						"id": "Prolactin-releasing peptide receptor",
+						"description": "membrane receptor  7tm1  peptide  short peptide  prolactin-releasing peptide receptor",
+						"size": 1
+					}],
+					"size": 24
+				}, {
+					"name": "Chemokine receptor",
+					"id": "Chemokine receptor",
+					"description": "membrane receptor  7tm1  peptide  chemokine receptor",
+					"children": [{
+						"name": "CC chemokine receptor",
+						"id": "CC chemokine receptor",
+						"description": "membrane receptor  7tm1  peptide  chemokine receptor  cc chemokine receptor",
+						"size": 1
+					}, {
+						"name": "XC chemokine receptor",
+						"id": "XC chemokine receptor",
+						"description": "membrane receptor  7tm1  peptide  chemokine receptor  xc chemokine receptor",
+						"size": 1
+					}, {
+						"name": "CXC chemokine receptor",
+						"id": "CXC chemokine receptor",
+						"description": "membrane receptor  7tm1  peptide  chemokine receptor  cxc chemokine receptor",
+						"size": 1
+					}, {
+						"name": "CX3C chemokine receptor",
+						"id": "CX3C chemokine receptor",
+						"description": "membrane receptor  7tm1  peptide  chemokine receptor  cx3c chemokine receptor",
+						"size": 1
+					}],
+					"size": 5
+				}, {
+					"name": "Glycohormone receptor",
+					"id": "Glycohormone receptor",
+					"description": "membrane receptor  7tm1  peptide  glycohormone receptor",
+					"children": [{
+						"name": "Glycohormone receptor",
+						"id": "Glycohormone receptor",
+						"description": "membrane receptor  7tm1  peptide  glycohormone receptor  glycohormone receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Anaphylatoxin receptor",
+					"id": "Anaphylatoxin receptor",
+					"description": "membrane receptor  7tm1  peptide  anaphylatoxin receptor",
+					"children": [{
+						"name": "Anaphylatoxin",
+						"id": "Anaphylatoxin",
+						"description": "membrane receptor  7tm1  peptide  anaphylatoxin receptor  anaphylatoxin",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Chemokine receptor-like",
+					"id": "Chemokine receptor-like",
+					"description": "membrane receptor  7tm1  peptide  chemokine receptor-like",
+					"children": [{
+						"name": "Chemerin receptor",
+						"id": "Chemerin receptor",
+						"description": "membrane receptor  7tm1  peptide  chemokine receptor-like  chemerin receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Protease-activated receptor",
+					"id": "Protease-activated receptor",
+					"description": "membrane receptor  7tm1  peptide  protease-activated receptor",
+					"children": [{
+						"name": "Protease-activated receptor",
+						"id": "Protease-activated receptor",
+						"description": "membrane receptor  7tm1  peptide  protease-activated receptor  protease-activated receptor",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 44
+			}, {
+				"name": "SmallMol",
+				"id": "SmallMol",
+				"description": "membrane receptor  7tm1  smallmol",
+				"children": [{
+					"name": "Carboxylic acid",
+					"id": "Carboxylic acid",
+					"description": "membrane receptor  7tm1  smallmol  carboxylic acid",
+					"children": [{
+						"name": "Hydroxycarboxylic acid receptor",
+						"id": "Hydroxycarboxylic acid receptor",
+						"description": "membrane receptor  7tm1  smallmol  carboxylic acid  hydroxycarboxylic acid receptor",
+						"size": 1
+					}, {
+						"name": "Kynurenic acid receptor",
+						"id": "Kynurenic acid receptor",
+						"description": "membrane receptor  7tm1  smallmol  carboxylic acid  kynurenic acid receptor",
+						"size": 1
+					}, {
+						"name": "Succinate receptor",
+						"id": "Succinate receptor",
+						"description": "membrane receptor  7tm1  smallmol  carboxylic acid  succinate receptor",
+						"size": 1
+					}, {
+						"name": "Oxoglutarate receptor",
+						"id": "Oxoglutarate receptor",
+						"description": "membrane receptor  7tm1  smallmol  carboxylic acid  oxoglutarate receptor",
+						"size": 1
+					}],
+					"size": 5
+				}, {
+					"name": "Monoamine receptor",
+					"id": "Monoamine receptor",
+					"description": "membrane receptor  7tm1  smallmol  monoamine receptor",
+					"children": [{
+						"name": "Dopamine receptor",
+						"id": "Dopamine receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  dopamine receptor",
+						"size": 1
+					}, {
+						"name": "Histamine receptor",
+						"id": "Histamine receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  histamine receptor",
+						"size": 1
+					}, {
+						"name": "Serotonin receptor",
+						"id": "Serotonin receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  serotonin receptor",
+						"size": 1
+					}, {
+						"name": "Adrenergic receptor",
+						"id": "Adrenergic receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  adrenergic receptor",
+						"size": 1
+					}, {
+						"name": "Trace amine receptor",
+						"id": "Trace amine receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  trace amine receptor",
+						"size": 1
+					}, {
+						"name": "Acetylcholine receptor",
+						"id": "Acetylcholine receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine receptor  acetylcholine receptor",
+						"size": 1
+					}],
+					"size": 7
+				}, {
+					"name": "Monoamine-derivative",
+					"id": "Monoamine-derivative",
+					"description": "membrane receptor  7tm1  smallmol  monoamine-derivative",
+					"children": [{
+						"name": "Melatonin receptor",
+						"id": "Melatonin receptor",
+						"description": "membrane receptor  7tm1  smallmol  monoamine-derivative  melatonin receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Nucleotide-like receptor",
+					"id": "Nucleotide-like receptor",
+					"description": "membrane receptor  7tm1  smallmol  nucleotide-like receptor",
+					"children": [{
+						"name": "Purine receptor",
+						"id": "Purine receptor",
+						"description": "membrane receptor  7tm1  smallmol  nucleotide-like receptor  purine receptor",
+						"size": 1
+					}, {
+						"name": "Adenosine receptor",
+						"id": "Adenosine receptor",
+						"description": "membrane receptor  7tm1  smallmol  nucleotide-like receptor  adenosine receptor",
+						"size": 1
+					}, {
+						"name": "Nicotinic acid receptor",
+						"id": "Nicotinic acid receptor",
+						"description": "membrane receptor  7tm1  smallmol  nucleotide-like receptor  nicotinic acid receptor",
+						"size": 1
+					}, {
+						"name": "Nucleotide-like receptor",
+						"id": "Nucleotide-like receptor",
+						"description": "membrane receptor  7tm1  smallmol  nucleotide-like receptor  nucleotide-like receptor",
+						"size": 1
+					}],
+					"size": 5
+				}, {
+					"name": "Lipid-like ligand receptor",
+					"id": "Lipid-like ligand receptor",
+					"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor",
+					"children": [{
+						"name": "PAF",
+						"id": "PAF",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  paf",
+						"size": 1
+					}, {
+						"name": "EDG receptor",
+						"id": "EDG receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  edg receptor",
+						"size": 1
+					}, {
+						"name": "Prostanoid receptor",
+						"id": "Prostanoid receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  prostanoid receptor",
+						"size": 1
+					}, {
+						"name": "Cannabinoid receptor",
+						"id": "Cannabinoid receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  cannabinoid receptor",
+						"size": 1
+					}, {
+						"name": "Leukotriene receptor",
+						"id": "Leukotriene receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  leukotriene receptor",
+						"size": 1
+					}, {
+						"name": "Free fatty acid receptor",
+						"id": "Free fatty acid receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  free fatty acid receptor",
+						"size": 1
+					}, {
+						"name": "Steroid-like ligand receptor",
+						"id": "Steroid-like ligand receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  steroid-like ligand receptor",
+						"size": 1
+					}, {
+						"name": "Lysophosphatidylinositol receptor",
+						"id": "Lysophosphatidylinositol receptor",
+						"description": "membrane receptor  7tm1  smallmol  lipid-like ligand receptor  lysophosphatidylinositol receptor",
+						"size": 1
+					}],
+					"size": 9
+				}],
+				"size": 29
+			}],
+			"size": 76
+		}, {
+			"name": "Family B G protein-coupled receptor",
+			"id": "7TM2",
+			"description": "membrane receptor  7tm2",
+			"children": [{
+				"name": "Peptide",
+				"id": "Peptide",
+				"description": "membrane receptor  7tm2  peptide",
+				"children": [{
+					"name": "Glucagon-like",
+					"id": "Glucagon-like",
+					"description": "membrane receptor  7tm2  peptide  glucagon-like",
+					"children": [{
+						"name": "Glucagon receptor",
+						"id": "Glucagon receptor",
+						"description": "membrane receptor  7tm2  peptide  glucagon-like  glucagon receptor",
+						"size": 1
+					}, {
+						"name": "Secretin receptor",
+						"id": "Secretin receptor",
+						"description": "membrane receptor  7tm2  peptide  glucagon-like  secretin receptor",
+						"size": 1
+					}, {
+						"name": "Glucagon-like peptide receptor",
+						"id": "Glucagon-like peptide receptor",
+						"description": "membrane receptor  7tm2  peptide  glucagon-like  glucagon-like peptide receptor",
+						"size": 1
+					}, {
+						"name": "Gastric inhibitory polypeptide receptor",
+						"id": "Gastric inhibitory polypeptide receptor",
+						"description": "membrane receptor  7tm2  peptide  glucagon-like  gastric inhibitory polypeptide receptor",
+						"size": 1
+					}, {
+						"name": "Growth hormone-releasing hormone receptor",
+						"id": "Growth hormone-releasing hormone receptor",
+						"description": "membrane receptor  7tm2  peptide  glucagon-like  growth hormone-releasing hormone receptor",
+						"size": 1
+					}],
+					"size": 6
+				}, {
+					"name": "Calcitonin-like",
+					"id": "Calcitonin-like",
+					"description": "membrane receptor  7tm2  peptide  calcitonin-like",
+					"children": [{
+						"name": "Calcitonin receptor",
+						"id": "Calcitonin receptor",
+						"description": "membrane receptor  7tm2  peptide  calcitonin-like  calcitonin receptor",
+						"size": 1
+					}, {
+						"name": "Calcitonin gene-related peptide receptor",
+						"id": "Calcitonin gene-related peptide receptor",
+						"description": "membrane receptor  7tm2  peptide  calcitonin-like  calcitonin gene-related peptide receptor",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "Parathyroid hormone receptor",
+					"id": "Parathyroid hormone receptor",
+					"description": "membrane receptor  7tm2  peptide  parathyroid hormone receptor",
+					"children": [{
+						"name": "Parathyroid hormone receptor",
+						"id": "Parathyroid hormone receptor",
+						"description": "membrane receptor  7tm2  peptide  parathyroid hormone receptor  parathyroid hormone receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Vasoactive intestinal peptide receptor",
+					"id": "Vasoactive intestinal peptide receptor",
+					"description": "membrane receptor  7tm2  peptide  vasoactive intestinal peptide receptor",
+					"children": [{
+						"name": "Vasoactive intestinal peptide receptor",
+						"id": "Vasoactive intestinal peptide receptor",
+						"description": "membrane receptor  7tm2  peptide  vasoactive intestinal peptide receptor  vasoactive intestinal peptide receptor",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "Corticotropin releasing factor receptor",
+					"id": "Corticotropin releasing factor receptor",
+					"description": "membrane receptor  7tm2  peptide  corticotropin releasing factor receptor",
+					"children": [{
+						"name": "Corticotropin releasing factor receptor",
+						"id": "Corticotropin releasing factor receptor",
+						"description": "membrane receptor  7tm2  peptide  corticotropin releasing factor receptor  corticotropin releasing factor receptor",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 16
+			}],
+			"size": 17
+		}, {
+			"name": "Family C G protein-coupled receptor",
+			"id": "7TM3",
+			"description": "membrane receptor  7tm3",
+			"children": [{
+				"name": "Taste receptor",
+				"id": "Taste receptor",
+				"description": "membrane receptor  7tm3  taste receptor",
+				"size": 1
+			}, {
+				"name": "Ion",
+				"id": "Ion",
+				"description": "membrane receptor  7tm3  ion",
+				"children": [{
+					"name": "Calcium sensing receptor",
+					"id": "Calcium sensing receptor",
+					"description": "membrane receptor  7tm3  ion  calcium sensing receptor",
+					"children": [{
+						"name": "Calcium sensing receptor",
+						"id": "Calcium sensing receptor",
+						"description": "membrane receptor  7tm3  ion  calcium sensing receptor  calcium sensing receptor",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}, {
+				"name": "SmallMol",
+				"id": "SmallMol",
+				"description": "membrane receptor  7tm3  smallmol",
+				"children": [{
+					"name": "Neurotransmitter",
+					"id": "Neurotransmitter",
+					"description": "membrane receptor  7tm3  smallmol  neurotransmitter",
+					"children": [{
+						"name": "GABA-B receptor",
+						"id": "GABA-B receptor",
+						"description": "membrane receptor  7tm3  smallmol  neurotransmitter  gaba-b receptor",
+						"size": 1
+					}, {
+						"name": "Metabotropic glutamate receptor",
+						"id": "Metabotropic glutamate receptor",
+						"description": "membrane receptor  7tm3  smallmol  neurotransmitter  metabotropic glutamate receptor",
+						"size": 1
+					}],
+					"size": 3
+				}],
+				"size": 4
+			}],
+			"size": 9
+		}],
+		"size": 108
+	}, {
+		"name": "Transcription factor",
+		"id": "Transcription Factor",
+		"description": "transcription factor",
+		"children": [{
+			"name": "Nuclear receptor",
+			"id": "Nuclear Receptor",
+			"description": "transcription factor  nuclear receptor",
+			"children": [{
+				"name": "NR0",
+				"id": "NR0",
+				"description": "transcription factor  nuclear receptor  nr0",
+				"children": [{
+					"name": "NR0B",
+					"id": "NR0B",
+					"description": "transcription factor  nuclear receptor  nr0  nr0b",
+					"children": [{
+						"name": "NR0B1",
+						"id": "NR0B1",
+						"description": "transcription factor  nuclear receptor  nr0  nr0b  nr0b1",
+						"size": 1
+					}, {
+						"name": "NR0B2",
+						"id": "NR0B2",
+						"description": "transcription factor  nuclear receptor  nr0  nr0b  nr0b2",
+						"size": 1
+					}],
+					"size": 3
+				}],
+				"size": 4
+			}, {
+				"name": "NR1",
+				"id": "NR1",
+				"description": "transcription factor  nuclear receptor  nr1",
+				"children": [{
+					"name": "NR1A",
+					"id": "NR1A",
+					"description": "transcription factor  nuclear receptor  nr1  nr1a",
+					"children": [{
+						"name": "NR1A1",
+						"id": "NR1A1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1a  nr1a1",
+						"size": 1
+					}, {
+						"name": "NR1A2",
+						"id": "NR1A2",
+						"description": "transcription factor  nuclear receptor  nr1  nr1a  nr1a2",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR1B",
+					"id": "NR1B",
+					"description": "transcription factor  nuclear receptor  nr1  nr1b",
+					"children": [{
+						"name": "NR1B1",
+						"id": "NR1B1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1b  nr1b1",
+						"size": 1
+					}, {
+						"name": "NR1B2",
+						"id": "NR1B2",
+						"description": "transcription factor  nuclear receptor  nr1  nr1b  nr1b2",
+						"size": 1
+					}, {
+						"name": "NR1B3",
+						"id": "NR1B3",
+						"description": "transcription factor  nuclear receptor  nr1  nr1b  nr1b3",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "NR1C",
+					"id": "NR1C",
+					"description": "transcription factor  nuclear receptor  nr1  nr1c",
+					"children": [{
+						"name": "NR1C1",
+						"id": "NR1C1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1c  nr1c1",
+						"size": 1
+					}, {
+						"name": "NR1C2",
+						"id": "NR1C2",
+						"description": "transcription factor  nuclear receptor  nr1  nr1c  nr1c2",
+						"size": 1
+					}, {
+						"name": "NR1C3",
+						"id": "NR1C3",
+						"description": "transcription factor  nuclear receptor  nr1  nr1c  nr1c3",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "NR1D",
+					"id": "NR1D",
+					"description": "transcription factor  nuclear receptor  nr1  nr1d",
+					"children": [{
+						"name": "NR1D1",
+						"id": "NR1D1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1d  nr1d1",
+						"size": 1
+					}, {
+						"name": "NR1D2",
+						"id": "NR1D2",
+						"description": "transcription factor  nuclear receptor  nr1  nr1d  nr1d2",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR1F",
+					"id": "NR1F",
+					"description": "transcription factor  nuclear receptor  nr1  nr1f",
+					"children": [{
+						"name": "NR1F1",
+						"id": "NR1F1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1f  nr1f1",
+						"size": 1
+					}, {
+						"name": "NR1F3",
+						"id": "NR1F3",
+						"description": "transcription factor  nuclear receptor  nr1  nr1f  nr1f3",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR1H",
+					"id": "NR1H",
+					"description": "transcription factor  nuclear receptor  nr1  nr1h",
+					"children": [{
+						"name": "NR1H1",
+						"id": "NR1H1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1h  nr1h1",
+						"size": 1
+					}, {
+						"name": "NR1H3",
+						"id": "NR1H3",
+						"description": "transcription factor  nuclear receptor  nr1  nr1h  nr1h3",
+						"size": 1
+					}, {
+						"name": "NR1H4",
+						"id": "NR1H4",
+						"description": "transcription factor  nuclear receptor  nr1  nr1h  nr1h4",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "NR1I",
+					"id": "NR1I",
+					"description": "transcription factor  nuclear receptor  nr1  nr1i",
+					"children": [{
+						"name": "NR1I1",
+						"id": "NR1I1",
+						"description": "transcription factor  nuclear receptor  nr1  nr1i  nr1i1",
+						"size": 1
+					}, {
+						"name": "NR1I2",
+						"id": "NR1I2",
+						"description": "transcription factor  nuclear receptor  nr1  nr1i  nr1i2",
+						"size": 1
+					}, {
+						"name": "NR1I3",
+						"id": "NR1I3",
+						"description": "transcription factor  nuclear receptor  nr1  nr1i  nr1i3",
+						"size": 1
+					}],
+					"size": 4
+				}],
+				"size": 26
+			}, {
+				"name": "NR2",
+				"id": "NR2",
+				"description": "transcription factor  nuclear receptor  nr2",
+				"children": [{
+					"name": "NR2A",
+					"id": "NR2A",
+					"description": "transcription factor  nuclear receptor  nr2  nr2a",
+					"children": [{
+						"name": "NR2A2",
+						"id": "NR2A2",
+						"description": "transcription factor  nuclear receptor  nr2  nr2a  nr2a2",
+						"size": 1
+					}],
+					"size": 2
+				}, {
+					"name": "NR2B",
+					"id": "NR2B",
+					"description": "transcription factor  nuclear receptor  nr2  nr2b",
+					"children": [{
+						"name": "NR2B1",
+						"id": "NR2B1",
+						"description": "transcription factor  nuclear receptor  nr2  nr2b  nr2b1",
+						"size": 1
+					}, {
+						"name": "NR2B2",
+						"id": "NR2B2",
+						"description": "transcription factor  nuclear receptor  nr2  nr2b  nr2b2",
+						"size": 1
+					}, {
+						"name": "NR2B3",
+						"id": "NR2B3",
+						"description": "transcription factor  nuclear receptor  nr2  nr2b  nr2b3",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "NR2C",
+					"id": "NR2C",
+					"description": "transcription factor  nuclear receptor  nr2  nr2c",
+					"children": [{
+						"name": "NR2C1",
+						"id": "NR2C1",
+						"description": "transcription factor  nuclear receptor  nr2  nr2c  nr2c1",
+						"size": 1
+					}, {
+						"name": "NR2C2",
+						"id": "NR2C2",
+						"description": "transcription factor  nuclear receptor  nr2  nr2c  nr2c2",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR2E",
+					"id": "NR2E",
+					"description": "transcription factor  nuclear receptor  nr2  nr2e",
+					"children": [{
+						"name": "NR2E3",
+						"id": "NR2E3",
+						"description": "transcription factor  nuclear receptor  nr2  nr2e  nr2e3",
+						"size": 1
+					}, {
+						"name": "NR2E1",
+						"id": "NR2E1",
+						"description": "transcription factor  nuclear receptor  nr2  nr2e  nr2e1",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR2F",
+					"id": "NR2F",
+					"description": "transcription factor  nuclear receptor  nr2  nr2f",
+					"children": [{
+						"name": "NR2F1",
+						"id": "NR2F1",
+						"description": "transcription factor  nuclear receptor  nr2  nr2f  nr2f1",
+						"size": 1
+					}, {
+						"name": "NR2F2",
+						"id": "NR2F2",
+						"description": "transcription factor  nuclear receptor  nr2  nr2f  nr2f2",
+						"size": 1
+					}, {
+						"name": "NR2F6",
+						"id": "NR2F6",
+						"description": "transcription factor  nuclear receptor  nr2  nr2f  nr2f6",
+						"size": 1
+					}],
+					"size": 4
+				}],
+				"size": 17
+			}, {
+				"name": "NR3",
+				"id": "NR3",
+				"description": "transcription factor  nuclear receptor  nr3",
+				"children": [{
+					"name": "NR3A",
+					"id": "NR3A",
+					"description": "transcription factor  nuclear receptor  nr3  nr3a",
+					"children": [{
+						"name": "NR3A1",
+						"id": "NR3A1",
+						"description": "transcription factor  nuclear receptor  nr3  nr3a  nr3a1",
+						"size": 1
+					}, {
+						"name": "NR3A2",
+						"id": "NR3A2",
+						"description": "transcription factor  nuclear receptor  nr3  nr3a  nr3a2",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "NR3B",
+					"id": "NR3B",
+					"description": "transcription factor  nuclear receptor  nr3  nr3b",
+					"children": [{
+						"name": "NR3B1",
+						"id": "NR3B1",
+						"description": "transcription factor  nuclear receptor  nr3  nr3b  nr3b1",
+						"size": 1
+					}, {
+						"name": "NR3B2",
+						"id": "NR3B2",
+						"description": "transcription factor  nuclear receptor  nr3  nr3b  nr3b2",
+						"size": 1
+					}, {
+						"name": "NR3B3",
+						"id": "NR3B3",
+						"description": "transcription factor  nuclear receptor  nr3  nr3b  nr3b3",
+						"size": 1
+					}],
+					"size": 4
+				}, {
+					"name": "NR3C",
+					"id": "NR3C",
+					"description": "transcription factor  nuclear receptor  nr3  nr3c",
+					"children": [{
+						"name": "NR3C1",
+						"id": "NR3C1",
+						"description": "transcription factor  nuclear receptor  nr3  nr3c  nr3c1",
+						"size": 1
+					}, {
+						"name": "NR3C2",
+						"id": "NR3C2",
+						"description": "transcription factor  nuclear receptor  nr3  nr3c  nr3c2",
+						"size": 1
+					}, {
+						"name": "NR3C3",
+						"id": "NR3C3",
+						"description": "transcription factor  nuclear receptor  nr3  nr3c  nr3c3",
+						"size": 1
+					}, {
+						"name": "NR3C4",
+						"id": "NR3C4",
+						"description": "transcription factor  nuclear receptor  nr3  nr3c  nr3c4",
+						"size": 1
+					}],
+					"size": 5
+				}],
+				"size": 13
+			}, {
+				"name": "NR4",
+				"id": "NR4",
+				"description": "transcription factor  nuclear receptor  nr4",
+				"children": [{
+					"name": "NR4A",
+					"id": "NR4A",
+					"description": "transcription factor  nuclear receptor  nr4  nr4a",
+					"children": [{
+						"name": "NR4A1",
+						"id": "NR4A1",
+						"description": "transcription factor  nuclear receptor  nr4  nr4a  nr4a1",
+						"size": 1
+					}, {
+						"name": "NR4A2",
+						"id": "NR4A2",
+						"description": "transcription factor  nuclear receptor  nr4  nr4a  nr4a2",
+						"size": 1
+					}, {
+						"name": "NR4A3",
+						"id": "NR4A3",
+						"description": "transcription factor  nuclear receptor  nr4  nr4a  nr4a3",
+						"size": 1
+					}],
+					"size": 4
+				}],
+				"size": 5
+			}, {
+				"name": "NR5",
+				"id": "NR5",
+				"description": "transcription factor  nuclear receptor  nr5",
+				"children": [{
+					"name": "NR5A",
+					"id": "NR5A",
+					"description": "transcription factor  nuclear receptor  nr5  nr5a",
+					"children": [{
+						"name": "NR5A1",
+						"id": "NR5A1",
+						"description": "transcription factor  nuclear receptor  nr5  nr5a  nr5a1",
+						"size": 1
+					}, {
+						"name": "NR5A2",
+						"id": "NR5A2",
+						"description": "transcription factor  nuclear receptor  nr5  nr5a  nr5a2",
+						"size": 1
+					}],
+					"size": 3
+				}],
+				"size": 4
+			}, {
+				"name": "NR6",
+				"id": "NR6",
+				"description": "transcription factor  nuclear receptor  nr6",
+				"children": [{
+					"name": "NR6A",
+					"id": "NR6A",
+					"description": "transcription factor  nuclear receptor  nr6  nr6a",
+					"children": [{
+						"name": "NR6A1",
+						"id": "NR6A1",
+						"description": "transcription factor  nuclear receptor  nr6  nr6a  nr6a1",
+						"size": 1
+					}],
+					"size": 2
+				}],
+				"size": 3
+			}],
+			"size": 73
+		}],
+		"size": 74
+	}, {
+		"name": "Unclassified protein",
+		"id": "Unclassified",
+		"description": "unclassified",
+		"size": 1
+	}, {
+		"name": "Auxiliary transport protein",
+		"id": "AUXTRANS",
+		"description": "auxiliary transport protein",
+		"children": [{
+			"name": "Voltage-gated potassium channel beta-subunit family",
+			"id": "KV beta",
+			"description": "auxiliary transport protein  kv beta",
+			"size": 1
+		}, {
+			"name": "Basigin family",
+			"id": "BASIGIN",
+			"description": "auxiliary transport protein  basigin",
+			"size": 1
+		}, {
+			"name": "Ankyrin family",
+			"id": "ANKYRIN",
+			"description": "auxiliary transport protein  ankyrin",
+			"size": 1
+		}, {
+			"name": "Slow voltage-gated potassium channel accessory protein family",
+			"id": "MINK",
+			"description": "auxiliary transport protein  mink",
+			"size": 1
+		}, {
+			"name": "Fatty acid binding protein family",
+			"id": "FABP",
+			"description": "auxiliary transport protein  fabp",
+			"size": 1
+		}, {
+			"name": "Calcium-activated potassium channel auxiliary subunit slowpoke-beta family",
+			"id": "SLO beta",
+			"description": "auxiliary transport protein  slo beta",
+			"size": 1
+		}, {
+			"name": "Calcium channel auxiliary subunit gamma family",
+			"id": "CA gamma",
+			"description": "auxiliary transport protein  ca gamma",
+			"size": 1
+		}, {
+			"name": "Calcium channel auxiliary subunit beta family",
+			"id": "CA beta",
+			"description": "auxiliary transport protein  ca beta",
+			"size": 1
+		}, {
+			"name": "Calcium channel auxiliary subunit alpha2delta family",
+			"id": "CA alpha2delta",
+			"description": "auxiliary transport protein  ca alpha2delta",
+			"size": 1
+		}, {
+			"name": "Sodium channel auxiliary subunit beta family",
+			"id": "NA beta",
+			"description": "auxiliary transport protein  na beta",
+			"size": 1
+		}, {
+			"name": "Calcium-activated potassium channel auxiliary subunit gamma family",
+			"id": "BK gamma",
+			"description": "auxiliary transport protein  bk gamma",
+			"size": 1
+		}],
+		"size": 12
+	}, {
+		"name": "Epigenetic regulator",
+		"id": "Epigenetic",
+		"description": "epigenetic regulator",
+		"children": [{
+			"name": "Reader",
+			"id": "Reader",
+			"description": "epigenetic regulator  reader",
+			"children": [{
+				"name": "BRD",
+				"id": "BRD",
+				"description": "epigenetic regulator  reader  brd",
+				"size": 1
+			}, {
+				"name": "Methyl-lysine",
+				"id": "Methyl-lysine",
+				"description": "epigenetic regulator  reader  methyl-lysine",
+				"children": [{
+					"name": "TUDOR",
+					"id": "TUDOR",
+					"description": "epigenetic regulator  reader  methyl-lysine  tudor",
+					"size": 1
+				}, {
+					"name": "MBT",
+					"id": "MBT",
+					"description": "epigenetic regulator  reader  methyl-lysine  mbt",
+					"size": 1
+				}, {
+					"name": "CHROMO",
+					"id": "CHROMO",
+					"description": "epigenetic regulator  reader  methyl-lysine  chromo",
+					"size": 1
+				}, {
+					"name": "WDR",
+					"id": "WDR",
+					"description": "epigenetic regulator  reader  methyl-lysine  wdr",
+					"size": 1
+				}, {
+					"name": "PWWP",
+					"id": "PWWP",
+					"description": "epigenetic regulator  reader  methyl-lysine  pwwp",
+					"size": 1
+				}],
+				"size": 6
+			}, {
+				"name": "PHD",
+				"id": "PHD",
+				"description": "epigenetic regulator  reader  phd",
+				"size": 1
+			}, {
+				"name": "MBD",
+				"id": "MBD",
+				"description": "epigenetic regulator  reader  mbd",
+				"size": 1
+			}],
+			"size": 10
+		}, {
+			"name": "Writer",
+			"id": "Writer",
+			"description": "epigenetic regulator  writer",
+			"children": [{
+				"name": "HAT",
+				"id": "HAT",
+				"description": "epigenetic regulator  writer  hat",
+				"children": [{
+					"name": "MYST",
+					"id": "MYST",
+					"description": "epigenetic regulator  writer  hat  myst",
+					"size": 1
+				}, {
+					"name": "GNAT",
+					"id": "GNAT",
+					"description": "epigenetic regulator  writer  hat  gnat",
+					"size": 1
+				}, {
+					"name": "p300 CBP",
+					"id": "p300 CBP",
+					"description": "epigenetic regulator  writer  hat  p300 cbp",
+					"size": 1
+				}, {
+					"name": "SRC",
+					"id": "SRC",
+					"description": "epigenetic regulator  writer  hat  src",
+					"size": 1
+				}],
+				"size": 5
+			}, {
+				"name": "PMT",
+				"id": "PMT",
+				"description": "epigenetic regulator  writer  pmt",
+				"children": [{
+					"name": "PRMT",
+					"id": "PRMT",
+					"description": "epigenetic regulator  writer  pmt  prmt",
+					"size": 1
+				}, {
+					"name": "PRDM",
+					"id": "PRDM",
+					"description": "epigenetic regulator  writer  pmt  prdm",
+					"size": 1
+				}, {
+					"name": "SET",
+					"id": "SET",
+					"description": "epigenetic regulator  writer  pmt  set",
+					"size": 1
+				}],
+				"size": 4
+			}, {
+				"name": "DNMT",
+				"id": "DNMT",
+				"description": "epigenetic regulator  writer  dnmt",
+				"size": 1
+			}],
+			"size": 11
+		}, {
+			"name": "Eraser",
+			"id": "Eraser",
+			"description": "epigenetic regulator  eraser",
+			"children": [{
+				"name": "HDAC",
+				"id": "HDAC",
+				"description": "epigenetic regulator  eraser  hdac",
+				"children": [{
+					"name": "HDAC class I",
+					"id": "HDAC class I",
+					"description": "epigenetic regulator  eraser  hdac  hdac class i",
+					"size": 1
+				}, {
+					"name": "HDAC class IIa",
+					"id": "HDAC class IIa",
+					"description": "epigenetic regulator  eraser  hdac  hdac class iia",
+					"size": 1
+				}, {
+					"name": "HDAC class IIb",
+					"id": "HDAC class IIb",
+					"description": "epigenetic regulator  eraser  hdac  hdac class iib",
+					"size": 1
+				}, {
+					"name": "HDAC class III",
+					"id": "HDAC class III",
+					"description": "epigenetic regulator  eraser  hdac  hdac class iii",
+					"size": 1
+				}, {
+					"name": "HDAC class IV",
+					"id": "HDAC class IV",
+					"description": "epigenetic regulator  eraser  hdac  hdac class iv",
+					"size": 1
+				}],
+				"size": 6
+			}, {
+				"name": "KDM",
+				"id": "KDM",
+				"description": "epigenetic regulator  eraser  kdm",
+				"children": [{
+					"name": "LSD",
+					"id": "LSD",
+					"description": "epigenetic regulator  eraser  kdm  lsd",
+					"size": 1
+				}, {
+					"name": "Jumonji",
+					"id": "Jumonji",
+					"description": "epigenetic regulator  eraser  kdm  jumonji",
+					"size": 1
+				}],
+				"size": 3
+			}],
+			"size": 10
+		}],
+		"size": 32
+	}, {
+		"name": "Ion channel",
+		"id": "Ion channel",
+		"description": "ion channel",
+		"children": [{
+			"name": "Other ion channel",
+			"id": "OTHER",
+			"description": "ion channel  other",
+			"children": [{
+				"name": "AQUAPORIN",
+				"id": "AQUAPORIN",
+				"description": "ion channel  other  aquaporin",
+				"children": [{
+					"name": "AQUAGLYCEROPORIN",
+					"id": "AQUAGLYCEROPORIN",
+					"description": "ion channel  other  aquaporin  aquaglyceroporin",
+					"size": 1
+				}, {
+					"name": "AQUAPORIN 8",
+					"id": "AQUAPORIN 8",
+					"description": "ion channel  other  aquaporin  aquaporin 8",
+					"size": 1
+				}, {
+					"name": "UNORTHODOX",
+					"id": "UNORTHODOX",
+					"description": "ion channel  other  aquaporin  unorthodox",
+					"size": 1
+				}, {
+					"name": "WATER-SPECIFIC",
+					"id": "WATER-SPECIFIC",
+					"description": "ion channel  other  aquaporin  water-specific",
+					"size": 1
+				}],
+				"size": 5
+			}, {
+				"name": "CHLORIDE",
+				"id": "CHLORIDE",
+				"description": "ion channel  other  chloride",
+				"children": [{
+					"name": "CA ACT CL",
+					"id": "CA ACT CL",
+					"description": "ion channel  other  chloride  ca act cl",
+					"size": 1
+				}, {
+					"name": "CLC",
+					"id": "CLC",
+					"description": "ion channel  other  chloride  clc",
+					"size": 1
+				}, {
+					"name": "E-CLC",
+					"id": "E-CLC",
+					"description": "ion channel  other  chloride  e-clc",
+					"size": 1
+				}, {
+					"name": "CLIC",
+					"id": "CLIC",
+					"description": "ion channel  other  chloride  clic",
+					"size": 1
+				}, {
+					"name": "CFTR",
+					"id": "CFTR",
+					"description": "ion channel  other  chloride  cftr",
+					"size": 1
+				}],
+				"size": 6
+			}, {
+				"name": "GAP",
+				"id": "GAP",
+				"description": "ion channel  other  gap",
+				"children": [{
+					"name": "GAP ALPHA",
+					"id": "GAP ALPHA",
+					"description": "ion channel  other  gap  gap junction protein alpha",
+					"size": 1
+				}, {
+					"name": "GAP BETA",
+					"id": "GAP BETA",
+					"description": "ion channel  other  gap  gap junction protein beta",
+					"size": 1
+				}, {
+					"name": "GAP DELTA",
+					"id": "GAP DELTA",
+					"description": "ion channel  other  gap  gap junction protein delta",
+					"size": 1
+				}, {
+					"name": "GAP EPSILON",
+					"id": "GAP EPSILON",
+					"description": "ion channel  other  gap  gap junction protein epsilon",
+					"size": 1
+				}, {
+					"name": "GAP GAMMA",
+					"id": "GAP GAMMA",
+					"description": "ion channel  other  gap  gap junction protein gamma",
+					"size": 1
+				}, {
+					"name": "PANNEXIN",
+					"id": "PANNEXIN",
+					"description": "ion channel  other  gap  pannexin",
+					"size": 1
+				}],
+				"size": 7
+			}, {
+				"name": "ANNEXIN",
+				"id": "ANNEXIN",
+				"description": "ion channel  other  annexin",
+				"size": 1
+			}, {
+				"name": "MISC",
+				"id": "MISC",
+				"description": "ion channel  other  misc",
+				"children": [{
+					"name": "SODIUM-LEAK",
+					"id": "SODIUM-LEAK",
+					"description": "ion channel  other  misc  sodium-leak",
+					"size": 1
+				}, {
+					"name": "TWEETY",
+					"id": "TWEETY",
+					"description": "ion channel  other  misc  tweety",
+					"size": 1
+				}, {
+					"name": "BESTROPHIN",
+					"id": "BESTROPHIN",
+					"description": "ion channel  other  misc  bestrophin",
+					"size": 1
+				}, {
+					"name": "BCL-2",
+					"id": "BCL-2",
+					"description": "ion channel  other  misc  bcl-2",
+					"size": 1
+				}, {
+					"name": "CRAC-C",
+					"id": "CRAC-C",
+					"description": "ion channel  other  misc  crac-c",
+					"size": 1
+				}, {
+					"name": "CALHM-C",
+					"id": "CALHM-C",
+					"description": "ion channel  other  misc  calhm-c",
+					"size": 1
+				}, {
+					"name": "CD20",
+					"id": "CD20",
+					"description": "ion channel  other  misc  cd20",
+					"size": 1
+				}, {
+					"name": "CHUP DSRNA",
+					"id": "CHUP DSRNA",
+					"description": "ion channel  other  misc  chup dsrna",
+					"size": 1
+				}, {
+					"name": "MIT",
+					"id": "MIT",
+					"description": "ion channel  other  misc  mit",
+					"size": 1
+				}, {
+					"name": "GPHR",
+					"id": "GPHR",
+					"description": "ion channel  other  misc  gphr",
+					"size": 1
+				}, {
+					"name": "TRIC",
+					"id": "TRIC",
+					"description": "ion channel  other  misc  tric",
+					"size": 1
+				}, {
+					"name": "MMGT",
+					"id": "MMGT",
+					"description": "ion channel  other  misc  mmgt",
+					"size": 1
+				}, {
+					"name": "PIEZO",
+					"id": "PIEZO",
+					"description": "ion channel  other  misc  piezo",
+					"size": 1
+				}, {
+					"name": "MCU",
+					"id": "MCU",
+					"description": "ion channel  other  misc  mcu",
+					"size": 1
+				}, {
+					"name": "MICU",
+					"id": "MICU",
+					"description": "ion channel  other  misc  micu",
+					"size": 1
+				}, {
+					"name": "NSCC2",
+					"id": "NSCC2",
+					"description": "ion channel  other  misc  nscc2",
+					"size": 1
+				}, {
+					"name": "PLASMOLIPIN",
+					"id": "PLASMOLIPIN",
+					"description": "ion channel  other  misc  plasmolipin",
+					"size": 1
+				}, {
+					"name": "PRESENILIN",
+					"id": "PRESENILIN",
+					"description": "ion channel  other  misc  presenilin",
+					"size": 1
+				}, {
+					"name": "FLOWER",
+					"id": "FLOWER",
+					"description": "ion channel  other  misc  flower",
+					"size": 1
+				}, {
+					"name": "TEGT",
+					"id": "TEGT",
+					"description": "ion channel  other  misc  tegt",
+					"size": 1
+				}, {
+					"name": "M2-C",
+					"id": "M2-C",
+					"description": "ion channel  other  misc  m2-c",
+					"size": 1
+				}],
+				"size": 22
+			}, {
+				"name": "TOXIN",
+				"id": "TOXIN",
+				"description": "ion channel  other  toxin",
+				"size": 1
+			}, {
+				"name": "MPP",
+				"id": "MPP",
+				"description": "ion channel  other  mpp",
+				"children": [{
+					"name": "VDAC",
+					"id": "VDAC",
+					"description": "ion channel  other  mpp  vdac",
+					"size": 1
+				}],
+				"size": 2
+			}, {
+				"name": "NPC",
+				"id": "NPC",
+				"description": "ion channel  other  npc",
+				"size": 1
+			}, {
+				"name": "PLM",
+				"id": "PLM",
+				"description": "ion channel  other  plm",
+				"size": 1
+			}, {
+				"name": "VESICLE",
+				"id": "VESICLE",
+				"description": "ion channel  other  vesicle",
+				"size": 1
+			}, {
+				"name": "PARACELLULAR",
+				"id": "PARACELLULAR",
+				"description": "ion channel  other  paracellular",
+				"children": [{
+					"name": "CLAUDIN",
+					"id": "CLAUDIN",
+					"description": "ion channel  other  paracellular  claudin",
+					"size": 1
+				}],
+				"size": 2
+			}],
+			"size": 50
+		}, {
+			"name": "Voltage-gated ion channel",
+			"id": "VGC",
+			"description": "ion channel  vgc",
+			"children": [{
+				"name": "CATSPER",
+				"id": "CATSPER",
+				"description": "ion channel  vgc  catsper",
+				"size": 1
+			}, {
+				"name": "K",
+				"id": "K",
+				"description": "ion channel  vgc  k",
+				"children": [{
+					"name": "VG K",
+					"id": "VG K",
+					"description": "ion channel  vgc  k  vg k",
+					"size": 1
+				}, {
+					"name": "K2P",
+					"id": "K2P",
+					"description": "ion channel  vgc  k  k2p",
+					"size": 1
+				}, {
+					"name": "CA ACT K",
+					"id": "CA ACT K",
+					"description": "ion channel  vgc  k  ca act k",
+					"size": 1
+				}, {
+					"name": "KIR",
+					"id": "KIR",
+					"description": "ion channel  vgc  k  kir",
+					"size": 1
+				}],
+				"size": 5
+			}, {
+				"name": "VG H",
+				"id": "VG H",
+				"description": "ion channel  vgc  vg h",
+				"size": 1
+			}, {
+				"name": "TRP",
+				"id": "TRP",
+				"description": "ion channel  vgc  trp",
+				"size": 1
+			}, {
+				"name": "c-GMP",
+				"id": "c-GMP",
+				"description": "ion channel  vgc  c-gmp",
+				"size": 1
+			}, {
+				"name": "VG CA",
+				"id": "VG CA",
+				"description": "ion channel  vgc  vg ca",
+				"size": 1
+			}, {
+				"name": "VG NA",
+				"id": "VG NA",
+				"description": "ion channel  vgc  vg na",
+				"size": 1
+			}],
+			"size": 12
+		}, {
+			"name": "Ligand-gated ion channel",
+			"id": "LGIC",
+			"description": "ion channel  lgic",
+			"children": [{
+				"name": "ENaC",
+				"id": "ENaC",
+				"description": "ion channel  lgic  enac",
+				"size": 1
+			}, {
+				"name": "GLUT (invertebrate)",
+				"id": "GLUT (invertebrate)",
+				"description": "ion channel  lgic  glut (invertebrate)",
+				"size": 1
+			}, {
+				"name": "ZAC",
+				"id": "ZAC",
+				"description": "ion channel  lgic  zac",
+				"size": 1
+			}, {
+				"name": "IP3",
+				"id": "IP3",
+				"description": "ion channel  lgic  ip3",
+				"size": 1
+			}, {
+				"name": "RYR",
+				"id": "RYR",
+				"description": "ion channel  lgic  ryr",
+				"size": 1
+			}, {
+				"name": "ASIC",
+				"id": "ASIC",
+				"description": "ion channel  lgic  asic",
+				"size": 1
+			}, {
+				"name": "P2X",
+				"id": "P2X",
+				"description": "ion channel  lgic  p2x",
+				"size": 1
+			}, {
+				"name": "GLUT",
+				"id": "GLUT",
+				"description": "ion channel  lgic  glut",
+				"children": [{
+					"name": "GRINL",
+					"id": "GRINL",
+					"description": "ion channel  lgic  glut  grinl",
+					"size": 1
+				}, {
+					"name": "AMPA",
+					"id": "AMPA",
+					"description": "ion channel  lgic  glut  ampa",
+					"size": 1
+				}, {
+					"name": "GRID",
+					"id": "GRID",
+					"description": "ion channel  lgic  glut  grid",
+					"size": 1
+				}, {
+					"name": "NMDA",
+					"id": "NMDA",
+					"description": "ion channel  lgic  glut  nmda",
+					"size": 1
+				}, {
+					"name": "KAINATE",
+					"id": "KAINATE",
+					"description": "ion channel  lgic  glut  kainate",
+					"size": 1
+				}],
+				"size": 6
+			}, {
+				"name": "ACH",
+				"id": "ACH",
+				"description": "ion channel  lgic  ach",
+				"children": [{
+					"name": "CHRN beta",
+					"id": "CHRN beta",
+					"description": "ion channel  lgic  ach  chrn beta",
+					"size": 1
+				}, {
+					"name": "CHRN alpha",
+					"id": "CHRN alpha",
+					"description": "ion channel  lgic  ach  chrn alpha",
+					"size": 1
+				}, {
+					"name": "CHRN delta",
+					"id": "CHRN delta",
+					"description": "ion channel  lgic  ach  chrn delta",
+					"size": 1
+				}, {
+					"name": "CHRN gamma",
+					"id": "CHRN gamma",
+					"description": "ion channel  lgic  ach  chrn gamma",
+					"size": 1
+				}, {
+					"name": "CHRN epsilon",
+					"id": "CHRN epsilon",
+					"description": "ion channel  lgic  ach  chrn epsilon",
+					"size": 1
+				}],
+				"size": 6
+			}, {
+				"name": "GLY",
+				"id": "GLY",
+				"description": "ion channel  lgic  gly",
+				"size": 1
+			}, {
+				"name": "5HT3",
+				"id": "5HT3",
+				"description": "ion channel  lgic  5ht3",
+				"size": 1
+			}, {
+				"name": "GABAA",
+				"id": "GABAA",
+				"description": "ion channel  lgic  gabaa",
+				"size": 1
+			}],
+			"size": 23
+		}],
+		"size": 86
+	}, {
+		"name": "Transporter",
+		"id": "Transporter",
+		"description": "transporter",
+		"children": [{
+			"name": "Group translocator",
+			"id": "Group translocator",
+			"description": "transporter  group translocator",
+			"size": 1
+		}, {
+			"name": "Transmembrane 1-electron transfer carriers",
+			"id": "1-Electron",
+			"description": "transporter  1-electron",
+			"size": 1
+		}, {
+			"name": "Primary active transporter",
+			"id": "NTPase",
+			"description": "transporter  ntpase",
+			"children": [{
+				"name": "Oxidoreduction",
+				"id": "Oxidoreduction",
+				"description": "transporter  ntpase  oxidoreduction",
+				"size": 1
+			}, {
+				"name": "F-type and V-type",
+				"id": "F-type and V-type",
+				"description": "transporter  ntpase  f-type and v-type",
+				"children": [{
+					"name": "F-type ATPase",
+					"id": "F-type ATPase",
+					"description": "transporter  ntpase  f-type and v-type  f-type atpase",
+					"size": 1
+				}, {
+					"name": "V-type ATPase",
+					"id": "V-type ATPase",
+					"description": "transporter  ntpase  f-type and v-type  v-type atpase",
+					"size": 1
+				}],
+				"size": 3
+			}, {
+				"name": "ERRT",
+				"id": "ERRT",
+				"description": "transporter  ntpase  errt",
+				"size": 1
+			}, {
+				"name": "SEC",
+				"id": "SEC",
+				"description": "transporter  ntpase  sec",
+				"size": 1
+			}, {
+				"name": "MPT",
+				"id": "MPT",
+				"description": "transporter  ntpase  mpt",
+				"size": 1
+			}, {
+				"name": "mRNA-E",
+				"id": "mRNA-E",
+				"description": "transporter  ntpase  nrna-e",
+				"size": 1
+			}, {
+				"name": "PPI",
+				"id": "PPI",
+				"description": "transporter  ntpase  ppi",
+				"size": 1
+			}, {
+				"name": "TRC",
+				"id": "TRC",
+				"description": "transporter  ntpase  trc",
+				"size": 1
+			}, {
+				"name": "P-type ATPase",
+				"id": "P-type ATPase",
+				"description": "transporter  ntpase  p-type atpase",
+				"children": [{
+					"name": "H K ATPase",
+					"id": "H K ATPase",
+					"description": "transporter  ntpase  p-type atpase  h k atpase",
+					"size": 1
+				}, {
+					"name": "Na K ATPase",
+					"id": "Na K ATPase",
+					"description": "transporter  ntpase  p-type atpase  na k atpase",
+					"size": 1
+				}, {
+					"name": "Cu ATPase",
+					"id": "Cu ATPase",
+					"description": "transporter  ntpase  p-type atpase  cu atpase",
+					"size": 1
+				}, {
+					"name": "Phospholipid ATPase",
+					"id": "Phospholipid ATPase",
+					"description": "transporter  ntpase  p-type atpase  phospholipid atpase",
+					"size": 1
+				}, {
+					"name": "cation ATPase",
+					"id": "cation ATPase",
+					"description": "transporter  ntpase  p-type atpase  cation atpase",
+					"size": 1
+				}, {
+					"name": "Ca ATPase",
+					"id": "Ca ATPase",
+					"description": "transporter  ntpase  p-type atpase  ca atpase",
+					"size": 1
+				}],
+				"size": 7
+			}, {
+				"name": "ATP binding cassette",
+				"id": "ATP binding cassette",
+				"description": "transporter  ntpase  atp binding cassette",
+				"children": [{
+					"name": "ABCA",
+					"id": "ABCA",
+					"description": "transporter  ntpase  atp binding cassette  abca",
+					"size": 1
+				}, {
+					"name": "ABCD",
+					"id": "ABCD",
+					"description": "transporter  ntpase  atp binding cassette  abcd",
+					"size": 1
+				}, {
+					"name": "ABCE",
+					"id": "ABCE",
+					"description": "transporter  ntpase  atp binding cassette  abce",
+					"size": 1
+				}, {
+					"name": "ABCF",
+					"id": "ABCF",
+					"description": "transporter  ntpase  atp binding cassette  abcf",
+					"size": 1
+				}, {
+					"name": "ABCG",
+					"id": "ABCG",
+					"description": "transporter  ntpase  atp binding cassette  abcg",
+					"size": 1
+				}, {
+					"name": "MDR",
+					"id": "MDR",
+					"description": "transporter  ntpase  atp binding cassette  mdr",
+					"size": 1
+				}, {
+					"name": "MRP",
+					"id": "MRP",
+					"description": "transporter  ntpase  atp binding cassette  mrp",
+					"size": 1
+				}],
+				"size": 8
+			}],
+			"size": 26
+		}, {
+			"name": "Electrochemical transporter",
+			"id": "Electrochemical",
+			"description": "transporter  electrochemical",
+			"children": [{
+				"name": "SLC",
+				"id": "SLC",
+				"description": "transporter  electrochemical  slc",
+				"children": [{
+					"name": "SLC01",
+					"id": "SLC01",
+					"description": "transporter  electrochemical  slc  slc01",
+					"size": 1
+				}, {
+					"name": "SLC02",
+					"id": "SLC02",
+					"description": "transporter  electrochemical  slc  slc02",
+					"size": 1
+				}, {
+					"name": "SLC03 and SLC07",
+					"id": "SLC03 and SLC07",
+					"description": "transporter  electrochemical  slc  slc03 and slc07",
+					"children": [{
+						"name": "SLC03",
+						"id": "SLC03",
+						"description": "transporter  electrochemical  slc  slc03 and slc07  slc03",
+						"size": 1
+					}, {
+						"name": "SLC07",
+						"id": "SLC07",
+						"description": "transporter  electrochemical  slc  slc03 and slc07  slc07",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "SLC04",
+					"id": "SLC04",
+					"description": "transporter  electrochemical  slc  slc04",
+					"size": 1
+				}, {
+					"name": "SLC05",
+					"id": "SLC05",
+					"description": "transporter  electrochemical  slc  slc05",
+					"size": 1
+				}, {
+					"name": "SLC06",
+					"id": "SLC06",
+					"description": "transporter  electrochemical  slc  slc06",
+					"size": 1
+				}, {
+					"name": "SLC08",
+					"id": "SLC08",
+					"description": "transporter  electrochemical  slc  slc08",
+					"size": 1
+				}, {
+					"name": "SLC09",
+					"id": "SLC09",
+					"description": "transporter  electrochemical  slc  slc09",
+					"size": 1
+				}, {
+					"name": "SLC10",
+					"id": "SLC10",
+					"description": "transporter  electrochemical  slc  slc10",
+					"size": 1
+				}, {
+					"name": "SLC11",
+					"id": "SLC11",
+					"description": "transporter  electrochemical  slc  slc11",
+					"size": 1
+				}, {
+					"name": "SLC12",
+					"id": "SLC12",
+					"description": "transporter  electrochemical  slc  slc12",
+					"size": 1
+				}, {
+					"name": "SLC13",
+					"id": "SLC13",
+					"description": "transporter  electrochemical  slc  slc13",
+					"size": 1
+				}, {
+					"name": "SLC14",
+					"id": "SLC14",
+					"description": "transporter  electrochemical  slc  slc14",
+					"size": 1
+				}, {
+					"name": "SLC15",
+					"id": "SLC15",
+					"description": "transporter  electrochemical  slc  slc15",
+					"size": 1
+				}, {
+					"name": "SLC16",
+					"id": "SLC16",
+					"description": "transporter  electrochemical  slc  slc16",
+					"size": 1
+				}, {
+					"name": "SLC17",
+					"id": "SLC17",
+					"description": "transporter  electrochemical  slc  slc17",
+					"size": 1
+				}, {
+					"name": "SLC18",
+					"id": "SLC18",
+					"description": "transporter  electrochemical  slc  slc18",
+					"size": 1
+				}, {
+					"name": "SLC19",
+					"id": "SLC19",
+					"description": "transporter  electrochemical  slc  slc19",
+					"size": 1
+				}, {
+					"name": "SLC20",
+					"id": "SLC20",
+					"description": "transporter  electrochemical  slc  slc20",
+					"size": 1
+				}, {
+					"name": "SLC21",
+					"id": "SLC21",
+					"description": "transporter  electrochemical  slc  slc21",
+					"size": 1
+				}, {
+					"name": "SLC22",
+					"id": "SLC22",
+					"description": "transporter  electrochemical  slc  slc22",
+					"size": 1
+				}, {
+					"name": "SLC23",
+					"id": "SLC23",
+					"description": "transporter  electrochemical  slc  slc23",
+					"size": 1
+				}, {
+					"name": "SLC24",
+					"id": "SLC24",
+					"description": "transporter  electrochemical  slc  slc24",
+					"size": 1
+				}, {
+					"name": "SLC25",
+					"id": "SLC25",
+					"description": "transporter  electrochemical  slc  slc25",
+					"size": 1
+				}, {
+					"name": "SLC26",
+					"id": "SLC26",
+					"description": "transporter  electrochemical  slc  slc26",
+					"size": 1
+				}, {
+					"name": "SLC27",
+					"id": "SLC27",
+					"description": "transporter  electrochemical  slc  slc27",
+					"size": 1
+				}, {
+					"name": "SLC28 and SLC29",
+					"id": "SLC28 and SLC29",
+					"description": "transporter  electrochemical  slc  slc28 and slc29",
+					"children": [{
+						"name": "SLC28",
+						"id": "SLC28",
+						"description": "transporter  electrochemical  slc  slc28 and slc29  slc28",
+						"size": 1
+					}, {
+						"name": "SLC29",
+						"id": "SLC29",
+						"description": "transporter  electrochemical  slc  slc28 and slc29  slc29",
+						"size": 1
+					}],
+					"size": 3
+				}, {
+					"name": "SLC30",
+					"id": "SLC30",
+					"description": "transporter  electrochemical  slc  slc30",
+					"size": 1
+				}, {
+					"name": "SLC31",
+					"id": "SLC31",
+					"description": "transporter  electrochemical  slc  slc31",
+					"size": 1
+				}, {
+					"name": "SLC32",
+					"id": "SLC32",
+					"description": "transporter  electrochemical  slc  slc32",
+					"size": 1
+				}, {
+					"name": "SLC33",
+					"id": "SLC33",
+					"description": "transporter  electrochemical  slc  slc33",
+					"size": 1
+				}, {
+					"name": "SLC34",
+					"id": "SLC34",
+					"description": "transporter  electrochemical  slc  slc34",
+					"size": 1
+				}, {
+					"name": "SLC35",
+					"id": "SLC35",
+					"description": "transporter  electrochemical  slc  slc35",
+					"size": 1
+				}, {
+					"name": "SLC36",
+					"id": "SLC36",
+					"description": "transporter  electrochemical  slc  slc36",
+					"size": 1
+				}, {
+					"name": "SLC37",
+					"id": "SLC37",
+					"description": "transporter  electrochemical  slc  slc37",
+					"size": 1
+				}, {
+					"name": "SLC38",
+					"id": "SLC38",
+					"description": "transporter  electrochemical  slc  slc38",
+					"size": 1
+				}, {
+					"name": "SLC39",
+					"id": "SLC39",
+					"description": "transporter  electrochemical  slc  slc39",
+					"size": 1
+				}, {
+					"name": "SLC40",
+					"id": "SLC40",
+					"description": "transporter  electrochemical  slc  slc40",
+					"size": 1
+				}, {
+					"name": "SLC41",
+					"id": "SLC41",
+					"description": "transporter  electrochemical  slc  slc41",
+					"size": 1
+				}, {
+					"name": "SLC42",
+					"id": "SLC42",
+					"description": "transporter  electrochemical  slc  slc42",
+					"size": 1
+				}, {
+					"name": "SLC43",
+					"id": "SLC43",
+					"description": "transporter  electrochemical  slc  slc43",
+					"size": 1
+				}, {
+					"name": "SLC44",
+					"id": "SLC44",
+					"description": "transporter  electrochemical  slc  slc44",
+					"size": 1
+				}, {
+					"name": "SLC45",
+					"id": "SLC45",
+					"description": "transporter  electrochemical  slc  slc45",
+					"size": 1
+				}, {
+					"name": "SLC46",
+					"id": "SLC46",
+					"description": "transporter  electrochemical  slc  slc46",
+					"size": 1
+				}, {
+					"name": "SLC47",
+					"id": "SLC47",
+					"description": "transporter  electrochemical  slc  slc47",
+					"size": 1
+				}, {
+					"name": "SLC48",
+					"id": "SLC48",
+					"description": "transporter  electrochemical  slc  slc48",
+					"size": 1
+				}, {
+					"name": "SLC49",
+					"id": "SLC49",
+					"description": "transporter  electrochemical  slc  slc49",
+					"size": 1
+				}, {
+					"name": "SLC50",
+					"id": "SLC50",
+					"description": "transporter  electrochemical  slc  slc50",
+					"size": 1
+				}, {
+					"name": "SLC51",
+					"id": "SLC51",
+					"description": "transporter  electrochemical  slc  slc51",
+					"size": 1
+				}, {
+					"name": "SLC52",
+					"id": "SLC52",
+					"description": "transporter  electrochemical  slc  slc52",
+					"size": 1
+				}],
+				"size": 55
+			}, {
+				"name": "MET",
+				"id": "MET",
+				"description": "transporter  electrochemical  met",
+				"size": 1
+			}, {
+				"name": "APC",
+				"id": "APC",
+				"description": "transporter  electrochemical  apc",
+				"size": 1
+			}, {
+				"name": "ARSB",
+				"id": "ARSB",
+				"description": "transporter  electrochemical  arsb",
+				"size": 1
+			}, {
+				"name": "DMT",
+				"id": "DMT",
+				"description": "transporter  electrochemical  dmt",
+				"size": 1
+			}, {
+				"name": "GPH",
+				"id": "GPH",
+				"description": "transporter  electrochemical  gph",
+				"size": 1
+			}, {
+				"name": "LCT",
+				"id": "LCT",
+				"description": "transporter  electrochemical  lct",
+				"size": 1
+			}, {
+				"name": "LETM1",
+				"id": "LETM1",
+				"description": "transporter  electrochemical  letm1",
+				"size": 1
+			}, {
+				"name": "MPC",
+				"id": "MPC",
+				"description": "transporter  electrochemical  mpc",
+				"size": 1
+			}, {
+				"name": "MTC",
+				"id": "MTC",
+				"description": "transporter  electrochemical  mtc",
+				"size": 1
+			}, {
+				"name": "CPA2",
+				"id": "CPA2",
+				"description": "transporter  electrochemical  cpa2",
+				"size": 1
+			}, {
+				"name": "MOP",
+				"id": "MOP",
+				"description": "transporter  electrochemical  mop",
+				"size": 1
+			}, {
+				"name": "RFC",
+				"id": "RFC",
+				"description": "transporter  electrochemical  rfc",
+				"size": 1
+			}, {
+				"name": "STRA6",
+				"id": "STRA6",
+				"description": "transporter  electrochemical  stra6",
+				"size": 1
+			}, {
+				"name": "AAHS",
+				"id": "AAHS",
+				"description": "transporter  electrochemical  aahs",
+				"size": 1
+			}, {
+				"name": "VNT",
+				"id": "VNT",
+				"description": "transporter  electrochemical  vnt",
+				"size": 1
+			}],
+			"size": 71
+		}],
+		"size": 100
+	}],
+	"size": 858
+}
