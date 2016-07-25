@@ -16,7 +16,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       
     if (res != null) {
       if (facet.field != AjaxSolr.PivotWidget.topField)
-        res.push(facet.value);
+        res.push(facet.field + ":" + facet.value);
       
       for(;idx >= 0;idx = arr.indexOf(q))
         arr.splice(idx, 1);
