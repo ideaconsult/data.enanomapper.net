@@ -47,25 +47,22 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 
     // now add the facets
     for (var i = 0; i < fq.length; ++i) {
-	    var f = fq[i], fcat, fval, el, map, ffull, fpre;
+	    var f = fq[i], el, map, fvals;
     	if (f.indexOf("!collapse field=s_uuid") < 0) {
-        fcat = f.match(self.fieldRegExp)[1];
-        fval = f.replace(self.fieldRegExp, "");
-        
-        map = self.pivotMap[fval];
-        fpre = [];
+        map = self.pivotMap[f.replace(self.fieldRegExp, "")];
+        fvals = [];
         
         if (map != null) {
           for (var j = 0;j < map.length; ++j)
-            if (!!(fpre = self.scanBuildPrefix(map[j].parent, fq)))
+            if (!!(fvals = self.scanBuildPrefix(map[j].parent, fq)))
               break;
         }
 
-        fpre.push(fval);
+        fvals.push(f);
         
-    		links.push(el = self.tagRenderer(fpre, "x", self.rangeToggle(f)).addClass('tag_selected'));
-    		$("span", el[0]).on("click", self.removeFacet(f));
-    		el.addClass(self.colorMap[fcat]);
+    		links.push(el = self.tagRenderer(fvals.map(function (f) { return f.replace(self.fieldRegExp, ""); }), "x", self.rangeToggle(f)).addClass('tag_selected'));
+    		$("span", el[0]).on("click", self.removeFacet(fvals));
+    		el.addClass(self.colorMap[f.match(self.fieldRegExp)[1]]);
       }
     }
     
@@ -94,9 +91,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   removeFacet: function (facet) {
     var self = this;
     return function () {
-      if (self.manager.store.removeByValue('fq', facet)) {
+      var res = false;
+      for (var i = 0, fl = facet.length; i < fl; ++i)
+        res |= self.manager.store.removeByValue('fq', facet[i]);
+        
+      if (res)
         self.doRequest();
-      }
+
       return false;
     };
   }
