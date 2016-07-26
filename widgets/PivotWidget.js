@@ -36,16 +36,13 @@
 			};
 	
 	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
-    clickHandler: function (path) {
-      var self = this;
+    clickHandler: function (facet) {
+      var self = this,
+          arg = facet.field + ':' + AjaxSolr.Parameter.escapeValue(facet.value);
 
       return function (e) {
         if (self.changeSelection(function () {
-          var go = false;
-          for(var i = 0, pl = path.length; i < pl; ++i)
-            go |= !!self.manager.store.addByValue('fq', path[i].field + ':' + AjaxSolr.Parameter.escapeValue(path[i].value));
-
-          return go;
+          return self.manager.store.addByValue('fq', arg);
         })) {
           self.doRequest();
         }
@@ -90,9 +87,7 @@
 				}
 				
 				target.append(buildFacetDom(facet, self.colorMap, function (facet) {
-					var msg = "",
-					    path = [],
-					    f;
+					var msg = "";
 					
 					if (facet.pivot == undefined) 
 						msg = buildValueRange(facet, "");
@@ -103,10 +98,7 @@
 						msg += buildValueRange(facet.pivot[j]);
 					}
 					
-					for (f = facet; !!f ;f = f.parent)
-					  path.push({ field: f.field, value: f.value});
-					  
-					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(path.reverse()));
+					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(facet));
 				}));
 			}
 			
