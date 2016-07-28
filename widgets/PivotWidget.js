@@ -41,13 +41,14 @@
           arg = facet.field + ':' + AjaxSolr.Parameter.escapeValue(facet.value);
 
       return function (e) {
-        if (self.changeSelection(function () {
+        return !self.changeSelection(function () {
           return self.manager.store.addByValue('fq', arg);
-        })) {
-          self.doRequest();
-        }
-        return false;
+        });
       }
+    },
+    
+    afterChangeSelection: function () {
+      this.doRequest()
     },
     
 		afterRequest : function() {
@@ -106,5 +107,7 @@
 				refresh.call();
 		}
 	});
+	
+	AjaxSolr.PivotWidget.pivotFields = pivot_fields;
 	
 })(jQuery);
