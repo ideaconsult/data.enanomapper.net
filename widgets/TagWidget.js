@@ -1,6 +1,6 @@
 (function ($) {
 
-AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
+AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
   afterRequest: function () {
     if (this.manager.response.facet_counts.facet_fields[this.field] === undefined) {
       this.target.html('no items found in current selection');
@@ -11,7 +11,9 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
     		facet = null, 
     		total = 0,
     		hdr = getHeaderText(this.header),
-    		refresh = this.header.data("refreshPanel");
+    		refresh = this.header.data("refreshPanel"),
+    		filter = this.fieldFilter(),
+    		el;
         
     for (var facet in this.manager.response.facet_counts.facet_fields[this.field]) {
       var count = parseInt(this.manager.response.facet_counts.facet_fields[this.field][facet]);
@@ -24,10 +26,13 @@ AjaxSolr.TagWidget = AjaxSolr.AbstractFacetWidget.extend({
     });
 
     this.target.empty();
-    for (var i = 0, l = objectedItems.length; i < l; i++)
-      this.target.append(this.tagRenderer(facet = objectedItems[i].facet, count = objectedItems[i].count, this.clickHandler(facet)));
+    for (var i = 0, l = objectedItems.length; i < l; i++) {
+      this.target.append(el = this.tagRenderer(facet = objectedItems[i].facet, objectedItems[i].count, this.clickHandler(facet)));
       
-    
+      if (!!filter && filter.match(AjaxSolr.BaseFacetWidget.valueRegExp(facet)))
+        el.addClass("selected");
+    }
+      
     hdr.textContent = jT.ui.updateCounter(hdr.textContent, total);
     if (!!refresh)
     	refresh.call();
