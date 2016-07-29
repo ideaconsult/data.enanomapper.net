@@ -8,7 +8,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this, el, f, fk, fv,
         links = [],
         q = this.manager.store.get('q').val(),
-        fq = this.manager.store.values('fq');
+        fq = this.manager.store.get('fq');
         
     // add the free text search as a tag
     if (q != '*:*') {
@@ -21,14 +21,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 
     // now add the facets
     for (var i = 0, l = fq.length; i < l; i++) {
-	    f = fq[i];
+	    f = fq[i].val();
 	    fk = f.match(self.fieldRegExp);
     	if (!!fk) {
         fk = fk[2];
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.tagRenderer(fv[j], "&#x02C5;", fvl > 1 ? self.reduceFacet(f, fv[j]) : self.removeFacet(f)).addClass('tag_selected'));
+      		links.push(el = self.tagRenderer(fv[j], "&#x02C5;", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass(j < fvl - 1 ? "combined" : "combined last");
@@ -61,25 +61,23 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     };
   },
 
-  removeFacet: function (facet) {
+  removeFacet: function (index) {
     var self = this;
     return function () {
-      if (self.manager.store.removeByValue('fq', facet)) {
-        self.doRequest();
-      }
+      self.manager.store.remove('fq', index);
+      self.doRequest();
       return false;
     };
   },
   
-  reduceFacet: function (facet, value) {
+  reduceFacet: function (index, value) {
     var self = this;
     return function () {
-      var newFacet = AjaxSolr.BaseFacetWidget.matchRemoveValue(facet, value),
-          a = self.manager.store.removeByValue('fq', facet),
-          b = self.manager.store.addByValue('fq', newFacet);
-      if (a || b)
-        self.doRequest();
-
+      var par = self.manager.store.get('fq')[index],
+          newVal = AjaxSolr.BaseFacetWidget.matchRemoveValue(par.val(), value);
+      
+      par.val(newVal);
+      self.doRequest();
       return false;
     };
   }
