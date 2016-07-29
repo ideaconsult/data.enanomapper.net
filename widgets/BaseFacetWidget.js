@@ -1,5 +1,7 @@
 (function ($) {
 
+var leadBracked = /^\(?/, readBracked = /\)$/;
+
 AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
   fieldRegExp: function (field) {
     return new RegExp('^-?' + (field || this.field) + ':');
@@ -15,17 +17,20 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
       var re = this.fieldRegExp(),
           index = this.manager.store.find('fq', re);
             
-      value = AjaxSolr.Parameter.escapeValue(value);
       if (!index)
-        this.manager.store.addByValue('fq', this.field + ':(' + value + ')', { tag: this.field })
+        this.manager.store.addByValue('fq', this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', { tag: this.field })
       else {
         var pars = this.manager.store.params['fq'],
-            val = pars[index].val().replace(re, "").slice(1, -1);
+            val = pars[index].val().replace(re, "").replace(leadBracked, "").replace(readBracked, "");
             
         if (AjaxSolr.BaseFacetWidget.matchRemoveValue(val, value))
           return false;
           
-        pars[index] = new AjaxSolr.Parameter({name: 'fq', value: this.field + ':(' + val + " " + value + ')', locals: { tag: this.field }});
+        pars[index] = new AjaxSolr.Parameter({
+          name: 'fq', 
+          value: this.field + ':(' + val + " " + AjaxSolr.Parameter.escapeValue(value) + ')', 
+          locals: { tag: this.field }
+        });
       }
 
       return true;
@@ -72,19 +77,26 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
         index = this.manager.store.find('fq', re),
         pars;
         
-    return !index ? null : this.manager.store.params['fq'][index].val().replace(re, "");
+    return !index ? null : this.manager.store.get('fq')[index].val().replace(re, "");
   }
 });
 
 AjaxSolr.BaseFacetWidget.matchRemoveValue = function (filter, value) {
-  var re = new RegExp("([\\(\\s])" + AjaxSolr.Parameter.escapeValue(value) + "([\\)\\s])"),
+  var re = new RegExp("(^\\(|\\s)" + AjaxSolr.Parameter.escapeValue(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(\\s|\\)$)"),
       m = filter.replace(re, "$1$2")
 
   return m == filter ? null : m.replace(/\(\s+/, "(").replace(/\s+\)/, ")").replace("/\s+/", " ");
 }
 
 AjaxSolr.BaseFacetWidget.parseValues = function (str) {
-  return !str.match(/^\([\s\w]*\)$/) ? [str] : str.slice(1, -1).split(/\s+/);
+  var m = str.replace(leadBracked, "").replace(readBracked, ""), sarr;
+  
+  sarr = m.split(m.match(/[^\\]"/) ? /[^\\]"\s+"/ : /\s+/);
+  
+  for (var i = 0, sl = sarr.length; i < sl; ++i)
+    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "");
+
+  return sarr;
 }
 
 })(jQuery);

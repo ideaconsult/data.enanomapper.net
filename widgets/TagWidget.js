@@ -13,7 +13,8 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     		hdr = getHeaderText(this.header),
     		refresh = this.header.data("refreshPanel"),
     		filter = this.fieldFilter(),
-    		el;
+    		nullf = function (e) { return false; },
+    		el, selected;
         
     for (var facet in this.manager.response.facet_counts.facet_fields[this.field]) {
       var count = parseInt(this.manager.response.facet_counts.facet_fields[this.field][facet]);
@@ -27,9 +28,12 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
 
     this.target.empty();
     for (var i = 0, l = objectedItems.length; i < l; i++) {
-      this.target.append(el = this.tagRenderer(facet = objectedItems[i].facet, objectedItems[i].count, this.clickHandler(facet)));
+      facet = objectedItems[i].facet;
+      selected = (!!filter && !!AjaxSolr.BaseFacetWidget.matchRemoveValue(filter, facet));
       
-      if (!!filter && AjaxSolr.BaseFacetWidget.matchRemoveValue(filter, facet))
+      this.target.append(el = this.tagRenderer(facet, objectedItems[i].count, selected ? nullf : this.clickHandler(facet)));
+      
+      if (selected)
         el.addClass("selected");
     }
       
