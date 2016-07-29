@@ -100,7 +100,7 @@
 					link: "#",
 					snippet: "",
 					item_id: (this.prefix || this.id || "item") + "_" + doc.s_uuid,
-					publicname: (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")"),
+					publicname: !doc.publicname ? "" : (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")"),
 					footer: 
 						'<a href="' + root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
 						'<a href="' + root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
