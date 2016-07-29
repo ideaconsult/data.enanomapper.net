@@ -136,7 +136,7 @@
 		else {
 			item.href = item.link || "#";
 			
-			if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {
+			if (!!doc.owner_name && doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {
 				item.logo = "images/canano.jpg";
 				item.href_title = "caNanoLab: " + item.link;
 				item.href_target = external = "caNanoLab";

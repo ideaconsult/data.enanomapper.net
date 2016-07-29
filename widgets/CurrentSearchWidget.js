@@ -74,8 +74,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   reduceFacet: function (facet, value) {
     var self = this;
     return function () {
-      var newFacet = facet.replace(new RegExp("\\s*" + value + "\\s*"), "");
-      if (self.manager.store.removeByValue('fq', facet) && self.manager.store.addByValue('fq', newFacet))
+      var newFacet = AjaxSolr.BaseFacetWidget.matchRemoveValue(facet, value),
+          a = self.manager.store.removeByValue('fq', facet),
+          b = self.manager.store.addByValue('fq', newFacet);
+      if (a || b)
         self.doRequest();
 
       return false;
