@@ -28,12 +28,12 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.tagRenderer(fv[j], "x", self.rangeToggle(f)).addClass('tag_selected'));
+      		links.push(el = self.tagRenderer(fv[j], "&#x02C5;", fvl > 1 ? self.reduceFacet(f, fv[j]) : self.removeFacet(f)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass(j < fvl - 1 ? "combined" : "combined last");
       		  
-      		$("span", el[0]).on("click", fvl > 1 ? self.reduceFacet(f, fv[j]) : self.removeFacet(f));
+      		$("span", el[0]).on("click", self.rangeToggle(f));
       		el.addClass(self.colorMap[fk]);
         }
       }
