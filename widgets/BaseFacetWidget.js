@@ -22,7 +22,7 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
         var pars = this.manager.store.params['fq'],
             val = pars[index].val().replace(re, "").slice(1, -1);
             
-        if (val.match(AjaxSolr.BaseFacetWidget.valueRegExp(value)))
+        if (AjaxSolr.BaseFacetWidget.matchRemoveValue(val, value))
           return false;
           
         pars[index] = new AjaxSolr.Parameter({name: 'fq', value: this.field + ':(' + val + " " + value + ')', locals: { tag: this.field }});
@@ -72,16 +72,19 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
         index = this.manager.store.find('fq', re),
         pars;
         
-    return !index ? null : this.manager.store.params['fq'][index].val().replace(re, "").slice(1, -1);
+    return !index ? null : this.manager.store.params['fq'][index].val().replace(re, "");
   }
 });
 
-AjaxSolr.BaseFacetWidget.valueRegExp = function (value) {
-  return new RegExp("\\s?" + value + "\\s?"); 
+AjaxSolr.BaseFacetWidget.matchRemoveValue = function (filter, value) {
+  var re = new RegExp("([\\(\\s])" + AjaxSolr.Parameter.escapeValue(value) + "([\\)\\s])"),
+      m = filter.replace(re, "$1$2")
+
+  return m == filter ? null : m.replace(/\(\s+/, "(").replace(/\s+\)/, ")").replace("/\s+/", " ");
 }
 
 AjaxSolr.BaseFacetWidget.parseValues = function (str) {
-  return !str.match(/^\([\s\w]*\)$/) ? [str] : str.slice(1, -1).split(" ");
+  return !str.match(/^\([\s\w]*\)$/) ? [str] : str.slice(1, -1).split(/\s+/);
 }
 
 })(jQuery);
