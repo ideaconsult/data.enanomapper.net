@@ -28,14 +28,17 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.tagRenderer(fv[j], "&#x02C5;", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+      		links.push(el = self.tagRenderer(fv[j], "o", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
-      		  el.addClass(j < fvl - 1 ? "combined" : "combined last");
+      		  el.addClass("combined");
       		  
       		$("span", el[0]).on("click", self.rangeToggle(f));
       		el.addClass(self.colorMap[fk]);
         }
+        
+        if (fvl > 1)
+  		    el.addClass("last");
       }
     }
     
@@ -74,9 +77,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this;
     return function () {
       var par = self.manager.store.get('fq')[index],
-          newVal = AjaxSolr.BaseFacetWidget.matchRemoveValue(par.val(), value);
+          pval = par.val(),
+          field = pval.match(self.fieldRegExp),
+          newVal = AjaxSolr.BaseFacetWidget.matchRemoveValue(pval.replace(self.fieldRegExp, ""), value);
       
-      par.val(newVal);
+      par.val(!newVal ? pval : field[0] + newVal);
       self.doRequest();
       return false;
     };

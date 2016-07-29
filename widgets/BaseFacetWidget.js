@@ -9,7 +9,9 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
   
   init: function () {
     AjaxSolr.BaseFacetWidget.__super__.init.call(this);
-    this.manager.store.addByValue('facet.field', this.field, { ex: this.field });
+    if (this.multivalue) {
+      this.manager.store.addByValue('facet.field', this.field, { ex: this.id });
+    }
   },
   
   add: function (value) {
@@ -18,7 +20,7 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
           index = this.manager.store.find('fq', re);
             
       if (!index)
-        this.manager.store.addByValue('fq', this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', { tag: this.field })
+        this.manager.store.addByValue('fq', this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', this.multivalue ? { tag: this.id } : null)
       else {
         var pars = this.manager.store.params['fq'],
             val = pars[index].val().replace(re, "").replace(leadBracked, "").replace(readBracked, "");
@@ -29,7 +31,7 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
         pars[index] = new AjaxSolr.Parameter({
           name: 'fq', 
           value: this.field + ':(' + val + " " + AjaxSolr.Parameter.escapeValue(value) + ')', 
-          locals: { tag: this.field }
+          locals: this.multivalue ? { tag: this.id } : null
         });
       }
 
