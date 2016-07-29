@@ -109,6 +109,7 @@ var Manager,
 				header: hdr,
 				field : f,
 				color: col,
+				multivalue: true,
 				tagRenderer: renderTag
 			}));
 		});
@@ -118,6 +119,7 @@ var Manager,
 			id : "studies",
 			target : $(".after_topcategory"),
 			colorMap: Colors,
+			multivalue: false,
 			tagRenderer: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
@@ -175,8 +177,7 @@ var Manager,
 			'facet.field' : fields.concat('unit'),
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
-// 			'facet.pivot' : 'topcategory,endpointcategory,effectendpoint,unit',
-			'facet.pivot': "{!stats=piv1}" + AjaxSolr.PivotWidget.pivotFields,
+			'facet.pivot': "{!stats=piv1}" + AjaxSolr.PivotWidget.pivotFields.join(","),
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
 			'f.interpretation_result.facet.mincount' : 2,
 			'f.reference.facet.mincount' : 2,

@@ -197,11 +197,12 @@ article span.guidance {
 #hits_tab .tags li,
 #hits_tab .tags li.combined.last {
   margin-left: 4px;
-  margin-right: 16px;
+  margin-right: 18px;
+  max-width: 250px;
 }
 
 #hits_tab .tags li.combined {
-  margin-right: 4px;
+  margin-right: 12px;
   opacity: 0.9;
 }
 
@@ -245,7 +246,7 @@ article span.guidance {
   opacity: 0.6;
 }
 
-#accordion .tags li>a {
+.tags li>a {
   text-overflow: ellipsis;  
   overflow: hidden;
   white-space: nowrap;
@@ -311,13 +312,13 @@ article span.guidance {
   width: 90%;
 }
 
-#accordion ul.tag-group::before { content: "˅"; }
-#accordion ul.tag-group.folded::before { content: "˂"; }
+#accordion ul.tag-group::before { content: "x"; }
+#accordion ul.tag-group.folded::before { content: "o"; }
 
-#accordion ul.tag-group.static.year::before { content: "Year ˅"; }
-#accordion ul.tag-group.static.reference::before { content: "Reference ˅"; }
-#accordion ul.tag-group.static.folded.year::before { content: "Year ˂"; }
-#accordion ul.tag-group.static.folded.reference::before { content: "Reference ˂ "; }
+#accordion ul.tag-group.static.year::before { content: "Year x"; }
+#accordion ul.tag-group.static.reference::before { content: "Reference x"; }
+#accordion ul.tag-group.static.folded.year::before { content: "Year o"; }
+#accordion ul.tag-group.static.folded.reference::before { content: "Reference o"; }
 
 .jtox-panel:hover {
 	background: #ddd; /* Old browsers */
