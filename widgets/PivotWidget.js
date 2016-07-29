@@ -1,6 +1,7 @@
 (function($) {
-	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
-	    bottom_field = "effectendpoint", top_field = "topcategory",
+	var pivot_fields = ["topcategory", "endpointcategory", "effectendpoint", "unit"],
+	    bottom_field = pivot_fields[2], top_field = pivot_fields[0], category_field = pivot_fields[1],
+	    
 			buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
 				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
@@ -35,15 +36,12 @@
 				return elements;
 			};
 	
-	AjaxSolr.PivotWidget = AjaxSolr.AbstractFacetWidget.extend({
-    clickHandler: function (facet) {
-      var self = this,
-          arg = facet.field + ':' + AjaxSolr.Parameter.escapeValue(facet.value);
-
-      return function (e) {
-        return !self.changeSelection(function () {
-          return self.manager.store.addByValue('fq', arg);
-        });
+	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
+    init: function () {
+      AjaxSolr.BaseFacetWidget.__super__.init.call(this);
+      if (this.multivalue) {
+        this.manager.store.addByValue('facet.field', bottom_field, { ex: this.id });
+        this.manager.store.addByValue('facet.field', category_field, { ex: this.id });
       }
     },
     
@@ -99,7 +97,7 @@
 						msg += buildValueRange(facet.pivot[j]);
 					}
 					
-					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(facet));
+					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(facet.value, facet.field));
 				}));
 			}
 			
