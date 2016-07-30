@@ -1,6 +1,6 @@
 (function ($) {
 
-var leadBracked = /^\(?/, readBracked = /\)$/;
+var leadBracked = /^\(?/, rearBracked = /\)$/;
 
 AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
   fieldRegExp: function (field) {
@@ -23,7 +23,7 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
         this.manager.store.addByValue('fq', this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', this.multivalue ? { tag: this.id } : null)
       else {
         var pars = this.manager.store.params['fq'],
-            val = pars[index].val().replace(re, "").replace(leadBracked, "").replace(readBracked, "");
+            val = pars[index].val().replace(re, "").replace(leadBracked, "").replace(rearBracked, "");
             
         if (AjaxSolr.BaseFacetWidget.matchRemoveValue(val, value))
           return false;
@@ -91,12 +91,10 @@ AjaxSolr.BaseFacetWidget.matchRemoveValue = function (filter, value) {
 }
 
 AjaxSolr.BaseFacetWidget.parseValues = function (str) {
-  var m = str.replace(leadBracked, "").replace(readBracked, ""), sarr;
-  
-  sarr = m.split(m.match(/[^\\]"/) ? /[^\\]"\s+"/ : /\s+/);
+  var sarr = str.replace(leadBracked, "").replace(rearBracked, "").replace(/\\"/g, "%22").match(/[^\s"]+|"[^"]+"/g);
   
   for (var i = 0, sl = sarr.length; i < sl; ++i)
-    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "");
+    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "").replace("%22", '\\"');
 
   return sarr;
 }
