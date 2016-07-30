@@ -91,10 +91,10 @@ AjaxSolr.BaseFacetWidget.matchRemoveValue = function (filter, value) {
 }
 
 AjaxSolr.BaseFacetWidget.parseValues = function (str) {
-  var sarr = str.replace(leadBracked, "").replace(rearBracked, "").replace(/\\"/g, "%22").match(/[^\s"]+|"[^"]+"/g);
+  var sarr = str.replace(leadBracked, "").replace(rearBracked, "").replace(/\\"/g, "%0022").match(/[^\s"]+|"[^"]+"/g);
   
   for (var i = 0, sl = sarr.length; i < sl; ++i)
-    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "").replace("%22", '\\"');
+    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "").replace("%0022", '"');
 
   return sarr;
 }

@@ -119,7 +119,7 @@ var Manager,
 			id : "studies",
 			target : $(".after_topcategory"),
 			colorMap: Colors,
-			multivalue: false,
+			multivalue: true,
 			tagRenderer: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
@@ -174,7 +174,7 @@ var Manager,
 		
 		var params = {
 			'facet' : true,
-			'facet.field' : fields.concat('unit'),
+			'facet.field' : fields.concat(['unit']),
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
 			'facet.pivot': "{!stats=piv1}" + AjaxSolr.PivotWidget.pivotFields.join(","),

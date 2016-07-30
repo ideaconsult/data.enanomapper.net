@@ -28,7 +28,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.tagRenderer(fv[j], "o", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+      		links.push(el = self.tagRenderer(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass("combined");
