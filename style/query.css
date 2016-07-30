@@ -312,13 +312,13 @@ article span.guidance {
   width: 90%;
 }
 
-#accordion ul.tag-group::before { content: "x"; }
-#accordion ul.tag-group.folded::before { content: "o"; }
+#accordion ul.tag-group::before { content: "-"; }
+#accordion ul.tag-group.folded::before { content: "+"; }
 
-#accordion ul.tag-group.static.year::before { content: "Year x"; }
-#accordion ul.tag-group.static.reference::before { content: "Reference x"; }
-#accordion ul.tag-group.static.folded.year::before { content: "Year o"; }
-#accordion ul.tag-group.static.folded.reference::before { content: "Reference o"; }
+#accordion ul.tag-group.static.year::before { content: "Year -"; }
+#accordion ul.tag-group.static.reference::before { content: "Reference -"; }
+#accordion ul.tag-group.static.folded.year::before { content: "Year +"; }
+#accordion ul.tag-group.static.folded.reference::before { content: "Reference +"; }
 
 .jtox-panel:hover {
 	background: #ddd; /* Old browsers */
