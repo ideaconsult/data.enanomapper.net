@@ -2,6 +2,10 @@
 
 	AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget
 			.extend({
+				options : {
+					root : "https://data.enanomapper.net/substance/",
+					summaryproperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
+				},
 				start : 0,
 
 				beforeRequest : function() {
@@ -84,18 +88,27 @@
 				/**
 				 * substance
 				 */
-				template_substance : function(doc) {
-					var snippet = '';
-					var root = "https://data.enanomapper.net/substance/";
-					if (doc.type_s == 'study') {
-						var header = doc.publicname[0]===undefined?"":doc.publicname[0]
+					template_header : function(doc) {
+						var substancetype = lookup[doc.substanceType];
+						var prop = doc[this.summaryproperty];
+		
+						var header = ((substancetype===undefined)?"":(substancetype+" ")) + ((prop===undefined)?"":("["+prop+"] "));
+						header += doc.publicname[0]===undefined?"":doc.publicname[0]
 								+ "  "
 								+ (doc.publicname[0] === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
-						var href = null;
-						
+						return header;						
+				  },					 
+				template_substance : function(doc) {
+					var snippet = '';
+					var root = this.options.root;
+					if (doc.type_s == 'study') {
 
-						var snippet = this.template_measurement(doc);
+						var href = null;
+						var header = this.template_header(doc);
+						
+						//var snippet = this.template_measurement(doc);
+						var snippet = this.template_composition(doc);
 						var expanded = this.manager.response.expanded[doc.s_uuid];
 						if (expanded != undefined) {
 							snippet += ' <a href="#" class="more">more</a>';
@@ -159,6 +172,29 @@
 
 					}
 				},
+				template_composition : function(doc) {
+					var snippet = "";
+					var ids = ["CASRN","ChemicalName"];
+					var components = ["CORE","COATING","CONSTITUENT","ADDITIVE","IMPURITY","FUNCTIONALISATION","DOPING"];
+					$.each(components, function( index1, component ) {
+
+						var ncomponent = doc["COMPOSITION."+component];
+						var idtype = component + " ("+(ncomponent==undefined?"":ncomponent) + "): ";
+						var c=0;
+  					$.each(ids, function( index2, id ) {
+  							var chemid=id+"."+component;
+  							if (doc[chemid]!=undefined)  {
+  								snippet += idtype;
+									snippet += doc[chemid]+" ";
+									idtype = "";
+									c++;
+								}	
+						});
+						if (c>0)
+							snippet += "<br/>";
+					});
+				  return snippet;
+			  },	
 				template_measurement : function(doc) {
 					var snippet = "";
 					try {
