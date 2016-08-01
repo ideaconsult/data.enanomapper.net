@@ -263,7 +263,8 @@ article span.guidance {
   -ms-overflow-style: none;
 }
 
-#accordion>h3>span.ui-icon-search {
+#accordion>h3>span.ui-icon-search,
+#accordion>h3>span.ui-icon-search.ui-icon.unused {
 	display: none;
 }
 

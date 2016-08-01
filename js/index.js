@@ -21,22 +21,22 @@ $(document).ready(function() {
 		active: false,
 		activate: function( event, ui ) {
 			if (!!ui.newPanel && !!ui.newPanel[0]) {
-					var header = ui.newHeader[0],
-							panel = ui.newPanel[0],
-							filter = $("input.widget-filter", panel),
-							widgetFilterScroll = filter.outerHeight(true),
-							refreshPanel;
+				var header = ui.newHeader[0],
+						panel = ui.newPanel[0],
+						filter = $("input.widget-filter", panel),
+						widgetFilterScroll = filter.outerHeight(true),
+						refreshPanel;
 				
-				if (!$("span.ui-icon-search", ui.newHeader[0]).length) {
+				if (!$("span.ui-icon-search", header).length) {
 					refreshPanel = function () {
 			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "") {
 							$(panel).scrollTop(widgetFilterScroll);
 							filter.show()
-							$("span.ui-icon-search", header).show();
+							$("span.ui-icon-search", header).removeClass("unused");
 						}
 						else {
 							filter.hide();
-							$("span.ui-icon-search", header).hide();
+							$("span.ui-icon-search", header).addClass("unused");
 						}
 					};
 
@@ -45,9 +45,9 @@ $(document).ready(function() {
 					ui.newHeader.append($('<span class="ui-icon ui-icon-search"></span>').on("click", function (e) {
 						ui.newPanel.animate({ scrollTop: ui.newPanel.scrollTop() > 0 ? 0 : widgetFilterScroll }, 300, function () {
 							if (ui.newPanel.scrollTop() > 0)
-								$("input.widget-filter", ui.newPanel[0]).blur();
+								$("input.widget-filter", panel).blur();
 							else
-								$("input.widget-filter", ui.newPanel[0]).focus();
+								$("input.widget-filter", panel).focus();
 						});
 							
 						e.stopPropagation();
@@ -55,7 +55,7 @@ $(document).ready(function() {
 					}));
 				}
 				else
-					refreshPanel = $(panel).data("refreshPanel");
+					refreshPanel = ui.newPanel.data("refreshPanel");
 				
 				filter.val("");
 				refreshPanel();
@@ -64,7 +64,7 @@ $(document).ready(function() {
 	});
 	
 	// ... and prepare the actual filtering funtion.
-	$("#accordion input.widget-filter").on("keyup", function (e) {
+	$(document).on('keyup', "#accordion input.widget-filter", function (e) {
 		var needle = $(this).val().toLowerCase(),
 				div = $(this).parent('div.widget-root'),
 				cnt;
@@ -95,9 +95,9 @@ $(document).ready(function() {
   		var me = $(this);
 			cnt = parseInt(me.data("hidden")) || 0;
 			if (me.children().length > cnt)
-				me.show();
+				me.show().removeClass("folded");
 			else
-				me.hide();
+				me.hide().addClass("folded");
 
 			me.data("hidden", null);
 		});
