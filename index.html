@@ -19,6 +19,7 @@
 <script src="lib/jquery-1.10.2.js"></script>
 <script src="lib/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="lib/purl.js"></script>
+<script src="lib/jquery.range.js"></script>
 <script src="widgets/ont.js"></script>
 <script src="lib/jtoxkit.js"></script>
 
@@ -27,6 +28,7 @@
 
 <link rel="stylesheet" href="style/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" href="style/jquery.ui.theme.css">
+<link rel="stylesheet" href="style/jquery.range.css" type="text/css">
 
 <link rel="stylesheet" href="style/skeleton/ambit2.css" type="text/css">
 <link rel="stylesheet" href="style/skeleton/toplinks.css" type="text/css">
@@ -276,7 +278,10 @@
       </ul>
   		<div id="hits_tab">
   			<div class="row remove-bottom">
-  				<ul class="tags remove-bottom" id="selection"></ul>	
+  				<ul class="tags remove-bottom" id="selection"></ul>
+  				<footer id="sliders">
+    				<a href="#" class="jtox-fadable command">Update</a>
+    		  </footer>
   			</div>
   			<div id="navigation">
   				<ul id="pager"></ul>
@@ -328,6 +333,10 @@
   		<div id="{{value}}" class="widget-content widget-root">
         <input type="text" placeholder="Filter_" class="widget-filter"/>
   		</div>
+    </div>
+    
+    <div id="slider-one">
+  		<input type="hidden" value="{{min}},{{max}}"/>
     </div>
 		
 	</div>

@@ -14,7 +14,8 @@ var Manager,
     Colors = {
       "endpointcategory": "blue",
       "effectendpoint": "green",
-    };
+    },
+    PivotWidget = null;
 
 (function($) {
 	$(function() {
@@ -66,19 +67,12 @@ var Manager,
 
 		var fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
-          var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
+          var view = getTitleFromFacet(facet = facet.replace(/^\"(.+)\"$/, "$1"));
           if (typeof hint === 'function') {
             handler = hint;
             hint = null;
           }
               
-          if (facet.lastIndexOf("caNanoLab.", 0) == 0)
-            view = facet.replace("caNanoLab.","");
-          else if (facet.lastIndexOf("http://dx.doi.org/", 0) == 0)
-            view = facet.replace("http://dx.doi.org/", "");
-          else
-        	  view = (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
-          
           return $('<li><a href="#" class="tag" title="' + view + (hint || "") + ((facet != view) ? ' [' + facet + ']' : '') + '">' + view + ' <span>' + (count || 0) + '</span></a></li>')
               .click(handler);
           };
@@ -113,7 +107,7 @@ var Manager,
 		});
 		
 		// ... add the mighty pivot widget.
-		Manager.addWidget(new AjaxSolr.PivotWidget({
+		Manager.addWidget(PivotWidget = new AjaxSolr.PivotWidget({
 			id : "studies",
 			target : $(".after_topcategory"),
 			colorMap: Colors,

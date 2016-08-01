@@ -2,6 +2,13 @@ function getHeaderText(jel) { return jel.contents().filter(function () { return 
 
 function getTabsRefresher() { $("#accordion").accordion( "refresh" ); }
 
+function getTitleFromFacet(facet) {
+  facet = facet.replace(/^caNanoLab\./, "").replace(/^http\:\/\/dx\.doi\.org/, "");
+  return (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
+}
+
+function getRoundedNumber(num, prec) { return Math.round(num / prec) * prec; }
+
 $(document).ready(function() {
 
   ccLib.flexSize($(".container")[0]);

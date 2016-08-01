@@ -1,12 +1,12 @@
 (function($) {
 	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
-	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue",
+	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue", category_field = "endpointcategory",
 	    
 			buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
 				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
 								"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
-								" " + (suffix == null ? facet.value : suffix);
+								" " + (suffix == null ? jT.ui.formatUnits(facet.value) : suffix);
 			},
 			
 			buildFacetDom = function (facet, colorMap, renderer) {
@@ -37,6 +37,8 @@
 			};
 	
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
+  	categoryField: category_field,
+  	
     init: function () {
       AjaxSolr.BaseFacetWidget.__super__.init.call(this);
       var loc = { stats: this.id };
@@ -105,6 +107,28 @@
 			
 			if (!!refresh)
 				refresh.call();
+		},
+		
+		isPivotField: function (field) {
+  	  return new RegExp("(^|,)" + field + "(,|$)").test(pivot_fields);
+		},
+		
+		locatePivot: function (field, value) {
+  	  var pivots = [],
+  	      searchLevel = function (list) {
+    	      if (!list || !list.length) return;
+    	      for (var i = 0, ll = list.length, e; i < ll; ++i) {
+      	      e = list[i];
+      	        
+      	      if (e.field !== field)
+    	          searchLevel(e.pivot);
+              else if (e.value === value)
+                pivots.push(e);
+    	      }
+  	      };
+      
+      searchLevel(this.manager.response.facet_counts.facet_pivot[pivot_fields]);
+      return pivots;
 		}
 	});
 })(jQuery);

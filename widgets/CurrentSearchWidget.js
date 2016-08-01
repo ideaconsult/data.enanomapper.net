@@ -27,13 +27,16 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fk = fk[2];
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
-        for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.tagRenderer(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+        for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
+          pv = PivotWidget.isPivotField(fk);
+      		links.push(el = self.tagRenderer(fv[j], pv ? "i" : "x", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass("combined");
       		  
-      		$("span", el[0]).on("click", self.rangeToggle(f));
+      		if (pv)
+      		  $("span", el[0]).on("click", self.rangeToggle(fk, fv[j]));
+      		  
       		el.addClass(self.colorMap[fk]);
         }
         
@@ -56,10 +59,56 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       this.target.removeClass('tags').html('<li>No filters selected!</li>');
   },
 
-  rangeToggle: function (facet) {
+  rangeToggle: function (field, value) {
     var self = this;
     return function () {
-	    alert("Select ranges for: " + facet);
+      var pivots = PivotWidget.locatePivot(field, value), 
+          sliders = $("#sliders"), el;
+
+      for (var lp = pivots.length, i = lp - 1, pe, args;i >= 0; --i) {
+        pe = pivots[i];
+        
+        if (!!pe.pivot) 
+          pivots.splice.apply(pivots, [i, 1].concat(pe.pivot.map(function (e) { e.parent = pe; return e; })));
+      }
+      
+      for (i = 0, lp = pivots.length;i < lp; ++i) {
+        pe = pivots[i];
+        
+        var range = pe.stats.stats_fields.loValue, 
+            units = pe.value,
+            scale;
+
+        range.min = getRoundedNumber(range.min, 0.01);
+        range.max = getRoundedNumber(range.max, 0.01);
+
+        scale = [range.min.toString(), range.max.toString()];
+        
+        if (lp > 1) {
+          for(;pe.field != PivotWidget.categoryField;pe = pe.parent);
+          scale.splice(1, 0, getTitleFromFacet(pe.value));
+        }
+          
+        sliders.append(el = jT.getFillTemplate("#slider-one", range));
+          
+        el.jRange({
+        	from: range.min,
+        	to: range.max,
+        	step: 0.01,
+        	scale: scale,
+        	showScale: true,
+        	showLabels: range.min < range.max,
+        	disable: range.min >= range.max,
+        	isRange: true,
+        	width: sliders.width() / (lp + 0.25),
+        	format: "%s " + jT.ui.formatUnits(units),
+        	ondragend: function (values) {
+          	values = values.split(",");
+          	console.log("Vals: " + values);
+        	}
+      	});
+      }
+      
       return false;
     };
   },

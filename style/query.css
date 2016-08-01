@@ -8,7 +8,8 @@ img {
 }
 
 a,
-section.item-list article.item a {
+section.item-list article.item a,
+#sliders a {
   color: #8C0305;
   text-decoration: underline;
 }
@@ -24,7 +25,8 @@ span.units {
 }
 
 a:hover,
-section.item-list article.teim a:hover {
+section.item-list article.item a:hover,
+#sliders a:hover {
   color: #f00;
   text-decoration: underline;
 }
@@ -164,19 +166,19 @@ article.item footer a {
 	margin-right: 10px;
 }
 
-article footer a.command {
+footer a.command {
 	float: right;	
 	opacity: 0.5;
 	display: none;
 }
 
-article footer a.command:hover {
+footer a.command:hover {
 	opacity: 0.9;
 }
 
-article footer.add .command.add,
-article footer.remove .command.remove,
-article footer.none .command.none {
+footer.add .command.add,
+footer.remove .command.remove,
+footer.none .command.none {
 	display: inline-block;
 }
 
@@ -216,6 +218,25 @@ article span.guidance {
   padding: 0 0 0 2px;
 }
 
+
+#sliders {
+  margin: 5px;
+  padding: 5px;
+}
+
+#sliders .slider-container {
+  display: inline-block;
+  margin: 5px 25px 25px 5px;
+}
+
+#sliders a.command {
+  display: inline-block;
+}
+
+#sliders .slider-container .back-bar .pointer-label {
+  font-size: 12px;
+  padding: 1px;
+}
 /*
 .tags li.tag_selected a span {
   padding: 0 7px 0 6px;
