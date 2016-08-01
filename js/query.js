@@ -64,8 +64,7 @@ var Manager,
 			}
 		}));
 
-		var fields = [],
-				fel = $("#tag-section").html();
+		var fel = $("#tag-section").html();
         renderTag = function (facet, count, hint, handler) {
           var view = facet = facet.replace(/^\"(.+)\"$/, "$1");
           if (typeof hint === 'function') {
@@ -102,7 +101,6 @@ var Manager,
       	me.addClass(col);
       }
 
-			fields.push(f);
 			Manager.addWidget(new AjaxSolr.TagWidget({
 				id : fid,
 				target : me,
@@ -174,10 +172,9 @@ var Manager,
 		
 		var params = {
 			'facet' : true,
-			'facet.field' : fields.concat(['unit']),
+			'facet.field' : ['unit'],
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
-			'facet.pivot': "{!stats=piv1}" + AjaxSolr.PivotWidget.pivotFields.join(","),
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
 			'f.interpretation_result.facet.mincount' : 2,
 			'f.reference.facet.mincount' : 2,
@@ -200,9 +197,7 @@ var Manager,
       // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
 			'fq' : "{!collapse field=s_uuid}",
 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
-			'stats': true,
-			'stats.field': "{!tag=piv1 min=true max=true}loValue",
-			
+			'stats': true,			
 			'json.nl' : "map",
 			'rows' : 20,
 			'expand' : true,
