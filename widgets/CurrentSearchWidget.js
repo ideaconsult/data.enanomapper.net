@@ -2,8 +2,7 @@
 
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
-  skipClear: false,
-  rangeFilter: {},
+  fieldRegExp: /^(\{[^\}]+\})?\-?([\w\.]+):/,
 
   afterRequest: function () {
     var self = this, el, f, fk, fv,
@@ -11,14 +10,6 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         q = this.manager.store.get('q').val(),
         fq = this.manager.store.get('fq');
         
-    if (self.skipClear) {
-      self.skipClear = false;
-      return;
-    }
-    
-    $("#sliders").empty();
-    self.rangeFilter = {};
-    
     // add the free text search as a tag
     if (q != '*:*') {
         links.push(self.renderTag(q, "x", function () {
@@ -30,30 +21,21 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 
     // now add the facets
     for (var i = 0, l = fq.length; i < l; i++) {
-	    f = fq[i];
-	    
-	    // First try it as range parameter
-	    fv = self.manager.getRangeFromParam(f);
-	    if (!!fv) {
-  	    $.extend(true, self.rangeFilter, fv);
-  	    continue;
-	    }
-	    
-	    // then try it as normal set filter
-	    fv = self.manager.tweakParamValues(f);
-	    if (!!fv) {
-        fk = fv.field;
-        
+	    f = fq[i].val();
+	    fk = f.match(self.fieldRegExp);
+    	if (!!fk) {
+        fk = fk[2];
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
-        for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+        for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
+          pv = PivotWidget.isPivotField(fk);
+      		links.push(el = self.tagRenderer(fv[j], pv ? "i" : "x", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass("combined");
       		  
       		if (pv)
-      		  $("span", el[0]).on("click", self.rangeToggle(i, fk, fv[j]));
+      		  $("span", el[0]).on("click", self.rangeToggle(fk, fv[j]));
       		  
       		el.addClass(self.colorMap[fk]);
         }
@@ -66,8 +48,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     if (links.length) {
       links.push(self.renderTag("Clear", "", function () {
         self.manager.store.get('q').val('*:*');
-        self.manager.store.removeByValue('fq', self.manager.facetFieldRegExp);
-        self.manager.store.removeByValue('fq', self.manager.rangeFieldRegExp);
+        self.manager.store.removeByValue('fq', self.fieldRegExp);
         self.doRequest();
         return false;
       }).addClass('tag_selected tag_clear'));
@@ -78,63 +59,53 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       this.target.removeClass('tags').html('<li>No filters selected!</li>');
   },
 
-  rangeToggle: function (index, field, value) {
+  rangeToggle: function (field, value) {
     var self = this;
     return function () {
-      var pivots = PivotWidget.locatePivots(field, value, "unit"),
-          sliders = $("#sliders"), width, el;
-          updateFilter = function(field, value) { 
-            return function (values) {
-              var ff = self.rangeFilter[field];
-              if (!ff)
-                ff = self.rangeFilter[field] = { };
-              ff[value] = values.split(",");
-            } 
-          };
+      var pivots = PivotWidget.locatePivot(field, value), 
+          sliders = $("#sliders"), el;
 
-      $("li", self.target[0]).removeClass("active");
-      $(this).closest("li").addClass("active");
-
-      el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
-        self.manager.addRangeParam(self.rangeFilter);
-        self.skipClear = true;
-        self.doRequest();
-      });
+      for (var lp = pivots.length, i = lp - 1, pe, args;i >= 0; --i) {
+        pe = pivots[i];
+        
+        if (!!pe.pivot) 
+          pivots.splice.apply(pivots, [i, 1].concat(pe.pivot.map(function (e) { e.parent = pe; return e; })));
+      }
       
-      width = sliders.width() - el.width() - 20;
-      
-      // TODO: Preprocess the filter
-      
-      for (var i = 0, lp = pivots.length, pe, args;i < lp; ++i) {
+      for (i = 0, lp = pivots.length;i < lp; ++i) {
         pe = pivots[i];
         
         var range = pe.stats.stats_fields.loValue, 
-            prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
+            units = pe.value,
             scale;
 
-        // jRange will treat 0.1 range, as 0.01, so we better set it this way
-        if (prec < 1 && prec > .01) prec = .01;
-          
-        range.min = range.min != null ? getRoundedNumber(range.min, prec) : "-";
-        range.max = range.max != null ? getRoundedNumber(range.max, prec) : "-";
+        range.min = getRoundedNumber(range.min, 0.01);
+        range.max = getRoundedNumber(range.max, 0.01);
 
-        for(var pp = pe ; pp.field != PivotWidget.categoryField ; pp = pp.parent);
-        scale = [range.min, getTitleFromFacet(pp.value), range.max];
+        scale = [range.min.toString(), range.max.toString()];
+        
+        if (lp > 1) {
+          for(;pe.field != PivotWidget.categoryField;pe = pe.parent);
+          scale.splice(1, 0, getTitleFromFacet(pe.value));
+        }
           
         sliders.append(el = jT.getFillTemplate("#slider-one", range));
           
         el.jRange({
         	from: range.min,
         	to: range.max,
-        	step: prec,
+        	step: 0.01,
         	scale: scale,
         	showScale: true,
         	showLabels: range.min < range.max,
         	disable: range.min >= range.max,
         	isRange: true,
-        	width: width / (Math.min(lp, 2) + 0.1),
-        	format: "%s " + (pe.field == "unit" ? jT.ui.formatUnits(pe.value) : ""),
-        	ondragend: updateFilter(pe.field, pe.value)
+        	width: sliders.width() / (lp + 0.25),
+        	format: "%s " + jT.ui.formatUnits(units),
+        	ondragend: function (values) {
+          	values = values.split(",");
+          	console.log("Vals: " + values);
+        	}
       	});
       }
       
@@ -155,11 +126,12 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this;
     return function () {
       var par = self.manager.store.get('fq')[index],
-          res = self.manager.tweakParamValues(par, value, true);
-
-      if (!!res)
-        self.doRequest();
-        
+          pval = par.val(),
+          field = pval.match(self.fieldRegExp),
+          newVal = AjaxSolr.BaseFacetWidget.matchRemoveValue(pval.replace(self.fieldRegExp, ""), value);
+      
+      par.val(!newVal ? pval : field[0] + newVal);
+      self.doRequest();
       return false;
     };
   }

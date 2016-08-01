@@ -19,8 +19,6 @@
 						f = facet.pivot[i];
 						f.parent = facet;
 						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
-						if (f.field == bottom_field && f.pivot)
-						  f.pivot.forEach(function (o) { o.parent = f; });
 					}
 		
 					if (elements.length > 0 && facet.field != top_field) {
@@ -40,7 +38,6 @@
 	
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
   	categoryField: category_field,
-  	endpointField: bottom_field,
   	
     init: function () {
       AjaxSolr.BaseFacetWidget.__super__.init.call(this);
@@ -48,10 +45,6 @@
       if (this.multivalue)
         loc.ex = this.id;
 
-      // we want to add these, without exclusion, so we have information of what is really present
-      for (var i = 0, farr = pivot_fields.split(","); i < farr.length; ++i)
-        this.manager.store.addByValue('facet.field', farr[i], { ex: this.id + "_range" });
-        
       this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
       this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, min: true, max: true });
     },
@@ -116,27 +109,26 @@
 				refresh.call();
 		},
 		
-		locatePivots: function (field, value, deep) {
+		isPivotField: function (field) {
+  	  return new RegExp("(^|,)" + field + "(,|$)").test(pivot_fields);
+		},
+		
+		locatePivot: function (field, value) {
   	  var pivots = [],
-  	      searchLevel = function (list, found) {
+  	      searchLevel = function (list) {
     	      if (!list || !list.length) return;
     	      for (var i = 0, ll = list.length, e; i < ll; ++i) {
       	      e = list[i];
       	        
-      	      if (e.field === field) {
-        	      if (!(found = (e.value === value)))
-                  continue;
-              }
-      	        
-              if (found && (e.field === deep || !e.pivot))
+      	      if (e.field !== field)
+    	          searchLevel(e.pivot);
+              else if (e.value === value)
                 pivots.push(e);
-              else if (!!e.pivot)
-    	          searchLevel(e.pivot, found);
     	      }
   	      };
       
       searchLevel(this.manager.response.facet_counts.facet_pivot[pivot_fields]);
       return pivots;
-		}		
+		}
 	});
 })(jQuery);

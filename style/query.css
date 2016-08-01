@@ -31,6 +31,10 @@ section.item-list article.item a:hover,
   text-decoration: underline;
 }
 
+section.item-list article.item .avatar img {
+  border: none;
+}
+
 #wrap {
   width: 1000px;
   margin: 0px auto;
@@ -213,22 +217,20 @@ article span.guidance {
   margin-right: 0px;
 }
 
-#hits_tab .tags li.tag_clear a:hover span {
+#hits_tab .tags li.tag_fixed a:hover span {
   max-width: 0;
   padding: 0 0 0 2px;
 }
 
+
 #sliders {
+  margin: 5px;
   padding: 5px;
 }
 
 #sliders .slider-container {
   display: inline-block;
-  margin: 15px 25px 25px 5px;
-}
-
-#sliders .slider-container .scale span:nth-child(2) {
-  width: 60%;
+  margin: 5px 25px 25px 5px;
 }
 
 #sliders a.command {
@@ -236,14 +238,9 @@ article span.guidance {
 }
 
 #sliders .slider-container .back-bar .pointer-label {
-  font-size: 13px;
+  font-size: 12px;
   padding: 1px;
 }
-
-#sliders .slider-container .scale ins {
-  font-size: 11px;
-}
-
 /*
 .tags li.tag_selected a span {
   padding: 0 7px 0 6px;
