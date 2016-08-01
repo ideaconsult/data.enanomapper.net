@@ -1,6 +1,6 @@
 (function($) {
-	var pivot_fields = ["topcategory", "endpointcategory", "effectendpoint", "unit"],
-	    bottom_field = pivot_fields[2], top_field = pivot_fields[0], category_field = pivot_fields[1],
+	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
+	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue",
 	    
 			buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
@@ -39,10 +39,12 @@
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
     init: function () {
       AjaxSolr.BaseFacetWidget.__super__.init.call(this);
-      if (this.multivalue) {
-        this.manager.store.addByValue('facet.field', bottom_field, { ex: this.id });
-        this.manager.store.addByValue('facet.field', category_field, { ex: this.id });
-      }
+      var loc = { stats: this.id };
+      if (this.multivalue)
+        loc.ex = this.id;
+
+      this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
+      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, min: true, max: true });
     },
     
     afterChangeSelection: function () {
@@ -105,7 +107,4 @@
 				refresh.call();
 		}
 	});
-	
-	AjaxSolr.PivotWidget.pivotFields = pivot_fields;
-	
 })(jQuery);
