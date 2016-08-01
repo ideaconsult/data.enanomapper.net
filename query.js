@@ -3,7 +3,8 @@ var Manager;
 	$(function() {
 		Manager = new AjaxSolr.Manager({
 			//solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
-			solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/'
+			//solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/'
+			solrUrl : 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/'
 		});
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
@@ -17,9 +18,11 @@ var Manager;
 						var prop = doc[this.options.summaryproperty];
 		
 						var header = ((substancetype===undefined)?"":(substancetype+" ")) + ((prop===undefined)?"":("["+prop+"] "));
-						header += doc.publicname[0]===undefined?"":doc.publicname[0]
+						var pname=  doc.publicname===undefined?"":doc.publicname[0];
+						
+						header += pname===undefined?"":pname
 								+ "  "
-								+ (doc.publicname[0] === doc.name[0] ? ""
+								+ (pname === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
 						return header;						
 			}	
@@ -115,6 +118,7 @@ var Manager;
 
 		var params = {
 			facet : true,
+			'facet.missing' : true,
 			'facet.field' : [ 'endpointcategory', 'substanceType',
 					'effectendpoint', 'reference',
 					'_childDocuments_.params.Species',
@@ -122,10 +126,18 @@ var Manager;
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
 					'interpretation_result', 'owner_name' ,'unit'
-					,'reference_year'
+					,'reference_year',
+					'_childDocuments_.conditions.Test_type'
 					],
 			'facet.limit' : -1,
 			'facet.mincount' : 1,
+			//'facet.range' : ['COMPOSITION.COATING','COMPOSITION.CORE'],
+			'facet.range' : ['reference_year'],
+			'facet.range.start' : 1900,
+			'facet.range.end' : 2100,
+			'facet.range.gap' : 5,
+			//'facet.interval' : ['COMPOSITION.COATING'],
+			//'f.COMPOSITION.COATING.facet.interval.set': ['[0,1],(1,*)'],
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
 			'f.interpretation_result.facet.mincount' : 2,
 			'f.reference.facet.mincount' : 2,
@@ -140,6 +152,9 @@ var Manager;
 			// 'facet.date.start': '1987-02-26T00:00:00.000Z/DAY',
 			// 'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
 			// 'facet.date.gap': '+1DAY',
+			'f.COMPOSITION.CONSTITUENT': 1,
+			'f.COMPOSITION.ADDITIVE': 1,
+			'f.COMPOSITION.IMPURITY': 1,
 			'f.endpointcategory.facet.limit' : -1,
 			'f.substanceType.facet.limit' : -1,
 			'f.s_uuid.facet.limit' : -1,
@@ -147,7 +162,7 @@ var Manager;
 			'f.e_hash.facet.limit' : -1,
 			'stats':true,
 			'stats.field':'{!tag=piv1 min=true max=true}loValue',
-			'facet.pivot': '{!stats=piv1}topcategory,endpointcategory,effectendpoint,unit',
+			'facet.pivot': ['{!stats=piv1}topcategory,endpointcategory,effectendpoint,unit'],
 			'json.nl' : 'map',
 			'rows' : 20,
 			'fq' : 'sType=study',

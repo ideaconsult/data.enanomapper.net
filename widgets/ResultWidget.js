@@ -93,9 +93,11 @@
 						var prop = doc[this.summaryproperty];
 		
 						var header = ((substancetype===undefined)?"":(substancetype+" ")) + ((prop===undefined)?"":("["+prop+"] "));
-						header += doc.publicname[0]===undefined?"":doc.publicname[0]
+						var pname=  doc.publicname===undefined?"":doc.publicname[0];
+						
+						header += pname===undefined?"":pname
 								+ "  "
-								+ (doc.publicname[0] === doc.name[0] ? ""
+								+ (pname === doc.name[0] ? ""
 										: "(" + doc.name[0] + ")");
 						return header;						
 				  },					 
@@ -131,7 +133,7 @@
 							logo = "images/logo.png";
 							link = root + doc.s_uuid;
 							href = "<a href='" + link	+ "/study' title='Study' target='s_uuid'" +  href_suffix;
-						} else if (doc.owner_name[0].lastIndexOf("caNano", 0) === 0) {							
+						} else if ((doc.owner_name != undefined) && (doc.owner_name[0].lastIndexOf("caNano", 0) === 0)) {							
 								logo =  "images/canano.jpg";
 								if (doc.content!=undefined && doc.content.length>0)
 								link = doc.content[0];	
