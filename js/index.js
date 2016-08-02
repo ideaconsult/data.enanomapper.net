@@ -7,7 +7,10 @@ function getTitleFromFacet(facet) {
   return (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
 }
 
-function getRoundedNumber(num, prec) { return Math.round(num / prec) * prec; }
+function getRoundedNumber(num, prec) {
+  var v = Math.round(num / prec) * prec;
+  return parseFloat(num.toString().replace(new RegExp("\\.(\\d{" + (-Math.log10(prec)) + "})\\d*"), ".$1"));
+}
 
 $(document).ready(function() {
 

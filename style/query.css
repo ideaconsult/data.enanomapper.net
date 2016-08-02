@@ -218,15 +218,17 @@ article span.guidance {
   padding: 0 0 0 2px;
 }
 
-
 #sliders {
-  margin: 5px;
   padding: 5px;
 }
 
 #sliders .slider-container {
   display: inline-block;
-  margin: 5px 25px 25px 5px;
+  margin: 15px 25px 25px 5px;
+}
+
+#sliders .slider-container .scale span:nth-child(2) {
+  width: 60%;
 }
 
 #sliders a.command {
