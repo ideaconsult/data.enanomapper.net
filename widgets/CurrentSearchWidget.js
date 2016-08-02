@@ -2,7 +2,6 @@
 
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
-  fieldRegExp: /^(\{[^\}]+\})?\-?([\w\.]+):/,
   skipClear: false,
 
   afterRequest: function () {
@@ -29,11 +28,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 
     // now add the facets
     for (var i = 0, l = fq.length; i < l; i++) {
-	    f = fq[i].val();
-	    fk = f.match(self.fieldRegExp);
+	    f = fq[i];
+	    fk = f.val().match(self.manager.facetFieldRegExp);
     	if (!!fk) {
         fk = fk[2];
-        fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
+        fv = self.manager.tweakParamValues(f);
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
           pv = (fk == PivotWidget.endpointField);
@@ -43,7 +42,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       		  el.addClass("combined");
       		  
       		if (pv)
-      		  $("span", el[0]).on("click", self.rangeToggle(fk, fv[j]));
+      		  $("span", el[0]).on("click", self.rangeToggle(i, fk, fv[j]));
       		  
       		el.addClass(self.colorMap[fk]);
         }
@@ -56,7 +55,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     if (links.length) {
       links.push(self.renderTag("Clear", "", function () {
         self.manager.store.get('q').val('*:*');
-        self.manager.store.removeByValue('fq', self.fieldRegExp);
+        self.manager.store.removeByValue('fq', self.manager.facetFieldRegExp);
         self.doRequest();
         return false;
       }).addClass('tag_selected tag_clear'));
@@ -67,35 +66,36 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       this.target.removeClass('tags').html('<li>No filters selected!</li>');
   },
 
-  rangeToggle: function (field, value) {
+  rangeToggle: function (index, field, value) {
     var self = this;
     return function () {
       var pivots = PivotWidget.locatePivot(field, value),
           sliders = $("#sliders"), width, el;
+          filter = {},
+          updateFilter = function(field, value) { 
+            return function (values) {
+              var ff = filter[field];
+              if (!ff)
+                ff = ff[field] = { };
+              ff[value] = values.split(",");
+            } 
+          };
 
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
 
       el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
-        console.log("Update: " + field + " = " + value);
+        PivotWidget.addRangeFilter(filter);
         self.skipClear = true;
         self.doRequest();
       });
       
       width = sliders.width() - el.width() - 20;
       
-      for (var lp = pivots.length, i = lp - 1, pe, args;i >= 0; --i) {
-        pe = pivots[i];
-        
-        if (!!pe.pivot) 
-          pivots.splice.apply(pivots, [i, 1].concat(pe.pivot.map(function (e) { e.parent = pe; return e; })));
-      }
-      
-      for (i = 0, lp = pivots.length;i < lp; ++i) {
+      for (var i = 0, lp = pivots.length, pe, args;i < lp; ++i) {
         pe = pivots[i];
         
         var range = pe.stats.stats_fields.loValue, 
-            units = pe.field == "unit" ? pe.value : "",
             prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
             scale;
 
@@ -105,8 +105,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         range.min = range.min != null ? getRoundedNumber(range.min, prec) : "-";
         range.max = range.max != null ? getRoundedNumber(range.max, prec) : "-";
 
-        for( ; pe.field != PivotWidget.categoryField ; pe = pe.parent);
-        scale = [range.min, getTitleFromFacet(pe.value), range.max];
+        for(var pp = pe ; pp.field != PivotWidget.categoryField ; pp = pp.parent);
+        scale = [range.min, getTitleFromFacet(pp.value), range.max];
           
         sliders.append(el = jT.getFillTemplate("#slider-one", range));
           
@@ -120,11 +120,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	disable: range.min >= range.max,
         	isRange: true,
         	width: width / (Math.min(lp, 2) + 0.1),
-        	format: "%s " + jT.ui.formatUnits(units),
-        	ondragend: function (values) {
-          	values = values.split(",");
-          	console.log("Vals: " + values);
-        	}
+        	format: "%s " + (pe.field == "unit" ? jT.ui.formatUnits(pe.value) : ""),
+        	ondragend: updateFilter(pe.field, pe.value)
       	});
       }
       
@@ -145,12 +142,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this;
     return function () {
       var par = self.manager.store.get('fq')[index],
-          pval = par.val(),
-          field = pval.match(self.fieldRegExp),
-          newVal = AjaxSolr.BaseFacetWidget.matchRemoveValue(pval.replace(self.fieldRegExp, ""), value);
-      
-      par.val(!newVal ? pval : field[0] + newVal);
-      self.doRequest();
+          res = self.manager.tweakParamValues(par, value, true);
+
+      if (!!res)
+        self.doRequest();
+        
       return false;
     };
   }

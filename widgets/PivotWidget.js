@@ -46,6 +46,10 @@
       if (this.multivalue)
         loc.ex = this.id;
 
+      // we want to add these, without exclusion, so we have information of what is really present
+      for (var i = 0, farr = pivot_fields.split(","); i < farr.length; ++i)
+        this.manager.store.addByValue('facet.field', farr[i], { ex: this.id + "_range" });
+        
       this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
       this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, min: true, max: true });
     },
@@ -110,10 +114,6 @@
 				refresh.call();
 		},
 		
-		isPivotField: function (field) {
-  	  return new RegExp("(^|,)" + field + "(,|$)").test(pivot_fields);
-		},
-		
 		locatePivot: function (field, value) {
   	  var pivots = [],
   	      searchLevel = function (list) {
@@ -123,13 +123,32 @@
       	        
       	      if (e.field !== field)
     	          searchLevel(e.pivot);
-              else if (e.value === value)
-                pivots.push(e);
+              else if (e.value === value) {
+                if (e.pivot != null)
+                  Array.prototype.push.apply(pivots, e.pivot.map(function (pp) { pp.parent = e; return pp; }));
+                else
+                  pivots.push(e);
+              }
     	      }
   	      };
       
       searchLevel(this.manager.response.facet_counts.facet_pivot[pivot_fields]);
       return pivots;
+		},
+		
+		addRangeFilter: function (filter) {
+      console.log("Update: " + JSON.stringify(filter));
+      for (var f in filter) {
+        for (var v in filter[f]) {
+          var str = "";
+          if (f == bottom_field) {
+            
+          }
+          else
+          
+          this.manager.store.addByValue('fq', "(" + (f != "_" ? f + " " : "") + "loValue:[" + filter[f].join(" TO ") + "])", { tag: "studies_range" });
+        }
+      }
 		}
 	});
 })(jQuery);
