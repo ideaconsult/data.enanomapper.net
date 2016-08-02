@@ -12,7 +12,6 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     		total = 0,
     		hdr = getHeaderText(this.header),
     		refresh = this.header.data("refreshPanel"),
-    		filter = this.fieldFilter(),
     		nullf = function (e) { return false; },
     		el, selected;
         
@@ -29,7 +28,7 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     this.target.empty();
     for (var i = 0, l = objectedItems.length; i < l; i++) {
       facet = objectedItems[i].facet;
-      selected = (!!filter && !!AjaxSolr.BaseFacetWidget.matchRemoveValue(filter, facet));
+      selected = this.manager.tweakParamValues(this.getParam()).indexOf(facet) > -1;
       
       this.target.append(el = this.tagRenderer(facet, objectedItems[i].count, selected ? nullf : this.clickHandler(facet)));
       

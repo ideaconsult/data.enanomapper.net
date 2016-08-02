@@ -166,7 +166,6 @@ var Manager,
 		
 		var params = {
 			'facet' : true,
-			'facet.field' : ['unit'],
 			'facet.limit' : -1,
 			'facet.mincount' : 3,
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,

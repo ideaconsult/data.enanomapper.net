@@ -1,41 +1,32 @@
 (function ($) {
 
-var leadBracked = /^\(?/, rearBracked = /\)$/;
-
 AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
   fieldRegExp: function (field) {
-    return new RegExp('^-?' + (field || this.field) + ':');
+    return new RegExp('(^|\s)-?(' + (field || this.field) + '):(.+)');
   },
   
   init: function () {
     AjaxSolr.BaseFacetWidget.__super__.init.call(this);
-    if (this.multivalue) {
-      this.manager.store.addByValue('facet.field', this.field, { ex: this.id });
-    }
+    this.manager.store.addByValue('facet.field', this.field, this.multivalue ? { ex: this.id } : undefined);
+  },
+  
+  getParam: function () {
+    return this.fieldParam = this.manager.getFacetParam(this.fieldRegExp());
   },
   
   add: function (value) {
     return this.changeSelection(function () {
-      var re = this.fieldRegExp(),
-          index = this.manager.store.find('fq', re);
+      var par = this.getParam();
             
-      if (!index)
-        this.manager.store.addByValue('fq', this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', this.multivalue ? { tag: this.id } : null)
-      else {
-        var pars = this.manager.store.params['fq'],
-            val = pars[index].val().replace(re, "").replace(leadBracked, "").replace(rearBracked, "");
-            
-        if (AjaxSolr.BaseFacetWidget.matchRemoveValue(val, value))
-          return false;
-          
-        pars[index] = new AjaxSolr.Parameter({
-          name: 'fq', 
-          value: this.field + ':(' + val + " " + AjaxSolr.Parameter.escapeValue(value) + ')', 
-          locals: this.multivalue ? { tag: this.id } : null
-        });
+      if (!par) {
+        this.fieldParam = this.manager.store.addByValue(
+          'fq', 
+          this.field + ':(' + AjaxSolr.Parameter.escapeValue(value) + ')', this.multivalue ? { tag: this.id } : undefined
+        );
+        return true;
       }
-
-      return true;
+      else
+        return !!this.manager.tweakParamValues(par, value);
     });
   },
   
@@ -45,11 +36,6 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
           b = this.manager.store.addByValue('fq', this.fq(value, exclude));
       return a || b;
     });
-  },
-  
-  values: function (field) {
-    var re = this.fieldRegExp(field),
-        indices = this.manager.store.find(re);
   },
   
   clickHandler: function (value, field) {
@@ -82,21 +68,5 @@ AjaxSolr.BaseFacetWidget = AjaxSolr.AbstractFacetWidget.extend({
     return !index ? null : this.manager.store.get('fq')[index].val().replace(re, "");
   }
 });
-
-AjaxSolr.BaseFacetWidget.matchRemoveValue = function (filter, value) {
-  var re = new RegExp("(^\\(|\\s)" + AjaxSolr.Parameter.escapeValue(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "(\\s|\\)$)"),
-      m = filter.replace(re, "$1$2")
-
-  return m == filter ? null : m.replace(/\(\s+/, "(").replace(/\s+\)/, ")").replace("/\s+/", " ");
-}
-
-AjaxSolr.BaseFacetWidget.parseValues = function (str) {
-  var sarr = str.replace(leadBracked, "").replace(rearBracked, "").replace(/\\"/g, "%0022").match(/[^\s"]+|"[^"]+"/g);
-  
-  for (var i = 0, sl = sarr.length; i < sl; ++i)
-    sarr[i] = sarr[i].replace(/^"/, "").replace(/"$/, "").replace("%0022", '"');
-
-  return sarr;
-}
 
 })(jQuery);
