@@ -236,9 +236,14 @@ article span.guidance {
 }
 
 #sliders .slider-container .back-bar .pointer-label {
-  font-size: 12px;
+  font-size: 13px;
   padding: 1px;
 }
+
+#sliders .slider-container .scale ins {
+  font-size: 11px;
+}
+
 /*
 .tags li.tag_selected a span {
   padding: 0 7px 0 6px;

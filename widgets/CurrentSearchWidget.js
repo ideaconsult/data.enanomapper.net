@@ -36,7 +36,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
-          pv = PivotWidget.isPivotField(fk);
+          pv = (fk == PivotWidget.endpointField);
       		links.push(el = self.tagRenderer(fv[j], pv ? "i" : "x", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
@@ -73,6 +73,9 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       var pivots = PivotWidget.locatePivot(field, value),
           sliders = $("#sliders"), width, el;
 
+      $("li", self.target[0]).removeClass("active");
+      $(this).closest("li").addClass("active");
+
       el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
         console.log("Update: " + field + " = " + value);
         self.skipClear = true;
@@ -99,15 +102,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
         if (prec < 1 && prec > .01) prec = .01;
           
-        range.min = getRoundedNumber(range.min, prec);
-        range.max = getRoundedNumber(range.max, prec);
+        range.min = range.min != null ? getRoundedNumber(range.min, prec) : "-";
+        range.max = range.max != null ? getRoundedNumber(range.max, prec) : "-";
 
-        scale = [range.min, range.max];
-        
-        if (lp > 1) {
-          for(;pe.field != PivotWidget.categoryField;pe = pe.parent);
-          scale.splice(1, 0, getTitleFromFacet(pe.value));
-        }
+        for( ; pe.field != PivotWidget.categoryField ; pe = pe.parent);
+        scale = [range.min, getTitleFromFacet(pe.value), range.max];
           
         sliders.append(el = jT.getFillTemplate("#slider-one", range));
           
