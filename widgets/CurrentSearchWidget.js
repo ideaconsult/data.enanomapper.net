@@ -3,6 +3,7 @@
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
   fieldRegExp: /^(\{[^\}]+\})?\-?([\w\.]+):/,
+  skipClear: false,
 
   afterRequest: function () {
     var self = this, el, f, fk, fv,
@@ -10,6 +11,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         q = this.manager.store.get('q').val(),
         fq = this.manager.store.get('fq');
         
+    if (self.skipClear) {
+      self.skipClear = false;
+      return;
+    }
+    
+    $("#sliders").empty();
+    
     // add the free text search as a tag
     if (q != '*:*') {
         links.push(self.renderTag(q, "x", function () {
@@ -62,9 +70,17 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   rangeToggle: function (field, value) {
     var self = this;
     return function () {
-      var pivots = PivotWidget.locatePivot(field, value), 
-          sliders = $("#sliders"), el;
+      var pivots = PivotWidget.locatePivot(field, value),
+          sliders = $("#sliders"), width, el;
 
+      el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
+        console.log("Update: " + field + " = " + value);
+        self.skipClear = true;
+        self.doRequest();
+      });
+      
+      width = sliders.width() - el.width() - 20;
+      
       for (var lp = pivots.length, i = lp - 1, pe, args;i >= 0; --i) {
         pe = pivots[i];
         
@@ -76,13 +92,17 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         pe = pivots[i];
         
         var range = pe.stats.stats_fields.loValue, 
-            units = pe.value,
+            units = pe.field == "unit" ? pe.value : "",
+            prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
             scale;
 
-        range.min = getRoundedNumber(range.min, 0.01);
-        range.max = getRoundedNumber(range.max, 0.01);
+        // jRange will treat 0.1 range, as 0.01, so we better set it this way
+        if (prec < 1 && prec > .01) prec = .01;
+          
+        range.min = getRoundedNumber(range.min, prec);
+        range.max = getRoundedNumber(range.max, prec);
 
-        scale = [range.min.toString(), range.max.toString()];
+        scale = [range.min, range.max];
         
         if (lp > 1) {
           for(;pe.field != PivotWidget.categoryField;pe = pe.parent);
@@ -94,13 +114,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         el.jRange({
         	from: range.min,
         	to: range.max,
-        	step: 0.01,
+        	step: prec,
         	scale: scale,
         	showScale: true,
         	showLabels: range.min < range.max,
         	disable: range.min >= range.max,
         	isRange: true,
-        	width: sliders.width() / (lp + 0.25),
+        	width: width / (Math.min(lp, 2) + 0.1),
         	format: "%s " + jT.ui.formatUnits(units),
         	ondragend: function (values) {
           	values = values.split(",");
