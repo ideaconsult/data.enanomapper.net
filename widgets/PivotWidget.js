@@ -38,6 +38,7 @@
 	
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
   	categoryField: category_field,
+  	endpointField: bottom_field,
   	
     init: function () {
       AjaxSolr.BaseFacetWidget.__super__.init.call(this);
