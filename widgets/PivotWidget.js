@@ -140,13 +140,14 @@
       console.log("Update: " + JSON.stringify(filter));
       for (var f in filter) {
         for (var v in filter[f]) {
-          var str = "";
-          if (f == bottom_field) {
-            
-          }
-          else
+          var r = "loValue:[" + filter[f][v].join(" TO ") + "]",
+              val = "(";
           
-          this.manager.store.addByValue('fq', "(" + (f != "_" ? f + " " : "") + "loValue:[" + filter[f].join(" TO ") + "])", { tag: "studies_range" });
+          if (f != bottom_field)
+            val += f + ":" + AjaxSolr.Parameter.escapeValue(v) + " ";
+            
+          val += r + ")";
+          this.manager.store.addByValue('fq', val, { tag: "studies_range" });
         }
       }
 		}
