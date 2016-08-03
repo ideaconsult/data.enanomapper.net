@@ -76,7 +76,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             return function (values) {
               var ff = filter[field];
               if (!ff)
-                ff = ff[field] = { };
+                ff = filter[field] = { };
               ff[value] = values.split(",");
             } 
           };
