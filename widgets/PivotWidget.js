@@ -19,6 +19,8 @@
 						f = facet.pivot[i];
 						f.parent = facet;
 						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
+						if (f.field == bottom_field && f.pivot)
+						  f.pivot.forEach(function (o) { o.parent = f; });
 					}
 		
 					if (elements.length > 0 && facet.field != top_field) {
@@ -114,42 +116,27 @@
 				refresh.call();
 		},
 		
-		locatePivot: function (field, value) {
+		locatePivots: function (field, value, deep) {
   	  var pivots = [],
-  	      searchLevel = function (list) {
+  	      searchLevel = function (list, found) {
     	      if (!list || !list.length) return;
     	      for (var i = 0, ll = list.length, e; i < ll; ++i) {
       	      e = list[i];
       	        
-      	      if (e.field !== field)
-    	          searchLevel(e.pivot);
-              else if (e.value === value) {
-                if (e.pivot != null)
-                  Array.prototype.push.apply(pivots, e.pivot.map(function (pp) { pp.parent = e; return pp; }));
-                else
-                  pivots.push(e);
+      	      if (e.field === field) {
+        	      if (!(found = (e.value === value)))
+                  continue;
               }
+      	        
+              if (found && (e.field === deep || !e.pivot))
+                pivots.push(e);
+              else if (!!e.pivot)
+    	          searchLevel(e.pivot, found);
     	      }
   	      };
       
       searchLevel(this.manager.response.facet_counts.facet_pivot[pivot_fields]);
       return pivots;
-		},
-		
-		addRangeFilter: function (filter) {
-      console.log("Update: " + JSON.stringify(filter));
-      for (var f in filter) {
-        for (var v in filter[f]) {
-          var r = "loValue:[" + filter[f][v].join(" TO ") + "]",
-              val = "(";
-          
-          if (f != bottom_field)
-            val += f + ":" + AjaxSolr.Parameter.escapeValue(v) + " ";
-            
-          val += r + ")";
-          this.manager.store.addByValue('fq', val, { tag: "studies_range" });
-        }
-      }
-		}
+		}		
 	});
 })(jQuery);
