@@ -17,6 +17,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
     
     $("#sliders").empty();
+    self.rangeFilter = {};
     
     // add the free text search as a tag
     if (q != '*:*') {
