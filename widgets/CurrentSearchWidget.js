@@ -3,6 +3,7 @@
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
   skipClear: false,
+  rangeFilter: {},
 
   afterRequest: function () {
     var self = this, el, f, fk, fv,
@@ -29,10 +30,18 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     // now add the facets
     for (var i = 0, l = fq.length; i < l; i++) {
 	    f = fq[i];
-	    fk = f.val().match(self.manager.facetFieldRegExp);
-    	if (!!fk) {
-        fk = fk[2];
-        fv = self.manager.tweakParamValues(f);
+	    
+	    // First try it as range parameter
+	    fv = self.manager.getRangeFromParam(f);
+	    if (!!fv) {
+  	    $.extend(true, self.rangeFilter, fv);
+  	    continue;
+	    }
+	    
+	    // then try it as normal set filter
+	    fv = self.manager.tweakParamValues(f);
+	    if (!!fv) {
+        fk = fv.field;
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
           pv = (fk == PivotWidget.endpointField);
@@ -56,6 +65,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       links.push(self.tagRenderer("Clear", "", function () {
         self.manager.store.get('q').val('*:*');
         self.manager.store.removeByValue('fq', self.manager.facetFieldRegExp);
+        self.manager.store.removeByValue('fq', self.manager.rangeFieldRegExp);
         self.doRequest();
         return false;
       }).addClass('tag_selected tag_clear'));
@@ -69,14 +79,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   rangeToggle: function (index, field, value) {
     var self = this;
     return function () {
-      var pivots = PivotWidget.locatePivot(field, value),
+      var pivots = PivotWidget.locatePivots(field, value, "unit"),
           sliders = $("#sliders"), width, el;
-          filter = {},
           updateFilter = function(field, value) { 
             return function (values) {
-              var ff = filter[field];
+              var ff = self.rangeFilter[field];
               if (!ff)
-                ff = filter[field] = { };
+                ff = self.rangeFilter[field] = { };
               ff[value] = values.split(",");
             } 
           };
@@ -85,12 +94,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       $(this).closest("li").addClass("active");
 
       el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
-        PivotWidget.addRangeFilter(filter);
+        self.manager.addRangeParam(self.rangeFilter);
         self.skipClear = true;
         self.doRequest();
       });
       
       width = sliders.width() - el.width() - 20;
+      
+      // TODO: Preprocess the filter
       
       for (var i = 0, lp = pivots.length, pe, args;i < lp; ++i) {
         pe = pivots[i];
