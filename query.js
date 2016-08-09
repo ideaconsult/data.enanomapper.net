@@ -18,13 +18,18 @@ var Manager;
 						var prop = doc[this.options.summaryproperty];
 		
 						var header = ((substancetype===undefined)?"":(substancetype+" ")) + ((prop===undefined)?"":("["+prop+"] "));
-						var pname=  doc.publicname===undefined?"":doc.publicname[0];
 						
+						var dname = (doc.name[0]===undefined)?"":doc.name[0].toUpperCase();
+						if ("[NAME NOT AVAILABLE]"==dname) dname = doc.s_uuid;
+												
+						var pname=  doc.publicname===undefined?dname:doc.publicname[0].toUpperCase();
+												
 						header += pname===undefined?"":pname
 								+ "  "
-								+ (pname === doc.name[0] ? ""
-										: "(" + doc.name[0] + ")");
+								+ (pname === dname ? ""
+										: "(" + dname + ")");
 						return header;						
+												
 			}	
 		}));
 
