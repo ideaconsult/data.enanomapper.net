@@ -47,10 +47,14 @@ var Manager;
 		var fields = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'guidance',
 				'interpretation_result', '_childDocuments_.params.Species','_childDocuments_.params.Cell_line',
+				'_childDocuments_.conditions.Test_type',
+				'_childDocuments_.conditions.Solvent',
+				'_childDocuments_.params.Route_of_administration',
+				'_childDocuments_.params.Type_of_genotoxicity',
 				'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS','reference_year'];
 		var divs = [ 'endpointcategory', 'substanceType', 'effectendpoint',
 				'owner_name', 'reference', 'protocol',
-				'interpretation_result', 'species', 'cell','instruments','reference_year']; 
+				'interpretation_result', 'species', 'cell','testtype','solvent','route','type_of_genotoxicity','instruments','reference_year']; 
 		for (var i = 0, l = fields.length; i < l; i++) {
 			if ("xxx" == divs[i])
 				Manager.addWidget(new AjaxSolr.TagcloudWidget({
@@ -125,9 +129,12 @@ var Manager;
 					'_childDocuments_.params.Cell_line',
 					'guidance',
 					'_childDocuments_.params.DATA_GATHERING_INSTRUMENTS',
+					'_childDocuments_.params.Type_of_genotoxicity',
+				 '_childDocuments_.conditions.Solvent',
+				'_childDocuments_.params.Route_of_administration',
 					'interpretation_result', 'owner_name' ,'unit'
-					,'reference_year'
-					//'_childDocuments_.conditions.Test_type'
+					,'reference_year',
+					'_childDocuments_.conditions.Test_type'
 					],
 			'facet.limit' : -1,
 			'facet.mincount' : 1,
@@ -172,7 +179,7 @@ var Manager;
 			'fq' : '{!collapse field=s_uuid}',
 			'expand' : true,
 			'expand.rows' : 3,
-			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY'
+			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,EINECS.CORE,EINECS.COATING,EINECS.CONSTITUENT,EINECS.ADDITIVE,EINECS.IMPURITY,TradeName.CORE,TradeName.COATING,TradeName.CONSTITUENT,TradeName.ADDITIVE,TradeName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY'
 		};
 		for ( var name in params) {
 			Manager.store.addByValue(name, params[name]);

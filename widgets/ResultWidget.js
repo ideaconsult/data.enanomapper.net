@@ -176,7 +176,7 @@
 				},
 				template_composition : function(doc) {
 					var snippet = "";
-					var ids = ["CASRN","ChemicalName"];
+					var ids = ["CASRN","EINECS","ChemicalName","TradeName"];
 					var components = ["CORE","COATING","CONSTITUENT","ADDITIVE","IMPURITY","FUNCTIONALISATION","DOPING"];
 					$.each(components, function( index1, component ) {
 
@@ -186,6 +186,8 @@
   					$.each(ids, function( index2, id ) {
   							var chemid=id+"."+component;
   							if (doc[chemid]!=undefined)  {
+  								snippet += idtype;
+  								idtype = " "+id+":";
   								snippet += idtype;
 									snippet += doc[chemid]+" ";
 									idtype = "";
