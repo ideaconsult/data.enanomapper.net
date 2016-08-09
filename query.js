@@ -10,7 +10,7 @@ var Manager;
 			id : 'result',
 			target : '#docs',
 			options : {
-					root : "https://data.enanomapper.net/substance/",
+					root : "https://ambitlri.ideaconsult.net/tool/substance/",
 					summaryproperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
 			},
 		  template_header : function(doc) {
