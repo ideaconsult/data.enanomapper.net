@@ -211,7 +211,7 @@ article span.guidance {
   margin-right: 0px;
 }
 
-#hits_tab .tags li.tag_clear a:hover span {
+#hits_tab .tags li.tag_fixed a:hover span {
   max-width: 0;
   padding: 0 0 0 2px;
 }
