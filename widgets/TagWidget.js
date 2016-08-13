@@ -31,7 +31,7 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
       facet = objectedItems[i].facet;
       selected = (!!filter && !!AjaxSolr.BaseFacetWidget.matchRemoveValue(filter, facet));
       
-      this.target.append(el = this.tagRenderer(facet, objectedItems[i].count, selected ? nullf : this.clickHandler(facet)));
+      this.target.append(el = this.renderTag(facet, objectedItems[i].count, selected ? nullf : this.clickHandler(facet)));
       
       if (selected)
         el.addClass("selected");

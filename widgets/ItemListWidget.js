@@ -1,6 +1,6 @@
 (function($) {
 	ItemListWidget = function (props) {
-		$.extend(this, props);
+		$.extend(true, this, props);
 		this.clearItems();
 		return this;
 	};
@@ -35,7 +35,7 @@
 	
 	ItemListWidget.prototype.pushItem = function (doc, exp) {
 		var self = this,
-				el = $(this.template_substance(doc));
+				el = $(this.renderSubstance(doc));
 				
 		if (typeof this.onClick === "function")
 			$("a.command", el[0]).on("click", function (e) { self.onClick.call(el[0], e, doc, exp, self); });
@@ -87,29 +87,29 @@
 	/**
 	 * substance
 	 */
-	ItemListWidget.prototype.template_substance = function(doc) {
+	ItemListWidget.prototype.renderSubstance = function(doc) {
 		if (doc.type_s != 'study') return;
 		
-		var root = "https://data.enanomapper.net/substance/",
-				expanded = this.itemData.expanded[doc.s_uuid],
+		var expanded = this.itemData.expanded[doc.s_uuid],
 				external = null,
-				sniphtml = $("#study-item").html();
-				snippets = [this.template_measurement(doc)],
+				sniphtml = $("#study-item").html(),
+				snippets = [this.renderMeasurement(doc)],
 				item = { 
 					logo: "images/logo.png",
 					link: "#",
+					title: this.renderHeader(doc),
+					composition: this.renderComposition(doc),
 					snippet: "",
 					item_id: (this.prefix || this.id || "item") + "_" + doc.s_uuid,
-					publicname: !doc.publicname ? "" : (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")"),
 					footer: 
-						'<a href="' + root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
-						'<a href="' + root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
-						'<a href="' + root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">Study</a>'
+						'<a href="' + this.settings.root + doc.s_uuid + '" title="Substance" target="' + doc.s_uuid + '">Material</a>' +
+						'<a href="' + this.settings.root + doc.s_uuid + '/structure" title="Composition" target="' + doc.s_uuid + '">Composition</a>' +
+						'<a href="' + this.settings.root + doc.s_uuid + '/study" title="Study" target="' + doc.s_uuid + '">Study</a>'
 				};
 		
 		if (expanded != null) {
 			for (var i = 0, l = expanded.docs.length; i < l; i++)
-				snippets.push(this.template_measurement(expanded.docs[i]));
+				snippets.push(this.renderMeasurement(expanded.docs[i]));
 				
 			snippets.sort(function (a, b) {
 				return a.category < b.category ? -1 : (a.category > b.category ? 1 : (a.value < b.value ? -1 : (a.value > b.value ? 1 : 0)));
@@ -128,7 +128,7 @@
 			
 		
 		if (doc.content == null) {
-			item.link = root + doc.s_uuid;
+			item.link = this.settings.root + doc.s_uuid;
 			item.href = item.link	+ "/study";
 			item.href_title = "Study";
 			item.href_target = doc.s_uuid;
@@ -159,7 +159,44 @@
 		return jT.getFillTemplate("#result-item", item);
 	};
 	
-	ItemListWidget.prototype.template_measurement = function(doc) {
+	ItemListWidget.prototype.renderHeader = function(doc) {
+  	var prop = doc[this.settings.summaryProperty],
+  	    substancetype = doc.substanceType != null ? doc.substanceType[0] : null;
+  	
+  	if ($.isArray(prop))
+  	  prop = prop[0];
+  	  
+  	substancetype = lookup[substancetype] || substancetype;
+    
+    return  (!doc.publicname ? "" : (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")")) + 
+            (substancetype == null ? "" : (substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
+	};
+	
+	ItemListWidget.prototype.renderComposition = function (doc) {
+		var snippet = "";
+		var ids = ["CASRN","ChemicalName"];
+		var components = ["CORE","COATING","CONSTITUENT","ADDITIVE","IMPURITY","FUNCTIONALISATION","DOPING"];
+		$.each(components, function( index1, component ) {
+
+			var ncomponent = doc["COMPOSITION."+component];
+			var idtype = component + " ("+(ncomponent==undefined?"":ncomponent) + "): ";
+			var c=0;
+			$.each(ids, function( index2, id ) {
+					var chemid=id+"."+component;
+					if (doc[chemid]!=undefined)  {
+						snippet += idtype;
+						snippet += doc[chemid]+" ";
+						idtype = "";
+						c++;
+					}	
+			});
+			if (c>0)
+				snippet += "<br/>";
+		});
+	  return snippet;
+	};
+	
+	ItemListWidget.prototype.renderMeasurement = function(doc) {
 		var value = "",
 				snippet = {
 					'category': doc.topcategory + "." + (lookup[doc.endpointcategory] || doc.endpointcategory),
