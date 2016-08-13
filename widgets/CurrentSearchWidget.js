@@ -28,7 +28,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
         
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected tag_fixed'));
 
       		if (fvl > 1)
       		  el.addClass("combined");
@@ -59,7 +59,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   rangeToggle: function (facet) {
     var self = this;
     return function () {
-	    alert("Select ranges for: " + facet);
+      console.log("A placeholder routine for selecting ranges: " + facet);
       return false;
     };
   },
