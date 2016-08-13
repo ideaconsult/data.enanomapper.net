@@ -2,6 +2,11 @@
 
 	AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget
 		.extend({
+  	  settings : {
+  			root : "https://data.enanomapper.net/substance/",
+  			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
+  		},
+		
 			start : 0,
 		
 			beforeRequest : function() {
