@@ -21,7 +21,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     
     // add the free text search as a tag
     if (q != '*:*') {
-        links.push(self.tagRenderer(q, "x", function () {
+        links.push(self.renderTag(q, "x", function () {
           self.manager.store.get('q').val('*:*');
           self.doRequest();
           return false;
@@ -44,9 +44,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 	    if (!!fv) {
         fk = fv.field;
         
-        for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
-          pv = (fk == PivotWidget.endpointField);
-      		links.push(el = self.tagRenderer(fv[j], pv ? "i" : "x", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+        fv = AjaxSolr.BaseFacetWidget.parseValues(f.replace(self.fieldRegExp, ""));
+        
+        for (var j = 0, fvl = fv.length; j < fvl; ++j) {
+      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
 
       		if (fvl > 1)
       		  el.addClass("combined");
@@ -63,7 +64,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
     
     if (links.length) {
-      links.push(self.tagRenderer("Clear", "", function () {
+      links.push(self.renderTag("Clear", "", function () {
         self.manager.store.get('q').val('*:*');
         self.manager.store.removeByValue('fq', self.manager.facetFieldRegExp);
         self.manager.store.removeByValue('fq', self.manager.rangeFieldRegExp);

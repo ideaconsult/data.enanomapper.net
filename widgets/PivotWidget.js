@@ -108,7 +108,7 @@
 						msg += buildValueRange(facet.pivot[j]);
 					}
 					
-					return self.tagRenderer( facet.value, facet.count, msg, self.clickHandler(facet.value, facet.field));
+					return self.renderTag( facet.value, facet.count, msg, self.clickHandler(facet.value, facet.field));
 				}));
 			}
 			
