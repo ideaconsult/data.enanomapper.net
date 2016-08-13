@@ -18,18 +18,22 @@ var Manager,
 
 (function($) {
 	$(function() {
-		Manager = new AjaxSolr.Manager({
+  	Settings = {
 			//this is now updated wih cananolab index
-// 			solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
-			//this has cananolab index
-			solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
-// 			solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/'
-		});
+//       solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
+			// this has cananolab index
+      solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
+//       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/'
+			root : "https://data.enanomapper.net/substance/",
+			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
+		};
+		Manager = new AjaxSolr.Manager(Settings);
 		
 		Manager.addWidget(new AjaxSolr.ResultWidget({
 			id : 'result',
 			target : $('#docs'),
-			onClick: function (e, doc, exp, widget) { 
+			settings : Settings,
+			onClick : function (e, doc, exp, widget) { 
 				if (!Basket.findItem(doc)) {
 					Basket.addItem(doc, exp);
 					var s = "", jel = $('a[href="#basket_tab"]');
@@ -43,7 +47,7 @@ var Manager,
 					$("footer", this).toggleClass("add none");					
 				}
 			},
-			onCreated: function (doc) {
+			onCreated : function (doc) {
 				$("footer", this).addClass("add");
 			}
 		}));
@@ -108,7 +112,7 @@ var Manager,
 				field : f,
 				color: col,
 				multivalue: true,
-				tagRenderer: renderTag
+				renderTag: renderTag
 			}));
 		});
 		
@@ -118,7 +122,7 @@ var Manager,
 			target : $(".after_topcategory"),
 			colorMap: Colors,
 			multivalue: true,
-			tagRenderer: renderTag,
+			renderTag: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
 		
@@ -126,8 +130,8 @@ var Manager,
 		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
 			id : 'currentsearch',
 			target : $('#selection'),
-			tagRenderer: renderTag,
-			colorMap: Colors
+			renderTag : renderTag,
+			colorMap : Colors
 		}));
 
 		// ... auto-completed text-search.
@@ -145,7 +149,8 @@ var Manager,
 		Basket = new ItemListWidget({
 			id : 'basket',
 			target : '#basket-docs',
-			onClick: function (e, doc, exp) {
+			settings : Settings,
+			onClick : function (e, doc, exp) {
 				if (Basket.eraseItem(doc.s_uuid) === false) {
 					console.log("Trying to remove from basket an inexistent entry: " + JSON.stringify(doc));
 					return;
@@ -174,7 +179,7 @@ var Manager,
 			'facet' : true,
 			'facet.field' : ['unit'],
 			'facet.limit' : -1,
-			'facet.mincount' : 3,
+			'facet.mincount' : 1,
 			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
 			'f.interpretation_result.facet.mincount' : 2,
 			'f.reference.facet.mincount' : 2,
@@ -196,12 +201,13 @@ var Manager,
 			'f.e_hash.facet.limit' : -1,
       // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
 			'fq' : "{!collapse field=s_uuid}",
-			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
+			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
+// 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
 			'stats': true,			
 			'json.nl' : "map",
 			'rows' : 20,
 			'expand' : true,
-			'expand.rows' : 20
+			'expand.rows' : 3
 		};
 		
 		for ( var name in params)
