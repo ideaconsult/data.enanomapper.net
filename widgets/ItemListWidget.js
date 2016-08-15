@@ -173,27 +173,37 @@
 	};
 	
 	ItemListWidget.prototype.renderComposition = function (doc) {
-		var snippet = "";
-		var ids = ["CASRN","ChemicalName"];
-		var components = ["CORE","COATING","CONSTITUENT","ADDITIVE","IMPURITY","FUNCTIONALISATION","DOPING"];
+		var snippets = [],
+		    idgroups = ["CASRN", "EINECS", "ChemicalName", "TradeName"],
+		    components = ["CORE", "COATING", "CONSTITUENT", "ADDITIVE", "IMPURITY", "FUNCTIONALISATION", "DOPING"];
+		    
 		$.each(components, function( index1, component ) {
 
-			var ncomponent = doc["COMPOSITION."+component];
-			var idtype = component + " ("+(ncomponent==undefined?"":ncomponent) + "): ";
-			var c=0;
-			$.each(ids, function( index2, id ) {
-					var chemid=id+"."+component;
-					if (doc[chemid]!=undefined)  {
-						snippet += idtype;
-						snippet += doc[chemid]+" ";
-						idtype = "";
-						c++;
+			var ncomponent = doc["COMPOSITION." + component],
+			    idprefix = component + " (" + (ncomponent == undefined ? "" : ncomponent) + "): ",
+			    snippet = "";
+			     
+			$.each(idgroups, function( index2, group ) {
+					var chemid = group + "." + component,
+					    ids = doc[chemid];
+
+					if (ids !== undefined) {
+					  snippet += group + ":";
+            $.each(ids, function (index3, id) {
+              if (index3 > 0)
+                snippet += " ";
+              snippet += '<a href="#" class="freetext_selector">' + id + '</a>';
+            });
+					  
+						snippet += " ";
 					}	
 			});
-			if (c>0)
-				snippet += "<br/>";
+			
+			if (snippet.length > 0)
+  			snippets.push(idprefix + snippet);
 		});
-	  return snippet;
+		
+	  return snippets.join("<br/>");
 	};
 	
 	ItemListWidget.prototype.renderMeasurement = function(doc) {
