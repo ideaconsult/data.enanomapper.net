@@ -131,7 +131,7 @@ var Manager,
 		// ... auto-completed text-search.
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
-			target : '#search',
+			target : $('#search'),
 			fields : [ 
 			    'substanceType', 'effectendpoint', 'endpointcategory',
 					'name', 'guidance', 'interpretation_result',
@@ -207,5 +207,11 @@ var Manager,
 			Manager.store.addByValue(name, params[name]);
 
 		Manager.doRequest();
+
+		// Set some general search machanisms
+		$(document).on('click', "a.freetext_selector", function (e) {
+  		Manager.store.addByValue('q', AjaxSolr.Parameter.escapeValue(this.innerText));
+  		Manager.doRequest();
+		});
 	});
 })(jQuery);
