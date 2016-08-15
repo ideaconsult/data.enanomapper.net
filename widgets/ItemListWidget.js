@@ -190,6 +190,8 @@
 					if (ids !== undefined) {
 					  snippet += group + ":";
             $.each(ids, function (index3, id) {
+              if (index3 > 0)
+                snippet += " ";
               snippet += '<a href="#" class="freetext_selector">' + id + '</a>';
             });
 					  
