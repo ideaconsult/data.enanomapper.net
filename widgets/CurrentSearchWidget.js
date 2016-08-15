@@ -46,7 +46,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
           pv = (fk == PivotWidget.endpointField);
-      		links.push(el = self.tagRenderer(fv[j], pv ? "i" : "x", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected'));
+      		links.push(el = self.renderTag(fv[j], pv ? "i" : "", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected' + (pv ? "" : " tag_fixed")));
 
       		if (fvl > 1)
       		  el.addClass("combined");
@@ -69,7 +69,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         self.manager.store.removeByValue('fq', self.manager.rangeFieldRegExp);
         self.doRequest();
         return false;
-      }).addClass('tag_selected tag_clear'));
+      }).addClass('tag_selected tag_clear tag_fixed'));
       
       this.target.empty().addClass('tags').append(links);
     }

@@ -26,7 +26,12 @@ var Manager,
       solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
 //       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/'
 			root : "https://data.enanomapper.net/substance/",
-			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
+			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE",
+			freeTextFields: [ 
+			    'substanceType', 'effectendpoint', 'endpointcategory',
+					'name', 'guidance', 'interpretation_result',
+					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
+					'_text_' ]
 		};
 		Manager = new AjaxSolr.Manager(Settings);
 		
@@ -132,11 +137,7 @@ var Manager,
 		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
 			id : 'text',
 			target : $('#search'),
-			fields : [ 
-			    'substanceType', 'effectendpoint', 'endpointcategory',
-					'name', 'guidance', 'interpretation_result',
-					'_childDocuments_.params.Species','_childDocuments_.params.Cell_line', 'reference',
-					'_text_' ]
+			fields : Settings.freeTextFields
 		}));
 		
 		// Now add the basket.
@@ -146,7 +147,7 @@ var Manager,
 			settings : Settings,
 			onClick : function (e, doc, exp) {
 				if (Basket.eraseItem(doc.s_uuid) === false) {
-					console.log("Trying to remove from basket an inexistent entry: " + JSON.stringify(doc));
+					console.log("Trying to remove from basket of an inexistent entry: " + JSON.stringify(doc));
 					return;
 				}
 				
