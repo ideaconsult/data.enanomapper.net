@@ -22,8 +22,8 @@ var Manager,
 			//this is now updated wih cananolab index
 //       solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/'
 			// this has cananolab index
-      solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
-//       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/'
+//      solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
+       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
 			root : "https://data.enanomapper.net/substance/",
 			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
 		};
@@ -201,7 +201,7 @@ var Manager,
 			'f.e_hash.facet.limit' : -1,
       // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
 			'fq' : "{!collapse field=s_uuid}",
-			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
+			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,EINECS.CONSTITUENT,EINECS.ADDITIVE,EINECS.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,TradeName.CONSTITUENT,TradeName.ADDITIVE,TradeName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
 // 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
 			'stats': true,			
 			'json.nl' : "map",
