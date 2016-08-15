@@ -10,6 +10,12 @@ var Manager,
   		'species': 				"_childDocuments_.params.Species", 
   		'cell': 					"_childDocuments_.params.Cell_line", 
   		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
+  		/*
+  		'testtype': '_childDocuments_.conditions.Test_type',
+			'solvent' :	'_childDocuments_.conditions.Solvent',
+			'route':	'_childDocuments_.params.Route_of_administration',
+			'genotoxicity':	'_childDocuments_.params.Type_of_genotoxicity'
+			*/
   	},
     Colors = {
       "endpointcategory": "blue",
