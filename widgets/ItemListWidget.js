@@ -169,7 +169,7 @@
   	substancetype = lookup[substancetype] || substancetype;
     
     return  (!doc.publicname ? "" : (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")")) + 
-            (substancetype == null ? "" : (substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
+            (substancetype == null ? "" : (" " + substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
 	};
 	
 	ItemListWidget.prototype.renderComposition = function (doc) {

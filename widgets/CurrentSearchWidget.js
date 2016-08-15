@@ -49,7 +49,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       		links.push(el = self.renderTag(fv[j], pv ? "i" : "", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected' + (pv ? "" : " tag_fixed")));
 
       		if (fvl > 1)
-      		  el.addClass("combined");
+      		  el.addClass("tag_combined");
       		  
       		if (pv)
       		  $("span", el[0]).on("click", self.rangeToggle(i, fk, fv[j]));
@@ -58,7 +58,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         }
         
         if (fvl > 1)
-  		    el.addClass("last");
+  		    el.addClass("tag_last");
       }
     }
     

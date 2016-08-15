@@ -201,13 +201,13 @@ article span.guidance {
 /* tagcloud */
 
 #hits_tab .tags li,
-#hits_tab .tags li.combined.last {
+#hits_tab .tags li.tag_combined.tag_last {
   margin-left: 4px;
   margin-right: 18px;
   max-width: 250px;
 }
 
-#hits_tab .tags li.combined {
+#hits_tab .tags li.tag_combined {
   margin-right: 12px;
   opacity: 0.9;
 }
