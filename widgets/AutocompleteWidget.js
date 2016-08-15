@@ -2,7 +2,8 @@
 
 AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
   afterRequest: function () {
-    $(this.target).find('input').unbind().removeData('events').val('');
+    var findbox = this.target.find('input');
+    findbox.unbind().removeData('events').val('');
 
     var self = this;
 
@@ -20,7 +21,7 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
       }
 
       self.requestSent = false;
-      $(self.target).find('input').autocomplete('destroy').autocomplete({
+      findbox.autocomplete('destroy').autocomplete({
         source: list,
         select: function(event, ui) {
           if (ui.item) {
@@ -33,7 +34,7 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
       });
 
       // This has lower priority so that requestSent is set.
-      $(self.target).find('input').bind('keydown', function(e) {
+      findbox.bind('keydown', function(e) {
         if (self.requestSent === false && e.which == 13) {
           var value = $(this).val();
           if (value && self.set(value)) {
@@ -47,12 +48,18 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
     for (var i = 0; i < this.fields.length; i++) {
       params.push('facet.field=' + this.fields[i]);
     }
+    
     var values = this.manager.store.values('fq');
     for (var i = 0; i < values.length; i++) {
       params.push('fq=' + encodeURIComponent(values[i]));
     }
-    params.push('q=' + this.manager.store.get('q').val());
-    $.getJSON(this.manager.solrUrl + 'autophrase?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
+    
+    var qval = this.manager.store.get('q').val();
+    params.push('q=' + qval);
+    $.getJSON(this.manager.solrUrl + 'select?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
+    
+    if (qval != "*:*")
+      findbox.val(qval);
   }
 });
 
