@@ -100,7 +100,6 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             
             return map;
           })(),
-          sliders = $("#sliders"), width, el;
           updateRange = function(range) {  return function (values) { self.manager.tweakAddRangeParam(range, values.split(",")); } },
           matchRange = function (pivot) {
             var ctx = { };
@@ -111,13 +110,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 
             var par = self.rangeParameters.find( function (e) { 
               for (var k in ctx)
-                if (e[k] === undefined || ctx[k] === undefined || ctx[k] !== e[k])
+                if (e.context[k] !== undefined && ctx[k] !== e.context[k])
                   return false;
               return true;
             });
             
             return $.extend(par, { 'context': ctx }, pivot.stats.stats_fields.loValue);
-          };
+          },
+          sliders = $("#sliders"), width, el;
 
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
