@@ -1,8 +1,6 @@
-# data.enanomapper.net
+# search.data.enanomapper.net
 
-This is not a source code repository. 
+You can file [issues here](https://github.com/enanomapper/data.enanomapper.net/issues) you find on  
 
-But you can file [issues here](https://github.com/enanomapper/data.enanomapper.net/issues) you find on  
-
-* [data.enanomapper.net](https://apps.ideaconsult.net/enanomapper)
-* [Nanomaterials search](http://enanomapper.github.io/data.enanomapper.net/)  (free text)
+* eNanoMapper database [data.enanomapper.net](https://data.enanomapper.net)
+* Nanomaterials free text search [search.data.enanomapper.net](http://search.data.enanomapper.net/)
