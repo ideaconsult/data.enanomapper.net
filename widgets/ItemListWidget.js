@@ -161,14 +161,15 @@
 	
 	ItemListWidget.prototype.renderHeader = function(doc) {
   	var prop = doc[this.settings.summaryProperty],
-  	    substancetype = doc.substanceType != null ? doc.substanceType[0] : null;
+  	    substancetype = doc.substanceType != null ? doc.substanceType[0] : null,
+  	    pubname = (doc.publicname || doc.name || [""])[0];
   	
   	if ($.isArray(prop))
   	  prop = prop[0];
   	  
   	substancetype = lookup[substancetype] || substancetype;
     
-    return  (!doc.publicname ? "" : (doc.publicname[0] || "") + "  " + (doc.publicname[0] === doc.name[0] ? "" : "(" + doc.name[0] + ")")) + 
+    return  pubname + (pubname === doc.name[0] ? "" : "  (" + doc.name[0] + ")") + 
             (substancetype == null ? "" : (" " + substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
 	};
 	
