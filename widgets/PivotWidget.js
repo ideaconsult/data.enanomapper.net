@@ -70,17 +70,20 @@
       });
       
 			for (var i = 0, fl = root.length; i < fl; ++i) {
-				var facet = root[i], target;
+				var facet = root[i], 
+				    fid = facet.value.replace(/\s/, "_"), 
+				    target;
 				
 				// we need to check if we have that accordion element created.
 				if (facet.field == top_field) {
-  				target = $("#" + facet.value);
+  				target = $("#" + fid);
   				
   				if (target.length > 0) {
     				var hdr = getHeaderText(target.closest(".widget-root").prev());
             hdr.textContent = jT.ui.updateCounter(hdr.textContent, facet.count);
     		  }
   				else {
+    				facet.id = fid;
     				self.target.before(target = jT.getFillTemplate($("#tab-topcategory"), facet));
     				target = $(target.last()).addClass("dynamic-tab");
     				self.tabsRefresher();

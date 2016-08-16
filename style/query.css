@@ -24,9 +24,13 @@ span.units {
 }
 
 a:hover,
-section.item-list article.teim a:hover {
+section.item-list article.item a:hover {
   color: #f00;
   text-decoration: underline;
+}
+
+section.item-list article.item .avatar img {
+  border: none;
 }
 
 #wrap {
