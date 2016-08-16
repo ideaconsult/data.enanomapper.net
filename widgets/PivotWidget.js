@@ -1,6 +1,6 @@
 (function($) {
 	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
-	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue", category_field = "endpointcategory",
+	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue", category_field = "endpointcategory", unit_field = "unit",
 	    
 			buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
@@ -41,6 +41,7 @@
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
   	contextFields: [category_field, bottom_field],
   	endpointField: bottom_field,
+  	unitField: unit_field,
   	
     init: function () {
       AjaxSolr.BaseFacetWidget.__super__.init.call(this);
@@ -50,7 +51,7 @@
 
       // we want to add these, without exclusion, so we have information of what is really present
       for (var i = 0, farr = pivot_fields.split(","); i < farr.length; ++i)
-        this.manager.store.addByValue('facet.field', farr[i], { ex: this.id + "_range" });
+        this.manager.store.addByValue('facet.field', farr[i]); // { ex: this.id + "_range" });
         
       this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
       this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, min: true, max: true });

@@ -80,7 +80,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   rangeToggle: function (index, field, value) {
     var self = this;
     return function () {
-      var pivots = PivotWidget.locatePivots(field, value, "unit"),
+      var pivots = PivotWidget.locatePivots(field, value, PivotWidget.unitField),
           // build a counter map of found pivots.
           pivotMap = (function() {
             var map = {};
@@ -119,6 +119,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
           },
           sliders = $("#sliders"), width, el;
 
+      if ($(this).closest("li").hasClass("active")) {
+        sliders.empty();
+        $(this).closest("li").removeClass("active")        
+        return false;
+      }
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
 
@@ -133,7 +138,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         var pe = pivots[i],
             range = matchRange(pe),
             prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
-            names = [];
+            names = [],
+            enabled = (range.min < range.max);
 
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
         if (prec < 1 && prec > .01) 
@@ -149,13 +155,15 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         // that are needed for filtering, i.e. - those that differ...
         for(var pp in range.context) {
           var pv = range.context[pp];
-          if (pivotMap[pp][pv] < pivots.length)
+          if ((pp != PivotWidget.unitField || !enabled) && pivotMap[pp][pv] < pivots.length)
             names.push(getTitleFromFacet(pv));
         }
         
         // ... still have the given filter as fallback for empty scale.
         if (!names.length)
           names.push(getTitleFromFacet(value));
+        else
+          names.reverse();
           
         // We're ready to prepare the slider and add it to the DOM.
         sliders.append(el = jT.getFillTemplate("#slider-one", range));
@@ -166,11 +174,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	step: prec,
         	scale: [range.min, names.join("/"), range.max],
         	showScale: true,
-        	showLabels: range.min < range.max,
-        	disable: range.min >= range.max,
+        	showLabels: enabled,
+        	disable: !enabled,
         	isRange: true,
         	width: width / (Math.min(lp, 2) + 0.1),
-        	format: "%s " + (pe.field == "unit" ? jT.ui.formatUnits(pe.value) : ""),
+        	format: "%s " + (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : ""),
         	ondragend: updateRange(range)
       	});
       }
