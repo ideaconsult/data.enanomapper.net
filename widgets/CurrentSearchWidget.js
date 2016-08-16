@@ -3,7 +3,7 @@
 AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   start: 0,
   skipClear: false,
-  rangeFilter: {},
+  rangeParameters: [],
 
   afterRequest: function () {
     var self = this, el, f, fk, fv,
@@ -17,7 +17,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     }
     
     $("#sliders").empty();
-    self.rangeFilter = {};
+    self.rangeParameters = [];
     
     // add the free text search as a tag
     if (q != '*:*') {
@@ -35,7 +35,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 	    // First try it as range parameter
 	    fv = self.manager.getRangeFromParam(f);
 	    if (!!fv) {
-  	    $.extend(true, self.rangeFilter, fv);
+  	    self.rangeParameters.push(fv);
   	    continue;
 	    }
 	    
@@ -81,53 +81,97 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     var self = this;
     return function () {
       var pivots = PivotWidget.locatePivots(field, value, "unit"),
+          // build a counter map of found pivots.
+          pivotMap = (function() {
+            var map = {};
+            for (var i = 0, pl = pivots.length; i < pl; ++i) {
+              var pe = pivots[i];
+              for (var pp = pe; !!pp; pp = pp.parent) {
+                var info = map[pp.field];
+                if (!info)
+                  map[pp.field] = info = {};
+                  
+                if (!info[pp.value])
+                  info[pp.value] = 1;
+                else
+                  info[pp.value]++;
+              }
+            }
+            
+            return map;
+          })(),
           sliders = $("#sliders"), width, el;
-          updateRange = function(range) {  return function (values) { range.range = values.split(","); } };
+          updateRange = function(range) {  return function (values) { self.manager.tweakAddRangeParam(range, values.split(",")); } },
+          matchRange = function (pivot) {
+            var ctx = { };
+            for (var pp = pivot; !!pp; pp = pp.parent) {
+              if (PivotWidget.contextFields.indexOf(pp.field) > -1 || pivotMap[pp.field][pp.value] < pivots.length)
+                ctx[pp.field] = pp.value;
+            }
+
+            var par = self.rangeParameters.find( function (e) { 
+              for (var k in ctx)
+                if (e[k] === undefined || ctx[k] === undefined || ctx[k] !== e[k])
+                  return false;
+              return true;
+            });
+            
+            return $.extend(par, { 'context': ctx }, pivot.stats.stats_fields.loValue);
+          };
 
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
 
       el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
-        // TODO: Prepare
-        self.manager.tweakAddRangeParam(self.rangeFilter);
         self.skipClear = true;
         self.doRequest();
       });
       
       width = sliders.width() - el.width() - 20;
       
-      // TODO: Preprocess the filter
-      
-      for (var i = 0, lp = pivots.length, pe, args;i < lp; ++i) {
-        pe = pivots[i];
-        
-        var range = pe.stats.stats_fields.loValue, 
+      for (var i = 0, lp = pivots.length;i < lp; ++i) {
+        var pe = pivots[i],
+            range = matchRange(pe),
             prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
-            scale;
+            names = [];
 
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
-        if (prec < 1 && prec > .01) prec = .01;
-          
-        range.low = range.min != null ? getRoundedNumber(range.min, prec) : "-";
-        range.high = range.max != null ? getRoundedNumber(range.max, prec) : "-";
+        if (prec < 1 && prec > .01) 
+          prec = .01;
+        
+        range.min = range.min != null ? getRoundedNumber(range.min, prec) : "-";
+        range.max = range.max != null ? getRoundedNumber(range.max, prec) : "-";
 
-        for(var pp = pe ; pp.field != PivotWidget.categoryField ; pp = pp.parent);
-        scale = [range.min, getTitleFromFacet(pp.value), range.max];
+        if (range.value == null)
+          range.value = [ range.min, range.max ];
+
+        // Build the name on the range scale, based on the field:value pairs
+        // that are needed for filtering, i.e. - those that differ...
+        for(var pp in range.context) {
+          var pv = range.context[pp];
+          if (pivotMap[pp][pv] < pivots.length)
+            names.push(getTitleFromFacet(pv));
+        }
+        
+        // ... still have the given filter as fallback for empty scale.
+        if (!names.length)
+          names.push(getTitleFromFacet(value));
           
+        // We're ready to prepare the slider and add it to the DOM.
         sliders.append(el = jT.getFillTemplate("#slider-one", range));
           
         el.jRange({
         	from: range.min,
         	to: range.max,
         	step: prec,
-        	scale: scale,
+        	scale: [range.min, names.join("/"), range.max],
         	showScale: true,
         	showLabels: range.min < range.max,
         	disable: range.min >= range.max,
         	isRange: true,
         	width: width / (Math.min(lp, 2) + 0.1),
         	format: "%s " + (pe.field == "unit" ? jT.ui.formatUnits(pe.value) : ""),
-        	ondragend: updateRange(pe.field, pe.value)
+        	ondragend: updateRange(range)
       	});
       }
       
