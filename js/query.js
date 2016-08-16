@@ -8,14 +8,14 @@ var Manager,
   		'protocol': 			"guidance",
   		'interpretation': "interpretation_result", 
   		'species': 				"_childDocuments_.params.Species", 
-  		'cell': 					"_childDocuments_.params.Cell_line", 
+//  		'cell': 					"_childDocuments_.params.Cell_line", 
   		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
-  		/*
+
   		'testtype': '_childDocuments_.conditions.Test_type',
 			'solvent' :	'_childDocuments_.conditions.Solvent',
 			'route':	'_childDocuments_.params.Route_of_administration',
 			'genotoxicity':	'_childDocuments_.params.Type_of_genotoxicity'
-			*/
+
   	},
     Colors = {
       "endpointcategory": "blue",
@@ -28,9 +28,9 @@ var Manager,
 			//this is now updated wih cananolab index
 //       solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/',
 			// this has cananolab index
-     solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
- //      solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
-			root : "https://data.enanomapper.net/substance/",
+ //    solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
+     solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
+			root : "https://ambitlri.ideaconsult.net/tool/substance/",
 			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
 		};
 		Manager = new AjaxSolr.Manager(Settings);

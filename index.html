@@ -206,26 +206,26 @@ alt='AMBIT'></a>
 		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
 			<div id="accordion-resizer" class="ui-widget-content">
 		    <div id="accordion" style="padding:1px; margin:1px;">
-			    
+			    <!--
 					<h3>Data sources</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="owner_name" data-color="green"></ul>
 					</div>	    	
-					
+					-->
 					<h3>Substance type</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="substanceType"></ul>
 					</div>
-										
+										<!--
 					<h3 class="after_topcategory">Cell</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="cell" data-color="green"></ul>
 					</div>
-					
-					<h3>Species</h3>
+					-->
+					<h3 class="after_topcategory">Species</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content tags remove-bottom" data-facet="species" data-color="green"></ul>
@@ -275,12 +275,13 @@ alt='AMBIT'></a>
             <ul class="widget-content tags remove-bottom" data-facet="protocol" data-color="blue"></ul>
 					</div>		
 					
+					<!--
 					<h3>Instruments</h3>
 					<div class="widget-root">
             <input type="text" placeholder="Filter_" class="widget-filter"/>
 						<ul class="widget-content portlet-content tags remove-bottom" data-facet="instruments" data-color="green"></ul>
 					</div>
-						
+						-->
 				</div>
 			</div>
 			
@@ -343,14 +344,12 @@ alt='AMBIT'></a>
 		<div id="tag-facet">
 			<ul class="tags tag-group folded {{color}}" data-field="{{field}}"></ul>
 		</div>
-
-    <div id="tab-topcategory">
-  		<h3 id="{{value}}_header">{{value}} ({{count}})</h3>
-  		<div id="{{value}}" class="widget-content widget-root">
+	    <div id="tab-topcategory">
+  		<h3 id="{{id}}_header">{{value}} ({{count}})</h3>
+  		<div id="{{id}}" class="widget-content widget-root">
         <input type="text" placeholder="Filter_" class="widget-filter"/>
   		</div>
     </div>
-		
 	</div>
 
 <script>
