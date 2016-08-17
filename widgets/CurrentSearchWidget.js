@@ -5,6 +5,23 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   skipClear: false,
   rangeParameters: [],
 
+  init: function () {
+    AjaxSolr.CurrentSearchWidget.__super__.init.call(this);
+    var self = this;
+        self.slidersBlock = $("#sliders");
+        
+    self.applyCommand = $("#sliders-controls a.command.apply").on("click", function (e) {
+      self.skipClear = true;
+      self.doRequest();
+      return false;
+    });
+    
+    $("#sliders-controls a.command.close").on("click", function (e) {
+      self.rangeRemove();
+      return false;
+    });
+  },
+  
   afterRequest: function () {
     var self = this, el, f, fk, fv,
         links = [],
@@ -16,7 +33,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       return;
     }
     
-    $("#sliders").empty();
+    self.rangeRemove();
     self.rangeParameters = [];
     
     // add the free text search as a tag
@@ -52,7 +69,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       		  el.addClass("tag_combined");
       		  
       		if (pv)
-      		  $("span", el[0]).on("click", self.rangeToggle(i, fk, fv[j]));
+      		  $("span", el[0]).on("click", self.rangePresent(i, fk, fv[j]));
       		  
       		el.addClass(self.colorMap[fk]);
         }
@@ -77,7 +94,13 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       this.target.removeClass('tags').html('<li>No filters selected!</li>');
   },
 
-  rangeToggle: function (index, field, value) {
+  rangeRemove: function() {
+    this.slidersBlock.empty();
+    this.slidersBlock.parent().removeClass("active");
+    $("li", this.target[0]).removeClass("active");
+  },
+  
+  rangePresent: function (index, field, value) {
     var self = this;
     return function () {
       var pivots = PivotWidget.locatePivots(field, value, PivotWidget.unitField),
@@ -100,7 +123,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             
             return map;
           })(),
-          updateRange = function(range) {  return function (values) { self.manager.tweakAddRangeParam(range, values.split(",")); } },
+          updateRange = function(range) {  return function (values) { 
+            self.manager.tweakAddRangeParam(range, values.split(","));
+            self.applyCommand.css("opacity", 1.0);
+            setTimeout(function () { self.applyCommand.css("opacity", ""); }, 500);
+          } },
           matchRange = function (pivot) {
             var ctx = { };
             for (var pp = pivot; !!pp; pp = pp.parent) {
@@ -116,23 +143,17 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             });
             
             return $.extend(par, { 'context': ctx }, pivot.stats.stats_fields.loValue);
-          },
-          sliders = $("#sliders"), width, el;
+          };
 
       if ($(this).closest("li").hasClass("active")) {
-        sliders.empty();
-        $(this).closest("li").removeClass("active")        
+        self.rangeRemove();
         return false;
       }
+      
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
-
-      el = jT.getFillTemplate("#slider-update").appendTo(sliders.empty()).on("click", function (e) {
-        self.skipClear = true;
-        self.doRequest();
-      });
-      
-      width = sliders.width() - el.width() - 20;
+      self.slidersBlock.parent().addClass("active");
+      self.slidersBlock.empty();
       
       for (var i = 0, lp = pivots.length;i < lp; ++i) {
         var pe = pivots[i],
@@ -166,7 +187,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
           names.reverse();
           
         // We're ready to prepare the slider and add it to the DOM.
-        sliders.append(el = jT.getFillTemplate("#slider-one", range));
+        self.slidersBlock.append(el = jT.getFillTemplate("#slider-one", range));
           
         el.jRange({
         	from: range.min,
@@ -177,7 +198,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	showLabels: enabled,
         	disable: !enabled,
         	isRange: true,
-        	width: width / (Math.min(lp, 2) + 0.1),
+        	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 15) / (Math.min(lp, 2) + 0.1),
         	format: "%s " + (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : ""),
         	ondragend: updateRange(range)
       	});

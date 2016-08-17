@@ -44,7 +44,7 @@
   	unitField: unit_field,
   	
     init: function () {
-      AjaxSolr.BaseFacetWidget.__super__.init.call(this);
+      AjaxSolr.PivotWidget.__super__.init.call(this);
       var loc = { stats: this.id };
       if (this.multivalue)
         loc.ex = this.id;

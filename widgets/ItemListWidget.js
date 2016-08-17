@@ -37,13 +37,15 @@
 		var self = this,
 				el = $(this.renderSubstance(doc));
 				
+		if (!el.length) return;
+
+		$(this.target).append(el);
 		if (typeof this.onClick === "function")
 			$("a.command", el[0]).on("click", function (e) { self.onClick.call(el[0], e, doc, exp, self); });
 			
 		if (typeof this.onCreated === 'function')
 			this.onCreated.call(el, doc, this);
 				
-		$(this.target).append(el);
 		$("a.more", el[0]).on("click", function(e) {
 			e.preventDefault();
 			e.stopPropagation();

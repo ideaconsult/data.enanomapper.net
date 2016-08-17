@@ -9,7 +9,7 @@ img {
 
 a,
 section.item-list article.item a,
-#sliders a {
+#sliders-controls a {
   color: #8C0305;
   text-decoration: underline;
 }
@@ -26,7 +26,7 @@ span.units {
 
 a:hover,
 section.item-list article.item a:hover,
-#sliders a:hover {
+#sliders-controls a:hover {
   color: #f00;
   text-decoration: underline;
 }
@@ -177,7 +177,7 @@ footer a.command {
 }
 
 footer a.command:hover {
-	opacity: 0.9;
+	opacity: 1.0;
 }
 
 footer.add .command.add,
@@ -222,6 +222,12 @@ article span.guidance {
   padding: 0 0 0 2px;
 }
 
+#hits_tab footer {
+  position: relative;
+  font-weight: normal;
+  font-size: 80%;
+}
+
 #sliders {
   padding: 5px;
 }
@@ -235,8 +241,15 @@ article span.guidance {
   width: 60%;
 }
 
-#sliders a.command {
-  display: inline-block;
+#sliders-controls {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+#hits_tab footer.active a.command {
+  display: block;
+  float: none;
 }
 
 #sliders .slider-container .back-bar .pointer-label {

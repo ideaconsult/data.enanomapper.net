@@ -304,7 +304,13 @@
   		<div id="hits_tab">
   			<div class="row remove-bottom">
   				<ul class="tags remove-bottom" id="selection"></ul>
-  				<footer id="sliders"></footer>
+  				<footer>
+    				<div id="sliders-controls">
+              <a href="#" class="jtox-fadable command apply">Apply</a>
+              <a href="#" class="jtox-fadable command close">Close</a>
+    				</div>
+    				<div id="sliders"></div>
+  				</footer>
   			</div>
   			<div id="navigation">
   				<ul id="pager"></ul>
@@ -362,11 +368,7 @@
     <div id="slider-one">
   		<input type="hidden" value="{{value[0]}},{{value[1]}}"/>
     </div>
-    
-    <div id="slider-update">
-      <a href="#" class="jtox-fadable command">Update</a>
-    </div>
-		
+    		
 	</div>
 
 <script>
