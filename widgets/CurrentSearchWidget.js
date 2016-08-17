@@ -160,7 +160,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             range = matchRange(pe),
             prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
             names = [],
-            enabled = (range.min < range.max);
+            enabled = (range.min < range.max),
+            units = (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : "");
 
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
         if (prec < 1 && prec > .01) 
@@ -176,7 +177,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         // that are needed for filtering, i.e. - those that differ...
         for(var pp in range.context) {
           var pv = range.context[pp];
-          if ((pp != PivotWidget.unitField || !enabled) && pivotMap[pp][pv] < pivots.length)
+          if (pp != PivotWidget.unitField && pivotMap[pp][pv] < pivots.length)
             names.push(getTitleFromFacet(pv));
         }
         
@@ -193,14 +194,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	from: range.min,
         	to: range.max,
         	step: prec,
-        	scale: [range.min, names.join("/"), range.max],
+        	scale: [range.min, names.join("/") + (enabled ? "" : " (" + units + ")"), range.max],
         	showScale: true,
         	showLabels: enabled,
         	disable: !enabled,
         	isRange: true,
         	theme: "theme-" + self.colorMap[field],
         	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 20) / (Math.min(lp, 2) + 0.1),
-        	format: "%s " + (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : ""),
+        	format: "%s " + units,
         	ondragend: updateRange(range)
       	});
       }

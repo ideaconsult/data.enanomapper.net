@@ -252,17 +252,55 @@ article span.guidance {
   float: none;
 }
 
-#sliders .slider-container .back-bar .pointer-label {
+/* Some coloring of the sliders
+  */
+div.slider-container .back-bar {
+  height: 5px;
+  border-radius: 2px;
+  background-color: #eeeeee;
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+}
+
+div.slider-container .back-bar .pointer {
+  width: 14px;
+  height: 14px;
+  top: -5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #AAA;
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+}
+
+div.slider-container .back-bar .pointer-label { 
+  color: #999; 
   font-size: 13px;
   padding: 1px;
 }
 
-#sliders .slider-container .scale ins {
-  font-size: 11px;
+div.slider-container .scale ins { 
+  color: #999; 
+  font-size: 11px  
 }
 
-/* Some coloring of the sliders
-  */
+div.slider-container .back-bar .focused { color: #333; }
+div.slider-container .scale span { border-left: 1px solid #e5e5e5; }
+    
 div.slider-container.theme-green .back-bar div.selected-bar {
   background-color: #65bb34;
   background-image: -webkit-linear-gradient(top, #71ca3f, #5aa72e);
@@ -287,6 +325,8 @@ div.slider-container.theme-orange .back-bar div.selected-bar {
   background-image: linear-gradient(to bottom, #ed7b39, #df5e14);
 }
 
+/* More general tags stuff
+  */
 .tags li.tag_open a span {
   padding: 0 7px 0 6px;
   max-width: 40px;
