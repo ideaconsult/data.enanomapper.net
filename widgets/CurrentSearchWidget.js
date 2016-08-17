@@ -50,7 +50,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
 	    f = fq[i];
 	    
 	    // First try it as range parameter
-	    fv = self.manager.getRangeFromParam(f);
+	    fv = self.manager.getRangeFromParam(f, i);
 	    if (!!fv) {
   	    self.rangeParameters.push(fv);
   	    continue;
@@ -63,7 +63,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
           pv = (fk == PivotWidget.endpointField);
-      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
+      		links.push(el = self.renderTag(fv[j], "i", self.removeFacet(i, fk, fv[j])).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
 
       		if (fvl > 1)
       		  el.addClass("tag_combined");
@@ -152,8 +152,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       
       $("li", self.target[0]).removeClass("active");
       $(this).closest("li").addClass("active");
-      self.slidersBlock.parent().addClass("active");
-      self.slidersBlock.empty();
+      self.slidersBlock.empty().parent().addClass("active");
       
       for (var i = 0, lp = pivots.length;i < lp; ++i) {
         var pe = pivots[i],
@@ -210,23 +209,22 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     };
   },
 
-  removeFacet: function (index) {
-    var self = this;
-    return function () {
-      self.manager.store.remove('fq', index);
-      self.doRequest();
-      return false;
-    };
-  },
-  
-  reduceFacet: function (index, value) {
+  removeFacet: function (index, field, value) {
     var self = this;
     return function () {
       var par = self.manager.store.get('fq')[index],
           res = self.manager.tweakParamValues(par, value, true);
 
-      if (!!res)
+      if (!!res) {
+        if (!!par.value.match(new RegExp(field + ":" + "\\(\\s*\\)")))
+          self.manager.store.remove('fq', index);
+          
+        self.manager.filterRangeParameters(function (par) {
+          return par.val().indexOf(field + ":" + AjaxSolr.Parameter.escapeValue(value)) < 0; // i.e. leave it IN, when this is not found
+        });
+          
         self.doRequest();
+      }
         
       return false;
     };
