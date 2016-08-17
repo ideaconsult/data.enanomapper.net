@@ -203,12 +203,12 @@ article span.guidance {
 #hits_tab .tags li,
 #hits_tab .tags li.tag_combined.tag_last {
   margin-left: 4px;
-  margin-right: 18px;
+  margin-right: 20px;
   max-width: 250px;
 }
 
 #hits_tab .tags li.tag_combined {
-  margin-right: 12px;
+  margin-right: 16px;
   opacity: 0.9;
 }
 
@@ -261,12 +261,36 @@ article span.guidance {
   font-size: 11px;
 }
 
-/*
-.tags li.tag_selected a span {
+/* Some coloring of the sliders
+  */
+div.slider-container.theme-green .back-bar div.selected-bar {
+  background-color: #65bb34;
+  background-image: -webkit-linear-gradient(top, #71ca3f, #5aa72e);
+  background-image: -moz-linear-gradient(top, #71ca3f, #5aa72e);
+  background-image: -o-linear-gradient(top, #71ca3f, #5aa72e);
+  background-image: linear-gradient(to bottom, #71ca3f, #5aa72e);
+}
+
+div.slider-container.theme-blue .back-bar div.selected-bar {
+  background-color: #56a3d5;  
+  background-image: -webkit-linear-gradient(top, #6aaeda, #4298d0);
+  background-image: -moz-linear-gradient(top, #6aaeda, #4298d0);
+  background-image: -o-linear-gradient(top, #6aaeda, #4298d0);
+  background-image: linear-gradient(to bottom, #6aaeda, #4298d0);
+}
+
+div.slider-container.theme-orange .back-bar div.selected-bar {
+  background-color: #eb6b22;
+  background-image: -webkit-linear-gradient(top, #ed7b39, #df5e14);
+  background-image: -moz-linear-gradient(top, #ed7b39, #df5e14);
+  background-image: -o-linear-gradient(top, #ed7b39, #df5e14);
+  background-image: linear-gradient(to bottom, #ed7b39, #df5e14);
+}
+
+.tags li.tag_open a span {
   padding: 0 7px 0 6px;
   max-width: 40px;
 }
-*/
 
 #accordion-resizer {
   height: 860px;

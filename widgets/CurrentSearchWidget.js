@@ -63,7 +63,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         
         for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
           pv = (fk == PivotWidget.endpointField);
-      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass('tag_selected' + (pv ? "" : " tag_fixed")));
+      		links.push(el = self.renderTag(fv[j], "i", fvl > 1 ? self.reduceFacet(i, fv[j]) : self.removeFacet(i)).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
 
       		if (fvl > 1)
       		  el.addClass("tag_combined");
@@ -198,7 +198,8 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	showLabels: enabled,
         	disable: !enabled,
         	isRange: true,
-        	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 15) / (Math.min(lp, 2) + 0.1),
+        	theme: "theme-" + self.colorMap[field],
+        	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 20) / (Math.min(lp, 2) + 0.1),
         	format: "%s " + (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : ""),
         	ondragend: updateRange(range)
       	});
