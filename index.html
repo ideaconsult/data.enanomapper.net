@@ -80,52 +80,93 @@
 
 <body>
 
-	<div class="container">
+	<div class="container" style="margin: 0; padding: 0;">
 
 		<!-- banner -->
 
-		<div class="row half-bottom cc-fixed" id="banner" style="padding-top: 5px">
+		<div class="row half-bottom" id="header" style="padding-top: 5px">
 			<div class="two columns">
 				<a href="#"><img class='scale-with-grid' border='0'
 					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
 			</div>
 			<div class="fourteen columns remove-bottom">
 			<ul id='smartmenu' class="sm sm-mint">
-			<li>
-				<a href="#" title="Search nanomaterials by chemical structure of components">Search</a>
-				<ul>
-					<li><a href="#" title="Free text search (experimental)">Free text search</a></li>
-					<li ><a href="https://data.enanomapper.net/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for nanomaterials by identifiers or reference">Search nanomaterials by name</a></li>
-					<li ><a href="https://data.enanomapper.net/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for nanomaterials by identifiers">Search nanomaterials by identifier</a></li>
-					<li ><a href="https://data.enanomapper.net/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for nanomaterials by paper reference">Search nanomaterials by citation</a></li>
-					<li><a href="https://data.enanomapper.net/query/study" title="Search substances by physico-chemical parameters or biological effects">Search nanomaterials by physchem parameters or biological effects</a></li>
-					<li><a href="https://data.enanomapper.net/_search?search=SiO2" title="Search nanomaterials by chemical structure of components">Search nanomaterials by composition</a></li>
-				</ul>
+				<li>
+				<a href="https://data.enanomapper.net" title="Home">Home</a>
 			</li>
 			<li>
-				<a href="https://data.enanomapper.net/substance?page=0&amp;pagesize=100">Nanomaterials</a>
-				<ul>
-			<li ><a href="https://data.enanomapper.net/substance?page=0&pagesize=10" title="Nanomaterials">Nanomaterials</a></li>
+	<a href="#" title="Search nanomaterials by chemical structure of components">Search</a>
+	<ul>
+		<li ><a href="https://data.enanomapper.net/substance?type=name&search=Silica&page=0&pagesize=20" title="Search for nanomaterials by identifiers or reference">Search nanomaterials by name</a></li>
+		<li ><a href="https://data.enanomapper.net/substance?type=&search=NM-111&page=0&pagesize=20" title="Search for nanomaterials by identifiers">Search nanomaterials by identifier</a></li>
+		<li ><a href="https://data.enanomapper.net/substance?type=citation&search=10.1073&page=0&pagesize=20" title="Search for nanomaterials by paper reference">Search nanomaterials by citation</a></li>
+		<li><a href="https://data.enanomapper.net/query/study" title="Search substances by physico-chemical parameters or biological effects">Search nanomaterials by physchem parameters or biological effects</a></li>
+		<li><a href="https://data.enanomapper.net/ui/_search?search=SiO2" title="Search nanomaterials by chemical structure of components">Search nanomaterials by composition</a></li>
+		<!--
+		<li><a href="https://data.enanomapper.net/ontobucket?search=cytotoxicity&type=protocol&qe=true" title="Free text search (experimental)">Free text search</a></li>
+		-->
+		<li><a href="https://search.data.enanomapper.net/" title="Free text search"><br/>Free text search</a></li>
+	</ul>
+</li>
+<li>
+	<a href="https://data.enanomapper.net/bundle">Data collections</a>
+<ul id="menu_substance">
+
+	<li ><a href="https://data.enanomapper.net/substance?page=0&pagesize=10" title="Nanomaterials">Browse nanomaterials and studies</a></li>
+
+	<li><a href="https://data.enanomapper.net/bundle" title="Data collections">Content</a>
+	
+								<ul>
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >FP7 MARINA / KI in-vitro dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/12" target=_blank >FP7 MODENA modelling dataset  (enanoMapper)</a></li>		
+								<li><a href="https://data.enanomapper.net/bundle/2" target=_blank >OECD HT import test  (enanoMapper)</a></li>		
+								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
+								</ul>
+	</li>
+	<li ><a href="https://data.enanomapper.net/substanceowner">Nanomaterial contributors</a></li>
+
+</ul>
+
+</li>
+<li>
+	<a href="https://data.enanomapper.net/substance?page=0&amp;pagesize=100">Data upload</a>
+	<ul>
+			<li ><a href="https://data.enanomapper.net/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
+			<li ><a href="https://data.enanomapper.net/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
+			<li ><a href="https://data.enanomapper.net/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>		
+		</ul>
+</li>
+<li>
+	<a href="#" title="For developers">For developers</a>
+    <ul>
+	<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
+	<li><a href="#">Resources</a>		
+	<ul>
+	<li>
+		<a href="https://data.enanomapper.net/dataset?page=0&pagesize=100" title="Datasets: Chemical structures and properties">Datasets</a>
+	</li>
+	<li>
+		<a href="https://data.enanomapper.net/algorithm" title="Descriptor calculations, model building and data processing algorithms">Algorithms</a>
+	</li>
+	<li>
+		<a href="https://data.enanomapper.net/model" title="Regression, classification, clustering, structural alerts, applicability domain, structure optimisation.">Models</a>
+	</li>	
+
+	</ul>
+		
+		<li>
+		<a href="treedemo/index.html" title="Data and ontology visualisation">Data and ontology visualisation</a>
+	</li>	
+	</ul>
+</li>
 			
-				<li><a href="https://data.enanomapper.net/bundle" title="Browse/Edit">Nanomaterial Bundles</a></li>
-				
-				<li ><a href="https://data.enanomapper.net/substanceowner">Nanomaterial contributors</a></li>
-					
-				<li ><a href="#">Data management</a>
-					<ul>
-						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance" title='Upload of several *.i5z , *.rdf or *.csv file'>Multiple files upload</a>
-						<li ><a href="https://data.enanomapper.net/ui/uploadsubstance1" title='Excel template with JSON configuration upload'>Spreadsheet upload</a>
-						<li ><a href="https://data.enanomapper.net/ui/updatesubstancei5">Retrieve substance(s) from IUCLID5 server</a>
-						<li>
-						<a href="https://data.enanomapper.net/bundle">Datasets of nanomaterials and studies</a>
-						</li>			
-					</ul>
-				</li>					
-				</ul>			
-			</li>
 			<li>
 				<a href="#">Help</a>
-						<ul>
+					<ul>
+
+
 							<li> <a href="#">User guide</a>
 								<ul>
 								<li><a href='http://ambit.sourceforge.net/enanomapper_usage.html' target='guide'>Search by composition</a></li>
@@ -141,20 +182,9 @@
 								<li><a href='http://enanomapper.github.io/API/' target=_blank title="API documentation in Swagger JSON format">API Documentation (eNanoMapper services)</a></li>
 							</ul>
 							</li>
-							<li><a href="#">About</a>
+							<li><a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
 								<ul>
-								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
-								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
-								<li><a href='#' onClick='$( "#about-message" ).dialog("open");'>About</a></li>
-								</ul>
-							</li>
-						
-						</ul>				
-			</li>			
-			<li>
-				<a href="#" onClick='$( "#about-message" ).dialog("open");'>About</a>
-						<ul>
-							<li><a href="#">Content</a>
+									<li><a href="#">Content</a>
 								<ul>
 								<li><a href="https://data.enanomapper.net/bundle/1" target=_blank >NanoWiki (enanoMapper)</a></li>		
 								<li><a href="https://data.enanomapper.net/bundle/3" target=_blank >Protein corona dataset  (enanoMapper)</a></li>		
@@ -164,16 +194,16 @@
 								<li><a href="https://cananolab.nci.nih.gov" target=_blank title="external">caNanoLab (external)</a></li>		
 								</ul>
 							</li>
-							<li><a href="#">Acknowledgements</a>
-								<ul>
 								<li><a href="http://www.enanomapper.net/" target=_blank title="This project has received funding from the European Union's FP7 for research, technological development and demonstration under grant agreement no 604134.">EU FP7 #604134</a></li>
 								<li><a href="https://cananolab.nci.nih.gov/caNanoLab/#/" target=_blank title="caNanoLab collaboration">caNanoLab collaboration</a>	</li>		
 								<li><a href="http://ambit.sourceforge.net/enanomapper.html" target=_blank title="eNanoMapper database is customized version of AMBIT web services">ambit.sf.net</a>	</li>		
+								<li><a href='#' onClick='$( "#about-message" ).dialog("open");'>About</a></li>
 								</ul>
 							</li>
 						
 						</ul>				
-			</li>							
+			</li>			
+							
 			</ul>
 
 
