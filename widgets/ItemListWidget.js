@@ -123,11 +123,8 @@
 			snippets.splice(0, 1);
 			item.snippet += 
 				'<a href="#" class="more">more</a>' +
-				'<div class="more-less" style="display:none;">' + 
-				snippets.map(function (s) { return ccLib.formatString(sniphtml, s)}).join("") +
-				'</div>';
+				'<div class="more-less" style="display:none;">' + snippets.map(function (s) { return ccLib.formatString(sniphtml, s)}).join("") + '</div>';
 		}
-			
 		
 		if (doc.content == null) {
 			item.link = this.settings.root + doc.s_uuid;

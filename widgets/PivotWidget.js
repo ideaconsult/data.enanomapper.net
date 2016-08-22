@@ -49,12 +49,8 @@
       if (this.multivalue)
         loc.ex = this.id;
 
-      // we want to add these, without exclusion, so we have information of what is really present
-      for (var i = 0, farr = pivot_fields.split(","); i < farr.length; ++i)
-        this.manager.store.addByValue('facet.field', farr[i], { ex: this.id + "_range" });
-        
       this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
-      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, min: true, max: true });
+      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, ex: this.id + "_range", min: true, max: true });
     },
     
     afterChangeSelection: function () {

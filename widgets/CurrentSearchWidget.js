@@ -125,6 +125,11 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
           })(),
           updateRange = function(range) {  return function (values) { 
             self.manager.tweakAddRangeParam(range, values.split(","));
+
+            // add it to our range list, if it is not there already
+            if (self.rangeParameters.indexOf(range) == -1)
+              self.rangeParameters.push(range);
+
             self.applyCommand.css("opacity", 1.0);
             setTimeout(function () { self.applyCommand.css("opacity", ""); }, 500);
           } },
@@ -135,14 +140,14 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
                 ctx[pp.field] = pp.value;
             }
 
-            var par = self.rangeParameters.find( function (e) { 
+            var rng = self.rangeParameters.find( function (e) { 
               for (var k in ctx)
                 if (e.context[k] !== undefined && ctx[k] !== e.context[k])
                   return false;
               return true;
             });
             
-            return $.extend(par, { 'context': ctx }, pivot.stats.stats_fields.loValue);
+            return $.extend(rng, { 'context': ctx }, pivot.stats.stats_fields.loValue);
           };
 
       if ($(this).closest("li").hasClass("active")) {
@@ -193,7 +198,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	from: range.min,
         	to: range.max,
         	step: prec,
-        	scale: [range.min, names.join("/") + (enabled ? "" : " (" + units + ")"), range.max],
+        	scale: [range.min, names.join("/") + (enabled || !units ? "" : " (" + units + ")"), range.max],
         	showScale: true,
         	showLabels: enabled,
         	disable: !enabled,
