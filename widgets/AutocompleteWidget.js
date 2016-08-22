@@ -56,7 +56,7 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
     
     var qval = this.manager.store.get('q').val();
     params.push('q=' + qval);
-    $.getJSON(this.manager.solrUrl + 'select?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
+    $.getJSON(this.manager.solrUrl + 'autophrase?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
     
     if (qval != "*:*")
       findbox.val(qval);
