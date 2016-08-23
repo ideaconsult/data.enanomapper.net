@@ -124,7 +124,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
             return map;
           })(),
           updateRange = function(range) {  return function (values) { 
-            self.manager.tweakAddRangeParam(range, values.split(","));
+            self.manager.tweakAddRangeParam(range, values.split(","), PivotWidget.id + "_range");
 
             // add it to our range list, if it is not there already
             if (self.rangeParameters.indexOf(range) == -1)

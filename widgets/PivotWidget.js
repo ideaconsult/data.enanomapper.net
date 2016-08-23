@@ -45,12 +45,12 @@
   	
     init: function () {
       AjaxSolr.PivotWidget.__super__.init.call(this);
-      var loc = { stats: this.id };
+      var loc = { stats: this.id + "_stats" };
       if (this.multivalue)
         loc.ex = this.id;
 
       this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
-      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id, ex: this.id + "_range", min: true, max: true });
+      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
     },
     
     afterChangeSelection: function () {
