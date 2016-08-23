@@ -125,6 +125,13 @@ var Manager,
 		Manager.addWidget(PivotWidget = new AjaxSolr.PivotWidget({
 			id : "studies",
 			target : $(".after_topcategory"),
+			
+			pivotFields: [ "topcategory", "endpointcategory", "effectendpoint", "unit" ],
+      contextFields: [ "endpointcategory", "effectendpoint" ],
+      endpointField: "effectendpoint",
+      unitField: "unit",
+      statField: "loValue",
+			
 			colorMap: Colors,
 			multivalue: true,
 			renderTag: renderTag,

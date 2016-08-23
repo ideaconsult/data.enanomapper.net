@@ -1,57 +1,52 @@
 (function($) {
-	var pivot_fields = "topcategory,endpointcategory,effectendpoint,unit",
-	    bottom_field = "effectendpoint", top_field = "topcategory", stats_field = "loValue", category_field = "endpointcategory", unit_field = "unit",
-	    
-			buildValueRange = function (facet, suffix) {
+	var buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
 				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
 								"&#x2026;" + (stats.loValue.max == null ? "&#x221E;" : stats.loValue.max) +
 								" " + (suffix == null ? jT.ui.formatUnits(facet.value) : suffix);
-			},
-			
-			buildFacetDom = function (facet, colorMap, renderer) {
-        var elements = [], root;
-				
-				if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
-					;
-				else {
-					for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
-						f = facet.pivot[i];
-						f.parent = facet;
-						elements.push(f.field == bottom_field ? renderer(f).addClass(colorMap[f.field]) : buildFacetDom(f, colorMap, renderer)[0]);
-						if (f.field == bottom_field && f.pivot)
-						  f.pivot.forEach(function (o) { o.parent = f; });
-					}
-		
-					if (elements.length > 0 && facet.field != top_field) {
-						root = jT.getFillTemplate($("#tag-facet"), facet);
-						
-						// we need to add outselves as main tag
-						if (facet.field != bottom_field)
-  				    root.append(renderer(facet).addClass("category title").addClass(colorMap[facet.field]));
-						
-						root.append(elements);
-						elements = [root];
-					}
-				}
-				
-				return elements;
 			};
 	
 	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
-  	contextFields: [category_field, bottom_field],
-  	endpointField: bottom_field,
-  	unitField: unit_field,
-  	
     init: function () {
       AjaxSolr.PivotWidget.__super__.init.call(this);
       var loc = { stats: this.id + "_stats" };
       if (this.multivalue)
         loc.ex = this.id;
 
-      this.manager.store.addByValue('facet.pivot', pivot_fields, loc);
-      this.manager.store.addByValue('stats.field', stats_field, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
+      this.manager.store.addByValue('facet.pivot', this.pivotFields.join(","), loc);
+      this.manager.store.addByValue('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
+      
+      this.topField = this.pivotFields[0];
     },
+    
+		buildFacetDom: function (facet, renderer) {
+      var elements = [], root;
+			
+			if (facet.pivot == null || !facet.pivot.length) // no separate pivots - nothing to declare
+				;
+			else {
+				for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
+					f = facet.pivot[i];
+					f.parent = facet;
+					elements.push(f.field == this.endpointField ? renderer(f).addClass(this.colorMap[f.field]) : this.buildFacetDom(f, renderer)[0]);
+					if (f.field == this.endpointField && f.pivot)
+					  f.pivot.forEach(function (o) { o.parent = f; });
+				}
+	
+				if (elements.length > 0 && facet.field != this.topField) {
+					root = jT.getFillTemplate($("#tag-facet"), facet);
+					
+					// we need to add outselves as main tag
+					if (facet.field != this.endpointField)
+				    root.append(renderer(facet).addClass("category title").addClass(this.colorMap[facet.field]));
+					
+					root.append(elements);
+					elements = [root];
+				}
+			}
+			
+			return elements;
+		},
     
     afterChangeSelection: function () {
       this.doRequest()
@@ -59,7 +54,7 @@
     
 		afterRequest : function() {
 			var self = this,
-					root = this.manager.response.facet_counts.facet_pivot[pivot_fields],
+					root = this.manager.response.facet_counts.facet_pivot[self.pivotFields],
 					refresh = this.target.data("refreshPanel");
 					
 			if (root === undefined) {
@@ -81,7 +76,7 @@
 				    target;
 				
 				// we need to check if we have that accordion element created.
-				if (facet.field == top_field) {
+				if (facet.field == this.topField) {
   				target = $("#" + fid);
   				
   				if (target.length > 0) {
@@ -96,19 +91,19 @@
   				}
 				}
 				
-				target.append(buildFacetDom(facet, self.colorMap, function (facet) {
+				target.append(self.buildFacetDom(facet, function (f) {
 					var msg = "";
 					
-					if (facet.pivot == undefined) 
-						msg = buildValueRange(facet, "");
-					else for ( var j = 0, ul = facet.pivot.length; j < ul; ++j ) { 
+					if (f.pivot == undefined) 
+						msg = buildValueRange(f, "");
+					else for ( var j = 0, ul = f.pivot.length; j < ul; ++j ) { 
 						if (j > 0)
 							msg += ", ";
 							
-						msg += buildValueRange(facet.pivot[j]);
+						msg += buildValueRange(f.pivot[j]);
 					}
 					
-					return self.renderTag( facet.value, facet.count, msg, self.clickHandler(facet.value, facet.field));
+					return self.renderTag( f.value, f.count, msg, self.clickHandler(f.value, f.field));
 				}));
 			}
 			
@@ -135,7 +130,7 @@
     	      }
   	      };
       
-      searchLevel(this.manager.response.facet_counts.facet_pivot[pivot_fields]);
+      searchLevel(this.manager.response.facet_counts.facet_pivot[this.pivotFields]);
       return pivots;
 		}		
 	});
