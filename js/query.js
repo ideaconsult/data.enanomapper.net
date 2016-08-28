@@ -156,7 +156,7 @@ var Manager,
 		// Now add the basket.
 		Basket = new ItemListWidget({
 			id : 'basket',
-			target : '#basket-docs',
+			target : $('#basket-docs'),
 			settings : Settings,
 			onClick : function (e, doc, exp) {
 				if (Basket.eraseItem(doc.s_uuid) === false) {
