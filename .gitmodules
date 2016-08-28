@@ -1,0 +1,6 @@
+[submodule "lib/asSys"]
+	path = lib/asSys
+	url = https://github.com/thejonan/asSys.js
+[submodule "lib/SolrJs2"]
+	path = lib/SolrJs2
+	url = https://github.com/thejonan/SolrJs2
