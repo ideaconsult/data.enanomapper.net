@@ -1,11 +1,10 @@
-(function($) {
-	ItemListWidget = function (props) {
+(function(a$, $, jT) {
+	jT.ItemListWidget = function (props) {
 		$.extend(true, this, props);
 		this.clearItems();
-		return this;
 	};
 
-	ItemListWidget.prototype.populate = function (docs, expanded, callback) {
+	jT.ItemListWidget.prototype.populate = function (docs, expanded, callback) {
 		$(this.target).empty();
 		this.itemData = { 'docs': docs, 'expanded': expanded };
 		this.length = docs.length;
@@ -14,26 +13,26 @@
 			this.pushItem(docs[i], expanded[docs[i].s_uuid]);
 	};
 	
-	ItemListWidget.prototype.addItem = function (doc, exp) {
+	jT.ItemListWidget.prototype.addItem = function (doc, exp) {
 		this.itemData.docs.push(doc);
 		this.itemData.expanded[doc.s_uuid] = exp;
 		this.length++;
 		return this.pushItem(doc, exp);
 	};
 	
-	ItemListWidget.prototype.clearItems = function () {
+	jT.ItemListWidget.prototype.clearItems = function () {
 		$(this.target).empty();
 		this.itemData = { 'docs': [], 'expanded': { } }
 		this.length = 0;
 	};
 
-	ItemListWidget.prototype.findItem = function (doc_uuid) {
+	jT.ItemListWidget.prototype.findItem = function (doc_uuid) {
 		return typeof doc_uuid === "string" ? 
 			this.itemData.docs.find(function (doc) { return doc.s_uuid === doc_uuid; }) : 
 			this.itemData.docs.indexOf(doc_uuid) >= 0;
 	};
 	
-	ItemListWidget.prototype.pushItem = function (doc, exp) {
+	jT.ItemListWidget.prototype.pushItem = function (doc, exp) {
 		var self = this,
 				el = $(this.renderSubstance(doc));
 				
@@ -66,7 +65,7 @@
 		return el;
 	};
 	
-	ItemListWidget.prototype.eraseItem = function (doc_uuid) {
+	jT.ItemListWidget.prototype.eraseItem = function (doc_uuid) {
 		var uuid = typeof doc_uuid === "string" ? doc_uuid : doc_uuid.s_uuid;
 		
 		for (var i = 0, l = this.itemData.docs.length; i < l; ++i)
@@ -80,7 +79,7 @@
 		return this.itemData.docs.splice(i, 1)[0];
 	};
 	
-	ItemListWidget.prototype.enumerateItems = function (callback) {
+	jT.ItemListWidget.prototype.enumerateItems = function (callback) {
 		var els = $(this.target).children();
 		for (var i = 0, l = this.itemData.docs.length; i < l; ++i)
 			callback.call(els[i], this.itemData.docs[i]);
@@ -89,7 +88,7 @@
 	/**
 	 * substance
 	 */
-	ItemListWidget.prototype.renderSubstance = function(doc) {
+	jT.ItemListWidget.prototype.renderSubstance = function(doc) {
 		if (doc.type_s != 'study') return;
 		
 		var expanded = this.itemData.expanded[doc.s_uuid],
@@ -158,7 +157,7 @@
 		return jT.getFillTemplate("#result-item", item);
 	};
 	
-	ItemListWidget.prototype.renderHeader = function(doc) {
+	jT.ItemListWidget.prototype.renderHeader = function(doc) {
   	var prop = doc[this.settings.summaryProperty],
   	    substancetype = doc.substanceType != null ? doc.substanceType[0] : null,
   	    pubname = (doc.publicname || doc.name || [""])[0];
@@ -172,7 +171,7 @@
             (substancetype == null ? "" : (" " + substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
 	};
 	
-	ItemListWidget.prototype.renderComposition = function (doc) {
+	jT.ItemListWidget.prototype.renderComposition = function (doc) {
 		var snippets = [],
 		    idgroups = ["CASRN", "EINECS", "ChemicalName", "TradeName"],
 		    components = ["CORE", "COATING", "CONSTITUENT", "ADDITIVE", "IMPURITY", "FUNCTIONALISATION", "DOPING"];
@@ -206,7 +205,7 @@
 	  return snippets.join("<br/>");
 	};
 	
-	ItemListWidget.prototype.renderMeasurement = function(doc) {
+	jT.ItemListWidget.prototype.renderMeasurement = function(doc) {
 		var value = "",
 				snippet = {
 					'category': doc.topcategory + "." + (lookup[doc.endpointcategory] || doc.endpointcategory),
@@ -232,4 +231,4 @@
 
 		return snippet;
 	};
-})(jQuery);
+})(asSys, jQuery, jToxKit);
