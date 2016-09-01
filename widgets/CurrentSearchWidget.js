@@ -1,14 +1,84 @@
-(function ($) {
+(function (Solr, a$, $, jT) {
 
-AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
-  start: 0,
-  skipClear: false,
-  rangeParameters: [],
+jT.CurrentSearchWidgeting = function (settings) {
+  a$.extend(this, settings);
+  this.manager = null;
+  this.skipClear = false;
+  this.facetWidgets = {};
+  this.rangeParameters = [];
+  this.rangeFieldRegExp = /loValue:\[\s*([\d\.\-]+)\s+TO\s+([\d\.\-]+)\s*\]/;
+};
 
-  init: function () {
-    AjaxSolr.CurrentSearchWidget.__super__.init.call(this);
+jT.CurrentSearchWidgeting.prototype = {
+
+  getRangeFromParam: function (par) {
+    var pval = par.value,
+        m = pval.match(this.rangeFieldRegExp),
+        range = null;
+
+    if (!m)
+      return null;
+      
+    var range = { '__parameter': par, 'value': [ parseFloat(m[1]), parseFloat(m[2]) ], 'context': {} },
+        sarr = pval.replace(m[0], "").replace(/\s+AND\s*\)\s*$/, "").replace(/^\s*-?\(?/, "").replace(/\)\s*$/, "").split(/\s+AND\s+/);
+        
+    for (var i = 0;i < sarr.length; ++i) {
+      var mm = sarr[i].match(/(\w+):(.+)/);
+      if (!mm)
+        continue;
+        
+      range.context[mm[1]] = mm[2].replace(/^"/, "").replace(/"$/, "");
+    }
+
+    return range;
+  },
+  
+  tweakAddRangeParam: function (range, values, tag) {
+    if (!range.__parameter)
+      range.__parameter = this.manager.addParameter('fq', { 'name': "fq", 'value': "____", locals: { 'tag': tag } } );
+      
+    if (values != null)
+      range.value = values;
+      
+    var vals = [],
+        rngVal = "loValue:[" + range.value.join(" TO ") + "]";
+        
+    for (var f in range.context)
+      vals.push(f + ":" + Solr.escapeValue(range.context[f]));
+      
+    if (vals.length > 0) {
+      vals.push("-" + rngVal);  
+      range.__parameter.value = "-(" + vals.join(" AND ") + ")";
+    }
+    else
+      range.__parameter.value = rngVal;
+  },
+  
+  filterRangeParameters: function (filter) {
+    var pars = this.manager.getParameter('fq');
+    for (var i = 0; i < pars.length; ++i) {
+      var p = pars[i];
+
+      if (!p.value.match(this.rangeFieldRegExp))
+        continue;
+        
+      if (filter(p))
+        continue;
+      
+      this.manager.removeParameters('fq', i--);
+    }
+  },
+
+  init: function (manager) {
     var self = this;
         self.slidersBlock = $("#sliders");
+        
+    // Assign the manager and map the fields to the widgets...
+    self.manager = manager;
+    self.manager.enumerateListeners(function (l) {
+      if (l.field != null)
+        self.facetWidgets[l.field] = l;
+    });
         
     self.applyCommand = $("#sliders-controls a.command.apply").on("click", function (e) {
       self.skipClear = true;
@@ -23,10 +93,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
   },
   
   afterRequest: function () {
-    var self = this, el, f, fk, fv,
+    var self = this, el, f, fk, fv, pv,
         links = [],
-        q = this.manager.store.get('q').val(),
-        fq = this.manager.store.get('fq');
+        q = this.manager.getParameter('q');
+        fq = this.manager.getParameter('fq');
         
     if (self.skipClear) {
       self.skipClear = false;
@@ -37,41 +107,49 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     self.rangeParameters = [];
     
     // add the free text search as a tag
-    if (q != '*:*') {
-        links.push(self.renderTag(q, "x", function () {
-          self.manager.store.get('q').val('*:*');
+    if (q.value != '*:*') {
+        links.push(self.renderTag(q.value, "x", function () {
+          q.value = "*:*";
           self.doRequest();
           return false;
         }));
     }
 
-    // now add the facets
+    // now scan all the parameters for facets and ranges.
     for (var i = 0, l = fq.length; i < l; i++) {
 	    f = fq[i];
 	    
-	    // First try it as range parameter
-	    fv = self.manager.getRangeFromParam(f, i);
+	    // First try it as a range parameter
+	    fv = self.getRangeFromParam(f);
 	    if (!!fv) {
   	    self.rangeParameters.push(fv);
   	    continue;
 	    }
 	    
-	    // then try it as normal set filter
-	    fv = self.manager.tweakParamValues(f);
+	    // then try it as a normal set facet filter
+	    fv = Solr.parseFacet(f.value);
 	    if (!!fv) {
         fk = fv.field;
-        
-        for (var j = 0, fvl = fv.length, pv; j < fvl; ++j) {
-          pv = (fk == PivotWidget.endpointField);
-      		links.push(el = self.renderTag(fv[j], "i", self.removeFacet(i, fk, fv[j])).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
+        if (self.facetWidgets[fk] == null)
+          continue;
+          
+//         pv = (fk == PivotWidget.endpointField);
+        fk = self.facetWidgets[fk]; 
+        fv = fv.value;
+        if (!Array.isArray(fv))
+          fv = [ fv ];
+
+        for (var j = 0, fvl = fv.length; j < fvl; ++j) {
+      		links.push(el = self.renderTag(fv[j], "i", fk.unclickHandler(fv[j])).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
 
       		if (fvl > 1)
       		  el.addClass("tag_combined");
       		  
       		if (pv)
-      		  $("span", el[0]).on("click", self.rangePresent(i, fk, fv[j]));
+      		  $("span", el[0]).on("click", self.rangePresent(i, fk.field, fv[j]));
       		  
-      		el.addClass(self.colorMap[fk]);
+      		if (fk.color)
+      		  el.addClass(fk.color);
         }
         
         if (fvl > 1)
@@ -81,10 +159,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
     
     if (links.length) {
       links.push(self.renderTag("Clear", "", function () {
-        self.manager.store.get('q').val('*:*');
-        self.manager.store.removeByValue('fq', self.manager.facetFieldRegExp);
-        self.manager.store.removeByValue('fq', self.manager.rangeFieldRegExp);
-        self.doRequest();
+        q.value = '*:*';
+        a$.each(self.facetWidgets, function (w) { w.clearValues(); })
+        self.manager.removeParameters('fq', self.rangeFieldRegExp);
+        self.manager.doRequest();
         return false;
       }).addClass('tag_selected tag_clear tag_fixed'));
       
@@ -203,7 +281,7 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
         	showLabels: enabled,
         	disable: !enabled,
         	isRange: true,
-        	theme: "theme-" + self.colorMap[field],
+        	theme: "theme-" + self.facetWidgets[field].color,
         	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 20) / (Math.min(lp, 2) + 0.1),
         	format: "%s " + units,
         	ondragend: updateRange(range)
@@ -212,29 +290,10 @@ AjaxSolr.CurrentSearchWidget = AjaxSolr.AbstractWidget.extend({
       
       return false;
     };
-  },
-
-  removeFacet: function (index, field, value) {
-    var self = this;
-    return function () {
-      var par = self.manager.store.get('fq')[index],
-          res = self.manager.tweakParamValues(par, value, true);
-
-      if (!!res) {
-        if (!!par.value.match(new RegExp(field + ":" + "\\(\\s*\\)")))
-          self.manager.store.remove('fq', index);
-          
-        self.manager.filterRangeParameters(function (par) {
-          return par.val().indexOf(field + ":" + AjaxSolr.Parameter.escapeValue(value)) < 0; // i.e. leave it IN, when this is not found
-        });
-          
-        self.doRequest();
-      }
-        
-      return false;
-    };
   }
-  
-});
 
-})(jQuery);
+};
+
+jT.CurrentSearchWidget = a$(jT.CurrentSearchWidgeting);
+
+})(Solr, asSys, jQuery, jToxKit);

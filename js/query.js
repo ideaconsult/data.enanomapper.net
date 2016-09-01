@@ -52,7 +52,18 @@ var Manager,
 			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE",
       parameters: Parameters,
       connector: $,
-      onPrepare: function (settings) {  settings.url += "&wt=json&json.wrf=?"; },
+      onPrepare: function (settings) {
+        var qidx = settings.url.indexOf("?");
+        
+        if (this.proxyUrl) {
+          settings.data = { query: settings.url.substr(qidx + 1) };
+          settings.url = this.proxyUrl;
+          settings.type = settings.method = 'POST';
+        }
+        else {
+          settings.url += (qidx < 0 ? "?" : "&" ) + "wt=json&json.wrf=?"; 
+        }
+      }
 		},
 		SolrManager = a$(Solr.Management, Solr.QueryingURL),
 		Manager = new SolrManager(Settings);
@@ -155,15 +166,14 @@ var Manager,
 			renderTag: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
+*/
 		
     // ... And finally the current-selection one, and ...
-		Manager.addListeners(new AjaxSolr.CurrentSearchWidget({
+		Manager.addListeners(new jT.CurrentSearchWidget({
 			id : 'currentsearch',
 			target : $('#selection'),
 			renderTag : renderTag,
-			colorMap : Colors
 		}));
-*/
 
 		// ... auto-completed text-search.
 		Manager.addListeners(new jT.AutocompleteWidget({
@@ -200,6 +210,8 @@ var Manager,
 				$("footer", this).addClass("remove");
 			}			
 		});
+		
+		Manager.init();
 		
 		// now get the search parameters passed via URL	
 		Manager.addParameter('q', $.url().param('search') || '*:*');

@@ -54,7 +54,7 @@ jT.TagWidgeting.prototype = {
         value = Solr.escapeValue(value);
         
     for (var p, i = 0, il = indices.length; i < il; ++i) {
-      p = this.manager.getParameter('fq', i);
+      p = this.manager.getParameter('fq', indices[i]);
       if (p.value.replace(this.fieldRegExp, "").indexOf(value) > -1)
         return true;
     }
