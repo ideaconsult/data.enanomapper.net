@@ -140,6 +140,7 @@ var Manager,
 				header: hdr,
 				multivalue: true,
 				aggregate: true,
+				exclusion: true,
 				renderTag: renderTag
 			}, f)));
 		});
