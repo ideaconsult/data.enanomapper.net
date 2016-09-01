@@ -6,10 +6,6 @@ jT.ResultWidgeting = function (settings) {
 
 jT.ResultWidgeting.prototype = {
   __expects: [ jT.ItemListWidget ],
-  settings : {
-		root : "https://data.enanomapper.net/substance/",
-		summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
-	},
 
   init: function (manager) {
     a$.act(this, jT.ItemListWidget.prototype.init, manager);

@@ -12,7 +12,6 @@ var Manager,
 			'fq' : "{!collapse field=s_uuid}",
 			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,EINECS.CONSTITUENT,EINECS.ADDITIVE,EINECS.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,TradeName.CONSTITUENT,TradeName.ADDITIVE,TradeName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
 // 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
-			'stats': true,			
 			'json.nl' : "map",
 			'expand' : true,
 			'expand.rows' : 3,
@@ -35,10 +34,7 @@ var Manager,
 			'genotoxicity':	'_childDocuments_.params.Type_of_genotoxicity'
 			*/
   	},
-    Colors = {
-      "endpointcategory": "blue",
-      "effectendpoint": "green",
-    };
+  	PivotWidget = null;
 
 (function(Solr, a$, $, jT) {
 	$(function() {
@@ -65,6 +61,7 @@ var Manager,
         }
       }
 		},
+		
 		SolrManager = a$(Solr.Management, Solr.QueryingURL),
 		Manager = new SolrManager(Settings);
 		
@@ -139,12 +136,7 @@ var Manager,
 				return;
 			}
 			
-      f.color = col || f.color;
-  		if (!!f.color) {
-      	Colors[f.field] = f.color;
-      	me.addClass(col);
-      }
-
+    	me.addClass(f.color = col || f.color);
 			Manager.addListeners(new jT.TagWidget($.extend({
 				id : fid,
 				target : me,
@@ -157,16 +149,22 @@ var Manager,
 		});
 		
 		// ... add the mighty pivot widget.
-/*
-		Manager.addListeners(new AjaxSolr.PivotWidget({
+		Manager.addListeners(PivotWidget = new jT.PivotWidget({
 			id : "studies",
 			target : $(".after_topcategory"),
-			colorMap: Colors,
+
+			pivotFields: [ "topcategory", "endpointcategory", "effectendpoint", "unit" ],
+      facetFields: { endpointcategory: { color: "blue" }, effectendpoint: { color: "green" } },
+      endpointField: "effectendpoint",
+      unitField: "unit",
+      statField: "loValue",
+			
 			multivalue: true,
+			aggregate: true,
+			exclusion: true,
 			renderTag: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
-*/
 		
     // ... And finally the current-selection one, and ...
 		Manager.addListeners(new jT.CurrentSearchWidget({

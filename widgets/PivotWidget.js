@@ -1,4 +1,5 @@
-(function($) {
+(function (Solr, a$, $, jT) {
+
 	var buildValueRange = function (facet, suffix) {
 				var stats = facet.stats.stats_fields;
 				return 	" = " + (stats.loValue.min == null ? "-&#x221E;" :  stats.loValue.min) +
@@ -6,17 +7,39 @@
 								" " + (suffix == null ? jT.ui.formatUnits(facet.value) : suffix);
 			};
 	
-	AjaxSolr.PivotWidget = AjaxSolr.BaseFacetWidget.extend({
-    init: function () {
-      AjaxSolr.PivotWidget.__super__.init.call(this);
-      var loc = { stats: this.id + "_stats" };
-      if (this.multivalue)
-        loc.ex = this.id;
+  jT.PivotWidgeting = function (settings) {
+    a$.extend(this, settings);
+    this.contextFields = Object.keys(settings.facetFields);
+  }
+  
+  jT.PivotWidgeting.prototype = {
+    
+    init: function (manager) {
+      this.manager = manager;
 
-      this.manager.store.addByValue('facet.pivot', this.pivotFields.join(","), loc);
-      this.manager.store.addByValue('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
+      var loc = { stats: this.id + "_stats" };
+      if (this.exclusion)
+        loc.ex = this.id + "_tag";
+
+      this.manager.addParameter('facet.pivot', this.pivotFields.join(","), loc);
+      this.manager.addParameter('stats', "true");
+      this.manager.addParameter('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
       
       this.topField = this.pivotFields[0];
+      
+      var self = this;
+      a$.each(this.facetFields, function (f, k) {
+        manager.addListeners(f.widget = new (a$(Solr.Faceting))({
+          id: k,
+          field: k,
+          multivalue: self.multivalue,
+          aggregate: self.aggregate,
+          exclusion: self.exclusion,
+          color: f.color
+        }));
+        
+        f.widget.init(manager);
+      });
     },
     
 		buildFacetDom: function (facet, renderer) {
@@ -28,7 +51,7 @@
 				for (var i = 0, fl = facet.pivot.length, f;i < fl; ++i) {
 					f = facet.pivot[i];
 					f.parent = facet;
-					elements.push(f.field == this.endpointField ? renderer(f).addClass(this.colorMap[f.field]) : this.buildFacetDom(f, renderer)[0]);
+					elements.push(f.field == this.endpointField ? renderer(f).addClass(this.facetFields[f.field].color) : this.buildFacetDom(f, renderer)[0]);
 					if (f.field == this.endpointField && f.pivot)
 					  f.pivot.forEach(function (o) { o.parent = f; });
 				}
@@ -38,7 +61,7 @@
 					
 					// we need to add outselves as main tag
 					if (facet.field != this.endpointField)
-				    root.append(renderer(facet).addClass("category title").addClass(this.colorMap[facet.field]));
+				    root.append(renderer(facet).addClass("category title").addClass(this.facetFields[facet.field].color));
 					
 					root.append(elements);
 					elements = [root];
@@ -47,10 +70,6 @@
 			
 			return elements;
 		},
-    
-    afterChangeSelection: function () {
-      this.doRequest()
-    },
     
 		afterRequest : function() {
 			var self = this,
@@ -103,7 +122,7 @@
 						msg += buildValueRange(f.pivot[j]);
 					}
 					
-					return self.renderTag( f.value, f.count, msg, self.clickHandler(f.value, f.field));
+					return self.renderTag( f.value, f.count, msg, self.facetFields[f.field].widget.clickHandler(f.value));
 				}));
 			}
 			
@@ -133,5 +152,8 @@
       searchLevel(this.manager.response.facet_counts.facet_pivot[this.pivotFields]);
       return pivots;
 		}		
-	});
-})(jQuery);
+	};
+	
+	jT.PivotWidget = a$(jT.PivotWidgeting);
+	
+})(Solr, asSys, jQuery, jToxKit);

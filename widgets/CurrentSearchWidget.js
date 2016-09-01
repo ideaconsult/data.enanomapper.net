@@ -4,7 +4,7 @@ jT.CurrentSearchWidgeting = function (settings) {
   a$.extend(this, settings);
   this.manager = null;
   this.skipClear = false;
-  this.facetWidgets = {};
+  this.facetWidgets = null;
   this.rangeParameters = [];
   this.rangeFieldRegExp = /loValue:\[\s*([\d\.\-]+)\s+TO\s+([\d\.\-]+)\s*\]/;
 };
@@ -73,16 +73,11 @@ jT.CurrentSearchWidgeting.prototype = {
     var self = this;
         self.slidersBlock = $("#sliders");
         
-    // Assign the manager and map the fields to the widgets...
     self.manager = manager;
-    self.manager.enumerateListeners(function (l) {
-      if (l.field != null)
-        self.facetWidgets[l.field] = l;
-    });
         
     self.applyCommand = $("#sliders-controls a.command.apply").on("click", function (e) {
       self.skipClear = true;
-      self.doRequest();
+      self.manager.doRequest();
       return false;
     });
     
@@ -103,6 +98,15 @@ jT.CurrentSearchWidgeting.prototype = {
       return;
     }
     
+    // We do that know to be _sure_ that all widgets are already added.
+    if (self.facetWidgets == null) {
+      self.facetWidgets = {};
+      self.manager.enumerateListeners(function (l) {
+        if (l.field != null)
+          self.facetWidgets[l.field] = l;
+      });
+    }
+    
     self.rangeRemove();
     self.rangeParameters = [];
     
@@ -110,7 +114,7 @@ jT.CurrentSearchWidgeting.prototype = {
     if (q.value != '*:*') {
         links.push(self.renderTag(q.value, "x", function () {
           q.value = "*:*";
-          self.doRequest();
+          self.manager.doRequest();
           return false;
         }));
     }
@@ -133,7 +137,7 @@ jT.CurrentSearchWidgeting.prototype = {
         if (self.facetWidgets[fk] == null)
           continue;
           
-//         pv = (fk == PivotWidget.endpointField);
+        pv = (fk == PivotWidget.endpointField);
         fk = self.facetWidgets[fk]; 
         fv = fv.value;
         if (!Array.isArray(fv))
@@ -202,7 +206,7 @@ jT.CurrentSearchWidgeting.prototype = {
             return map;
           })(),
           updateRange = function(range) {  return function (values) { 
-            self.manager.tweakAddRangeParam(range, values.split(","), PivotWidget.id + "_range");
+            self.tweakAddRangeParam(range, values.split(","), PivotWidget.id + "_range");
 
             // add it to our range list, if it is not there already
             if (self.rangeParameters.indexOf(range) == -1)
