@@ -161,13 +161,14 @@
   	var prop = doc[this.settings.summaryProperty],
   	    substancetype = doc.substanceType != null ? doc.substanceType[0] : null,
   	    pubname = (doc.publicname || doc.name || [""])[0];
+  	    docname = doc.name && doc.name[0] || "";
   	
   	if ($.isArray(prop))
   	  prop = prop[0];
   	  
   	substancetype = lookup[substancetype] || substancetype;
     
-    return  pubname + (pubname === doc.name[0] ? "" : "  (" + doc.name[0] + ")") + 
+    return  pubname + (pubname === docname ? "" : "  (" + docname + ")") + 
             (substancetype == null ? "" : (" " + substancetype + " " + (prop == null ? "" : "[" + prop + "] ")));
 	};
 	
