@@ -10,7 +10,7 @@ jT.TextWidgeting.prototype = {
   delayed: 300,
   init: function (manager) {
     var self = this;
-    a$.act(this, Solr.Texting.prototype.init, manager);
+    a$.pass(this, jT.TextWidgeting, 'init', manager);
 
     $(this.target).find('input').bind('keydown', function(e) {
       if (e.which == 13) {

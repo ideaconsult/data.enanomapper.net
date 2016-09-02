@@ -8,7 +8,7 @@ jT.ResultWidgeting.prototype = {
   __expects: [ jT.ItemListWidget ],
 
   init: function (manager) {
-    a$.act(this, jT.ItemListWidget.prototype.init, manager);
+    a$.pass(this, jT.ResultWidgeting, 'init', manager);
     this.manager = manager;
   },
   

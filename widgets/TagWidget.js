@@ -8,7 +8,7 @@ jT.TagWidgeting.prototype = {
   __expects: [ Solr.Faceting ],
 
   afterRequest: function () {
-    a$.act(this, Solr.Faceting.prototype.afterRequest);
+    a$.pass(this, jT.TagWidgeting, 'afterRequest');
       
     if (this.manager.response.facet_counts.facet_fields[this.field] === undefined) {
       this.target.html('no items found in current selection');
