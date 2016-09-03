@@ -35,7 +35,7 @@ jT.CurrentSearchWidgeting.prototype = {
   
   tweakAddRangeParam: function (range, values, tag) {
     if (!range.__parameter)
-      range.__parameter = this.manager.addParameter('fq', { 'name': "fq", 'value': "____", locals: { 'tag': tag } } );
+      range.__parameter = this.manager.addParameter({ 'name': "fq", 'value': "____", 'locals': { 'tag': tag } } );
       
     if (values != null)
       range.value = values;
