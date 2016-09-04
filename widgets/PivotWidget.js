@@ -10,6 +10,7 @@
   jT.PivotWidgeting = function (settings) {
     a$.extend(this, settings);
     this.contextFields = Object.keys(settings.facetFields);
+    this.overallStatistics = {};
   }
   
   jT.PivotWidgeting.prototype = {
@@ -22,9 +23,8 @@
         loc.ex = this.id + "_tag";
 
       this.manager.addParameter('facet.pivot', this.pivotFields.join(","), loc);
-      this.manager.addParameter('stats', "true");
+      this.manager.addParameter('stats', true);
       this.manager.addParameter('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
-      this.manager.addParameter('stats.field', this.statField, { min: true, max: true, ex: this.id + "_range" });
       
       this.topField = this.pivotFields[0];
       
@@ -54,7 +54,7 @@
 					f.parent = facet;
 					elements.push(f.field == this.endpointField ? renderer(f).addClass(this.facetFields[f.field].color) : this.buildFacetDom(f, renderer)[0]);
 					if (f.field == this.endpointField && f.pivot)
-					  f.pivot.forEach(function (o) { o.parent = f; });
+					  a$.each(f.pivot, function (o) { o.parent = f; });
 				}
 	
 				if (elements.length > 0 && facet.field != this.topField) {
@@ -70,6 +70,18 @@
 			}
 			
 			return elements;
+		},
+		
+		buildStatistics: function (facet, stats) {
+  		var self = this;
+  		
+  		if (stats === undefined)
+  		  stats = self.overallStatistics;
+  		  
+  		stats = stats[facet.value.replace(/\s/, "_")] = facet.stats.stats_fields;
+  		a$.each(facet.pivot, function (f) {
+    		self.buildStatistics(f, stats);
+  		});
 		},
     
 		afterRequest : function() {
@@ -92,7 +104,7 @@
       
 			for (var i = 0, fl = root.length; i < fl; ++i) {
 				var facet = root[i], 
-				    fid = facet.value.replace(/\s/, "_"), 
+				    fid = facet.value.replace(/\s/, "_"),
 				    target;
 				
 				// we need to check if we have that accordion element created.
@@ -108,6 +120,7 @@
     				self.target.before(target = jT.getFillTemplate($("#tab-topcategory"), facet));
     				target = $(target.last()).addClass("dynamic-tab");
     				self.tabsRefresher();
+    				self.buildStatistics(facet);
   				}
 				}
 				

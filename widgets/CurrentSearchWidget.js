@@ -35,7 +35,7 @@ jT.CurrentSearchWidgeting.prototype = {
   
   tweakAddRangeParam: function (range, values, tag) {
     if (!range.__parameter)
-      range.__parameter = this.manager.addParameter({ 'name': "fq", 'value': "____", 'locals': { 'tag': tag } } );
+      range.__parameter = this.manager.addParameter({ 'name': "fq", 'value': "____", 'domain': { 'tag': tag } } );
       
     if (values != null)
       range.value = values;
@@ -216,20 +216,23 @@ jT.CurrentSearchWidgeting.prototype = {
             setTimeout(function () { self.applyCommand.css("opacity", ""); }, 500);
           } },
           matchRange = function (pivot) {
-            var ctx = { };
+            var ctx = { },
+                path = [];
+                
+            // build context AND path for the overallStatistics
             for (var pp = pivot; !!pp; pp = pp.parent) {
+              path.push(pp.value);
               if (PivotWidget.contextFields.indexOf(pp.field) > -1 || pivotMap[pp.field][pp.value] < pivots.length)
                 ctx[pp.field] = pp.value;
             }
 
             var rng = self.rangeParameters.find( function (e) { 
-              for (var k in ctx)
-                if (e.context[k] !== undefined && ctx[k] !== e.context[k])
-                  return false;
-              return true;
+              return a$.similar(e.context, ctx);
             });
             
-            return $.extend(rng, { 'context': ctx }, pivot.stats.stats_fields.loValue);
+            path.reverse();
+            
+            return $.extend(rng, { 'context': ctx }, pivot.stats.stats_fields.loValue, { overall: a$.path(PivotWidget.overallStatistics, path).loValue });
           };
 
       if ($(this).closest("li").hasClass("active")) {
@@ -244,20 +247,24 @@ jT.CurrentSearchWidgeting.prototype = {
       for (var i = 0, lp = pivots.length;i < lp; ++i) {
         var pe = pivots[i],
             range = matchRange(pe),
-            prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.max - range.min + 1) - 3)))),
+            prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.overall.max - range.overall.min + 1) - 3)))),
             names = [],
-            enabled = (range.min < range.max),
+            enabled = (range.overall.min < range.overall.max),
             units = (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : "");
 
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
         if (prec < 1 && prec > .01) 
           prec = .01;
-        
-        range.min = range.min != null ? getRoundedNumber(range.min, prec) : "-";
-        range.max = range.max != null ? getRoundedNumber(range.max, prec) : "-";
 
+        range.overall.min = getRoundedNumber(range.overall.min, prec);
+        range.overall.max = getRoundedNumber(range.overall.max, prec);
+        
         if (range.value == null)
           range.value = [ range.min, range.max ];
+        else {
+          range.value[0] = Math.max(range.value[0], range.min);
+          range.value[1] = Math.min(range.value[1], range.max);
+        }
 
         // Build the name on the range scale, based on the field:value pairs
         // that are needed for filtering, i.e. - those that differ...
@@ -277,10 +284,10 @@ jT.CurrentSearchWidgeting.prototype = {
         self.slidersBlock.append(el = jT.getFillTemplate("#slider-one", range));
           
         el.jRange({
-        	from: range.min,
-        	to: range.max,
+        	from: range.overall.min,
+        	to: range.overall.max,
         	step: prec,
-        	scale: [range.min, names.join("/") + (enabled || !units ? "" : " (" + units + ")"), range.max],
+        	scale: [range.overall.min, names.join("/") + (enabled || !units ? "" : " (" + units + ")"), range.overall.max],
         	showScale: true,
         	showLabels: enabled,
         	disable: !enabled,
