@@ -35,7 +35,7 @@ jT.CurrentSearchWidgeting.prototype = {
   
   tweakAddRangeParam: function (range, values, tag) {
     if (!range.__parameter)
-      range.__parameter = this.manager.addParameter({ 'name': "fq", 'value': "____", 'domain': { 'tag': tag } } );
+      range.__parameter = this.manager.addParameter({ 'name': "fq", 'value': "____", 'domain': tag != null ? { 'tag': tag } : undefined } );
       
     if (values != null)
       range.value = values;
@@ -206,7 +206,7 @@ jT.CurrentSearchWidgeting.prototype = {
             return map;
           })(),
           updateRange = function(range) {  return function (values) { 
-            self.tweakAddRangeParam(range, values.split(","), PivotWidget.id + "_range");
+            self.tweakAddRangeParam(range, values.split(","));
 
             // add it to our range list, if it is not there already
             if (self.rangeParameters.indexOf(range) == -1)
@@ -221,7 +221,7 @@ jT.CurrentSearchWidgeting.prototype = {
                 
             // build context AND path for the overallStatistics
             for (var pp = pivot; !!pp; pp = pp.parent) {
-              path.push(pp.value);
+              path.push(pp.value.replace(/\s/, "_"));
               if (PivotWidget.contextFields.indexOf(pp.field) > -1 || pivotMap[pp.field][pp.value] < pivots.length)
                 ctx[pp.field] = pp.value;
             }

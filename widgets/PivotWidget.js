@@ -24,7 +24,7 @@
 
       this.manager.addParameter('facet.pivot', this.pivotFields.join(","), loc);
       this.manager.addParameter('stats', true);
-      this.manager.addParameter('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true, ex: this.id + "_range" });
+      this.manager.addParameter('stats.field', this.statField, { tag: this.id + "_stats", min: true, max: true });
       
       this.topField = this.pivotFields[0];
       
