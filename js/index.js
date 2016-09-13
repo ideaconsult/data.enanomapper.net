@@ -24,10 +24,6 @@ $(document).ready(function() {
 	});
 			
 	// Now instantiate and things around it.
-	var resDiv = $("#result-tabs"),
-	    sizerDiv = $("#accordion-resizer"),
-	    resSize;
-	
 	$("#accordion").accordion({
 		heightStyle: "content",
 		collapsible: true,
@@ -117,11 +113,12 @@ $(document).ready(function() {
 		});
 	});
 		    
-	resDiv.tabs( {
-// 		"heightStyle": "fill"
-	});
+	var resDiv = $("#result-tabs"),
+	    resSize;
+	
+	resDiv.tabs( { } );
 		
-  sizerDiv.resizable({
+  $("#accordion-resizer").resizable({
     minWidth: 150,
     maxWidth: 450,
     grid: [10, 10],

@@ -195,13 +195,17 @@ var Manager,
 				}
 				
 				$(this).remove();
-				var s = "", jel = $('a[href="#basket_tab"]');
+				var s = "", 
+				    jel = $('a[href="#basket_tab"]'),
+				    resItem = $("#result_" + doc.s_uuid);
+				    
 				jel.html(jT.ui.updateCounter(jel.html(), Basket.length));
 				Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
 				if (!!(s = ccLib.modifyURL(window.location.href, "basket", s)))
 					window.history.pushState({ query : window.location.search }, document.title, s);
 							
-				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
+        if (resItem.length > 0)
+				  $("footer", resItem[0]).toggleClass("add none");
 			},
 			onCreated: function (doc) {
 				$("footer", this).addClass("remove");
