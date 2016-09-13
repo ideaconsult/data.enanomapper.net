@@ -61,7 +61,7 @@ var Manager,
       }
 		},
 		
-		SolrManager = a$(Solr.Management, Solr.QueryingURL),
+		SolrManager = a$(Solr.Management, Solr.Configuring, Solr.QueryingURL),
 		Manager = new SolrManager(Settings);
 		
     Manager.addListeners(new jT.ResultWidget({

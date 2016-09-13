@@ -88,18 +88,18 @@ div.query-container {
   width: 100%;
 }
 
-div.query-container div:first-child {
+div.query-container>div:first-child {
   margin-left: 2px;
 }
 
-div.query-container div {
+div.query-container>div {
   margin-right: 2px;
   vertical-align: top;
   overflow: hidden;
   padding: 0px;
 }
 
-div.query-container div.query-left {
+div.query-container>div.query-left {
   float: left;
   max-width: 450px;
 }

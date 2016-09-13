@@ -232,7 +232,7 @@ jT.CurrentSearchWidgeting.prototype = {
             
             path.reverse();
             
-            return $.extend(rng, { 'context': ctx }, pivot.stats.stats_fields.loValue, { overall: a$.path(PivotWidget.overallStatistics, path).loValue });
+            return a$.extend(rng, { 'context': ctx }, pivot.stats.stats_fields.loValue, { overall: a$.path(PivotWidget.overallStatistics, path).loValue });
           };
 
       if ($(this).closest("li").hasClass("active")) {
