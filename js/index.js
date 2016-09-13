@@ -43,7 +43,7 @@ $(document).ready(function() {
 				
 				if (!$("span.ui-icon-search", header).length) {
 					refreshPanel = function () {
-			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "") {
+			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "" || $(header).hasClass("nested-tab") ) {
 							$(panel).scrollTop(widgetFilterScroll);
 							filter.show()
 							$("span.ui-icon-search", header).removeClass("unused");

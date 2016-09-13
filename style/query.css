@@ -1,6 +1,7 @@
 html, body {
   width: 100%;
   height: 100%;
+  overflow-y: hidden;
 }
 
 * {
@@ -43,10 +44,6 @@ section.item-list article.item .avatar img {
 #wrap {
   width: 1000px;
   margin: 0px auto;
-}
-
-.clear {
-  clear: both;
 }
 
 /* header */
@@ -107,10 +104,6 @@ div.query-container div.query-left {
   max-width: 450px;
 }
 
-div.query-container div.query-right {
-/*   height: 100%; */
-}
-
 /* Right side tabs */
 #hits-tab a {
   margin-right: 5px;
@@ -124,6 +117,7 @@ div.query-container div.query-right {
 
 #result-tabs>div {
   overflow-y: scroll;
+  height: 100%;
 }
 
 #navigation {
@@ -139,21 +133,6 @@ div.query-container div.query-right {
 .links li {
   list-style-type: none;
   display: inline;
-}
-
-/* left */
-
-.left {
-  float: left;
-  width: 300px;
-  padding: 0 0 10px 10px;
-}
-
-.left h2 {
-  clear: left;
-  padding-top: 20px;
-  color: #333;
-  font-size: 13px;
 }
 
 div.item-list {
