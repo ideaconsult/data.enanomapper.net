@@ -23,7 +23,11 @@ $(document).ready(function() {
 		$(this).parents(".widget-root").data("refreshPanel").call();
 	});
 			
-	// Now instantiate the accordion...
+	// Now instantiate and things around it.
+	var resDiv = $("#result-tabs"),
+	    sizerDiv = $("#accordion-resizer"),
+	    resSize;
+	
 	$("#accordion").accordion({
 		heightStyle: "content",
 		collapsible: true,
@@ -112,32 +116,33 @@ $(document).ready(function() {
 			me.data("hidden", null);
 		});
 	});
-	
-	$("#result-tabs").tabs( {
+		    
+	resDiv.tabs( {
 // 		"heightStyle": "fill"
 	});
 		
-  $(function() {
-    $("#accordion-resizer").resizable({
-      minHeight: 400,
-      //minWidth: 200,
-      resize: function() {
-        $( "#accordion" ).accordion( "refresh" );
-      },
-      alsoResize: "#result-tabs"
-    });
-  });	
-  
-  $(function() {
-    $( "#about-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-    $( "#about-message" ).dialog("close");
+  sizerDiv.resizable({
+    minWidth: 150,
+    maxWidth: 450,
+    grid: [10, 10],
+    handles: "e",
+    start: function(e, ui) {
+      resSize = { width: resDiv.width(), height: resDiv.height() };
+    },
+    resize: function(e, ui) {
+      $( "#accordion" ).accordion( "refresh" );
+      resDiv.width(resSize.width + ui.originalSize.width - ui.size.width);
+    }
   });
+  
+  $( "#about-message" ).dialog({
+    modal: true,
+    buttons: {
+      Ok: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+  $( "#about-message" ).dialog("close");
 });
 
