@@ -89,19 +89,22 @@ div.query-container {
 }
 
 div.query-container>div:first-child {
-  margin-left: 2px;
+  margin-left: 4px;
 }
 
 div.query-container>div {
-  margin-right: 2px;
+  margin-right: 4px;
   vertical-align: top;
   overflow: hidden;
-  padding: 0px;
 }
 
 div.query-container>div.query-left {
   float: left;
   max-width: 450px;
+}
+
+#accordion-resizer {
+  padding: 2px;
 }
 
 /* Right side tabs */
@@ -111,8 +114,6 @@ div.query-container>div.query-left {
 
 #result-tabs {
   height: 100%;
-  padding: 0px;
-  margin: 0px;
 }
 
 #result-tabs>div {
