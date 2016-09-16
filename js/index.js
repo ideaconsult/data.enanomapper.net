@@ -9,7 +9,7 @@ function getTitleFromFacet(facet) {
 
 function getRoundedNumber(num, prec) {
   var v = Math.round(num / prec) * prec;
-  return parseFloat(num.toString().replace(new RegExp("\\.(\\d{" + (-Math.log10(prec)) + "})\\d*"), ".$1"));
+  return parseFloat(v.toString().replace(new RegExp("\\.(\\d{" + (-Math.log10(prec)) + "})\\d*"), ".$1"));
 }
 
 $(document).ready(function() {

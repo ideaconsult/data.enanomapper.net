@@ -144,7 +144,7 @@ jT.CurrentSearchWidgeting.prototype = {
           fv = [ fv ];
 
         for (var j = 0, fvl = fv.length; j < fvl; ++j) {
-      		links.push(el = self.renderTag(fv[j], "i", fk.unclickHandler(fv[j])).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
+      		links.push(el = self.renderTag(fv[j], "i", self.unclickHandler(fv[j], fk)).addClass("tag_selected " + (pv ? "tag_open" : "tag_fixed")));
 
       		if (fvl > 1)
       		  el.addClass("tag_combined");
@@ -174,6 +174,19 @@ jT.CurrentSearchWidgeting.prototype = {
     }
     else
       this.target.removeClass('tags').html('<li>No filters selected!</li>');
+  },
+  
+  unclickHandler: function(value, widget) {
+    var self = this;
+        
+    return function () {
+      widget.removeValue(value);
+
+      self.filterRangeParameters(function (p) { return p.value.indexOf(widget.field + ":" + Solr.escapeValue(value)) == -1; });
+      
+      widget.doRequest();
+      return false;
+    };
   },
 
   rangeRemove: function() {
@@ -205,8 +218,17 @@ jT.CurrentSearchWidgeting.prototype = {
             
             return map;
           })(),
-          updateRange = function(range) {  return function (values) { 
-            self.tweakAddRangeParam(range, values.split(","));
+          updateRange = function(range, prec) {  return function (values) {
+            values = values.split(",").map(function (v) { return parseFloat(v); });
+            
+            // Fix the rouding error, because an entire entry can fall out...
+            if (Math.abs(range.overall.max - values[1]) <= prec)
+              values[1] = range.overall.max;
+            if (Math.abs(range.overall.min - values[0]) <= prec)
+              values[0] = range.overall.min;
+              
+            // Now, make the actual Solr parameter setting.
+            self.tweakAddRangeParam(range, values);
 
             // add it to our range list, if it is not there already
             if (self.rangeParameters.indexOf(range) == -1)
@@ -250,15 +272,13 @@ jT.CurrentSearchWidgeting.prototype = {
             prec = Math.pow(10, parseInt(Math.min(1, Math.floor(Math.log10(range.overall.max - range.overall.min + 1) - 3)))),
             names = [],
             enabled = (range.overall.min < range.overall.max),
-            units = (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : "");
+            units = (pe.field == PivotWidget.unitField ? jT.ui.formatUnits(pe.value) : ""),
+            scale;
 
         // jRange will treat 0.1 range, as 0.01, so we better set it this way
         if (prec < 1 && prec > .01) 
           prec = .01;
 
-        range.overall.min = getRoundedNumber(range.overall.min, prec);
-        range.overall.max = getRoundedNumber(range.overall.max, prec);
-        
         if (range.value == null)
           range.value = [ range.min, range.max ];
         else {
@@ -283,11 +303,17 @@ jT.CurrentSearchWidgeting.prototype = {
         // We're ready to prepare the slider and add it to the DOM.
         self.slidersBlock.append(el = jT.getFillTemplate("#slider-one", range));
           
+        scale = [
+          getRoundedNumber(range.overall.min, prec), 
+          names.join("/") + (enabled || !units ? "" : " (" + units + ")"), 
+          getRoundedNumber(range.overall.max, prec)
+          ];
+          
         el.jRange({
-        	from: range.overall.min,
-        	to: range.overall.max,
+        	from: scale[0],
+        	to: scale[2],
         	step: prec,
-        	scale: [range.overall.min, names.join("/") + (enabled || !units ? "" : " (" + units + ")"), range.overall.max],
+        	scale: scale,
         	showScale: true,
         	showLabels: enabled,
         	disable: !enabled,
@@ -295,7 +321,7 @@ jT.CurrentSearchWidgeting.prototype = {
         	theme: "theme-" + self.facetWidgets[field].color,
         	width: parseInt(self.slidersBlock.width() - $("#sliders-controls").width() - 20) / (Math.min(lp, 2) + 0.1),
         	format: "%s " + units,
-        	ondragend: updateRange(range)
+        	ondragend: updateRange(range, prec)
       	});
       }
       
