@@ -116,7 +116,7 @@ jT.CurrentSearchWidgeting.prototype = {
           q.value = "*:*";
           self.manager.doRequest();
           return false;
-        }));
+        }).addClass("tag_fixed"));
     }
 
     // now scan all the parameters for facets and ranges.
