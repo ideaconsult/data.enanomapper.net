@@ -348,7 +348,15 @@ div.slider-container.theme-orange .back-bar div.selected-bar {
 }
 
 #accordion .tags li.selected {
-  opacity: 0.6;
+  opacity: 0.8;
+}
+
+#accordion .tags li:hover {
+  z-index: 100 !important;
+}
+
+#accordion .tags li.selected a{
+  color: #999;
 }
 
 .tags li>a {
