@@ -1,6 +1,12 @@
-(function ($) {
+(function (Solr, a$, $, jT) {
 
-AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
+jT.AutocompleteWidgeting = function (settings) {
+  a$.extend(this, settings);
+};
+
+jT.AutocompleteWidgeting.prototype = {
+  __expects: [ Solr.Texting ],
+  
   afterRequest: function () {
     var findbox = this.target.find('input');
     findbox.unbind().removeData('events').val('');
@@ -26,7 +32,7 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
         select: function(event, ui) {
           if (ui.item) {
             self.requestSent = true;
-            if (self.manager.store.addByValue('fq', ui.item.field + ':' + AjaxSolr.Parameter.escapeValue(ui.item.value))) {
+            if (self.manager.addParameter('fq', ui.item.field + ':' + Solr.escapeValue(ui.item.value))) {
               self.doRequest();
             }
           }
@@ -49,18 +55,20 @@ AjaxSolr.AutocompleteWidget = AjaxSolr.AbstractTextWidget.extend({
       params.push('facet.field=' + this.fields[i]);
     }
     
-    var values = this.manager.store.values('fq');
+    var values = this.manager.getAllValues('fq');
     for (var i = 0; i < values.length; i++) {
       params.push('fq=' + encodeURIComponent(values[i]));
     }
     
-    var qval = this.manager.store.get('q').val();
+    var qval = this.manager.getParameter('q').value;
     params.push('q=' + qval);
-    $.getJSON(this.manager.solrUrl + 'select?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
+    $.getJSON(this.manager.solrUrl + 'autophrase?' + params.join('&') + '&wt=json&json.wrf=?', {}, callback);
     
     if (qval != "*:*")
       findbox.val(qval);
   }
-});
+};
 
-})(jQuery);
+jT.AutocompleteWidget = a$(jT.AutocompleteWidgeting);
+
+})(Solr, asSys, jQuery, jToxKit);

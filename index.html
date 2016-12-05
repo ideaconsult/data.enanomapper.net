@@ -19,14 +19,19 @@
 <script src="lib/jquery-1.10.2.js"></script>
 <script src="lib/jquery-ui-1.10.4.custom.min.js"></script>
 <script src="lib/purl.js"></script>
-<script src="widgets/ont.js"></script>
+<script src="lib/jquery.range.js"></script>
+
 <script src="lib/jtoxkit.js"></script>
+<script src="lib/asSys/as-sys.js"></script>
+<script src="lib/SolrJsX/solr-jsx.js"></script>
+<script src="lib/SolrJsX/solr-jsx.widgets.js"></script>
 
 <link rel="stylesheet" href="style/query.css">
 <link rel="stylesheet" href="style/jtoxkit.css">
 
 <link rel="stylesheet" href="style/jquery-ui-1.10.4.custom.min.css">
 <link rel="stylesheet" href="style/jquery.ui.theme.css">
+<link rel="stylesheet" href="style/jquery.range.css" type="text/css">
 
 <link rel="stylesheet" href="style/skeleton/ambit2.css" type="text/css">
 <link rel="stylesheet" href="style/skeleton/toplinks.css" type="text/css">
@@ -38,34 +43,16 @@
 
 <link rel="shortcut icon" href="favicon.ico">
 
-<script src="js/query.js"></script>
-
-
-<script src="lib/core/Core.js"></script>
-<script src="lib/core/AbstractManager.js"></script>
-<script src="lib/managers/Manager.jquery.js"></script>
-
-<script src="lib/core/Parameter.js"></script>
-<script src="lib/core/ParameterStore.js"></script>
-
-<script src="lib/core/AbstractWidget.js"></script>
-<script src="lib/core/AbstractFacetWidget.js"></script>
-<script src="lib/core/AbstractTextWidget.js"></script>
-
-<script src="lib/widgets/jquery/PagerWidget.js"></script>
-
-<script src="widgets/BaseFacetWidget.js"></script>
-<script src="widgets/ItemListWidget.js"></script>
-<script src="widgets/ResultWidget.js"></script>
+<script src="js/ont.js"></script>
 
 <script src="widgets/TagWidget.js"></script>
+<script src="widgets/AutocompleteWidget.js"></script>
+<script src="widgets/ItemListWidget.js"></script>
+<script src="widgets/ResultWidget.js"></script>
+<script src="widgets/CurrentSearchWidget.js"></script>
 <script src="widgets/PivotWidget.js"></script>
 
-<script src="widgets/CurrentSearchWidget.js"></script>
-<!--
-<script src="widgets/TextWidget.js"></script>
--->
-<script src="widgets/AutocompleteWidget.js"></script>
+<script src="js/query.js"></script>
 
 <!-- menus
 ================================================== -->
@@ -83,11 +70,9 @@
 	<div class="container" style="margin: 0; padding: 0;">
 
 		<!-- banner -->
-
-		<div class="row half-bottom" id="header" style="padding-top: 5px">
+		<div class="row half-bottom cc-fixed" id="header" style="padding-top: 5px">
 			<div class="two columns">
-				<a href="#"><img class='scale-with-grid' border='0'
-					src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
+				<a href="#"><img class='scale-with-grid' border='0' src='images/enm_logo.png' title='Home' alt='eNanoMapper'></a>
 			</div>
 			<div class="fourteen columns remove-bottom">
 			<ul id='smartmenu' class="sm sm-mint">
@@ -216,7 +201,6 @@
 			<!-- toplinks -->
 		</div>
 		<div class="row half-bottom cc-fixed">
-
 			<div class="eight columns remove-bottom" style="padding-left: 10px;">
 				<div id="breadCrumb" class="breadCrumb module remove-bottom h5">
 					<h4>Integrated view of <a href="https://data.enanomapper.net/" title="eNanoMapper"><img src='images/logo.png' title='enanomapper database'> eNanoMapper</a> database <a href='http://data.enanomapper.net/substanceowners' target=_blank>[contributors]</a> 
@@ -237,114 +221,124 @@
 
 		</div>
 		
-		<!-- left -->
-		<div class="four columns" id="query" style="margin: 5px 5px 5px 5px; padding: 0;">
-			<div id="accordion-resizer" class="ui-widget-content">
-		    <div id="accordion" style="padding:1px; margin:1px;">
-			    
-					<h3>Data sources</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="owner_name" data-color="green"></ul>
-					</div>	    	
-					
-					<h3>Nanomaterial type</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="substanceType"></ul>
-					</div>
-										
-					<h3 class="after_topcategory">Cell</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="cell" data-color="green"></ul>
-					</div>
-					
-					<h3>Species</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="species" data-color="green"></ul>
-					</div>	
-					<!--							
-					<h3>Solvent</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="solvent" data-color="green"></ul>
-					</div>		
-					
-					<h3>Route</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="route" data-color="green"></ul>
-					</div>	
-					
-					<h3>Genotoxicity</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="genotoxicity" data-color="green"></ul>
-					</div>												
-										
-					<h3>Test type</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="testtype" data-color="green"></ul>
-					</div>	
-							-->			
-														
-					<h3>Results</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags remove-bottom" data-facet="interpretation"></ul>
-					</div>					
-					
-					<h3>References</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content tags tag-group static year" data-facet="reference_year" data-color="green"></ul>
-						<ul class="widget-content tags tag-group remove-bottom static reference" data-facet="reference"></ul>
-					</div>		
-					
-					<h3>Protocols</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-            <ul class="widget-content tags remove-bottom" data-facet="protocol" data-color="blue"></ul>
-					</div>		
-					
-					<h3>Instruments</h3>
-					<div class="widget-root">
-            <input type="text" placeholder="Filter_" class="widget-filter"/>
-						<ul class="widget-content portlet-content tags remove-bottom" data-facet="instruments" data-color="green"></ul>
-					</div>
-						
-				</div>
-			</div>
-			
-			<div class="clear"></div>
-			
-		</div>
+		<div class="query-container cc-flex vertical">
+  		<!-- left -->
+  		<div id="query" class="query-left">
+  			<div id="accordion-resizer" class="ui-widget-content">
+  		    <div id="accordion">
+  			    
+  					<h3>Data sources</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="owner_name" data-color="green"></ul>
+  					</div>	    	
+  					
+  					<h3>Nanomaterial type</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="substanceType"></ul>
+  					</div>
+  										
+  					<h3 class="after_topcategory">Cell</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="cell" data-color="green"></ul>
+  					</div>
+  					
+  					<h3>Species</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="species" data-color="green"></ul>
+  					</div>	
+  					<!--							
+  					<h3>Solvent</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="solvent" data-color="green"></ul>
+  					</div>		
+  					
+  					<h3>Route</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="route" data-color="green"></ul>
+  					</div>	
+  					
+  					<h3>Genotoxicity</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="genotoxicity" data-color="green"></ul>
+  					</div>												
+  										
+  					<h3>Test type</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="testtype" data-color="green"></ul>
+  					</div>	
+  							-->			
+  														
+  					<h3>Results</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags remove-bottom" data-facet="interpretation"></ul>
+  					</div>					
+  					
+  					<h3>References</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content tags tag-group static year" data-facet="reference_year" data-color="green"></ul>
+  						<ul class="widget-content tags tag-group remove-bottom static reference" data-facet="reference"></ul>
+  					</div>		
+  					
+  					<h3>Protocols</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+              <ul class="widget-content tags remove-bottom" data-facet="protocol" data-color="blue"></ul>
+  					</div>		
+  					
+  					<h3>Instruments</h3>
+  					<div class="widget-root">
+              <input type="text" placeholder="Filter_" class="widget-filter"/>
+  						<ul class="widget-content portlet-content tags remove-bottom" data-facet="instruments" data-color="green"></ul>
+  					</div>
 
-		<!-- right -->
-		<div id="result-tabs" class="twelve columns cc-flex">
-      <ul>
-        <li><a href="#hits_tab">Hits list</a></li>
-        <li><a href="#basket_tab">Selection</a></li>
-      </ul>
-  		<div id="hits_tab">
-  			<div class="row remove-bottom">
-  				<ul class="tags remove-bottom" id="selection"></ul>	
-  			</div>
-  			<div id="navigation">
-  				<ul id="pager"></ul>
-  				<div id="pager-header"></div>
-  			</div>
-        <section id="docs" class="item-list"></section>
+  		    </div>
+				</div>
   		</div>
-  		<div id="basket_tab">
-        <section id="basket-docs" class="item-list"></section>
+  
+  		<!-- right -->
+  		<div id="result-tabs" class="query-right">
+        <ul>
+          <li><a href="#hits_tab">Hits list</a></li>
+          <li><a href="#basket_tab">Selection</a></li>
+        </ul>
+    		<div id="hits_tab">
+    			<div class="row remove-bottom">
+    				<ul class="tags remove-bottom" id="selection"></ul>
+    				<footer>
+      				<div id="sliders-controls">
+                <a href="#" class="jtox-fadable command apply">Apply</a>
+                <a href="#" class="jtox-fadable command close">Close</a>
+      				</div>
+      				<div id="sliders"></div>
+    				</footer>
+    			</div>
+    			<div id="navigation">
+    				<ul id="pager"></ul>
+    				<div id="pager-header"></div>
+    			</div>
+          <section id="docs" class="item-list"></section>
+          <div style="padding-top: 70px;"></div>
+    		</div>
+    		<div id="basket_tab">
+          <section id="basket-docs" class="item-list"></section>
+          <div style="padding-top: 70px;"></div>
+    		</div>
   		</div>
-		</div>
-		
-		<!-- container -->
+
+  	<!-- query container -->	
+		</div> 
+
+  <!-- container -->
 	</div>
 	
 	<div class="jtox-template">
@@ -380,12 +374,16 @@
 		</div>
 
     <div id="tab-topcategory">
-  		<h3 id="{{id}}_header">{{value}} ({{count}})</h3>
+  		<h3 id="{{id}}_header" class="nested-tab">{{value}} ({{count}})</h3>
   		<div id="{{id}}" class="widget-content widget-root">
         <input type="text" placeholder="Filter_" class="widget-filter"/>
   		</div>
     </div>
-		
+    
+    <div id="slider-one">
+  		<input type="hidden" value="{{value[0]}},{{value[1]}}"/>
+    </div>
+    		
 	</div>
 
 <script>

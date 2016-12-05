@@ -1,7 +1,15 @@
-(function ($) {
+(function (Solr, a$, $, jT) {
 
-AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
+jT.TagWidgeting = function (settings) {
+  a$.extend(this, settings);
+};
+
+jT.TagWidgeting.prototype = {
+  __expects: [ Solr.Faceting ],
+
   afterRequest: function () {
+    a$.pass(this, jT.TagWidgeting, 'afterRequest');
+      
     if (this.manager.response.facet_counts.facet_fields[this.field] === undefined) {
       this.target.html('no items found in current selection');
       return;
@@ -12,7 +20,6 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     		total = 0,
     		hdr = getHeaderText(this.header),
     		refresh = this.header.data("refreshPanel"),
-    		filter = this.fieldFilter(),
     		nullf = function (e) { return false; },
     		el, selected;
         
@@ -29,7 +36,7 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     this.target.empty();
     for (var i = 0, l = objectedItems.length; i < l; i++) {
       facet = objectedItems[i].facet;
-      selected = (!!filter && !!AjaxSolr.BaseFacetWidget.matchRemoveValue(filter, facet));
+      selected = this.hasValue(facet);
       
       this.target.append(el = this.renderTag(facet, objectedItems[i].count, selected ? nullf : this.clickHandler(facet)));
       
@@ -41,6 +48,8 @@ AjaxSolr.TagWidget = AjaxSolr.BaseFacetWidget.extend({
     if (!!refresh)
     	refresh.call();
   }
-});
+};
 
-})(jQuery);
+jT.TagWidget = a$(jT.TagWidgeting);
+
+})(Solr, asSys, jQuery, jToxKit);

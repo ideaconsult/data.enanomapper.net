@@ -1,15 +1,28 @@
 var Manager, 
 		Basket,
+  	Parameters = {
+			'facet.limit' : -1,
+			'facet.mincount' : 1,
+// 			'echoParams': "none", // enable this for release versions.
+      // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
+			'fq' : "{!collapse field=s_uuid}",
+			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,EINECS.CONSTITUENT,EINECS.ADDITIVE,EINECS.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,TradeName.CONSTITUENT,TradeName.ADDITIVE,TradeName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
+// 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
+			'json.nl' : "map",
+			'expand' : true,
+			'expand.rows' : 3,
+			'q.alt': "*:*",
+		},
 		Facets = { 
-			'substanceType': 	"substanceType",
-  		'owner_name': 		"owner_name", 
-  		'reference': 			"reference", 
-  		'reference_year': "reference_year",
-  		'protocol': 			"guidance",
-  		'interpretation': "interpretation_result", 
-  		'species': 				"_childDocuments_.params.Species", 
-  		'cell': 					"_childDocuments_.params.Cell_line", 
-  		'instruments': 		"_childDocuments_.params.DATA_GATHERING_INSTRUMENTS",
+			'substanceType': 	{ field: "substanceType", facet: { mincount: 2, limit: -1 } },
+  		'owner_name': 		{ field: "owner_name", facet: { mincount: 3 } }, 
+  		'reference': 			{ field: "reference", facet: { mincount: 2 } }, 
+  		'reference_year': { field: "reference_year", facet: { mincount: 1 } },
+  		'protocol': 			{ field: "guidance", facet: { mincount: 2 } },
+  		'interpretation': { field: "interpretation_result", facet: { mincount: 2 } }, 
+  		'species': 				{ field: "_childDocuments_.params.Species" }, 
+  		'cell': 					{ field: "_childDocuments_.params.Cell_line", facet: { mincount: 1 } }, 
+  		'instruments': 		{ field: "_childDocuments_.params.DATA_GATHERING_INSTRUMENTS" },
   		/*
   		'testtype': '_childDocuments_.conditions.Test_type',
 			'solvent' :	'_childDocuments_.conditions.Solvent',
@@ -17,25 +30,41 @@ var Manager,
 			'genotoxicity':	'_childDocuments_.params.Type_of_genotoxicity'
 			*/
   	},
-    Colors = {
-      "endpointcategory": "blue",
-      "effectendpoint": "green",
-    };
+  	PivotWidget = null;
 
-(function($) {
+(function(Solr, a$, $, jT) {
 	$(function() {
   	Settings = {
 			//this is now updated wih cananolab index
 //       solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/',
 			// this has cananolab index
-     solrUrl : 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
- //      solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
+//       solrUrl: 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
+      solrUrl: 'https://sandbox.ideaconsult.net/solr/enm_shard1_replica1/',
+//       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
+//       solrUrl: 'https://sandbox.ideaconsult.net/solr/ambitlri_shard1_replica1/',
 			root : "https://data.enanomapper.net/substance/",
-			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE"
-		};
-		Manager = new AjaxSolr.Manager(Settings);
+			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE",
+			servlet: "autophrase",
+      parameters: Parameters,
+      connector: $,
+      onPrepare: function (settings) {
+        var qidx = settings.url.indexOf("?");
+        
+        if (this.proxyUrl) {
+          settings.data = { query: settings.url.substr(qidx + 1) };
+          settings.url = this.proxyUrl;
+          settings.type = settings.method = 'POST';
+        }
+        else {
+          settings.url += (qidx < 0 ? "?" : "&" ) + "wt=json&json.wrf=?"; 
+        }
+      }
+		},
 		
-		Manager.addWidget(new AjaxSolr.ResultWidget({
+		SolrManager = a$(Solr.Management, Solr.Configuring, Solr.QueryingURL),
+		Manager = new SolrManager(Settings);
+		
+    Manager.addListeners(new jT.ResultWidget({
 			id : 'result',
 			target : $('#docs'),
 			settings : Settings,
@@ -58,7 +87,7 @@ var Manager,
 			}
 		}));
 
-		Manager.addWidget(new AjaxSolr.PagerWidget({
+    Manager.addListeners(new (a$(Solr.Widgets.Pager))({
 			id : 'pager',
 			target : $('#pager'),
 			prevLabel : '&lt;',
@@ -105,43 +134,46 @@ var Manager,
 				console.log("Referred a missing wisget: " + fid);
 				return;
 			}
-
-  		if (!!col) {
-      	Colors[f] = col;
-      	me.addClass(col);
-      }
-
-			Manager.addWidget(new AjaxSolr.TagWidget({
+			
+    	me.addClass(f.color = col || f.color);
+			Manager.addListeners(new jT.TagWidget($.extend({
 				id : fid,
 				target : me,
 				header: hdr,
-				field : f,
-				color: col,
 				multivalue: true,
+				aggregate: true,
+				exclusion: true,
 				renderTag: renderTag
-			}));
+			}, f)));
 		});
 		
 		// ... add the mighty pivot widget.
-		Manager.addWidget(new AjaxSolr.PivotWidget({
+		Manager.addListeners(PivotWidget = new jT.PivotWidget({
 			id : "studies",
 			target : $(".after_topcategory"),
-			colorMap: Colors,
+
+			pivotFields: [ "topcategory", "endpointcategory", "effectendpoint", "unit" ],
+      facetFields: { endpointcategory: { color: "blue" }, effectendpoint: { color: "green" } },
+      endpointField: "effectendpoint",
+      unitField: "unit",
+      statField: "loValue",
+			
 			multivalue: true,
+			aggregate: true,
+			exclusion: true,
 			renderTag: renderTag,
 			tabsRefresher: getTabsRefresher 
 		}));
 		
     // ... And finally the current-selection one, and ...
-		Manager.addWidget(new AjaxSolr.CurrentSearchWidget({
+		Manager.addListeners(new jT.CurrentSearchWidget({
 			id : 'currentsearch',
 			target : $('#selection'),
 			renderTag : renderTag,
-			colorMap : Colors
 		}));
 
 		// ... auto-completed text-search.
-		Manager.addWidget(new AjaxSolr.AutocompleteWidget({
+		Manager.addListeners(new jT.AutocompleteWidget({
 			id : 'text',
 			target : $('#search'),
 			fields : [ 
@@ -152,9 +184,9 @@ var Manager,
 		}));
 		
 		// Now add the basket.
-		Basket = new ItemListWidget({
+		Basket = new jT.ItemListWidget({
 			id : 'basket',
-			target : '#basket-docs',
+			target : $('#basket-docs'),
 			settings : Settings,
 			onClick : function (e, doc, exp) {
 				if (Basket.eraseItem(doc.s_uuid) === false) {
@@ -163,13 +195,17 @@ var Manager,
 				}
 				
 				$(this).remove();
-				var s = "", jel = $('a[href="#basket_tab"]');
+				var s = "", 
+				    jel = $('a[href="#basket_tab"]'),
+				    resItem = $("#result_" + doc.s_uuid);
+				    
 				jel.html(jT.ui.updateCounter(jel.html(), Basket.length));
 				Basket.enumerateItems(function (d) { s += d.s_uuid + ";";});
 				if (!!(s = ccLib.modifyURL(window.location.href, "basket", s)))
 					window.history.pushState({ query : window.location.search }, document.title, s);
 							
-				$("footer", $("#result_" + doc.s_uuid)[0]).toggleClass("add none");
+        if (resItem.length > 0)
+				  $("footer", resItem[0]).toggleClass("add none");
 			},
 			onCreated: function (doc) {
 				$("footer", this).addClass("remove");
@@ -179,52 +215,13 @@ var Manager,
 		Manager.init();
 		
 		// now get the search parameters passed via URL	
-		Manager.store.addByValue('q', $.url().param('search') || '*:*');
-		
-		var params = {
-			'facet' : true,
-			'facet.field' : ['unit'],
-			'facet.limit' : -1,
-			'facet.mincount' : 1,
-			'f._childDocuments_.params.Cell_line.facet.mincount' : 1,
-			'f.interpretation_result.facet.mincount' : 2,
-			'f.reference.facet.mincount' : 2,
-			'f.owner_name.facet.mincount' : 3,
-			'f.reference_year.facet.mincount' : 1,
-			'f.substanceType.facet.mincount' : 2,
-			'f.guidance.facet.mincount' : 2,
-			'f.interpretation_result.facet.mincount' : 10,
-			// 'f.topcategory.facet.limit': 50,
-			// 'f.countryCodes.facet.limit': -1,
-			// 'facet.date': 'date',
-			// 'facet.date.start': '1987-02-26T00:00:00.000Z/DAY',
-			// 'facet.date.end': '1987-10-20T00:00:00.000Z/DAY+1DAY',
-			// 'facet.date.gap': '+1DAY',
-			'f.endpointcategory.facet.limit' : -1,
-			'f.substanceType.facet.limit' : -1,
-			'f.s_uuid.facet.limit' : -1,
-			'f.doc_uuid.facet.limit' : -1,
-			'f.e_hash.facet.limit' : -1,
-      // https://cwiki.apache.org/confluence/display/solr/Collapse+and+Expand+Results
-			'fq' : "{!collapse field=s_uuid}",
-			'fl' : 'id,type_s,s_uuid,doc_uuid,topcategory,endpointcategory,guidance,substanceType,name,publicname,reference,reference_owner,interpretation_result,reference_year,content,owner_name,P-CHEM.PC_GRANULOMETRY_SECTION.SIZE,CASRN.CORE,CASRN.COATING,CASRN.CONSTITUENT,CASRN.ADDITIVE,CASRN.IMPURITY,EINECS.CONSTITUENT,EINECS.ADDITIVE,EINECS.IMPURITY,ChemicalName.CORE,ChemicalName.COATING,ChemicalName.CONSTITUENT,ChemicalName.ADDITIVE,ChemicalName.IMPURITY,TradeName.CONSTITUENT,TradeName.ADDITIVE,TradeName.IMPURITY,COMPOSITION.CORE,COMPOSITION.COATING,COMPOSITION.CONSTITUENT,COMPOSITION.ADDITIVE,COMPOSITION.IMPURITY',
-// 			'fl' : "id,type_s,s_uuid,doc_uuid,loValue,upValue,topcategory,endpointcategory,effectendpoint,unit,guidance,substanceType,name,publicname,reference,reference_owner,e_hash,err,interpretation_result,textValue,reference_year,content,owner_name",
-			'stats': true,			
-			'json.nl' : "map",
-			'rows' : 20,
-			'expand' : true,
-			'expand.rows' : 3
-		};
-		
-		for ( var name in params)
-			Manager.store.addByValue(name, params[name]);
-
+		Manager.addParameter('q', $.url().param('search') || '*:*');
 		Manager.doRequest();
 
 		// Set some general search machanisms
 		$(document).on('click', "a.freetext_selector", function (e) {
-  		Manager.store.addByValue('q', AjaxSolr.Parameter.escapeValue(this.innerText));
+  		Manager.addParameter('q', Solr.escapeValue(this.innerText));
   		Manager.doRequest();
 		});
 	});
-})(jQuery);
+})(Solr, asSys, jQuery, jToxKit);

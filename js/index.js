@@ -2,6 +2,16 @@ function getHeaderText(jel) { return jel.contents().filter(function () { return 
 
 function getTabsRefresher() { $("#accordion").accordion( "refresh" ); }
 
+function getTitleFromFacet(facet) {
+  facet = facet.replace(/^caNanoLab\./, "").replace(/^http\:\/\/dx\.doi\.org/, "");
+  return (lookup[facet] || facet).replace("NPO_", "").replace(" nanoparticle", "");
+}
+
+function getRoundedNumber(num, prec) {
+  var v = Math.round(num / prec) * prec;
+  return parseFloat(v.toString().replace(new RegExp("\\.(\\d{" + (-Math.log10(prec)) + "})\\d*"), ".$1"));
+}
+
 $(document).ready(function() {
 
   ccLib.flexSize($(".container")[0]);
@@ -13,7 +23,7 @@ $(document).ready(function() {
 		$(this).parents(".widget-root").data("refreshPanel").call();
 	});
 			
-	// Now instantiate the accordion...
+	// Now instantiate and things around it.
 	$("#accordion").accordion({
 		heightStyle: "content",
 		collapsible: true,
@@ -29,7 +39,7 @@ $(document).ready(function() {
 				
 				if (!$("span.ui-icon-search", header).length) {
 					refreshPanel = function () {
-			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "") {
+			  		if (panel.scrollHeight > panel.clientHeight || filter.val() != "" || $(header).hasClass("nested-tab") ) {
 							$(panel).scrollTop(widgetFilterScroll);
 							filter.show()
 							$("span.ui-icon-search", header).removeClass("unused");
@@ -102,32 +112,34 @@ $(document).ready(function() {
 			me.data("hidden", null);
 		});
 	});
+		    
+	var resDiv = $("#result-tabs"),
+	    resSize;
 	
-	$("#result-tabs").tabs( {
-// 		"heightStyle": "fill"
-	});
+	resDiv.tabs( { } );
 		
-  $(function() {
-    $("#accordion-resizer").resizable({
-      minHeight: 400,
-      //minWidth: 200,
-      resize: function() {
-        $( "#accordion" ).accordion( "refresh" );
-      },
-      alsoResize: "#result-tabs"
-    });
-  });	
-  
-  $(function() {
-    $( "#about-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
-    $( "#about-message" ).dialog("close");
+  $("#accordion-resizer").resizable({
+    minWidth: 150,
+    maxWidth: 450,
+    grid: [10, 10],
+    handles: "e",
+    start: function(e, ui) {
+      resSize = { width: resDiv.width(), height: resDiv.height() };
+    },
+    resize: function(e, ui) {
+      $( "#accordion" ).accordion( "refresh" );
+      resDiv.width(resSize.width + ui.originalSize.width - ui.size.width);
+    }
   });
+  
+  $( "#about-message" ).dialog({
+    modal: true,
+    buttons: {
+      Ok: function() {
+        $( this ).dialog( "close" );
+      }
+    }
+  });
+  $( "#about-message" ).dialog("close");
 });
 
