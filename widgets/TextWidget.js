@@ -5,7 +5,8 @@ jT.TextWidgeting = function (settings) {
 };
 
 jT.TextWidgeting.prototype = {
-  __expects: [ Solr.Texting ],
+  __depends: [ Solr.Texting ],
+  __expects: [ "doRequest", "set" ],
 
   delayed: 300,
   init: function (manager) {

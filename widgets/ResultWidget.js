@@ -5,7 +5,8 @@ jT.ResultWidgeting = function (settings) {
 };
 
 jT.ResultWidgeting.prototype = {
-  __expects: [ jT.ItemListWidget ],
+  __depends: [ jT.ItemListWidget ],
+  __expects: [ "populate" ],
 
   init: function (manager) {
     a$.pass(this, jT.ResultWidgeting, 'init', manager);

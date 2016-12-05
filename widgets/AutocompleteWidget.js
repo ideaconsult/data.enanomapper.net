@@ -5,7 +5,8 @@ jT.AutocompleteWidgeting = function (settings) {
 };
 
 jT.AutocompleteWidgeting.prototype = {
-  __expects: [ Solr.Texting ],
+  __depends: [ Solr.Texting ],
+  __expects: [ "doRequest", "set" ],
   
   afterRequest: function () {
     var findbox = this.target.find('input');
