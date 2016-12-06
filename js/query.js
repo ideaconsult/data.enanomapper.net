@@ -35,13 +35,7 @@ var Manager,
 (function(Solr, a$, $, jT) {
 	$(function() {
   	Settings = {
-			//this is now updated wih cananolab index
-//       solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/',
-			// this has cananolab index
-//       solrUrl: 'https://solr.ideaconsult.net/solr/enm_shard1_replica1/',
-      solrUrl: 'https://sandbox.ideaconsult.net/solr/enm_shard1_replica1/',
-//       solrUrl: 'https://solr.ideaconsult.net/solr/ambitlri_shard1_replica1/',
-//       solrUrl: 'https://sandbox.ideaconsult.net/solr/ambitlri_shard1_replica1/',
+       			solrUrl : 'https://search.data.enanomapper.net/solr/enm_shard1_replica1/',
 			root : "https://data.enanomapper.net/substance/",
 			summaryProperty: "P-CHEM.PC_GRANULOMETRY_SECTION.SIZE",
 			servlet: "autophrase",
